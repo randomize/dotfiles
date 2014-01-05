@@ -1,0 +1,66 @@
+# Write your default config options here!
+#
+# default configuration that applies to every file
+[default]
+
+# use X11 for video output, use a wayland and framebuffer as fallbacks
+vo=xv,wayland,directfb
+
+# use alsa for audio output, choose oss4 as fallback
+ao=alsa,oss
+
+# multithreaded decoding of H264/MPEG-1/2 (valid: 0-16)
+vd-lavc-threads=8
+
+# prefer using six channels audio
+channels=6
+
+# scale the subtitles to the 3% of the screen size
+sub-scale=1
+
+# set the window title using the media filename, when not set with --title.
+title="${filename}"
+
+# add black borders so the movies have the same aspect ratio of the monitor
+# for wide screen monitors
+### vf=expand=::::1:16/9:16 ## wasnt working
+
+# for non wide screen traditional monitors, alternative to the above item
+#vf=expand=::::1:4/3:16
+
+# disable screensaver
+stop-screensaver="yes"
+
+# execute a command every 30 seconds
+# useful to disable a non-standard-compliant screensavers and to work around buggy behaviours
+# BE WARNED: to avoid dangerous commands is your responsibility
+#heartbeat-cmd="xscreensaver-command -deactivate &" # stop xscreensaver
+
+# custom heartbeat frequency in seconds
+#heartbeat-interval=600
+
+# correct pitch when speed is faster or slower than 1.0
+af=scaletempo
+
+# allow to seek in a file which is still downloading whilst watching it
+idx=yes
+
+# allow to increase the maximal volume to 600%
+#softvol-max=600
+
+# skip displaying some frames to maintain A/V sync on slow systems
+framedrop=yes
+
+# more intense frame dropping (breaks decoding)
+#framedrop=hard
+
+# profile for up-mixing two channels audio to six channels
+# use -profile 2chto6ch to activate
+[2chto6ch]
+af-add=pan=6:1:0:.4:0:.6:2:0:1:0:.4:.6:2
+
+# profile to down-mixing six channels audio to two channels
+# use -profile 6chto2ch to activate
+[6chto2ch]
+af-add=pan=2:0.7:0:0:0.7:0.5:0:0:0.5:0.6:0.6:0:0
+

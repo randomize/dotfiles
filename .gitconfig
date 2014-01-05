@@ -1,0 +1,52 @@
+[user]
+   name = Randy
+   email = randomize46@gmail.com
+[alias]
+   co = checkout
+   ci = commit
+   st = status
+   br = branch
+   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+   type = cat-file -t
+   dump = cat-file -p
+   aa = add --all
+   dc = diff --cached
+   di = diff
+   amend = commit --amend
+
+   ff = merge --ff-only
+   pullff = pull --ff-only
+   noff = merge --no-ff
+   fa = fetch --all
+   pom = push origin master
+   ds = diff --stat=160,120
+   dh1 = diff HEAD~1
+
+   # Divergence (commits we added and commits remote added)
+   div = divergence
+
+   # Goodness (summary of diff lines added/removed/total)
+   gn = goodness
+   gnc = goodness --cached
+
+   # Fancy logging.
+   # h = head
+   # hp = head with patch
+   # r = recent commits, only current branch
+   # ra = recent commits, all reachable refs
+   # l = all commits, only current branch
+   # la = all commits, all reachable refs
+   hp = "!. ~/.githelpers && show_git_head"
+   h = !git head
+   ra = !git r --all
+   head = !git l -1
+   r = !git l -16
+   la = !git l --all
+   l = "!. ~/.githelpers && pretty_git_log"
+
+[color]
+   ui = true
+[push]
+   default = matching
+[merge]
+   tool = vimdiff

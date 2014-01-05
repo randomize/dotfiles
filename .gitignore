@@ -1,0 +1,63 @@
+
+
+# Default XDG
+Desktop/
+Documents/
+Downloads/
+Pictures/
+Public/
+Templates/
+Videos/
+
+# My stuff
+VirtualBox VMs/
+workspace/
+android/
+cocos2d-x/
+rdev/
+
+# Temporals
+.thumbnails/
+.bash_history
+.zsh_history
+.octave_hist
+.lesshst
+.cache/
+.ICEauthority
+.Xauthority
+.esd_auth
+.xsel.log
+.viminfo
+
+# Soft
+.vim/
+.Mathematica/
+.PyCharm30/
+.aMule/
+.android/
+.eclipse/
+.macromedia/
+.mypaint/
+.mozilla/
+.gimp-2.8/
+.java/
+.xournal/
+.texlive/
+.pentadactyl/
+.pki/
+.racket/
+.pdextended
+.jackdrc
+.xmaximarc
+.zcompdump
+.zdirs
+.unite/
+
+
+# Temporary hide...
+.config/
+.local/
+
+
+# By file type
+*.pyc

@@ -1,0 +1,10 @@
+Screenkey - what is this?
+Xfce4-notifyd - alternatives? chose, setup
+Linux player - choose
+cmus-remote -u ?????
+xmodmap???
+parcellite????
+compton or xcompmgr?
+
+
+

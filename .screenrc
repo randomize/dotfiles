@@ -1,0 +1,16 @@
+# +AMDG
+vbell off
+startup_message off
+hardstatus alwayslastline
+termcapinfo xterm|xterms|xs|rxvt ti@:te@
+caption always
+caption string "%{= kB}%-Lw%{=s kB}%50>%n%f* %t %{-}%+Lw%<"
+# open programs with escape plus the binding; also names tab
+bind m screen -t 'Mutt' 7 mutt
+bind s screen -t 'Snownews' 7 snownews
+# avoid screen conflicting with vi bindings; basically,
+# whenever it sees "escape", screen waits for more
+# characters, and only passes the escape to the program
+# after a short pause; this sets the pause to zero
+maptimeout 0
+defc1 off

@@ -1,0 +1,313 @@
+
+
+Linux setup by randomize
+
+
+#### Settings: #########################################
+
+   makepkg.conf => set -j9 to compile multithreaded
+   pacman.conf => enable "Color" "TotalDownload"
+
+
+
+#### Packets: #########################################
+
+==== First to install ===
+
+   sudo
+   screen
+   htop
+   tmux
+   vim
+   yaourt               // Build from PKGBUILD
+   zsh
+   bash-completion
+   // package hook "command not found"
+
+=== Core =============
+
+   efibootmgr
+   gummiboot
+   xf86-input-wacom
+   preload
+
+==== Audio =====================
+
+Install:
+   alsa-utils
+
+Setup:
+   # gpasswd -a randy audio
+
+==== Video ========================
+
+   intel-dri
+   xf86-video-intel
+   libva-intel-driver
+   glew
+   libgl
+   libglu
+   mesa-demos          // Beloved glxgears is here
+   Set KMS (add hook and mkinitcpo -p linux)
+
+=== Disk and FS Utils =============
+
+   dosfstools
+   reiserfsprogs
+   gptfdisk
+   ntfs-3g              // to enable mounting of NTFS write
+
+===== Ipad support =================
+
+   1) install ifuse
+   2) Setup:
+       # idevice_id --list  // will show some hash of my iPad
+       # ideviceinfo        // will show more random data on iPad
+       # idevicepair pair
+       # idevicepair validate
+       # mkdir /mnt/ipad
+       # chown randy /mnt/ipad
+       # chgrp users /mnt/ipad
+       $ ifuse /mnt/ipad
+       $ /* concrete app */ ifuse --appid com.olimsoft.oplayer.hd.lite /mnt/ipad
+       $ /* all root jailed */ ifuse --root /mnt/ipad
+       $ ...
+       $ umount /mnt/ipad
+
+=== Coding ============
+
+IDE:
+
+   sublime-text-dev
+   pycharm-community
+   qtcreator
+   eclipse
+   eclipse-cdt
+   gvim
+
+   Setup vim:
+
+      1) git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+      2) launch, :BundleInstall
+      3) cd ~/.vim/bundle/vimproc.vim/
+      4) make
+      5) cd ~/.vim/bundle/YouCompleteMe/
+      6) ./install.sh --clang-completer --system-libclang
+
+Support:
+
+   ipython
+   ack
+   the_silver_searcher(ag)
+   cmake
+   clang
+   gdb
+   meld
+   mercurial
+   git
+   gitg
+   gcc
+   racket
+   nasm
+   fasm
+   r
+   mono
+   ocaml
+
+==== Fonts =======================
+
+   Install infinality pathces via repository
+
+   otf-brill
+   otf-neris
+   ttf-aller
+   ttf-envy-code-r
+
+   terminus-cyrillic
+   ttf-ms-win8
+
+=== BIG things ====================
+
+   libreoffice
+   gnome                  // All, maybe even games ;)
+
+Setup GNOME:
+   Keyboard - Crtl+Shift+F12 => urxvt -e /home/randy/rdev/sh/starttmux.sh
+   Keyboard - Win+E => nautilus /home/randy
+
+=== Internet things =========
+
+   firefox
+   flashplugin
+   amule
+
+=== GUI additional soft ==
+
+   easystroke
+
+==== Sound =============
+
+   chuck
+   miniaudicle
+   qjackctl
+   jack2
+   ardour
+   qtracktor
+   supercollider
+
+=======================
+
+   mplayer
+   mpv && Load config
+
+==== Painting ============
+
+   gimp
+   mypaint
+   xournal
+
+
+===========================
+
+   llpp-git
+   djview
+
+   telepathy               // all, for messaging Jabber, RSS, etc
+   rxvt-unicode
+   gnugo
+   gogui
+
+===Math====================
+
+   octave
+   gnuplot
+   plplot
+   pd-extended
+   sage
+   maxima
+   Mathematica (aur)
+
+=== TeX ============
+
+   texlive-most
+   texmaker
+   lyx
+
+
+==== Archives ======
+   
+   unp
+
+Formats support:
+
+   unarj
+   unrar
+   unace
+   orange
+   cpio
+   sharutils
+
+==== Virtualbox ======
+
+   virtualbox
+   virtualbox-host-modules
+   net-tools
+
+  # echo vboxdrv > /etc/modules-load.d/virtualbox.conf
+  # gpasswd -a randy vboxusers
+
+==== DNS =========================================================================================================
+
+   To make it faster, enable local caching
+   Install dnsmasq
+   set google DNS in:
+     /etc/dnsmasq.conf
+
+   put to /etc/resolv.conf:
+     nameserver 127.0.0.1
+     nameserver 8.8.8.8
+
+   Enable in network manager
+    # echo dns=dnsmasq >> /etc/NetworkManager/NetworkManager.conf
+
+==== Forward journald to /dev/tty12 ==============================================================================
+
+ /etc/systemd/journald.conf
+
+      ForwardToConsole=yes
+      TTYPath=/dev/tty12
+      MaxLevelConsole=info
+
+ # systemctl restart systemd-journald.
+
+==== Android & cocos ==============================================================================
+
+   1) Enable multilib(Google sucks with 32bit SDK), install deps:
+        pacman -S lib32-alsa-lib lib32-libstdc++5 lib32-libxv lib32-ncurses lib32-openal lib32-sdl lib32-zlib lib32-gcc-libs swt
+
+   2) Apache ant install (apache-ant)
+   3) clone cocos to ~/cocos2d-x
+   4) save latest SDK and NDK to ~/android/{sdk,ndk}
+   5) launch android app and install packages
+   6) setup environment vars for adb
+   7) Install android-udev rules
+
+============ ipv6 ===============================================================================
+
+   1) Install miredo
+
+======= Python ===========================================================================
+ipython
+python-numpy
+python-matplotlib
+python-pillow
+python-scipy
+
+===== Man pages ======================================================================================
+
+   # mandb
+   Then use search
+   $ apropos SOMETHING
+   And other
+   $ whatis
+
+==== Auto load to console vt1 =====================================================================
+/etc/systemd/system/getty@tty1.service.d/autologin.conf
+[Service]
+Type=simple
+ExecStart=
+ExecStart=-/usr/bin/agetty --autologin username --noclear %I 38400 linux
+
+
+===========================================================================================
+== Cool commands
+
+Create iso:
+ $ mkisofs -input-charset default -r -o File.iso Mathematica_8_kg.exe
+
+Stress sytem:
+ $ stress stress --cpu 2 --timeout 60
+
+In package moreutils there is a tool called vipe:
+ $ echo "GlgAAAAASUVORK5CYII=" |  vipe | base64 --decode > /tmp/wat.img 
+
+
+===========================================================================================
+== TODO
+
+ [] Graphics intel, wait for opengl 4.*
+ [] Graphics intel, swithc back to morden way
+ [] replace gnome-terminal with urxvt
+
+ [*] Capslock to langswithc - gnome-tweak
+ [*] Mounting TERRA readonly why? there was no ntfs-3g package installed
+ [] Scrolling desktops at right edge
+ [] Backspace to Go up in nautilus
+ [] Setup VirtualBox, take settings and sync them
+ [] Load pragmata font
+ [] Open Terminal in nautilus to open urxvt(or better tmux?)
+ [] Firefox opens anjuta for some reason on folders(how XDG works on GNOME?)
+ [] Tmux to really clear history (reset preserves it)
+ [] iPad - how mounting work, if it is possible to automaount in nautilus as root?
+ [] Android SDK NDK setup
+ [] Hibernate doesnot work
