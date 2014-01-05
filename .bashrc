@@ -7,23 +7,6 @@ export LESS="-R"
 export EDITOR="vim"
 export VISUAL="vim"
 
-## default
-#MYTERM=xterm-256color
-#
-## for screent
-##if [ $TERM = "screen" ]; then
-##    MYTERM=xterm
-##fi
-##
-## for tmux: export 256color
-#if [ -n "$TMUX" ]; then
-#    #MYTERM=rxvt
-#    MYTERM=screen-256color
-#    #MYTERM=xterm-256color
-#fi
-#
-#export TERM=$MYTERM
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -87,7 +70,6 @@ if [ $UID -ne 0 ]; then
    alias netcfg='sudo netcfg2'
 fi
 
-#PS1='[\u@\h \W]\$ '
 PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\] '
  
 complete -cf sudo
@@ -96,34 +78,6 @@ complete -cf mount
 
 # Auto search for packs
 source /usr/share/doc/pkgfile/command-not-found.bash
-
-#man() {
-#    env LESS_TERMCAP_mb=$'\E[01;31m' \
-#    LESS_TERMCAP_md=$'\E[01;38;5;74m' \
-#    LESS_TERMCAP_me=$'\E[0m' \
-#    LESS_TERMCAP_se=$'\E[0m' \
-#    LESS_TERMCAP_so=$'\E[38;5;246m' \
-#    LESS_TERMCAP_ue=$'\E[0m' \
-#    LESS_TERMCAP_us=$'\E[04;38;5;146m' \
-#    man "$@"
-#}
-
-# man() {
-# env LESS_TERMCAP_mb=$(tput bold; tput setaf 2) \
-# LESS_TERMCAP_md=$(tput bold; tput setaf 6) \
-# LESS_TERMCAP_me=$(tput sgr0) \
-# LESS_TERMCAP_so=$(tput bold; tput setaf 3; tput setab 4) \
-# LESS_TERMCAP_se=$(tput rmso; tput sgr0) \
-# LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 7) \
-# LESS_TERMCAP_ue=$(tput rmul; tput sgr0) \
-# LESS_TERMCAP_mr=$(tput rev) \
-# LESS_TERMCAP_mh=$(tput dim) \
-# LESS_TERMCAP_ZN=$(tput ssubm) \
-# LESS_TERMCAP_ZV=$(tput rsubm) \
-# LESS_TERMCAP_ZO=$(tput ssupm) \
-# LESS_TERMCAP_ZW=$(tput rsupm) \
-# man "$@"
-# }
 
 # Man coloring
 man() {
@@ -136,3 +90,5 @@ man() {
       LESS_TERMCAP_us=$'\E[04;38;5;200m' \
       man "$@"
 }
+
+

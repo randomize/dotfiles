@@ -3,6 +3,9 @@
 ! vim: ft=xdefaults
 ! ----------------------------------------------------------------------------
  
+
+! Xterm -----------------------------------------------
+
 xterm*metaSendsEscape: True
 xterm*saveLines: 1024
 xterm*background: black
@@ -11,8 +14,7 @@ xterm*cursorColor: green
 XTerm*cursorBlink: false
 xterm*cursorOnTime:	550
 xterm*cursorOffTime:	150
-! xterm*faceName: PragmataPro:pixelsize=15
-xterm*faceName:         Terminus:pixelsize=14
+xterm*faceName:  Terminus:pixelsize=14
 xterm*Geometry: 120x60+100+60
 
 xterm*dynamicColors:      true
@@ -45,46 +47,14 @@ xterm*color15:   #EEEEEC
 xterm*termName: xterm-256color
 
                             
-!Xft.autohint: 0
-!Xft.lcdfilter:  lcddefault
-!Xft.hintstyle:  hintfull
-!Xft.hinting: 1
-!Xft.antialias: 1
-!Xft.rgba: rgb
-!Xft.dpi: 90
+! Urxvt -----------------------------------------------
  
 urxvt*geometry: 150x50+100+60
-! latest
-!urxvt*font:            xft:consolas:pixelsize=15:autohint=true
-!urxvt*boldFont:        xft:consolas:bold:pixelsize=15:autohint=true
-!urxvt*italicFont:      xft:consolas:italic:pixelsize=15:autohint=true
-!urxvt*bolditalicFont:  xft:consolas:bolditalic:pixelsize=15:autohint=true
 urxvt*letterSpace: 0
 urxvt*lineSpace: 0
 
-!urxvt*font:            xft:inclonsolata:size=10
-!urxvt*boldFont:        xft:inclonsolata:bold:size=10
-!urxvt*italicFont:      xft:consolas:italic:size=10
-!urxvt*bolditalicFont:  xft:consolas:bolditalic:size=10
-!
-
-!urxvt*font: xft:Terminus:pixelsize=11
-
-! latest settings that worked
 urxvt*font:   -*-terminus-medium-r-normal-*-16-*-*-*-*-*-*-r
 urxvt*boldFont: -*-terminus-bold-r-normal-*-16-*-*-*-*-*-*-r
-
-
-!urxvt*font:            -*-terminus-*-r-*-*-12-*-*-*-*-*-*-*
-!urxvt*boldFont:        -*-terminus-*-r-*-*-12-*-*-*-*-*-*-*
-
-!URxvt.font: xft:Droid Sans Mono:size=9:autohint=false:antialias=true:hinting=true
-!URxvt.boldFont: xft:Droid Sans Mono:size=9:autohint=false:antialias=true:hinting=true
-
-! urxvt*font: xft:PragmataPro:size=11
-! urxvt*boldFont: xft:PragmataPro:bold:size=11
-! urxvt*font: xft:PragmataPro:size=11:autohint=false:antialias=true:hinting=true
-! urxvt*boldFont: xft:PragmataPro:bold:size=11:autohint=false:antialias=true:hinting=true
 
 urxvt*scrollBar:       false
 urxvt*internalBorder:  6
@@ -93,7 +63,6 @@ urxvt*colorBD:      #d7d7d7
 urxvt*colorUL:      #87afd7
 urxvt*depth: 32
 urxvt*background: rgba:0000/0000/0000/cccc
-!urxvt*background: #111111
 urxvt*foreground: #DDDDDD
 urxvt*saveLines                 : 1024
       
@@ -115,36 +84,15 @@ urxvt*color14:   #34E2E2
 urxvt*color15:   #EEEEEC
 
 urxvt*perl-ext-common:  default,matcher
-urxvt*urlLauncher:      /usr/bin/chromium
+urxvt*urlLauncher:      /usr/bin/firefox
 urxvt*matcher.button:   1
 
-
-! settings for yaahconsole
-
-!yeahconsole*consoleHeight: 24
-!yeahconsole*toggleKey: None+Menu
-!yeahconsole*foreground: green
-!yeahconsole*background: black
-!yeahconsole*aniDelay: 10
-!yeahconsole*faceName: Monospace:style=Regular
-!yeahconsole*faceSize: 11
-
-
-yeahconsole*termName: rxvt-256color
-yeahconsole*consoleHeight: 30
-yeahconsole*toggleKey: None+Menu
-yeahconsole*background: #212121
-yeahconsole*foreground: #C0C0C0
-yeahconsole*cursorColor: #E6E3E6
-yeahconsole*restart: 1
-yeahconsole*keyFull: None+F11
-yeahconsole*keySmaller: Control+KP_Subtract
-yeahconsole*keyBigger: Control+KP_Add
-!yeahconsole*faceName: xft:Consolas:size=12
-!yeahconsole*boldFont: xft:Consolas:bold:size=12
-yeahconsole*metaSendsEscape: true
-yeahconsole*utf8: 2
-yeahconsole*transparent: true
-yeahconsole*shading: 4
-yeahconsole*depth: 32
-yeahconsole*letterSpace: -1
+! Xft -----------------------------------------------
+!
+!Xft.autohint: 0
+!Xft.lcdfilter:  lcddefault
+!Xft.hintstyle:  hintfull
+!Xft.hinting: 1
+!Xft.antialias: 1
+!Xft.rgba: rgb
+!Xft.dpi: 90
