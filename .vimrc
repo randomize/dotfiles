@@ -450,6 +450,9 @@ let g:unite_winheight = 10
 " Nice arrows
 let g:unite_candidate_icon="▷"
 
+" Make unite file list(<,t>) ignore .gitignore(depends on ag)
+let g:unite_source_rec_async_command= 'ag --nocolor --nogroup --hidden -g ""'
+
 nnoremap <leader>f :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async:!<cr>
 nnoremap <leader>t :Unite file_rec/async -start-insert<cr>
 nnoremap <leader>b :Unite -quick-match buffer<cr>

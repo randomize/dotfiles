@@ -1,35 +1,37 @@
 
 
-Linux setup by randomize
-
-
-#### Settings: #########################################
-
-   makepkg.conf => set -j9 to compile multithreaded
-   pacman.conf => enable "Color" "TotalDownload"
-
+   Linux setup by randomize
 
 
 #### Packets: #########################################
 
 ==== First to install ===
 
-   sudo
-   screen
-   htop
-   tmux
    vim
-   yaourt               // Build from PKGBUILD
+   sudo
+   htop
+   screen
+   tmux
    zsh
    bash-completion
    // package hook "command not found"
+   rxvt-unicode
 
 === Core =============
 
    efibootmgr
    gummiboot
    xf86-input-wacom
-   preload
+
+=== Pacman and Aur =====================================
+
+   pacman.conf => enable "Color" "TotalDownload"
+
+   yaourt // Build from PKGBUILD
+
+   namcap // checking packages
+
+   makepkg.conf => set -j9 to compile multithreaded
 
 ==== Audio =====================
 
@@ -126,14 +128,10 @@ Support:
    terminus-cyrillic
    ttf-ms-win8
 
-=== BIG things ====================
+====  Desktop ====================
 
    libreoffice
-   gnome                  // All, maybe even games ;)
-
-Setup GNOME:
-   Keyboard - Crtl+Shift+F12 => urxvt -e /home/randy/rdev/sh/starttmux.sh
-   Keyboard - Win+E => nautilus /home/randy
+   easystroke
 
 === Internet things =========
 
@@ -141,11 +139,11 @@ Setup GNOME:
    flashplugin
    amule
 
-=== GUI additional soft ==
 
-   easystroke
+==== Multimedia =============
 
-==== Sound =============
+
+Sound:
 
    chuck
    miniaudicle
@@ -154,30 +152,33 @@ Setup GNOME:
    ardour
    qtracktor
    supercollider
+   audacity
 
-=======================
+Media players:
 
    mplayer
-   mpv && Load config
+   mpv
 
-==== Painting ============
+Screen capture:
+
+   scrot ( scrot -t 20 -d 5 )
+   // using imagemagick import -window root screenshot.jpg
+   simple screen recorder ( aur )
+
+==== Painting and image edit  ============
 
    gimp
    mypaint
    xournal
+   imagemagick
 
-
-===========================
+==== Viewers =======================
 
    llpp-git
    djview
+   feh
 
-   telepathy               // all, for messaging Jabber, RSS, etc
-   rxvt-unicode
-   gnugo
-   gogui
-
-===Math====================
+==== Math =====================
 
    octave
    gnuplot
@@ -193,6 +194,10 @@ Setup GNOME:
    texmaker
    lyx
 
+==== Games =============
+
+   gnugo
+   gogui
 
 ==== Archives ======
    
@@ -257,11 +262,12 @@ Formats support:
    1) Install miredo
 
 ======= Python ===========================================================================
-ipython
-python-numpy
-python-matplotlib
-python-pillow
-python-scipy
+
+   ipython
+   python-numpy
+   python-matplotlib
+   python-pillow
+   python-scipy
 
 ===== Man pages ======================================================================================
 
@@ -292,22 +298,3 @@ In package moreutils there is a tool called vipe:
  $ echo "GlgAAAAASUVORK5CYII=" |  vipe | base64 --decode > /tmp/wat.img 
 
 
-===========================================================================================
-== TODO
-
- [] Graphics intel, wait for opengl 4.*
- [] Graphics intel, swithc back to morden way
- [] replace gnome-terminal with urxvt
-
- [*] Capslock to langswithc - gnome-tweak
- [*] Mounting TERRA readonly why? there was no ntfs-3g package installed
- [] Scrolling desktops at right edge
- [] Backspace to Go up in nautilus
- [] Setup VirtualBox, take settings and sync them
- [] Load pragmata font
- [] Open Terminal in nautilus to open urxvt(or better tmux?)
- [] Firefox opens anjuta for some reason on folders(how XDG works on GNOME?)
- [] Tmux to really clear history (reset preserves it)
- [] iPad - how mounting work, if it is possible to automaount in nautilus as root?
- [] Android SDK NDK setup
- [] Hibernate doesnot work
