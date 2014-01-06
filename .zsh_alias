@@ -1,0 +1,82 @@
+# Set up auto extension stuff
+alias -s html=$BROWSER
+alias -s org=$BROWSER
+alias -s php=$BROWSER
+alias -s com=$BROWSER
+alias -s net=$BROWSER
+alias -s png=feh
+alias -s jpg=feh
+alias -s gif=feg
+alias -s sxw=soffice
+alias -s doc=soffice
+alias -s gz=tar -xzvf # Unp ??
+alias -s bz2=tar -xjvf
+alias -s java=$EDITOR
+alias -s txt=$EDITOR
+alias -s PKGBUILD=$EDITOR
+
+# Normal aliases
+
+# Listing
+alias ls='ls --color=auto -F -h'
+alias lsd='ls -ld *(-/DN)'
+alias lsa='ls -ld .*'
+alias la='ls -a'
+alias lf='ls -FA'
+alias ll='ls -lA'
+alias sl='ls'
+
+# Vim
+alias v='vim'
+alias vi='vim'
+alias view='vim -R'
+
+# Shell
+alias :q='exit'
+alias :Q='exit'
+alias cls='clear'
+alias ..='cd ..'
+alias h='history'
+
+# safety features
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -I'    
+alias ln='ln -i'
+alias trash="mv $1 ~/.local/share/Trash"
+
+alias g='git'
+alias showclock='watch -n 1 "date +%T | xargs figlet \"Time:\" -c -t"'
+alias histgrep='cat ~/.bash_history | grep'
+alias todo='vim ~/nfo/TODO.txt'
+alias openports='netstat --all --numeric --programs --inet --inet6'
+alias webshare='python -m http.server 12721'
+alias makepassword='< /dev/urandom tr -dc A-Za-z0-9_ | head -c10 | xargs | cat'
+#alias ack='/usr/bin/vendor_perl/ack --color-match="bold red" --color-filename="green"'
+alias mstream='mplayer -playlist'
+alias grep='grep --colour'
+alias fgrep='grep --colour'
+alias egrep='egrep --colour'
+alias free='free -m'
+alias twit='ttytter -ansi -ssl -verify'
+alias rss='newsbeuter'
+alias up='uptime'
+
+# Sudoing
+
+#alias pacman='sudo pacman'
+alias packer='sudo packer'
+alias pill='sudo powerpill'
+alias poweroff='sudo poweroff'
+alias mount='sudo mount'
+alias umount='sudo umount'
+# alias sudo='sudo '
+alias scat='sudo cat'
+alias svim='sudo vim'
+# alias root='sudo su'
+alias reboot='sudo reboot'
+alias halt='sudo halt'
+alias update='sudo pacman -Suy'
+#alias pacman='sudo pacman '
+alias netcfg='sudo netcfg2'
+

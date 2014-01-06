@@ -138,6 +138,8 @@ Support:
    firefox
    flashplugin
    amule
+   pidgin
+   pidgin-latex
 
 
 ==== Multimedia =============

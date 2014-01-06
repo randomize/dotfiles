@@ -4,6 +4,7 @@ application/pdf=llpp.desktop
 image/jpeg=feh.desktop
 image/png=feh.desktop
 text/plain=gvim.desktop
+video/x-matroska=mpv.desktop
 
 [Added Associations]
 video/mp2t=mpv.desktop;
@@ -11,3 +12,4 @@ application/pdf=llpp.desktop;
 image/jpeg=feh.desktop;
 image/png=feh.desktop;
 text/plain=gvim.desktop;
+video/x-matroska=mpv.desktop;

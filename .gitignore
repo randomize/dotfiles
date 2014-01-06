@@ -52,6 +52,9 @@ rdev/
 .zcompdump
 .zdirs
 .unite/
+.ssr/
+.purple/
+.gstreamer-0.10/
 
 
 # Temporary hide...

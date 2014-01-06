@@ -46,6 +46,9 @@ bindsym $mod+e exec thunar
 # Browser
 bindsym $mod+F3 exec firefox
 
+# Pidgin
+bindsym $mod+F4 exec pidgin
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
