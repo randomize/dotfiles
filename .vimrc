@@ -272,21 +272,21 @@ set wildmenu
 " ProtoDef плагин - уставливаем путь к вспомогательному скрипту
 let g:protodefprotogetter = '/home/randy/.vim/bundle/vim-protodef/pullproto.pl'
 
-" Удобняшки полезняшки
+" Helphul editing stuff
 
 " Move text, but keep highlight
 vnoremap > ><CR>gv
 vnoremap < <<CR>gv
 
 " move current line down one
-"nnoremap <c-j> ddp
+nnoremap <c-j> ddp
 " move current line up one
-"nnoremap <c-k> ddkP
+nnoremap <c-k> ddkP
 
 " move visual block down one
-"vnoremap <c-j> dp'[V']
+vnoremap <c-j> dp'[V']
 " move visual block up one
-"vnoremap <c-k> dkP'[V']
+vnoremap <c-k> dkP'[V']
 
 " tell VIM to always put a status line in, even if there is only one window
 set laststatus=2
@@ -486,13 +486,39 @@ nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru -start-insert file_mru
 " Use default config
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
 
+"function! g:UltiSnips_Complete()
+"   call UltiSnips_ExpandSnippet()
+"   if g:ulti_expand_res == 0
+"      if pumvisible()
+"         return "\<C-n>"
+"      else
+"         call UltiSnips_JumpForwards()
+"         if g:ulti_jump_forwards_res == 0
+"            return "\<TAB>"
+"         endif
+"      endif
+"   endif
+"   return ""
+"endfunction
+"
+"au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+"let g:UltiSnipsJumpForwardTrigger="<tab>"
+"let g:UltiSnipsListSnippets="<c-e>"
+
+ "" YouCompleteMe
+let g:ycm_key_list_previous_completion=['<Up>']
+
+"" Ultisnips
+let g:UltiSnipsExpandTrigger=",<return>"
+" let g:UltiSnipsExpandTrigger="<s-tab>"
+let g:UltiSnipsListSnippets="<c-tab>"
+
 " == Ultisnips ==
 
 " Remap to not conflict with
 "let g:UltiSnipsExpandTrigger="<nop>"
 "let g:UltiSnipsJumpForwardTrigger="<nop>"
 "let g:UltiSnipsJumpBackwardTrigger="<nop>"
-
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+"let g:UltiSnipsExpandTrigger="<c-j>"
+"let g:UltiSnipsJumpForwardTrigger="<c-j>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-k>"

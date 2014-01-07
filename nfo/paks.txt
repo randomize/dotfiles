@@ -85,9 +85,9 @@ IDE:
    qtcreator
    eclipse
    eclipse-cdt
-   gvim
 
-   Setup vim:
+   gvim
+   Setup:
 
       1) git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
       2) launch, :BundleInstall
@@ -95,6 +95,7 @@ IDE:
       4) make
       5) cd ~/.vim/bundle/YouCompleteMe/
       6) ./install.sh --clang-completer --system-libclang
+      7) install python2-unidecode for ultisnips
 
 Support:
 
@@ -138,6 +139,7 @@ Support:
    firefox
    flashplugin
    amule
+
    pidgin
    pidgin-latex
 
