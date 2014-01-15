@@ -281,6 +281,12 @@ Formats support:
    And other
    $ whatis
 
+==== Itmages client ================================================================================
+
+   install perl-lwp-protocol-https
+   configure password/login
+   use it
+
 ==== Auto load to console vt1 =====================================================================
 /etc/systemd/system/getty@tty1.service.d/autologin.conf
 [Service]
