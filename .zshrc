@@ -74,23 +74,7 @@ compinit
 ### Prompts
 autoload -U colors && colors
 
-#export PROMPT="%n@%m %c %# >> "
-#PS1="%{$fg[blue]%}%n%{$reset_color%}@%{$fg[green]%}%m %{$fg[yellow]%}%~ %{$reset_color%}%% "
-#
-#autoload colors zsh/terminfo
-#if [[ "$terminfo[colors]" -ge 8 ]]; then
-#   colors
-#fi
-#for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
-#   eval PR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
-#   eval PR_LIGHT_$color='%{$fg[${(L)color}]%}'
-#   (( count = $count + 1 ))
-#done
-#PR_NO_COLOUR="%{$terminfo[sgr0]%}"
-
-#
-#
-export PROMPT="%{$fg[red]%}%n%{$reset_color%}@%{$fg[green]%}%m %{$fg_no_bold[yellow]%}%1~ %{$reset_color%}$ "
+export BASE_PS1="%{$fg[green]%}%n %{$fg_no_bold[yellow]%}%1~%{$reset_color%}"
 export RPROMPT="[%{$fg_no_bold[yellow]%}%?%{$reset_color%}]"
 
 setopt autopushd pushdminus pushdsilent pushdtohome
@@ -113,20 +97,38 @@ bindkey "^[[B" history-search-forward
 
 # Run in vim mode
 bindkey -v
+export KEYTIMEOUT=2
+
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
+bindkey '^r' history-incremental-search-backward
+
+# Making vim modes visible with hooks
+function zle-line-init zle-keymap-select {
+   VIM_ON="%{$fg_bold[red]%}$%{$reset_color%}"
+   VIM_OFF="%{$fg_bold[green]%}$%{$reset_color%}"
+   PS1="$BASE_PS1 ${${KEYMAP/vicmd/$VIM_ON}/(main|viins)/$VIM_OFF} "
+   zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
+
 
 # Aliases
 if [ -f ~/.zshrc ]; then
    . ~/.zsh_alias
 fi
 
-# PATH=/usr/share/perl5/vendor_perl/auto/share/dist/Cope:$PATH
-# TZ="America/Los_Angeles"
-# HOSTNAME="`hostname`"
-# LC_ALL='en_US.UTF-8'
-# LANG='en_US.UTF-8'
-# LC_CTYPE=C
-
 unsetopt ALL_EXPORT
 
 # Auto notify on command not found
 source /usr/share/doc/pkgfile/command-not-found.zsh
+
+# Mapping Alt+S to custom function that inserts sudo
+insert_sudo () { zle beginning-of-line; zle -U "sudo " }
+zle -N insert-sudo insert_sudo
+bindkey "^[s" insert-sudo
+

@@ -361,20 +361,37 @@ func! CompileChuck()
   exec ":silent !chuck --add ./%"
   exec ":redraw!"
 endfunc
+func! CompileRust()
+  exec ":w"
+  exec "!rustc % -o %< && ./%< "
+endfunc
 func! ReplaceChuck()
   exec "w"
   exec ":silent !chuck --remove.all"
   exec ":redraw!"
 endfunc
 
+" Python
 autocmd BufRead *.py nnoremap <silent> <F5> <ESC>:call CompilePython()<CR>
 autocmd BufRead *.py inoremap <silent> <F5> <ESC>:call CompilePython()<CR>i
+
+" Perl
 autocmd BufRead *.pl nnoremap <silent> <F5> <ESC>:call CompilePerl()<CR>
 autocmd BufRead *.pl inoremap <silent> <F5> <ESC>:call CompilePerl()<CR>i
+
+" C++
 autocmd BufRead *.cpp nnoremap <silent> <F5> <ESC>:call CompileGcc()<CR>
 autocmd BufRead *.cpp inoremap <silent> <F5> <ESC>:call CompileGcc()<CR>i
+
+" Latex
 autocmd BufRead *.tex nnoremap <silent> <F5> <ESC>:call CompileLatex()<CR>
 autocmd BufRead *.tex inoremap <silent> <F5> <ESC>:call CompileLatex()<CR>i
+
+" Rust
+autocmd BufRead *.rs nnoremap <silent> <F5> <ESC>:call CompileRust()<CR>
+autocmd BufRead *.rs inoremap <silent> <F5> <ESC>:call CompileRust()<CR>i
+
+" Chuck
 autocmd BufRead *.ck exec 'set ft=ck'
 autocmd BufRead *.ck nnoremap <silent> <F5> <ESC>:call CompileChuck()<CR>
 autocmd BufRead *.ck inoremap <silent> <F5> <ESC>:call CompileChuck()<CR>i
