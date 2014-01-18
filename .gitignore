@@ -28,6 +28,8 @@ rdev/
 .esd_auth
 .xsel.log
 .viminfo
+.zcompdump*
+.zsh-update
 
 # Soft
 .vim/
@@ -49,12 +51,12 @@ rdev/
 .pdextended
 .jackdrc
 .xmaximarc
-.zcompdump
 .zdirs
 .unite/
 .ssr/
 .purple/
 .gstreamer-0.10/
+.oh-my-zsh/
 
 
 # Temporary hide...
