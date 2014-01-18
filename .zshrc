@@ -94,7 +94,7 @@ setopt ALL_EXPORT
 
 # Run in vim mode
 bindkey -v
-export KEYTIMEOUT=3
+export KEYTIMEOUT=1
 
 # History search
 bindkey "^[[A" history-search-backward
@@ -108,12 +108,20 @@ bindkey -M vicmd '^[[1~' beginning-of-line
 bindkey '^[[4~' end-of-line
 bindkey -M vicmd '^[[4~' end-of-line
 
+# Delete key
+bindkey '^[[3~' delete-char
+bindkey -M vicmd '^[[3~' delete-char
+
 #bindkey '^[[2~' overwrite-mode
 #bindkey '^[[3~' delete-char
 
+# Page Up and Page Down
+bindkey '^[[5~' up-history
+bindkey -M vicmd '^[[5~' up-history
+bindkey '^[[6~' down-history
+bindkey -M vicmd '^[[6~' down-history
 
-#bindkey '^[[5~' up-history
-#bindkey '^[[6~' down-history
+# Unknown stuff
 #bindkey '^[[9~' beginning-of-line
 #bindkey '^[[8~' end-of-line
 #bindkey '^[OD' backward-word
@@ -123,14 +131,28 @@ bindkey -M vicmd '^[[4~' end-of-line
 #bindkey '^[[1;3D' stack-cd-forward
 #bindkey '^[[1;3C' stack-cd-backward
 #bindkey '^[[Z' reverse-menu-complete
-
-
-# bindkey '^P' up-history
-# bindkey '^N' down-history
-# bindkey '^?' backward-delete-char
 # bindkey '^h' backward-delete-char
+
+bindkey '^?' backward-delete-char
+bindkey -M vicmd '^?' backward-char
+
+# Hate history arrows, use more vimmy history
+bindkey '^P' history-search-backward
+bindkey '^N' history-search-forward
+bindkey '\ek' history-search-backward
+bindkey '\ej' history-search-forward
+bindkey -M vicmd 'k' history-search-backward
+bindkey -M vicmd 'j' history-search-forward
+
+# Make Ctrl+W to erase word
 bindkey '^w' backward-kill-word
-# bindkey '^r' history-incremental-search-backward
+
+# Enable reverse search 
+bindkey '^r' history-incremental-search-backward
+bindkey -M vicmd '^r' history-incremental-search-backward
+
+# Enable exit on Ctrl+D
+# bindkey '^d' extended_logout
 
 # Making vim modes visible with hooks
 function zle-line-init zle-keymap-select {
