@@ -91,20 +91,46 @@ setopt MENUCOMPLETE
 setopt nohup
 setopt ALL_EXPORT
 
+
+# Run in vim mode
+bindkey -v
+export KEYTIMEOUT=3
+
 # History search
 bindkey "^[[A" history-search-backward
 bindkey "^[[B" history-search-forward
 
-# Run in vim mode
-bindkey -v
-export KEYTIMEOUT=4
+# Home key, fixes in urxvt, not xterm
+bindkey '^[[1~' beginning-of-line
+bindkey -M vicmd '^[[1~' beginning-of-line
 
-bindkey '^P' up-history
-bindkey '^N' down-history
-bindkey '^?' backward-delete-char
-bindkey '^h' backward-delete-char
+# End key
+bindkey '^[[4~' end-of-line
+bindkey -M vicmd '^[[4~' end-of-line
+
+#bindkey '^[[2~' overwrite-mode
+#bindkey '^[[3~' delete-char
+
+
+#bindkey '^[[5~' up-history
+#bindkey '^[[6~' down-history
+#bindkey '^[[9~' beginning-of-line
+#bindkey '^[[8~' end-of-line
+#bindkey '^[OD' backward-word
+#bindkey '^[OC' forward-word
+#bindkey '^[^[[D' stack-cd-forward
+#bindkey '^[^[[C' stack-cd-backward
+#bindkey '^[[1;3D' stack-cd-forward
+#bindkey '^[[1;3C' stack-cd-backward
+#bindkey '^[[Z' reverse-menu-complete
+
+
+# bindkey '^P' up-history
+# bindkey '^N' down-history
+# bindkey '^?' backward-delete-char
+# bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
-bindkey '^r' history-incremental-search-backward
+# bindkey '^r' history-incremental-search-backward
 
 # Making vim modes visible with hooks
 function zle-line-init zle-keymap-select {
@@ -130,7 +156,7 @@ source /usr/share/doc/pkgfile/command-not-found.zsh
 # Mapping Alt+S to custom function that inserts sudo
 insert_sudo () { zle beginning-of-line; zle -U "sudo " }
 zle -N insert-sudo insert_sudo
-bindkey "^[s" insert-sudo
+bindkey '\es' insert-sudo
 
 # Insert last word with Alt+. -- cool!
 bindkey '\e.' insert-last-word
@@ -153,6 +179,29 @@ man() {
   LESS_TERMCAP_us=$(printf "\e[1;32m") \
   man "$@"
 }
+
+# Systemd in archlinux
+user_commands=(
+  list-units is-active status show help list-unit-files
+  is-enabled list-jobs show-environment)
+
+sudo_commands=(
+  start stop reload restart try-restart isolate kill
+  reset-failed enable disable reenable preset mask unmask
+  link load cancel set-environment unset-environment)
+
+for c in $user_commands; do; alias sc-$c="systemctl $c"; done
+for c in $sudo_commands; do; alias sc-$c="sudo systemctl $c"; done
+
+
+# Make delete by word parts with Alt+w
+tcsh-backward-kill-word() {
+  local WORDCHARS="${WORDCHARS:s@/@}"
+  zle backward-kill-word
+}
+zle -N tcsh-backward-kill-word
+bindkey '\ew' tcsh-backward-kill-word
+
 
 
 
