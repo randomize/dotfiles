@@ -56,7 +56,7 @@ rdev/
 .ssr/
 .purple/
 .gstreamer-0.10/
-.oh-my-zsh/
+.ssh/
 
 
 # Temporary hide...

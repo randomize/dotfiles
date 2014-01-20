@@ -5,6 +5,7 @@ image/jpeg=feh.desktop
 image/png=feh.desktop
 text/plain=gvim.desktop
 video/x-matroska=mpv.desktop
+image/vnd.djvu=djvulibre-djview4.desktop
 
 [Added Associations]
 video/mp2t=mpv.desktop;
@@ -13,3 +14,4 @@ image/jpeg=feh.desktop;
 image/png=feh.desktop;
 text/plain=gvim.desktop;
 video/x-matroska=mpv.desktop;
+image/vnd.djvu=djvulibre-djview4.desktop;

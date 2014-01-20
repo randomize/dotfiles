@@ -21,9 +21,8 @@ alias -s PKGBUILD=$EDITOR
 alias ls='ls --color=auto -F -h'
 alias lsd='ls -ld *(-/DN)'
 alias lsa='ls -ld .*'
-alias la='ls -a'
-alias lf='ls -FA'
-alias ll='ls -lA'
+alias la='ls -la'
+alias ll='ls -l'
 alias sl='ls'
 
 # Vim
