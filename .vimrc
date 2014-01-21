@@ -446,8 +446,14 @@ nmap <silent> ,,<space> <c-^>
 
 " == Syntastic ==
 
-" Syntastic to understand C++11
+" Syntastic to understand C++11 (deprecated with YouCompleteMe)
 "let g:syntastic_cpp_compiler_options="-std=c++11"
+let g:syntastic_error_symbol="✖"
+let g:syntastic_warning_symbol="✦"
+
+"== Chuck ==
+"let g:syntastic_ck_chuck_exec="/cygdrive/c/Program\ Files\ \(x86\)/ChucK/bin/chuck.exe"
+
 
 
 " == Unite ==
@@ -465,14 +471,14 @@ let g:unite_force_overwrite_statusline = 0
 let g:unite_winheight = 10
 
 " Nice arrows
-let g:unite_candidate_icon="▷"
+let g:unite_candidate_icon=">"
 
 " Make unite file list(<,t>) ignore .gitignore(depends on ag)
 let g:unite_source_rec_async_command= 'ag --nocolor --nogroup --hidden -g ""'
 
+nnoremap <leader>t :<C-u>Unite -buffer-name=files -start-insert file_rec/async:!<cr>
 nnoremap <leader>f :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async:!<cr>
-nnoremap <leader>t :Unite file_rec/async -start-insert<cr>
-nnoremap <leader>b :Unite -quick-match buffer<cr>
+nnoremap <leader>b :<C-u>Unite -quick-match buffer<cr>
 nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru -start-insert file_mru<cr>
 
 "" Unite
@@ -495,10 +501,15 @@ nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru -start-insert file_mru
 "  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
 "endfunction
 
-"== Chuck ==
-"let g:syntastic_ck_chuck_exec="/cygdrive/c/Program\ Files\ \(x86\)/ChucK/bin/chuck.exe"
+
+
 
 " == You complete me ==
+"
+nnoremap <leader>gy :YcmForceCompileAndDiagnostics<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gc :YcmCompleter GoToDeclaration<CR>
 
 " Use default config
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
@@ -539,3 +550,4 @@ let g:UltiSnipsListSnippets="<c-tab>"
 "let g:UltiSnipsExpandTrigger="<c-j>"
 "let g:UltiSnipsJumpForwardTrigger="<c-j>"
 "let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+"
