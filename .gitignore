@@ -57,6 +57,8 @@ rdev/
 .purple/
 .gstreamer-0.10/
 .ssh/
+.tgdb/
+.cgdb/
 
 
 # Temporary hide...

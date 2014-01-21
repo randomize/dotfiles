@@ -1,6 +1,14 @@
 # This file is collection of useful commands and tricks in Linux shell and related tasks
 
 # 1. Copy my public key (dummy way:open in editor & copy; better way: cat & copy) best way:
-xclip -sel clip < ~/.ssh/id_rsa.pub
+ $ xclip -sel clip < ~/.ssh/id_rsa.pub
 
+# 2. Create iso:
+ $ mkisofs -input-charset default -r -o File.iso Mathematica_8_kg.exe
+
+# 3. Stress sytem:
+ $ stress stress --cpu 2 --timeout 60
+
+# 4. In package moreutils there is a tool called vipe, allows to insert vim into pipeline, to perform editing
+ $ echo "GlgAAAAASUVORK5CYII=" | vipe | base64 --decode > /tmp/wat.img 
 
