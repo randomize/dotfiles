@@ -1,17 +1,19 @@
 [Default Applications]
 video/mp2t=mpv.desktop
 application/pdf=llpp.desktop
-image/jpeg=feh.desktop
+image/jpeg=randy_feh.desktop
 image/png=feh.desktop
 text/plain=gvim.desktop
 video/x-matroska=mpv.desktop
 image/vnd.djvu=djvulibre-djview4.desktop
+image/tiff=feh.desktop
 
 [Added Associations]
 video/mp2t=mpv.desktop;
 application/pdf=llpp.desktop;
-image/jpeg=feh.desktop;
+image/jpeg=feh.desktop;randy_feh.desktop;mypaint.desktop;
 image/png=feh.desktop;
 text/plain=gvim.desktop;
 video/x-matroska=mpv.desktop;
 image/vnd.djvu=djvulibre-djview4.desktop;
+image/tiff=feh.desktop;

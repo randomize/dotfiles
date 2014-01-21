@@ -146,6 +146,7 @@ for_window [class="Miniaudicle" title="Preferences"] floating enable
 for_window [class="Miniaudicle" title="miniAudicle"] split h
 for_window [class="Miniaudicle" title="Console"] split v
 for_window [class="Qjackctl"] floating enable
+for_window [class="TestCPP"] floating enable
 for_window [class="Cocos2d-x Game"] floating enable
 for_window [class="XTerm"] move down 
 

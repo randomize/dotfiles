@@ -57,7 +57,7 @@ setopt HIST_IGNORE_SPACE
 # Variables
 export EDITOR="vim"
 #export PAGER="most -s"
-export PATH="${PATH}:${HOME}/bin"
+export PATH="${PATH}:${HOME}/bin:${HOME}/android/sdk/tools:${HOME}/android/sdk/platform-tools"
 eval `dircolors -b`
 
 # Completion

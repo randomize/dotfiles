@@ -1,0 +1,6 @@
+# This file is collection of useful commands and tricks in Linux shell and related tasks
+
+# 1. Copy my public key (dummy way:open in editor & copy; better way: cat & copy) best way:
+xclip -sel clip < ~/.ssh/id_rsa.pub
+
+
