@@ -7,7 +7,7 @@
 vo=xv,wayland,directfb
 
 # use alsa for audio output, choose oss4 as fallback
-ao=alsa,oss
+ao=pulse,alsa,oss
 
 # multithreaded decoding of H264/MPEG-1/2 (valid: 0-16)
 vd-lavc-threads=8

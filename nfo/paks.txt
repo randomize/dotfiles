@@ -33,13 +33,6 @@
 
    makepkg.conf => set -j9 to compile multithreaded
 
-==== Audio =====================
-
-Install:
-   alsa-utils
-
-Setup:
-   # gpasswd -a randy audio
 
 ==== Video ========================
 
@@ -143,23 +136,41 @@ Support:
    flashplugin
    amule
 
+   aria2
+   uget
+
    pidgin
    pidgin-latex
 
 
-==== Multimedia =============
+==== Audio and sound =============
+
+Drivers:
+
+   alsa-utils
+   alsa-plugin
+
+   qjackctl
+   jack-dbus
+   pulseaudio
+   pulseaudio-alsa
+   
+
+Setup:
+   # gpasswd -a randy audio
 
 
-Sound:
+Applications:
 
    chuck
    miniaudicle
-   qjackctl
-   jack2
+
    ardour
    qtracktor
    supercollider
    audacity
+   qsampler (aur) + all deps(linuzsample)
+   gigedit
 
 Media players:
 

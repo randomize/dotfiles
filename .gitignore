@@ -8,6 +8,7 @@ Pictures/
 Public/
 Templates/
 Videos/
+Music/
 
 # My stuff
 VirtualBox VMs/
@@ -18,11 +19,12 @@ rdev/
 
 # Temporals
 .thumbnails/
+.log/
+.cache/
 .bash_history
 .zsh_history
 .octave_hist
 .lesshst
-.cache/
 .ICEauthority
 .Xauthority
 .esd_auth
