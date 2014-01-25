@@ -7,6 +7,7 @@ text/plain=gvim.desktop
 video/x-matroska=mpv.desktop
 image/vnd.djvu=djvulibre-djview4.desktop
 image/tiff=feh.desktop
+text/vnd.trolltech.linguist=mpv.desktop
 
 [Added Associations]
 video/mp2t=mpv.desktop;
@@ -17,3 +18,4 @@ text/plain=gvim.desktop;
 video/x-matroska=mpv.desktop;
 image/vnd.djvu=djvulibre-djview4.desktop;
 image/tiff=feh.desktop;
+text/vnd.trolltech.linguist=mpv.desktop;

@@ -39,8 +39,21 @@ feh  --bg-scale /home/randy/Pictures/wall.jpg &
 # make terminus visible for xfontsel and clients
 xset +fp /usr/share/fonts/local
 
+# Start xxkb
+xxkb &
+
+# Pulsdaudio helper icon
+pasystray &
+
+# Clipboard manager
+parcellite &
+
 # Composition
 compton -b
+
+# Set wacom buttons correctly
+xsetwacom --set "Wacom Intuos3 9x12 stylus" Button 2 "button +3"                                                                                                                                                           [0]
+xsetwacom --set "Wacom Intuos3 9x12 stylus" Button 3 "button +2"
 
 # File manager
 #thunar --daemon

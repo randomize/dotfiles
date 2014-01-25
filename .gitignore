@@ -61,6 +61,8 @@ rdev/
 .ssh/
 .tgdb/
 .cgdb/
+.xchm
+.fceux/
 
 
 # Temporary hide...

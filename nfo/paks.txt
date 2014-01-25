@@ -45,6 +45,23 @@
    mesa-demos          // Beloved glxgears is here
    Set KMS (add hook and mkinitcpo -p linux)
 
+=== Xorg ==========================
+
+   xorg-server
+   xorg-xinit
+
+   xorg-xev
+   xorg-xprop
+
+=== DE ==========================
+
+   i3-wm
+   i3-bar
+   dmenu
+   xxkb
+   xcmenu// maybe parcellite better
+   parcellite
+
 === Disk and FS Utils =============
 
    dosfstools
@@ -152,13 +169,22 @@ Drivers:
 
    qjackctl
    jack-dbus
+
+Pulse Audio:
+
    pulseaudio
    pulseaudio-alsa
+   paprefs
+   pavucontrol
    
 
 Setup:
    # gpasswd -a randy audio
 
+   Test:
+   speaker-test
+   aplay --list
+   alsamixer
 
 Applications:
 
@@ -195,6 +221,7 @@ Screen capture:
    llpp-git
    djview
    feh
+   xchs
 
 ==== Math =====================
 
