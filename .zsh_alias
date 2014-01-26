@@ -79,3 +79,9 @@ alias update='sudo pacman -Suy'
 #alias pacman='sudo pacman '
 alias netcfg='sudo netcfg2'
 
+# IPad management
+alias mount_ipad_pdf='ifuse --appid com.readdle.PDFExpertIPad /mnt/ipad'
+alias mount_ipad_video='ifuse --appid AVPlayerHD.eplayworks.com /mnt/ipad'
+alias mount_ipad_djvu='ifuse --appid com.qzyzx.SoleDjVu /mnt/ipad'
+alias mount_ipad_root='ifuse --root /mnt/ipad'
+alias umount_ipad='umount /mnt/ipad'

@@ -39,6 +39,9 @@ feh  --bg-scale /home/randy/Pictures/wall.jpg &
 # make terminus visible for xfontsel and clients
 xset +fp /usr/share/fonts/local
 
+# Disable screen turn off
+xset s off
+
 # Start xxkb
 xxkb &
 

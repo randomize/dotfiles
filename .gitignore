@@ -63,6 +63,9 @@ rdev/
 .cgdb/
 .xchm
 .fceux/
+.nestopia/
+.stardict/
+.mednafen/
 
 
 # Temporary hide...

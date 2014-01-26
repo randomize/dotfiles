@@ -130,6 +130,12 @@ Support:
    mono
    ocaml
 
+Esoterics:
+   
+   linapple - apple ][ emulator
+   
+
+
 ==== Fonts =======================
 
    Install infinality pathces via repository
@@ -152,6 +158,7 @@ Support:
    firefox
    flashplugin
    amule
+   qbittorrent
 
    aria2
    uget
