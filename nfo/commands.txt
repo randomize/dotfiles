@@ -12,3 +12,8 @@
 # 4. In package moreutils there is a tool called vipe, allows to insert vim into pipeline, to perform editing
  $ echo "GlgAAAAASUVORK5CYII=" | vipe | base64 --decode > /tmp/wat.img 
 
+# 5 Searching
+grep -rnw 'directory' -e "pattern"
+grep --include={*.c,*.h} -rnw 'directory' -e "pattern"
+grep --exclude=*.o -rnw 'directory' -e "pattern"
+

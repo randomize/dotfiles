@@ -66,6 +66,10 @@ rdev/
 .nestopia/
 .stardict/
 .mednafen/
+.mess/
+.qmc2/
+.kde4/
+.htcfg2
 
 
 # Temporary hide...

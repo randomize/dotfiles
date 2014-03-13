@@ -156,8 +156,9 @@ for_window [class="Cocos2d-x Game"] floating enable
 for_window [class="XTerm"] move down 
 
 # Workspaces
-assign [class="Gvim"] 10:gvim
+#assign [class="Gvim"] 10:gvim
 assign [class="Firefox"] 9:web
+assign [class="Chromium"] 9:web
 assign [class="Pidgin"] 8:pidgin
 assign [class="Thunar"] 7:fileman
 
@@ -166,8 +167,8 @@ bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ -q
 bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- -q
 bindsym XF86AudioMute exec amixer -q set Master toggle
 bindsym XF86AudioPlay exec cmus-remote -u
-bindsym XF86HomePage exec firefox
-bindsym XF86Mail exec firefox https://mail.google.com
+bindsym XF86HomePage exec chromium
+bindsym XF86Mail exec chromium https://mail.google.com
 
 # switching between workspace
 #bindsym $mod+] workspace next 
@@ -177,8 +178,8 @@ bindsym XF86Mail exec firefox https://mail.google.com
 bindsym $mod+a workspace back_and_forth 
 
 
-exec i3-msg 'workspace 9:web; exec firefox'
-exec i3-msg 'workspace 10:gvim; exec gvim'
+exec i3-msg 'workspace 9:web; exec chromium'
+#exec i3-msg 'workspace 10:gvim; exec gvim'
 
 # Colors
 #class                 border  backgr. text    indicator

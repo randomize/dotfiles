@@ -105,3 +105,10 @@ URxvt.iso14755_52: false
 !Xft.antialias: 1
 !Xft.rgba: rgb
 !Xft.dpi: 90
+!
+! Xft settings ---------------------------------------------------------------
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintslight

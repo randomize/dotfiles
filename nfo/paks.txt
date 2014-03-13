@@ -116,24 +116,41 @@ Support:
    colordiff
 
    cmake
-   clang
    gdb
    meld
    mercurial
    git
    gitg
-   gcc
-   racket
-   nasm
-   fasm
-   r
-   mono
-   ocaml
 
-Esoterics:
+   clang
+   gcc
+
+HEXers:
+
+   dhex - I like it
+   hexedit
+   hte
    
+Languages:
+
+   racket - scheme
+   r - R language
+   mono - C#
+   ocaml - Ocaml
+   rust - Rust
+
+Assembler:
+   
+   fasm
+   fasmarm  - good old fasm for ARM
+   darm-git - disasm library
+   nasm
+   qemu - emulator
+
+Apple ][:
+
    linapple - apple ][ emulator
-   
+   mess/sdlmess/lune/qm2 - other universal emulators
 
 
 ==== Fonts =======================
