@@ -1,0 +1,10 @@
+#session1
+#new  -s Development -n Build cal
+neww -n Vim vim
+neww -n Git 'zsh -c "list st"'
+neww -n Debug 'zsh -c "ls"'
+neww -n Main
+#splitw -v -p 50 -t 1 cal
+#selectw -t 1 
+#selectp -t 1
+

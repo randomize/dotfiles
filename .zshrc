@@ -2,6 +2,13 @@
 #
 
 
+# Support for evaluating a function on startup
+if [[ $1 == eval ]]
+then
+    "$@"
+set --
+fi
+
 # Zsh options
 
 # Coloring is fun
