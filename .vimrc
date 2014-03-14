@@ -506,7 +506,7 @@ nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru -start-insert file_mru
 
 " == You complete me ==
 "
-nnoremap <leader>gy :YcmForceCompileAndDiagnostics<CR>
+nnoremap <leader>yy :YcmForceCompileAndDiagnostics<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gc :YcmCompleter GoToDeclaration<CR>

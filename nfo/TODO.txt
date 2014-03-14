@@ -7,4 +7,14 @@ parcellite????
 compton or xcompmgr?
 
 
+====================================
+
+Vim C++
+
+1) setter/getter generation
+2) YCM what with Ultisnips
+3) Ultisnips => take form tomato sin/inc/hhh snippets
+4) YCM find references?
+5) YCM create implementations
+5) YCM includes completions
 

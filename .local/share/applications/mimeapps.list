@@ -8,14 +8,18 @@ video/x-matroska=mpv.desktop
 image/vnd.djvu=djvulibre-djview4.desktop
 image/tiff=feh.desktop
 text/vnd.trolltech.linguist=mpv.desktop
+text/x-matlab=qtcreator.desktop
+application/x-7z-compressed=7zFM.desktop
 
 [Added Associations]
 video/mp2t=mpv.desktop;
 application/pdf=llpp.desktop;
 image/jpeg=feh.desktop;randy_feh.desktop;mypaint.desktop;
 image/png=feh.desktop;
-text/plain=gvim.desktop;
+text/plain=gvim.desktop;qtcreator.desktop;
 video/x-matroska=mpv.desktop;
 image/vnd.djvu=djvulibre-djview4.desktop;
 image/tiff=feh.desktop;
 text/vnd.trolltech.linguist=mpv.desktop;
+text/x-matlab=qtcreator.desktop;
+application/x-7z-compressed=7zFM.desktop;
