@@ -88,3 +88,4 @@ alias umount_ipad='umount /mnt/ipad'
 
 # Tools
 #alias bindiff='cmp -l file1.bin file2.bin | gawk \'{printf \"%08X %02X %02X\n\", $1, strtonum(0$2), strtonum(0$3)}\''
+alias clean_vim_views='rm /home/randy/.vim/view/*'

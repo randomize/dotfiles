@@ -85,7 +85,6 @@ filetype plugin indent on " required!
 
 
 
-
 " this puts  backup to RAM, faster but risky ;)
 set directory=/tmp
 
@@ -195,6 +194,22 @@ set completeopt+=menu      " Выдавать менюшку с дополнен
 set completeopt+=longest   " Автоматически дописывать совпадающий среди всех возможных дополнений кусок
 set completeopt-=preview   " Показывать дополнительную инфу о дополнениях
 
+" ---------------------------------------------------------------------------
+
+function Enable80CharsLimit()
+   set colorcolumn=80
+   set textwidth=80 
+   set formatoptions=cqt
+   set wrapmargin=0        
+   highlight ColorColumn ctermbg=235 guibg=#2c2d27
+   highlight CursorLine ctermbg=235 guibg=#2c2d27
+   highlight CursorColumn ctermbg=235 guibg=#2c2d27
+   let &colorcolumn=join(range(81,999),",")
+endfunction
+
+autocmd BufRead *.cpp call Enable80CharsLimit()
+autocmd BufRead *.h   call Enable80CharsLimit()
+
 
 """"""""" Фолдинг """"""""""
 set foldmethod=syntax                  " фолдинг изначально по синтаксису
@@ -203,7 +218,7 @@ set foldmethod=syntax                  " фолдинг изначально п�
 au BufWinLeave * silent! mkview
 au BufWinEnter * silent! loadview
 
-" --------------------------------------------------------------------------------------------------------------------
+" ---------------------------------------------------------------------------
 " Русская раскладка
 set keymap=russian-jcukenwin    " C-^ to switch
 set iminsert=0                  " insert mode default en
@@ -551,3 +566,6 @@ let g:UltiSnipsListSnippets="<c-tab>"
 "let g:UltiSnipsJumpForwardTrigger="<c-j>"
 "let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 "
+"
+
+
