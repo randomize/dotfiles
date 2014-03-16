@@ -70,6 +70,8 @@ rdev/
 .qmc2/
 .kde4/
 .htcfg2
+.subversion/
+.vifm/
 
 
 # Temporary hide...

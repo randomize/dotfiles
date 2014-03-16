@@ -64,7 +64,7 @@ setopt HIST_IGNORE_SPACE
 # Variables
 export EDITOR="vim"
 #export PAGER="most -s"
-export PATH="${PATH}:${HOME}/bin:${HOME}/android/sdk/tools:${HOME}/android/sdk/platform-tools"
+export PATH="${PATH}:${HOME}/bin"
 eval `dircolors -b`
 
 # Completion
@@ -196,6 +196,10 @@ zle -N edit-command-line
 bindkey '\ex' edit-command-line
 
 
+# Make Shift-TAB work as backward complete
+bindkey '^[[Z' reverse-menu-complete
+
+
 # Colorize mans
 man() {
   env \
@@ -243,6 +247,14 @@ tcsh-backward-kill-word() {
 }
 zle -N tcsh-backward-kill-word
 bindkey '\ew' tcsh-backward-kill-word
+
+# Setup cocos2dx paths ans vars
+export COCOS_CONSOLE_ROOT=/home/randy/cocos2d-x/tools/cocos2d-console/bin
+export PATH=$COCOS_CONSOLE_ROOT:$PATH
+export NDK_ROOT=/home/randy/android/ndk
+export PATH=$NDK_ROOT:$PATH
+export ANDROID_SDK_ROOT=/home/randy/android/sdk
+export PATH=$ANDROID_SDK_ROOT:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
 
 
 

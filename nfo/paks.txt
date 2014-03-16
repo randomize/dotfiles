@@ -133,6 +133,10 @@ Partitions will be aligned on 8-sector boundaries
    unp                    // Console unpacker
    mc                      // JIC X is not working ;)
 
+   ranger                 // Another console, powered by vim keys
+    highlight             // for syntax
+    atool                 // archives work
+
  4) Screensaver ;)
    lightson script
 
