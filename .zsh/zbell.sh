@@ -21,10 +21,10 @@ zmodload zsh/datetime || return
 autoload -Uz add-zsh-hook || return
 
 # initialize zbell_duration if not set
-(( ${+zbell_duration} )) || zbell_duration=15
+(( ${+zbell_duration} )) || zbell_duration=10
 
 # initialize zbell_ignore if not set
-(( ${+zbell_ignore} )) || zbell_ignore=($EDITOR $PAGER)
+(( ${+zbell_ignore} )) || zbell_ignore=($EDITOR $PAGER ls watch htop top ssh iotop dstat vmstat nano emacs vi bwm-ng less more fdisk audacious play aplay sqlite3 wine mtr ping traceroute vlc mplayer smplayer tail tmux screen man sawfish-config)
 
 # initialize it because otherwise we compare a date and an empty string
 # the first time we see the prompt. it's fine to have lastcmd empty on the
@@ -35,16 +35,23 @@ zbell_timestamp=$EPOCHSECONDS
 # right before we begin to execute something, store the time it started at
 zbell_begin() {
 	zbell_timestamp=$EPOCHSECONDS
-	zbell_lastcmd=$1
+	zbell_lastcmd=$2
 }
 
 # when it finishes, if it's been running longer than $zbell_duration,
 # and we dont have an ignored command in the line, then print a bell.
 zbell_end() {
+   zbell_exit_status=$?
 	ran_long=$(( $EPOCHSECONDS - $zbell_timestamp >= $zbell_duration ))
+
+   local -a drop_words
+   drop_words=(builtin command nocorrect noglob nohup LANG=C)
 
 	has_ignored_cmd=0
 	for cmd in ${(s:;:)zbell_lastcmd//|/;}; do
+        for key in ${drop_words}; do
+            cmd=${cmd/${key}/}
+        done
 		words=(${(z)cmd})
 		util=${words[1]}
 		if (( ${zbell_ignore[(i)$util]} <= ${#zbell_ignore} )); then
@@ -54,6 +61,7 @@ zbell_end() {
 	done
 
 	if (( ! $has_ignored_cmd )) && (( ran_long )); then
+      notify-send --icon=gtk-info Finished "Job completed on $HOST: $zbell_lastcmd = $zbell_exit_status"
 		print -n "\a"
 	fi
 }

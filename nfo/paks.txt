@@ -43,10 +43,14 @@ Partitions will be aligned on 8-sector boundaries
    htop
    screen
    tmux
-   zsh
    bash-completion
    // package hook "command not found"
    rxvt-unicode
+
+==== Zsh =================
+
+   zsh
+   zsh-syntax-highlighting
 
 === UEFI boot =============
 
@@ -91,6 +95,7 @@ Partitions will be aligned on 8-sector boundaries
    i3-bar      // Status bar with tray
    dmenu       // Cool app runner
    compton-git // Composition
+   dunst       // Notifications
 
  2) Utilites
    xxkb        // keyboard manager
