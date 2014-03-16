@@ -21,21 +21,23 @@ zmodload zsh/datetime || return
 autoload -Uz add-zsh-hook || return
 
 # initialize zbell_duration if not set
-(( ${+zbell_duration} )) || zbell_duration=10
+(( ${+zbell_duration} )) || zbell_duration=15
 
 # initialize zbell_ignore if not set
-(( ${+zbell_ignore} )) || zbell_ignore=($EDITOR $PAGER ls watch htop top ssh iotop dstat vmstat nano emacs vi bwm-ng less more fdisk audacious play aplay sqlite3 wine mtr ping traceroute vlc mplayer smplayer tail tmux screen man sawfish-config)
+(( ${+zbell_ignore} )) || zbell_ignore=($EDITOR $PAGER ls watch htop top ssh iotop dstat vmstat emacs vi man less more audacious play aplay wine mtr ping traceroute vlc mplayer mpv tail tmux screen)
 
 # initialize it because otherwise we compare a date and an empty string
 # the first time we see the prompt. it's fine to have lastcmd empty on the
 # initial run because it evaluates to an empty string, and splitting an
 # empty string just results in an empty array.
 zbell_timestamp=$EPOCHSECONDS
+zbell_ticks=0
 
 # right before we begin to execute something, store the time it started at
 zbell_begin() {
 	zbell_timestamp=$EPOCHSECONDS
 	zbell_lastcmd=$2
+   zbell_ticks=1
 }
 
 # when it finishes, if it's been running longer than $zbell_duration,
@@ -60,10 +62,13 @@ zbell_end() {
 		fi
 	done
 
-	if (( ! $has_ignored_cmd )) && (( ran_long )); then
+   if (( ! $has_ignored_cmd )) && (( ran_long )) && (( $zbell_ticks )); then
       notify-send --icon=gtk-info Finished "Job completed on $HOST: $zbell_lastcmd = $zbell_exit_status"
 		print -n "\a"
 	fi
+
+   zbell_ticks=0
+
 }
 
 # register the functions as hooks
