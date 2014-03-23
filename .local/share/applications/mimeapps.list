@@ -10,6 +10,7 @@ image/tiff=feh.desktop
 text/vnd.trolltech.linguist=mpv.desktop
 text/x-matlab=qtcreator.desktop
 application/x-7z-compressed=7zFM.desktop
+video/mp4=mpv.desktop
 
 [Added Associations]
 video/mp2t=mpv.desktop;
@@ -23,3 +24,4 @@ image/tiff=feh.desktop;
 text/vnd.trolltech.linguist=mpv.desktop;
 text/x-matlab=qtcreator.desktop;
 application/x-7z-compressed=7zFM.desktop;
+video/mp4=mpv.desktop;

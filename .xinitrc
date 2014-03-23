@@ -61,6 +61,9 @@ xsetwacom --set "Wacom Intuos3 9x12 stylus" Button 3 "button +2"
 # File manager
 #thunar --daemon
 
+# Lightons script
+/home/randy/bin/lightsOn.sh &
+
 
 
 # Easystroke

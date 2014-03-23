@@ -86,6 +86,7 @@ Partitions will be aligned on 8-sector boundaries
    xorg-xev
    xorg-xprop        // Helper utility for windows info
    xf86-input-wacom
+   xvinfo            // Helper for lightson script
 
 === DE ==========================
 
@@ -112,6 +113,9 @@ Partitions will be aligned on 8-sector boundaries
    catfish                 // Search support
    thunar-volman           // Volume maneger
       gvfs                 // Mounting support
+      gvfs-smp
+      gvfs-mtp
+      gvfs-gphoto2 + libgphoto2
       dosfstools           // For old FAT etc
       reiserfsprogs        // Reiser formatting / mounting
       gptfdisk             // fdisk for GPT

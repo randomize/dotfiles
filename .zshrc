@@ -141,6 +141,10 @@ bindkey -M vicmd '^[[6~' down-history
 # bindkey '^h' backward-delete-char
 
 bindkey '^?' backward-delete-char
+bindkey '^h' backward-char
+bindkey '^l' forward-char
+bindkey '^k' history-search-backward
+bindkey '^j' history-search-forward
 bindkey -M vicmd '^?' backward-char
 
 # Hate history arrows, use more vimmy history
@@ -155,8 +159,16 @@ bindkey -M vicmd 'j' history-search-forward
 bindkey '^w' backward-kill-word
 
 # Enable reverse search 
-bindkey '^r' history-incremental-search-backward
-bindkey -M vicmd '^r' history-incremental-search-backward
+#bindkey '^r' history-incremental-search-backward
+#bindkey -M vicmd '^r' history-incremental-search-backward
+
+# Search backwards and forwards with a pattern
+bindkey -M vicmd '/' history-incremental-pattern-search-backward
+bindkey -M vicmd '?' history-incremental-pattern-search-forward
+# set up for insert mode too
+bindkey -M viins '^r' history-incremental-pattern-search-backward
+bindkey -M viins '^f' history-incremental-pattern-search-forward
+
 
 # Enable exit on Ctrl+D
 # bindkey '^d' extended_logout
@@ -261,9 +273,10 @@ export PATH=$ANDROID_SDK_ROOT:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform
 zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==32=00}:${(s.:.)LS_COLORS}")';
 
 # Highlighting package must be installed by pacman
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
+#source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
 
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
+#ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 ZSH_HIGHLIGHT_STYLES[default]=none
 ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=009
 ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=009,standout
@@ -286,8 +299,8 @@ ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]=fg=009
 ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=009
 ZSH_HIGHLIGHT_STYLES[assign]=none
 
-ZSH_HIGHLIGHT_PATTERNS+=('\|' fg=magenta,bold)
-ZSH_HIGHLIGHT_PATTERNS+=(' rm ', fg=red,bold,underline)
+#ZSH_HIGHLIGHT_PATTERNS+=('\|' fg=magenta,bold)
+#ZSH_HIGHLIGHT_PATTERNS+=(' rm ', fg=red,bold,underline)
 #ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
 #ZSH_HIGHLIGHT_PATTERNS+=('rm -fr *' 'fg=white,bold,bg=red')
 
