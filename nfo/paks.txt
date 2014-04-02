@@ -415,6 +415,19 @@ Screen capture:
    python-matplotlib
    python-pillow
    python-scipy
+   python-pygments
+   python-pyzmq
+
+   wxpython: needed for ipythonx and ipython-wx
+   python-nose: if you want to run IPython's test suite
+   python-pyqt4: for ipython qtconsole [installed]
+   python-sip: for ipython qtconsole [installed]
+   python-pygments: for ipython qtconsole [installed]
+   python-pyzmq: for ipython notebook and ipython qtconcole [installed]
+   python-tornado: for ipython notebook
+   python-jinja: for ipython notebook
+   haskell-pandoc: ipython notebook conversion
+
 
 ===== Man pages ======================================================================================
 

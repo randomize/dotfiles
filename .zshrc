@@ -9,6 +9,7 @@ then
 set --
 fi
 
+
 # Zsh options
 
 # Coloring is fun
@@ -91,7 +92,7 @@ setopt ignoreeof
 setopt interactivecomments
 setopt nobanghist
 setopt noclobber
-setopt SH_WORD_SPLIT
+#setopt SH_WORD_SPLIT
 setopt CORRECT
 setopt EXTENDED_HISTORY # Timestamp history
 setopt MENUCOMPLETE
@@ -120,7 +121,7 @@ bindkey '^[[3~' delete-char
 bindkey -M vicmd '^[[3~' delete-char
 
 #bindkey '^[[2~' overwrite-mode
-#bindkey '^[[3~' delete-char
+bindkey '^[[3~' delete-char
 
 # Page Up and Page Down
 bindkey '^[[5~' up-history
@@ -272,11 +273,13 @@ export PATH=$ANDROID_SDK_ROOT:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform
 # Color on suggestions to display partial match
 zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==32=00}:${(s.:.)LS_COLORS}")';
 
-# Highlighting package must be installed by pacman
-#source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
 
-ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
-#ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
+# Highlighting package must be installed by pacman
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
+#source .zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+
+# ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets )
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 ZSH_HIGHLIGHT_STYLES[default]=none
 ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=009
 ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=009,standout
@@ -298,12 +301,13 @@ ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=fg=063
 ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]=fg=009
 ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=009
 ZSH_HIGHLIGHT_STYLES[assign]=none
+ZSH_HIGHLIGHT_STYLES[cursor-matchingbracket]=fg=white,bold
 
-#ZSH_HIGHLIGHT_PATTERNS+=('\|' fg=magenta,bold)
-#ZSH_HIGHLIGHT_PATTERNS+=(' rm ', fg=red,bold,underline)
-#ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
-#ZSH_HIGHLIGHT_PATTERNS+=('rm -fr *' 'fg=white,bold,bg=red')
+# typeset -gA ZSH_HIGHLIGHT_PATTERNS
+ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
+ZSH_HIGHLIGHT_PATTERNS+=('rm -fr *' 'fg=white,bold,bg=red')
 
+#printf '%s => %s\n' ${(kv)ZSH_HIGHLIGHT_PATTERNS}
 
 # Bell
 if [ -f ~/.zsh/zbell.sh ]; then

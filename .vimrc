@@ -25,6 +25,7 @@ Bundle 'git://github.com/vim-scripts/glsl.vim.git'
 
 " Git support
 Bundle 'tpope/vim-fugitive'
+Bundle 'airblade/vim-gitgutter'
 
 " Super increment (see help)
 Bundle 'VisIncr'
@@ -43,6 +44,7 @@ Bundle 'Valloric/YouCompleteMe'
 
 " Snipmate
 Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
 
 "Syntax highl
 Bundle 'scrooloose/syntastic.git'
