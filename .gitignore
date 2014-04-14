@@ -72,6 +72,14 @@ rdev/
 .htcfg2
 .subversion/
 .vifm/
+.FBReader/
+.cmus/
+.cr3/
+.ghc/
+.gnupg/
+.ipython/
+.p7zip
+.tor-browser-en/
 
 
 # Temporary hide...

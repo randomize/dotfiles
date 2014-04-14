@@ -75,6 +75,11 @@ Partitions will be aligned on 8-sector boundaries
    glew
    libgl
    libglu
+   glm
+   glfw
+   glut
+   bullet
+   assimp
    mesa-demos          // Beloved glxgears is here
    Set KMS (add hook and mkinitcpo -p linux)
 
@@ -107,7 +112,14 @@ Partitions will be aligned on 8-sector boundaries
  3) file manager:
 
    //pcmanfb uses deprecated udisks
-   //nautilus tooo sloww and big
+   //nautilus tooo sloww and big, unfortuantely I use it now 
+   nautilus
+   libnautilus-extension 
+   nautilus 
+   nautilus-actions 
+   nautilus-open-terminal 
+   nautilus-sendto 
+   python2-nautilus 
 
    thunar                  // Good lightweight filemanager
    catfish                 // Search support
@@ -155,6 +167,10 @@ Partitions will be aligned on 8-sector boundaries
    djview
    feh
    xchs
+   fbreader
+   pdfmod
+   evince
+   pdfcrack
 
  6) Office
 

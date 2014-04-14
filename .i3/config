@@ -44,7 +44,8 @@ bindsym $mod+F2 exec dmenu_run
 bindsym $mod+F1 exec xterm
 
 # File manager
-bindsym $mod+e exec thunar
+bindsym $mod+e exec nautilus
+#bindsym $mod+e exec thunar
 
 # Browser
 bindsym $mod+F3 exec chromium
@@ -151,6 +152,7 @@ for_window [class="Miniaudicle" title="Console"] split v
 for_window [class="Qjackctl"] floating enable
 for_window [class="TestCPP"] floating enable
 for_window [class="Paprefs"] floating enable
+for_window [class="Nautilus" title="File Operations"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Cocos2d-x Game"] floating enable
 for_window [class="XTerm"] move down 
