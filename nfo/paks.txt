@@ -239,6 +239,7 @@ HEXers:
    dhex - I like it
    hexedit
    hte
+   ghex
 
 Languages:
 

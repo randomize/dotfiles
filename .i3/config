@@ -48,7 +48,7 @@ bindsym $mod+e exec nautilus
 #bindsym $mod+e exec thunar
 
 # Browser
-bindsym $mod+F3 exec chromium
+bindsym $mod+F3 exec firefox
 
 # Pidgin
 bindsym $mod+F4 exec pidgin
@@ -155,6 +155,7 @@ for_window [class="Paprefs"] floating enable
 for_window [class="Nautilus" title="File Operations"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Cocos2d-x Game"] floating enable
+for_window [class="Cpp Tests"] floating enable
 for_window [class="XTerm"] move down 
 
 # Workspaces
@@ -169,8 +170,8 @@ bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ -q
 bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- -q
 bindsym XF86AudioMute exec amixer -q set Master toggle
 bindsym XF86AudioPlay exec cmus-remote -u
-bindsym XF86HomePage exec chromium
-bindsym XF86Mail exec chromium https://mail.google.com
+bindsym XF86HomePage exec firefox
+bindsym XF86Mail exec firefox https://mail.google.com
 
 # switching between workspace
 #bindsym $mod+] workspace next 
@@ -180,7 +181,7 @@ bindsym XF86Mail exec chromium https://mail.google.com
 bindsym $mod+a workspace back_and_forth 
 
 
-exec i3-msg 'workspace 9:web; exec chromium'
+#exec i3-msg 'workspace 9:web; exec chromium'
 #exec i3-msg 'workspace 10:gvim; exec gvim'
 
 # Colors

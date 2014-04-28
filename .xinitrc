@@ -67,10 +67,11 @@ xsetwacom --set "Wacom Intuos3 9x12 stylus" Button 3 "button +2"
 
 
 # Easystroke
-easystroke &
+# easystroke &
 
 # Mounting provider
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
+# exec awesome
 exec i3 -V >> /tmp/i3log 2>&1
 # exec startfluxbox

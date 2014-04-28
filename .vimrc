@@ -198,19 +198,19 @@ set completeopt-=preview   " Показывать дополнительную �
 
 " ---------------------------------------------------------------------------
 
-function Enable80CharsLimit()
-   set colorcolumn=80
-   set textwidth=80 
+function Enable100CharsLimit()
+   set colorcolumn=100
+   set textwidth=100
    set formatoptions=cqt
    set wrapmargin=0        
    highlight ColorColumn ctermbg=235 guibg=#2c2d27
    highlight CursorLine ctermbg=235 guibg=#2c2d27
    highlight CursorColumn ctermbg=235 guibg=#2c2d27
-   let &colorcolumn=join(range(81,999),",")
+   let &colorcolumn=join(range(101,999),",")
 endfunction
 
-autocmd BufRead *.cpp call Enable80CharsLimit()
-autocmd BufRead *.h   call Enable80CharsLimit()
+autocmd BufRead *.cpp call Enable100CharsLimit()
+autocmd BufRead *.h   call Enable100CharsLimit()
 
 
 """"""""" Фолдинг """"""""""
@@ -493,7 +493,8 @@ let g:unite_candidate_icon=">"
 " Make unite file list(<,t>) ignore .gitignore(depends on ag)
 let g:unite_source_rec_async_command= 'ag --nocolor --nogroup --hidden -g ""'
 
-nnoremap <leader>t :<C-u>Unite -buffer-name=files -start-insert file_rec/async:!<cr>
+nnoremap <leader>t :<C-u>Unite -buffer-name=files -start-insert file_rec<cr>
+nnoremap <leader>T :<C-u>Unite -buffer-name=files -start-insert file_rec/async:!<cr>
 nnoremap <leader>f :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async:!<cr>
 nnoremap <leader>b :<C-u>Unite -quick-match buffer<cr>
 nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru -start-insert file_mru<cr>

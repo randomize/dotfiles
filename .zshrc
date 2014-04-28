@@ -129,6 +129,12 @@ bindkey -M vicmd '^[[5~' up-history
 bindkey '^[[6~' down-history
 bindkey -M vicmd '^[[6~' down-history
 
+# Backspace keya
+bindkey '^H' backward-delete-char
+bindkey -M vicmd '^H' backward-delete-char
+bindkey '^?' backward-delete-char
+bindkey -M vicmd '^?' backward-char
+
 # Unknown stuff
 #bindkey '^[[9~' beginning-of-line
 #bindkey '^[[8~' end-of-line
@@ -141,12 +147,10 @@ bindkey -M vicmd '^[[6~' down-history
 #bindkey '^[[Z' reverse-menu-complete
 # bindkey '^h' backward-delete-char
 
-bindkey '^?' backward-delete-char
-bindkey '^h' backward-char
-bindkey '^l' forward-char
+#bindkey '^h' backward-char
+#bindkey '^l' forward-char
 bindkey '^k' history-search-backward
 bindkey '^j' history-search-forward
-bindkey -M vicmd '^?' backward-char
 
 # Hate history arrows, use more vimmy history
 bindkey '^P' history-search-backward
@@ -268,6 +272,7 @@ export NDK_ROOT=/home/randy/android/ndk
 export PATH=$NDK_ROOT:$PATH
 export ANDROID_SDK_ROOT=/home/randy/android/sdk
 export PATH=$ANDROID_SDK_ROOT:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
+export ANT_ROOT=/usr/bin
 
 
 # Color on suggestions to display partial match
@@ -313,3 +318,5 @@ ZSH_HIGHLIGHT_PATTERNS+=('rm -fr *' 'fg=white,bold,bg=red')
 if [ -f ~/.zsh/zbell.sh ]; then
    . ~/.zsh/zbell.sh
 fi
+
+

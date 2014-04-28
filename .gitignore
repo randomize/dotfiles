@@ -80,6 +80,8 @@ rdev/
 .ipython/
 .p7zip
 .tor-browser-en/
+.lastpass/
+.wxHexEditor
 
 
 # Temporary hide...

@@ -51,7 +51,7 @@ alias todo='vim ~/nfo/TODO.txt'
 alias openports='netstat --all --numeric --programs --inet --inet6'
 alias webshare='python -m http.server 12721'
 alias makepassword='< /dev/urandom tr -dc A-Za-z0-9_ | head -c10 | xargs | cat'
-#alias ack='/usr/bin/vendor_perl/ack --color-match="bold red" --color-filename="green"'
+alias ack='ack --color-match="bold red" --color-filename="green"'
 alias mstream='mplayer -playlist'
 alias grep='grep --colour'
 alias fgrep='grep --colour'
@@ -60,6 +60,10 @@ alias free='free -m'
 alias twit='ttytter -ansi -ssl -verify'
 alias rss='newsbeuter'
 alias up='uptime'
+
+# Programming
+alias cmake-release='cmake -DCMAKE_BUILD_TYPE=Release'
+alias cmake-debug='cmake -DCMAKE_BUILD_TYPE=Debug'
 
 # Sudoing
 
