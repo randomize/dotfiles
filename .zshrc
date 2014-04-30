@@ -3,8 +3,8 @@
 #   Configured by Randomize, 2012-2014
 #
 #   Thanks to:
-#   msjche, 
-#   
+#   msjche,
+#
 # =========================================================================== #
 
 # Support for evaluating a function on startup
@@ -268,7 +268,7 @@ alias h='history'
 # safety features
 alias cp='cp -i'
 alias mv='mv -i'
-alias rm='rm -I'    
+alias rm='rm -I'
 alias ln='ln -i'
 
 alias g='git'
@@ -316,16 +316,16 @@ alias clean_vim_views='rm /home/randy/.vim/view/*'
 ## Awesome
 alias eA='cd ~/.config/awesome && vim rc.lua'
 alias cdA='cd ~/.config/awesome'
-alias eT='cd ~/.config/awesome/themes/zenburn && vim theme.lua' 
+alias eT='cd ~/.config/awesome/themes/zenburn && vim theme.lua'
 
 ## X Resources Stuff
 alias eX='vim ~/.Xresources'
 alias XTR='xrdb -merge ~/.Xresources'
- 
+
 ## Zsh Stuff
 alias eZ='vim ~/.zshrc'
 alias Z='source ~/.zshrc'
- 
+
 ## Vim Stuff
 alias eV='vim ~/.vimrc'
 alias e='vim'
@@ -334,7 +334,7 @@ alias e='vim'
 
 ## Command-line calculator
 calc() { python -ic "from __future__ import division; from math import *; from random import *" ;}
- 
+
 ## Commandline Fu
 cmdfu() { curl "http://www.commandlinefu.com/commands/matching/$(echo "$@" \
         | sed 's/ /-/g')/$(echo -n $@ | base64)/plaintext" ;}
@@ -349,10 +349,10 @@ say() {
    "http://translate.google.md/translate_tts?ie=UTF-8&tl="$1"&q=$(echo "$@" \
    | cut -d ' ' -f2- | sed 's/ /\+/g')" > /dev/null 2>&1 ;
 }
- 
+
 say-translation() {
    lang=$1
-   trans=$(translate {=$lang} "$(echo "$@" | cut -d ' ' -f2- | sed 's/ /\+/g')" ) 
+   trans=$(translate {=$lang} "$(echo "$@" | cut -d ' ' -f2- | sed 's/ /\+/g')" )
    echo $trans
    mplayer -user-agent Mozilla \
    "http://translate.google.com/translate_tts?ie=UTF-8&tl=$lang&q=$trans" > /dev/null 2>&1 ;
@@ -400,7 +400,7 @@ zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:
 # Plugins and external stuff ==================================================================================
 
 # Highlighting package must be installed by pacman
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets )
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
@@ -456,9 +456,9 @@ ffx_SCALE="scale=1920x1080"     # scale resolution, no black bars on sides of vi
 ffx_OUTPUT=~/screencast.avi
 ffx_OUTPUT_FINAL=~/screencast.mp4
 # Note: -vf is optional delete if you want, -y is to overwrite existing file
- 
+
 alias FF='ffmpeg -f alsa -i pulse -f x11grab -r 15 -s 1920x1080 -i :0.0 -acodec pcm_s16le -vcodec huffyuv -sameq ~/screencasts/screencast.avi'
- 
+
 FF-full()
 {
         ffmpeg \
@@ -478,7 +478,7 @@ FF-full()
 #       -vf $ffx_SCALE \
 #       -y $ffx_OUTPUT \
 }
- 
+
 # capture single window, use mouse cursor to select window you want to record
 FF-window()
 {
@@ -503,7 +503,7 @@ FF-window()
     -threads $ffx_THREADS \
         -y $ffx_OUTPUT \
 }
- 
+
 FF-convert()
 {
     ffmpeg \
@@ -513,7 +513,7 @@ FF-convert()
         -strict -2 \
          $ffx_OUTPUT_FINAL
 }
- 
+
 Convert()
 {
     ffmpeg \
