@@ -83,32 +83,11 @@ urxvt*color13:   #AD7FA8
 urxvt*color14:   #34E2E2
 urxvt*color15:   #EEEEEC
 
-! Not nedded anymore
-! urxvt*perl-ext-common:  default,matcher
-! urxvt*urlLauncher:      /usr/bin/firefox
-! urxvt*matcher.button:   1
-
 ! Disable perl extensions for speed
-urxvt.perl-ext:
-urxvt.perl-ext-common:
+urxvt*perl-ext:
+urxvt*perl-ext-common:
 
 ! Disable Ctrl+Shift keycap mode
 urxvt*iso14755: false
-URxvt.iso14755_52: false
+urxvt*iso14755_52: false
 
-! Xft -----------------------------------------------
-!
-!Xft.autohint: 0
-!Xft.lcdfilter:  lcddefault
-!Xft.hintstyle:  hintfull
-!Xft.hinting: 1
-!Xft.antialias: 1
-!Xft.rgba: rgb
-!Xft.dpi: 90
-!
-! Xft settings ---------------------------------------------------------------
-Xft.dpi:        96
-Xft.antialias:  true
-Xft.rgba:       rgb
-Xft.hinting:    true
-Xft.hintstyle:  hintslight

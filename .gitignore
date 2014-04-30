@@ -82,6 +82,10 @@ rdev/
 .tor-browser-en/
 .lastpass/
 .wxHexEditor
+.fonts/
+.xdg_menu_cache/
+.xmobarrc
+.xmonad/
 
 
 # Temporary hide...

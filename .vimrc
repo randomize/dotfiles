@@ -112,7 +112,9 @@ set hidden
 if has("gui_running")
 
    " I like consolas in GUI
-   set guifont=consolas\ 11
+   " set guifont=consolas\ 11
+   set guifont=Source\ Code\ Pro\ 10
+   set guifont=PragmataPro\ 11
 
 
    " Set default size for GVIM
