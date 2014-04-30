@@ -1,7 +1,10 @@
 # =========================================================================== #
 #   Zsh config
-#   Made by Randomize, 2012-2014
-#   DWTFYW License
+#   Configured by Randomize, 2012-2014
+#
+#   Thanks to:
+#   msjche, 
+#   
 # =========================================================================== #
 
 # Support for evaluating a function on startup
@@ -93,11 +96,24 @@ autoload -Uz compinit
 compinit
 # http://www.acm.uiuc.edu/workshops/zsh/prompt/escapes.html
 
-### Prompts
+# Prompts ==================================================================================
 autoload -U colors && colors
 
 export BASE_PS1="%{$fg_bold[green]%}%n@%M %{$fg_bold[blue]%}%10~%{$reset_color%}"
-export RPROMPT="[%{$fg_no_bold[yellow]%}%?%{$reset_color%}]"
+# export RPROMPT="[%{$fg_no_bold[yellow]%}%?%{$reset_color%}]"
+
+# Making vim modes visible with hooks
+function zle-line-init zle-keymap-select {
+   VIM_ON="%{$fg_bold[red]%}$%{$reset_color%}"
+   VIM_OFF="%{$fg_bold[green]%}$%{$reset_color%}"
+   PS1="$BASE_PS1 ${${KEYMAP/vicmd/$VIM_ON}/(main|viins)/$VIM_OFF} "
+   #RPS1="${${KEYMAP/vicmd/N}/(main|viins)/I}"
+   #RPS2=$RPS1
+   zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
 
 setopt autopushd pushdminus pushdsilent pushdtohome
 setopt autocd
@@ -118,36 +134,33 @@ setopt ALL_EXPORT
 bindkey -v
 export KEYTIMEOUT=1
 
-# History search
-bindkey "^[[A" history-search-backward
-bindkey "^[[B" history-search-forward
-
 # Home key, fixes in urxvt, not xterm
-bindkey '^[[1~' beginning-of-line
-bindkey -M vicmd '^[[1~' beginning-of-line
+bindkey -v '^[[1~' beginning-of-line
+bindkey -a '^[[1~' beginning-of-line
 
 # End key
-bindkey '^[[4~' end-of-line
-bindkey -M vicmd '^[[4~' end-of-line
+bindkey -v '^[[4~' end-of-line
+bindkey -a '^[[4~' end-of-line
 
 # Delete key
-bindkey '^[[3~' delete-char
-bindkey -M vicmd '^[[3~' delete-char
-
-#bindkey '^[[2~' overwrite-mode
-bindkey '^[[3~' delete-char
+bindkey -v '^[[3~' delete-char
+bindkey -a '^[[3~' delete-char
 
 # Page Up and Page Down
-bindkey '^[[5~' up-history
-bindkey -M vicmd '^[[5~' up-history
-bindkey '^[[6~' down-history
-bindkey -M vicmd '^[[6~' down-history
+bindkey -v '^[[5~' up-history
+bindkey -a '^[[5~' up-history
+bindkey -v '^[[6~' down-history
+bindkey -a '^[[6~' down-history
 
-# Backspace keya
-bindkey '^H' backward-delete-char
-bindkey -M vicmd '^H' backward-delete-char
-bindkey '^?' backward-delete-char
-bindkey -M vicmd '^?' backward-char
+# Backspace key fix
+bindkey -v '^H' backward-delete-char
+bindkey -a '^H' backward-delete-char
+bindkey -v '^?' backward-delete-char
+bindkey -a '^?' backward-char
+
+# Undo / Redo
+bindkey -a u undo
+bindkey -a '^R' redo
 
 # Unknown stuff
 #bindkey '^[[9~' beginning-of-line
@@ -161,32 +174,23 @@ bindkey -M vicmd '^?' backward-char
 #bindkey '^[[Z' reverse-menu-complete
 # bindkey '^h' backward-delete-char
 
-#bindkey '^h' backward-char
-#bindkey '^l' forward-char
-bindkey '^k' history-search-backward
-bindkey '^j' history-search-forward
-
-# Hate history arrows, use more vimmy history
-bindkey '^P' history-search-backward
-bindkey '^N' history-search-forward
-bindkey '\ek' history-search-backward
-bindkey '\ej' history-search-forward
-bindkey -M vicmd 'k' history-search-backward
-bindkey -M vicmd 'j' history-search-forward
-
-# Make Ctrl+W to erase word
-bindkey '^w' backward-kill-word
-
-# Enable reverse search 
-#bindkey '^r' history-incremental-search-backward
-#bindkey -M vicmd '^r' history-incremental-search-backward
+# History search
+bindkey -v '^[[A' history-search-backward
+bindkey -v '^[[B' history-search-forward
+bindkey -v '^k'   history-search-backward
+bindkey -v '^j'   history-search-forward
+bindkey -v '^P'   history-search-backward
+bindkey -v '^N'   history-search-forward
+bindkey -v '\ek'  history-search-backward
+bindkey -v '\ej'  history-search-forward
+bindkey -a 'k'    history-search-backward
+bindkey -a 'j'    history-search-forward
 
 # Search backwards and forwards with a pattern
-bindkey -M vicmd '/' history-incremental-pattern-search-backward
-bindkey -M vicmd '?' history-incremental-pattern-search-forward
-# set up for insert mode too
-bindkey -M viins '^r' history-incremental-pattern-search-backward
-bindkey -M viins '^f' history-incremental-pattern-search-forward
+bindkey -a '/' history-incremental-pattern-search-backward
+bindkey -a '?' history-incremental-pattern-search-forward
+bindkey -v '^r' history-incremental-pattern-search-backward
+bindkey -v '^f' history-incremental-pattern-search-forward
 
 # Enable exit on Ctrl+D
 # bindkey '^d' extended_logout
@@ -207,15 +211,18 @@ bindkey '\ex' edit-command-line
 # Make Shift-TAB work as backward complete
 bindkey '^[[Z' reverse-menu-complete
 
-# Making vim modes visible with hooks
-function zle-line-init zle-keymap-select {
-   VIM_ON="%{$fg_bold[red]%}$%{$reset_color%}"
-   VIM_OFF="%{$fg_bold[green]%}$%{$reset_color%}"
-   PS1="$BASE_PS1 ${${KEYMAP/vicmd/$VIM_ON}/(main|viins)/$VIM_OFF} "
-   zle reset-prompt
+# Make delete by word parts with Alt+w
+tcsh-backward-kill-word() {
+  local WORDCHARS="${WORDCHARS:s@/@}"
+  zle backward-kill-word
 }
-zle -N zle-line-init
-zle -N zle-keymap-select
+zle -N tcsh-backward-kill-word
+bindkey '\ew' tcsh-backward-kill-word
+
+# Make Ctrl+W to erase word
+bindkey '^w' backward-kill-word
+
+
 
 # Aliases ==================================================================================
 
@@ -323,6 +330,34 @@ alias Z='source ~/.zshrc'
 alias eV='vim ~/.vimrc'
 alias e='vim'
 
+# Functions ==================================================================================
+
+## Command-line calculator
+calc() { python -ic "from __future__ import division; from math import *; from random import *" ;}
+ 
+## Commandline Fu
+cmdfu() { curl "http://www.commandlinefu.com/commands/matching/$(echo "$@" \
+        | sed 's/ /-/g')/$(echo -n $@ | base64)/plaintext" ;}
+
+##Check if websites are down
+down4me() { curl -s "http://www.downforeveryoneorjustme.com/$1" | sed '/just you/!d;s/<[^>]*>//g';}
+
+## Google Translate Functions ##
+
+say() {
+   mplayer -user-agent Mozilla -prefer-ipv4 \
+   "http://translate.google.md/translate_tts?ie=UTF-8&tl="$1"&q=$(echo "$@" \
+   | cut -d ' ' -f2- | sed 's/ /\+/g')" > /dev/null 2>&1 ;
+}
+ 
+say-translation() {
+   lang=$1
+   trans=$(translate {=$lang} "$(echo "$@" | cut -d ' ' -f2- | sed 's/ /\+/g')" ) 
+   echo $trans
+   mplayer -user-agent Mozilla \
+   "http://translate.google.com/translate_tts?ie=UTF-8&tl=$lang&q=$trans" > /dev/null 2>&1 ;
+}
+
 # Misc stuff ==================================================================================
 #
 unsetopt ALL_EXPORT
@@ -358,22 +393,14 @@ less() {
 }
 
 
-# Make delete by word parts with Alt+w
-tcsh-backward-kill-word() {
-  local WORDCHARS="${WORDCHARS:s@/@}"
-  zle backward-kill-word
-}
-zle -N tcsh-backward-kill-word
-bindkey '\ew' tcsh-backward-kill-word
-
 
 # Color on suggestions to display partial match
 zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==32=00}:${(s.:.)LS_COLORS}")';
 
+# Plugins and external stuff ==================================================================================
 
 # Highlighting package must be installed by pacman
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 
-#source .zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 
 # ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets )
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
@@ -411,4 +438,89 @@ if [ -f ~/.zsh/zbell.sh ]; then
    . ~/.zsh/zbell.sh
 fi
 
+
+# FFMpeg ===========================================================
+
+ffx_MONO="1"            # mono
+ffx_DUAL="2"            # dual channel
+ffx_HW="hw:1,0"         # alsa; run 'cat /proc/asound/pcm' to change to the correct numbers
+ffx_PULSE="pulse"       # pulseaudio; might have to install pavucontrol to change volume
+ffx_FPS="30"            # frame per seconds
+ffx_WIN_FULL="1920x1080"        # record fullscreen
+ffx_AUDIO="pcm_s16le"   # audio codec
+ffx_VIDEO="libx264"     # video codec
+ffx_PRESET="ultrafast"  # preset error? run 'x264 -h' replace with fast,superfast, slow ..etc
+ffx_CRF="0"
+ffx_THREADS="0"
+ffx_SCALE="scale=1920x1080"     # scale resolution, no black bars on sides of video on youtube
+ffx_OUTPUT=~/screencast.avi
+ffx_OUTPUT_FINAL=~/screencast.mp4
+# Note: -vf is optional delete if you want, -y is to overwrite existing file
+ 
+alias FF='ffmpeg -f alsa -i pulse -f x11grab -r 15 -s 1920x1080 -i :0.0 -acodec pcm_s16le -vcodec huffyuv -sameq ~/screencasts/screencast.avi'
+ 
+FF-full()
+{
+        ffmpeg \
+        -f alsa \
+        -ac $ffx_MONO \
+        -i $ffx_PULSE \
+        -f x11grab \
+        -r $ffx_FPS \
+#       -s ffx_WIN_FULL \
+#       -s 1920x1080 \
+#       -i :1.0 \
+        -acodec $ffx_AUDIO \
+        -vcodec $ffx_VIDEO \
+        -preset $ffx_PRESET \
+        -crf $ffx_CRF \
+        -threads $ffx_THREADS \
+#       -vf $ffx_SCALE \
+#       -y $ffx_OUTPUT \
+}
+ 
+# capture single window, use mouse cursor to select window you want to record
+FF-window()
+{
+        ffx_INFO=$(xwininfo -frame)
+    ffmpeg \
+    -f alsa \
+    -ac $ffx_MONO \
+        -i $ffx_PULSE \
+    -f x11grab \
+    -r $ffx_FPS \
+        -s $(echo $ffx_INFO \
+    | grep -oEe 'geometry [0-9]+x[0-9]+'\
+        | grep -oEe '[0-9]+x[0-9]+') \
+        -i :0.0+$(echo $ffx_INFO | grep \
+    -oEe 'Corners:\s+\+[0-9]+\+[0-9]+' \
+        | grep -oEe '[0-9]+\+[0-9]+' | sed \
+    -e 's/\+/,/' ) \
+        -acodec $ffx_AUDIO \
+    -vcodec $ffx_VIDEO \
+    -preset $ffx_PRESET \
+    -crf $ffx_CRF \
+    -threads $ffx_THREADS \
+        -y $ffx_OUTPUT \
+}
+ 
+FF-convert()
+{
+    ffmpeg \
+        -i $ffx_OUTPUT \
+        -ar 22050 \
+        -ab 32k \
+        -strict -2 \
+         $ffx_OUTPUT_FINAL
+}
+ 
+Convert()
+{
+    ffmpeg \
+        -i $1 \
+        -ar 22050 \
+        -ab 32k \
+        -strict -2 \
+         output.avi
+}
 

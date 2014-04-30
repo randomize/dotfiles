@@ -339,12 +339,20 @@ Media players:
 
    mplayer
    mpv
+   livestreamer
+   gstreamer-*
+   vlc
 
 Screen capture:
 
    scrot ( scrot -t 20 -d 5 )
    // using imagemagick import -window root screenshot.jpg
    simple screen recorder ( aur )
+
+==== Monitor software ===================
+
+   ddccontrol
+   ddccontrol-db
 
 ==== Painting and image edit  ============
 

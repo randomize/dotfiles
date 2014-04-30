@@ -86,6 +86,8 @@ rdev/
 .xdg_menu_cache/
 .xmobarrc
 .xmonad/
+.ddccontrol/
+.python_history
 
 
 # Temporary hide...
