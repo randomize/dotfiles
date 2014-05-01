@@ -38,7 +38,7 @@ Partitions will be aligned on 8-sector boundaries
 
 ==== First to install ===
 
-   vim
+   vi
    sudo
    htop
    screen
@@ -46,6 +46,7 @@ Partitions will be aligned on 8-sector boundaries
    bash-completion
    // package hook "command not found"
    rxvt-unicode
+   openssh
 
 ==== Zsh =================
 
@@ -75,11 +76,8 @@ Partitions will be aligned on 8-sector boundaries
    glew
    libgl
    libglu
-   glm
    glfw
    glut
-   bullet
-   assimp
    mesa-demos          // Beloved glxgears is here
    Set KMS (add hook and mkinitcpo -p linux)
 
@@ -88,10 +86,11 @@ Partitions will be aligned on 8-sector boundaries
    xorg-server
    xorg-xinit
 
+   xf86-input-wacom
    xorg-xev
    xorg-xprop        // Helper utility for windows info
-   xf86-input-wacom
    xvinfo            // Helper for lightson script
+   x11-ssh-askpass   // Helper for SSH
 
 === DE ==========================
 
@@ -103,6 +102,8 @@ Partitions will be aligned on 8-sector boundaries
    compton-git // Composition
    dunst       // Notifications
 
+   awesome
+
  2) Utilites
    xxkb        // keyboard manager
    parcellite  // clipboard manager
@@ -111,33 +112,35 @@ Partitions will be aligned on 8-sector boundaries
 
  3) file manager:
 
-   //pcmanfb uses deprecated udisks
-   //nautilus tooo sloww and big, unfortuantely I use it now 
-   nautilus
+   // NOT USED ANYMORE
+   //pcmanfb - uses deprecated udisks
+   //thunar  - good lightweight filemanager, but DJVu thumbnails and poor search
+   //catfish                 // Search support
+   //thunar-volman           // Volume maneger
+   //tumbler                 // Thumbnails plugin
+   //   raw-thumbnailer      // Raw
+   //   libgsf               // For odf formats
+   //thunar-archive-plugin   // Archive plugin
+
+   nautilus                // Slow but powerfull
+
    libnautilus-extension 
-   nautilus 
    nautilus-actions 
    nautilus-open-terminal 
    nautilus-sendto 
    python2-nautilus 
 
-   thunar                  // Good lightweight filemanager
-   catfish                 // Search support
-   thunar-volman           // Volume maneger
-      gvfs                 // Mounting support
-      gvfs-smp
-      gvfs-mtp
-      gvfs-gphoto2 + libgphoto2
-      dosfstools           // For old FAT etc
-      reiserfsprogs        // Reiser formatting / mounting
-      gptfdisk             // fdisk for GPT
-      ntfs-3g              // to enable mounting of NTFS write(default will be readonly)
 
-   tumbler                 // Thumbnails plugin
-      raw-thumbnailer      // Raw
-      libgsf               // For odf formats
+   // Mounting support
+   gvfs
+   gvfs-smp
+   gvfs-mtp
+   gvfs-gphoto2 + libgphoto2
+   dosfstools           // For old FAT etc
+   reiserfsprogs        // Reiser formatting / mounting
+   gptfdisk             // fdisk for GPT
+   ntfs-3g              // to enable mounting of NTFS write(default will be readonly)
 
-   thunar-archive-plugin   // Archive plugin
    xarchiver               // Simple archiver
       zip     // ZIP support
       unzip   // ZIP support
@@ -151,8 +154,9 @@ Partitions will be aligned on 8-sector boundaries
       orange
       sharutils
 
+   // Console filemanagers
+   mc                     // Best
    unp                    // Console unpacker
-   mc                      // JIC X is not working ;)
 
    ranger                 // Another console, powered by vim keys
     highlight             // for syntax
@@ -197,7 +201,7 @@ Partitions will be aligned on 8-sector boundaries
 
 === Coding ============
 
-IDE:
+1. IDE and editors:
 
    sublime-text-dev
    pycharm-community
@@ -216,51 +220,90 @@ IDE:
       6) ./install.sh --clang-completer --system-libclang
       7) install python2-unidecode for ultisnips
 
-Support:
+2. Languages:
 
-   ipython
+   Python:
+
+      ipython
+
+      python-numpy
+      python-matplotlib
+      python-pillow
+      python-scipy
+      python-pygments
+      python-pyzmq
+
+      wxpython           needed for ipythonx and ipython-wx
+      python-nose        if you want to run IPython's test suite
+      python-pyqt4       for ipython qtconsole [installed]
+      python-sip         for ipython qtconsole [installed]
+      python-pygments    for ipython qtconsole [installed]
+      python-pyzmq       for ipython notebook and ipython qtconcole [installed]
+      python-tornado     for ipython notebook
+      python-jinja       for ipython notebook
+      haskell-pandoc     ipython notebook conversion
+
+
+   C++:
+
+      gcc                        // GNU compiler
+      clang                      // Cool and modern apple compiler
+      boost                      // No comments MUSTHAVE
+      intel-tdd                  // "Parallel STL"
+      intel-parallel-studio-2013 // Free for linuxes
+      mpich                      // MPI support
+
+      // Graphics
+      glm                        // Math lib for opengl
+      bullet                     // Psysics lib
+      assimp                     // Assets lib
+      ogre                       // 3D Engine
+
+   Assembler:
+
+      fasm
+      fasmarm  - good old fasm for ARM
+      darm-git - disasm library
+      nasm
+
+   Other Languages:
+
+      racket - scheme
+      r - R language
+      mono - C#
+      ocaml - Ocaml
+      rust - Rust
+
+3. Utils:
 
    ack
    the_silver_searcher(ag)
    colordiff
+   qemu - emulator
 
    cmake
    gdb
    meld
-   mercurial
-   git
-   gitg
 
-   clang
-   gcc
+   Version Control:
 
-HEXers:
+      mercurial
+      git
+      gitg
 
-   dhex - I like it
-   hexedit
-   hte
-   ghex
 
-Languages:
+   HEXers:
 
-   racket - scheme
-   r - R language
-   mono - C#
-   ocaml - Ocaml
-   rust - Rust
-
-Assembler:
-
-   fasm
-   fasmarm  - good old fasm for ARM
-   darm-git - disasm library
-   nasm
-   qemu - emulator
-
+      dhex - I like it
+      hexedit
+      hte
+      ghex
 
 ==== Fonts =======================
 
    Install infinality pathces via repository
+
+
 
    otf-brill
    otf-neris
@@ -273,9 +316,9 @@ Assembler:
 
 === Internet things =========
 
-  1) Browsers
+   1. Browsers
 
-   firefox // Cannot use pepper plugin
+   firefox     // Cannot use pepper plugin
    flashplugin // Deprecated
 
    firefox plugins:
@@ -285,13 +328,15 @@ Assembler:
    chromium-pepper-flash
    chromium-libpdf
 
-  2) Downloaders
+   2. Downloaders
 
    amule
    qbittorrent
 
    aria2
    uget
+
+   3. IM
 
    pidgin
    pidgin-latex
@@ -348,6 +393,7 @@ Screen capture:
    scrot ( scrot -t 20 -d 5 )
    // using imagemagick import -window root screenshot.jpg
    simple screen recorder ( aur )
+   ff* stuff
 
 ==== Monitor software ===================
 
@@ -432,26 +478,6 @@ Screen capture:
 ============ ipv6 ===============================================================================
 
    1) Install miredo
-
-======= Python ===========================================================================
-
-   ipython
-   python-numpy
-   python-matplotlib
-   python-pillow
-   python-scipy
-   python-pygments
-   python-pyzmq
-
-   wxpython: needed for ipythonx and ipython-wx
-   python-nose: if you want to run IPython's test suite
-   python-pyqt4: for ipython qtconsole [installed]
-   python-sip: for ipython qtconsole [installed]
-   python-pygments: for ipython qtconsole [installed]
-   python-pyzmq: for ipython notebook and ipython qtconcole [installed]
-   python-tornado: for ipython notebook
-   python-jinja: for ipython notebook
-   haskell-pandoc: ipython notebook conversion
 
 
 ===== Man pages ======================================================================================

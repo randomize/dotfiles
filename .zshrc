@@ -467,40 +467,41 @@ FF-full()
         -i $ffx_PULSE \
         -f x11grab \
         -r $ffx_FPS \
-#       -s ffx_WIN_FULL \
-#       -s 1920x1080 \
-#       -i :1.0 \
+        -s 1920x1280 \
+        -i :0.0+0,0 \
         -acodec $ffx_AUDIO \
         -vcodec $ffx_VIDEO \
         -preset $ffx_PRESET \
         -crf $ffx_CRF \
         -threads $ffx_THREADS \
-#       -vf $ffx_SCALE \
-#       -y $ffx_OUTPUT \
+        -y $ffx_OUTPUT \
 }
+#       -s ffx_WIN_FULL \
+#       -vf $ffx_SCALE \
+
 
 # capture single window, use mouse cursor to select window you want to record
 FF-window()
 {
         ffx_INFO=$(xwininfo -frame)
-    ffmpeg \
-    -f alsa \
-    -ac $ffx_MONO \
+        ffmpeg \
+        -f alsa \
+        -ac $ffx_MONO \
         -i $ffx_PULSE \
-    -f x11grab \
-    -r $ffx_FPS \
+        -f x11grab \
+        -r $ffx_FPS \
         -s $(echo $ffx_INFO \
-    | grep -oEe 'geometry [0-9]+x[0-9]+'\
-        | grep -oEe '[0-9]+x[0-9]+') \
-        -i :0.0+$(echo $ffx_INFO | grep \
-    -oEe 'Corners:\s+\+[0-9]+\+[0-9]+' \
-        | grep -oEe '[0-9]+\+[0-9]+' | sed \
-    -e 's/\+/,/' ) \
+           | grep -oEe 'geometry [0-9]+x[0-9]+'\
+           | grep -oEe '[0-9]+x[0-9]+') \
+        -i :0.0+$(echo $ffx_INFO \
+           | grep -oEe 'Corners:\s+\+[0-9]+\+[0-9]+' \
+           | grep -oEe '[0-9]+\+[0-9]+' \
+           | sed -e 's/\+/,/' ) \
         -acodec $ffx_AUDIO \
-    -vcodec $ffx_VIDEO \
-    -preset $ffx_PRESET \
-    -crf $ffx_CRF \
-    -threads $ffx_THREADS \
+        -vcodec $ffx_VIDEO \
+        -preset $ffx_PRESET \
+        -crf $ffx_CRF \
+        -threads $ffx_THREADS \
         -y $ffx_OUTPUT \
 }
 

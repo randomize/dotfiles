@@ -38,10 +38,10 @@ xset +fp /usr/share/fonts/local
 xset s off
 
 # Start xxkb
-xxkb &
+# xxkb &
 
 # Pulsdaudio helper icon
-pasystray &
+# pasystray &
 
 # Clipboard manager
 parcellite &
@@ -50,7 +50,7 @@ parcellite &
 compton -b
 
 # Set wacom buttons correctly
-xsetwacom --set "Wacom Intuos3 9x12 stylus" Button 2 "button +3"                                                                                                                                                           [0]
+xsetwacom --set "Wacom Intuos3 9x12 stylus" Button 2 "button +3"
 xsetwacom --set "Wacom Intuos3 9x12 stylus" Button 3 "button +2"
 
 # File manager
@@ -68,8 +68,12 @@ urxvtd &
 # Mounting provider
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
-# exec xmonad
+# Ssh agent
+eval `ssh-agent -s`
+
+
 exec awesome
+# exec xmonad
 # exec i3 -V >> /tmp/i3log 2>&1
 # exec startfluxbox
 # exec gnome-session
