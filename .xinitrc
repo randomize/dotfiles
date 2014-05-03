@@ -71,6 +71,8 @@ urxvtd &
 # Ssh agent
 eval `ssh-agent -s`
 
+# Mpd
+# /usr/bin/mpd
 
 exec awesome
 # exec xmonad

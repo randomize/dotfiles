@@ -29,6 +29,8 @@ export ANDROID_SDK_ROOT=/home/randy/android/sdk
 export PATH=$ANDROID_SDK_ROOT:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
 export ANT_ROOT=/usr/bin
 
+export GCC_COLORS="error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01"
+
 eval `dircolors -b`
 
 # Zsh Options ==================================================================================
@@ -244,6 +246,7 @@ alias -s txt=$EDITOR
 alias -s PKGBUILD=$EDITOR
 
 # Normal aliases
+alias mpd='/usr/bin/mpd'
 
 # Listing
 alias ls='ls --color=auto -F -h'

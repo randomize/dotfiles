@@ -20,6 +20,10 @@ xdg_menu = require("archmenu")
 -- More widgets --
 vicious = require("vicious")
 
+-- Toggle terminals and other things
+local drop      = require("scratchdrop")
+
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -91,7 +95,7 @@ end
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 namedtags = {
-   names = {"⠐", "⠡", "⠪", "⠵", "⠻", "⠿", 
+   names = {"⠐", "⠡", "⠪", "⠵", "⠻", "⠿",
    "\xE2\x8C\xAC", -- "games" / ⌬
    "\xE2\x8C\x98", -- “main” / ⌘
    "\xE2\x98\xB1"  -- “code” / ☱
@@ -151,6 +155,24 @@ cpuwidget:set_width(50)
 cpuwidget:set_background_color("#494B4F")
 cpuwidget:set_color({ type = "linear", from = { 0, 0 }, to = { 10,0 }, stops = { {0, "#FF5656"}, {0.5, "#88A175"}, {1, "#AECF96" }}})
 vicious.register(cpuwidget, vicious.widgets.cpu, "$1")
+
+-- Keyboard indicator
+mykeyindicator = wibox.widget.imagebox()
+mykeyindicator:set_image(awful.util.getdir("config") .. "/themes/zenburn/ENG.png")
+function mykey_update()
+    local fd = io.popen("skb a")
+    local key_layout = fd:read()
+    fd:close()
+    mykeyindicator:set_image(awful.util.getdir("config") .. "/themes/zenburn/" .. key_layout .. ".png")
+    -- mykeyindicator:set_image(awful.util.getdir("config") .. "/themes/zenburn/RUS.png")
+    return
+end
+--  dbus.add_match("session", "member='LayoutUpdated'")
+--  dbus.connect_signal("org.ayatana.dbusmenu", mykey_update)
+-- dbus.add_match("session", "member='XAyatanaNewLabel'")
+-- dbus.connect_signal("org.kde.StatusNotifierItem", mykey_update)
+
+
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -231,6 +253,7 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
+    right_layout:add(mykeyindicator)
     right_layout:add(mytextclock)
     right_layout:add(cpuwidget)
     right_layout:add(netwidget)
@@ -253,6 +276,27 @@ root.buttons(awful.util.table.join(
     awful.button({ }, 4, awful.tag.viewnext),
     awful.button({ }, 5, awful.tag.viewprev)
 ))
+-- }}}
+
+-- {{{ Volume control functions
+
+local vol_notification_id;
+function change_volume(op)
+
+   local fd = io.popen("amixer sset Master " .. op)
+   local out = fd:read("*all")
+   fd:close()
+
+   local vol = string.match(out, "(%d+)%%")
+   local status = string.match(out, "%[(o[^%]]*)%]")
+
+   if not string.find(status, "on", 1, true) then
+       vol = vol .. "\nMuted"
+   end
+   vol_id = naughty.notify({ title = "Volume", text = vol,
+       timeout = 10, replaces_id = vol_id }).id
+end
+
 -- }}}
 
 -- {{{ Key bindings
@@ -287,17 +331,115 @@ globalkeys = awful.util.table.join(
             end
         end),
 
-    -- Standard program
-    awful.key({ modkey, "Control" }, "Up", function () awful.util.spawn("/home/randy/bin/brightness.sh up") end),
-    awful.key({ modkey, "Control" }, "Down", function () awful.util.spawn("/home/randy/bin/brightness.sh down") end),
-    awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal .. " -e /home/randy/bin/starttmux.sh") end),
-    awful.key({ modkey,           }, "e", function () awful.util.spawn("nautilus") end),
-    awful.key({ modkey,           }, "F1", function () awful.util.spawn("firefox") end),
-    awful.key({ modkey },            "F2",     function () mypromptbox[mouse.screen]:run() end),
-    awful.key({ modkey,           }, "F3", function () awful.util.spawn("chromium") end),
-    awful.key({ modkey,           }, "F4", function () awful.util.spawn("pidgin") end),
-    awful.key({ modkey, "Shift" }, "c", awesome.restart),
+    -- {{{ Standard programs launch
+
+    awful.key({ modkey, "Control" }, "Up",
+      function ()
+         awful.util.spawn("/home/randy/bin/brightness.sh up")
+         naughty.notify({ title="Brightness", text="Up 10 points" })
+      end
+    ),
+    awful.key({ modkey, "Control" }, "Down",
+      function ()
+         awful.util.spawn("/home/randy/bin/brightness.sh down")
+         naughty.notify({ title="Brightness", text="Down 10 points" })
+      end
+    ),
+    -- awful.key({ modkey,           }, "Return",
+    --   function ()
+    --      awful.util.spawn(terminal .. " -e /home/randy/bin/starttmux.sh")
+    --      naughty.notify({ title="Terminal", text="Started tmux term" })
+    --   end
+    -- ),
+    awful.key({ modkey,           }, "e",
+      function ()
+         awful.util.spawn("nautilus")
+         naughty.notify({ title="File browser", text="Started nautilus" })
+      end
+    ),
+    awful.key({                   }, "Print",
+      function ()
+         awful.util.spawn("scrot")
+         naughty.notify({ title="Screenshot", text="Capturing full screen" })
+      end),
+    awful.key({ "Control"         }, "Print",
+      function ()
+         awful.util.spawn_with_shell("sleep 0.1 && scrot -s")
+         naughty.notify({ title="Screenshot", text="Capturing a window" })
+      end
+    ),
+    awful.key({                   }, "XF86AudioRaiseVolume",
+      function ()
+         -- awful.util.spawn("amixer -q set Master 5%+ -q")
+         --naughty.notify({ title="Volume", text="Up 5%" })
+         change_volume("5%+")
+      end
+    ),
+    awful.key({                   }, "XF86AudioLowerVolume",
+      function ()
+         -- awful.util.spawn("amixer -q set Master 5%- -q")
+         -- naughty.notify({ title="Volume", text="Down 5%" })
+         change_volume("5%-")
+      end
+    ),
+    awful.key({                   }, "XF86AudioMute",
+      function ()
+         -- awful.util.spawn("amixer -q set Master toggle")
+         -- naughty.notify({ title="Volume", text="Toggle mute" })
+         change_volume("toggle")
+      end
+    ),
+    awful.key({                   }, "XF86HomePage",
+      function ()
+         awful.util.spawn("firefox")
+      end
+    ),
+    awful.key({                   }, "XF86Calculator",
+      function ()
+         awful.util.spawn("urxvtc -geometry 80x10+0+0 -fg white -e python  -ic 'from math import *; from random import *'")
+         naughty.notify({ title="Calculator", text="Started python shell" })
+      end
+    ),
+    awful.key({                   }, "XF86AudioPlay",
+      function ()
+         awful.util.spawn("mpc toggle")
+         naughty.notify({ title="MPD player", text="Previous track" })
+      end
+    ),
+    awful.key({                   }, "XF86AudioPrev",
+      function ()
+         awful.util.spawn("mpc prev")
+         naughty.notify({ title="MPD player", text="Play / Pause" })
+      end
+    ),
+    awful.key({                   }, "XF86AudioNext",
+      function ()
+         awful.util.spawn("mpc next")
+         naughty.notify({ title="MPD player", text="Next track" })
+      end
+    ),
+    awful.key({ modkey,           }, "F4",
+      function ()
+         awful.util.spawn("pidgin")
+         naughty.notify({ title="Pidgin", text="Pidgin starting" })
+      end
+    ),
+    awful.key({ modkey,           }, "F3",
+      function ()
+         awful.util.spawn("chromium")
+      end
+    ),
+    -- }}}
+
+    -- Standard keys
+    awful.key({ modkey            }, "F2",   function () mypromptbox[mouse.screen]:run() end),
+    awful.key({ modkey, "Shift"   }, "c", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
+    awful.key({ modkey,           }, "Return",
+       function ()
+          drop("urxvtc -e /home/randy/bin/starttmux.sh", "bottom", "center", 1, 0.55)
+       end
+    ),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
@@ -415,7 +557,7 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
-    { rule = { class = "URxvt" },
+    { rule_any = { class = {"URxvt", "gvim"} },
       properties = { floating = true,
                      skip_taskbar = true,
                      border_width = 0,

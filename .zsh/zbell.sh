@@ -24,7 +24,7 @@ autoload -Uz add-zsh-hook || return
 (( ${+zbell_duration} )) || zbell_duration=15
 
 # initialize zbell_ignore if not set
-(( ${+zbell_ignore} )) || zbell_ignore=($EDITOR $PAGER ls watch htop top ssh iotop dstat vmstat emacs vi man less more audacious play aplay wine mtr ping traceroute vlc mplayer mpv tail tmux screen)
+(( ${+zbell_ignore} )) || zbell_ignore=(vim less more watch htop top ssh vi man ping traceroute vlc mplayer mpv tail tmux screen)
 
 # initialize it because otherwise we compare a date and an empty string
 # the first time we see the prompt. it's fine to have lastcmd empty on the
@@ -32,12 +32,14 @@ autoload -Uz add-zsh-hook || return
 # empty string just results in an empty array.
 zbell_timestamp=$EPOCHSECONDS
 zbell_ticks=0
+start_time=`date "+%X"`
 
 # right before we begin to execute something, store the time it started at
 zbell_begin() {
 	zbell_timestamp=$EPOCHSECONDS
 	zbell_lastcmd=$2
    zbell_ticks=1
+   start_time=`date "+%X"`
 }
 
 # when it finishes, if it's been running longer than $zbell_duration,
@@ -63,7 +65,8 @@ zbell_end() {
 	done
 
    if (( ! $has_ignored_cmd )) && (( ran_long )) && (( $zbell_ticks )); then
-      notify-send --icon=gtk-info Finished "Job completed on $HOST: $zbell_lastcmd = $zbell_exit_status"
+      zbell_cmd_duration=$(( $EPOCHSECONDS - $zbell_timestamp ))
+      notify-send --icon=gtk-info Finished "Job completed on $HOST: $zbell_lastcmd = $zbell_exit_status \n Started at ${start_time} : \n Compleated in : $zbell_cmd_duration sec. "
 		print -n "\a"
 	fi
 
