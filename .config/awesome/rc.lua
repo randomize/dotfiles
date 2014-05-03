@@ -291,10 +291,12 @@ function change_volume(op)
    local status = string.match(out, "%[(o[^%]]*)%]")
 
    if not string.find(status, "on", 1, true) then
-       vol = vol .. "\nMuted"
+       vol = " Volume is : " .. vol .. "% (Muted)"
+       vol_id = naughty.notify({ title = "Volume", text = vol , timeout = 10, replaces_id = vol_id }).id
+   else
+       vol = " Volume is : " .. vol .. "%"
+       vol_id = naughty.notify({ title = "Volume", text = vol , timeout = 10, replaces_id = vol_id }).id
    end
-   vol_id = naughty.notify({ title = "Volume", text = vol,
-       timeout = 10, replaces_id = vol_id }).id
 end
 
 -- }}}
@@ -335,69 +337,35 @@ globalkeys = awful.util.table.join(
 
     awful.key({ modkey, "Control" }, "Up",
       function ()
-         awful.util.spawn("/home/randy/bin/brightness.sh up")
+         awful.util.spawn("/home/randy/bin/brightness.sh up", false)
          naughty.notify({ title="Brightness", text="Up 10 points" })
       end
     ),
     awful.key({ modkey, "Control" }, "Down",
       function ()
-         awful.util.spawn("/home/randy/bin/brightness.sh down")
+         awful.util.spawn("/home/randy/bin/brightness.sh down", false)
          naughty.notify({ title="Brightness", text="Down 10 points" })
       end
     ),
-    -- awful.key({ modkey,           }, "Return",
-    --   function ()
-    --      awful.util.spawn(terminal .. " -e /home/randy/bin/starttmux.sh")
-    --      naughty.notify({ title="Terminal", text="Started tmux term" })
-    --   end
-    -- ),
-    awful.key({ modkey,           }, "e",
-      function ()
-         awful.util.spawn("nautilus")
-         naughty.notify({ title="File browser", text="Started nautilus" })
-      end
-    ),
+    awful.key({ modkey,           }, "e", function () awful.util.spawn("nautilus") end),
     awful.key({                   }, "Print",
       function ()
-         awful.util.spawn("scrot")
+         awful.util.spawn("scrot", false)
          naughty.notify({ title="Screenshot", text="Capturing full screen" })
       end),
     awful.key({ "Control"         }, "Print",
       function ()
-         awful.util.spawn_with_shell("sleep 0.1 && scrot -s")
+         awful.util.spawn_with_shell("sleep 0.5 && scrot -s", false)
          naughty.notify({ title="Screenshot", text="Capturing a window" })
       end
     ),
-    awful.key({                   }, "XF86AudioRaiseVolume",
-      function ()
-         -- awful.util.spawn("amixer -q set Master 5%+ -q")
-         --naughty.notify({ title="Volume", text="Up 5%" })
-         change_volume("5%+")
-      end
-    ),
-    awful.key({                   }, "XF86AudioLowerVolume",
-      function ()
-         -- awful.util.spawn("amixer -q set Master 5%- -q")
-         -- naughty.notify({ title="Volume", text="Down 5%" })
-         change_volume("5%-")
-      end
-    ),
-    awful.key({                   }, "XF86AudioMute",
-      function ()
-         -- awful.util.spawn("amixer -q set Master toggle")
-         -- naughty.notify({ title="Volume", text="Toggle mute" })
-         change_volume("toggle")
-      end
-    ),
-    awful.key({                   }, "XF86HomePage",
-      function ()
-         awful.util.spawn("firefox")
-      end
-    ),
+    awful.key({                   }, "XF86AudioRaiseVolume", function () change_volume("5%+") end),
+    awful.key({                   }, "XF86AudioLowerVolume", function () change_volume("5%-") end),
+    awful.key({                   }, "XF86AudioMute", function () change_volume("toggle") end),
+    awful.key({                   }, "XF86HomePage", function () awful.util.spawn("firefox") end),
     awful.key({                   }, "XF86Calculator",
       function ()
          awful.util.spawn("urxvtc -geometry 80x10+0+0 -fg white -e python  -ic 'from math import *; from random import *'")
-         naughty.notify({ title="Calculator", text="Started python shell" })
       end
     ),
     awful.key({                   }, "XF86AudioPlay",
