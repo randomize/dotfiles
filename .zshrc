@@ -195,7 +195,12 @@ bindkey -v '^r' history-incremental-pattern-search-backward
 bindkey -v '^f' history-incremental-pattern-search-forward
 
 # Enable exit on Ctrl+D
-# bindkey '^d' extended_logout
+extended_logout() {
+   exit
+}
+zle -N extended-logout extended_logout
+bindkey -a '^d' extended-logout
+bindkey -v '^d' extended-logout
 
 # Mapping Alt+S to custom function that inserts sudo
 insert_sudo () { zle beginning-of-line; zle -U "sudo " }
