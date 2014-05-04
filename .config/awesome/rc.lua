@@ -156,6 +156,18 @@ cpuwidget:set_background_color("#494B4F")
 cpuwidget:set_color({ type = "linear", from = { 0, 0 }, to = { 10,0 }, stops = { {0, "#FF5656"}, {0.5, "#88A175"}, {1, "#AECF96" }}})
 vicious.register(cpuwidget, vicious.widgets.cpu, "$1")
 
+-- Initialize MPD widget
+mpdwidget = wibox.widget.textbox()
+-- Register widget
+vicious.register(mpdwidget, vicious.widgets.mpd,
+    function (mpdwidget, args)
+        if args["{state}"] == "Stop" then 
+            return " - "
+        else 
+            return args["{Artist}"]..' - '.. args["{Title}"]
+        end
+    end, 10)
+
 -- Keyboard indicator
 mykeyindicator = wibox.widget.imagebox()
 mykeyindicator:set_image(awful.util.getdir("config") .. "/themes/zenburn/Eng.png")
@@ -252,12 +264,13 @@ for s = 1, screen.count() do
 
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
-    if s == 1 then right_layout:add(wibox.widget.systray()) end
+    right_layout:add(mpdwidget)
     right_layout:add(mykeyindicator)
     right_layout:add(mytextclock)
     right_layout:add(cpuwidget)
     right_layout:add(netwidget)
     right_layout:add(memwidget)
+    if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(mylayoutbox[s])
 
     -- Now bring it all together (with the tasklist in the middle)
@@ -347,7 +360,12 @@ globalkeys = awful.util.table.join(
          naughty.notify({ title="Brightness", text="Down 10 points" })
       end
     ),
-    awful.key({ modkey,           }, "e", function () awful.util.spawn("urxvtc -e ranger", false) end),
+    awful.key({ modkey,           }, "e", 
+       function ()
+          drop("urxvtc -e ranger", "top", "center", 1, 0.5)
+          -- awful.util.spawn("urxvtc -e ranger", false)
+       end
+    ),
     awful.key({                   }, "Print",
       function ()
          awful.util.spawn("scrot", false)
@@ -370,19 +388,19 @@ globalkeys = awful.util.table.join(
     ),
     awful.key({                   }, "XF86AudioPlay",
       function ()
-         awful.util.spawn("mpc toggle")
+         awful.util.spawn("mpc toggle", false)
          naughty.notify({ title="MPD player", text="Previous track" })
       end
     ),
     awful.key({                   }, "XF86AudioPrev",
       function ()
-         awful.util.spawn("mpc prev")
+         awful.util.spawn("mpc prev", false)
          naughty.notify({ title="MPD player", text="Play / Pause" })
       end
     ),
     awful.key({                   }, "XF86AudioNext",
       function ()
-         awful.util.spawn("mpc next")
+         awful.util.spawn("mpc next", false)
          naughty.notify({ title="MPD player", text="Next track" })
       end
     ),
@@ -405,7 +423,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
     awful.key({ modkey,           }, "Return",
        function ()
-          drop("urxvtc -e /home/randy/bin/starttmux.sh", "bottom", "center", 1, 0.55)
+          drop("urxvtc -e /home/randy/bin/starttmux.sh", "bottom", "center", 1, 0.65)
        end
     ),
 

@@ -49,7 +49,7 @@ idx=yes
 #softvol-max=600
 
 # skip displaying some frames to maintain A/V sync on slow systems
-framedrop=yes
+# framedrop=yes
 
 # more intense frame dropping (breaks decoding)
 #framedrop=hard

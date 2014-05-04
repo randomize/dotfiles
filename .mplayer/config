@@ -1,3 +1,10 @@
 # Write your default config options here!
 
+# use X11 for video output, use a wayland and framebuffer as fallbacks
+# vo=opengl-hq,xv,wayland,directfb
 
+# use alsa for audio output, choose oss4 as fallback
+# ao=pulse,alsa,oss
+
+# multithreaded decoding of H264/MPEG-1/2 (valid: 0-16)
+# vd-lavc-threads=8
