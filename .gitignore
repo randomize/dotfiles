@@ -16,6 +16,8 @@ workspace/
 android/
 cocos2d-x/
 rdev/
+intel/
+paks/
 
 # Temporals
 .thumbnails/
@@ -88,6 +90,8 @@ rdev/
 .xmonad/
 .ddccontrol/
 .python_history
+.designer
+.ncmpcpp
 
 
 # Temporary hide...
