@@ -467,19 +467,25 @@ Screen capture:
 
 ==== Android & cocos ==============================================================================
 
-   1) Enable multilib(Google sucks with 32bit SDK), install deps:
+   1) Apache ant : install package apache-ant
+   2) Enable multilib(Google sucks with 32bit SDK), install deps:
         pacman -S lib32-alsa-lib lib32-libstdc++5 lib32-libxv lib32-ncurses lib32-openal lib32-sdl lib32-zlib lib32-gcc-libs swt
 
-   2) Apache ant install (apache-ant)
-   3) clone cocos to ~/cocos2d-x
-   4) save latest SDK and NDK to ~/android/{sdk,ndk}
-   5) launch android app and install packages
-   6) setup environment vars for adb
-   7) Install android-udev rules
+        // SOLUTION! build form source adb-git which is 64bit and replace original later
+
+   3) save latest SDK and NDK to ~/android/{sdk,ndk}
+   4) launch android app and install packages (SDK, platform and build tools)
+   5) setup environment vars for adb - already on ZSH config - check
+   6) compile aur's adb-git, but not install: unpack and move adb to ~/android/sdk/platfrom-tools/adb replacing it
+
+   7) Install android-udev rules - currentlty moced from aur
+   8) clone cocos to ~/cocos2d-x
 
 ============ ipv6 ===============================================================================
 
-   1) Install miredo
+   //1) Install miredo // Not usginf anymore
+   
+   1) Disable with kernel parameter (see ./global_dotfiles/loader/entries/arch.conf)
 
 
 ===== Man pages ======================================================================================
