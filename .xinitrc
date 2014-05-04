@@ -66,13 +66,13 @@ urxvtd &
 # easystroke &
 
 # Mounting provider
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+#/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 # Ssh agent
 eval `ssh-agent -s`
 
 # Mpd
-# /usr/bin/mpd
+/usr/bin/mpd
 
 exec awesome
 # exec xmonad

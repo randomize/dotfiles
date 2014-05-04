@@ -311,15 +311,16 @@ alias halt='sudo halt'
 alias update='sudo pacman -Suy'
 
 # IPad management
-alias mount_ipad_pdf='ifuse --appid com.readdle.PDFExpertIPad /mnt/ipad'
-alias mount_ipad_video='ifuse --appid AVPlayerHD.eplayworks.com /mnt/ipad'
-alias mount_ipad_djvu='ifuse --appid com.qzyzx.SoleDjVu /mnt/ipad'
-alias mount_ipad_root='ifuse --root /mnt/ipad'
-alias umount_ipad='umount /mnt/ipad'
+alias mount_ipad_pdf='ifuse --appid com.readdle.PDFExpertIPad /mnt/ipad && cd /mnt/ipad'
+alias mount_ipad_video='ifuse --appid AVPlayerHD.eplayworks.com /mnt/ipad && cd /mnt/ipad'
+alias mount_ipad_djvu='ifuse --appid com.qzyzx.SoleDjVu /mnt/ipad && cd /mnt/ipad'
+alias mount_ipad_root='ifuse --root /mnt/ipad && cd /mnt/ipad'
+alias umount_ipad='cd ~ && umount /mnt/ipad'
 
 # Tools
 #alias bindiff='cmp -l file1.bin file2.bin | gawk \'{printf \"%08X %02X %02X\n\", $1, strtonum(0$2), strtonum(0$3)}\''
 alias clean_vim_views='rm /home/randy/.vim/view/*'
+alias list_devices='lsblk -f'
 
 ## Awesome
 alias eA='cd ~/.config/awesome && vim rc.lua'

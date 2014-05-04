@@ -94,21 +94,12 @@ Partitions will be aligned on 8-sector boundaries
 
 === DE ==========================
 
- 1) Window manager
+ 1) Window manager and environment
 
-   i3-wm       // Awesome window manager! love it
-   i3-bar      // Status bar with tray
-   dmenu       // Cool app runner
+   awesome     // It is awesome
    compton-git // Composition
-   dunst       // Notifications
-
-   awesome
-
- 2) Utilites
-   xxkb        // keyboard manager
-   parcellite  // clipboard manager
-   pasystray   // Pulse audio system tray
-   easystroke  // Gestures
+   libnotify   // Notifination library
+   parcellite  // clipboard manager good and lite
 
  3) file manager:
 
@@ -162,6 +153,10 @@ Partitions will be aligned on 8-sector boundaries
     highlight             // for syntax
     atool                 // archives work
 
+    // Console tools
+    curl
+    wget
+
  4) Screensaver ;)
    lightson script
 
@@ -173,7 +168,6 @@ Partitions will be aligned on 8-sector boundaries
    xchs
    fbreader
    pdfmod
-   evince
    pdfcrack
 
  6) Office
@@ -184,7 +178,10 @@ Partitions will be aligned on 8-sector boundaries
 
 ===== Ipad support =================
 
-   1) install ifuse
+   1) install:
+
+      libplist libimobiledevice libgpod usbmuxd ifuse
+
    2) Setup:
        # idevice_id --list  // will show some hash of my iPad
        # ideviceinfo        // will show more random data on iPad
@@ -193,6 +190,7 @@ Partitions will be aligned on 8-sector boundaries
        # mkdir /mnt/ipad
        # chown randy /mnt/ipad
        # chgrp users /mnt/ipad
+       # gpasswd -a randy usbmux
        $ ifuse /mnt/ipad
        $ /* concrete app */ ifuse --appid com.olimsoft.oplayer.hd.lite /mnt/ipad
        $ /* all root jailed */ ifuse --root /mnt/ipad
@@ -206,8 +204,6 @@ Partitions will be aligned on 8-sector boundaries
    sublime-text-dev
    pycharm-community
    qtcreator
-   eclipse
-   eclipse-cdt
 
    gvim
    Setup:
@@ -227,7 +223,7 @@ Partitions will be aligned on 8-sector boundaries
       ipython
 
       python-numpy
-      python-matplotlib
+      python-matplotlib-git // Better build from source - without webkit stuff - note python verion in PKGBUILD packaget() routine
       python-pillow
       python-scipy
       python-pygments
@@ -265,45 +261,46 @@ Partitions will be aligned on 8-sector boundaries
       fasmarm  - good old fasm for ARM
       darm-git - disasm library
       nasm
+      yasm
 
    Other Languages:
 
       racket - scheme
-      r - R language
       mono - C#
-      ocaml - Ocaml
       rust - Rust
 
 3. Utils:
 
-   ack
-   the_silver_searcher(ag)
-   colordiff
-   qemu - emulator
+   qemu                     // Good universal emulator
 
-   cmake
-   gdb
-   meld
+   cmake                    // The best building system
+   gdb                      // Cool debugger
+   cgdb                     // "GUI" for it
+   meld                     // Diff tool(graphical)
+   valgrind                 // Profiler
+
+   Source manipulation:
+
+      ack                      // Grepper for programming
+      the_silver_searcher(ag)  // Another grepper better and better
+      colordiff                // As said - diff with colors
 
    Version Control:
 
+      git ( and also tk for gitk)
       mercurial
-      git
-      gitg
+      subversion
 
 
    HEXers:
 
       dhex - I like it
-      hexedit
       hte
-      ghex
+      hexedit
 
 ==== Fonts =======================
 
    Install infinality pathces via repository
-
-
 
    otf-brill
    otf-neris
@@ -311,7 +308,6 @@ Partitions will be aligned on 8-sector boundaries
    ttf-envy-code-r
 
    terminus-cyrillic
-   ttf-ms-win8
 
 
 === Internet things =========
@@ -370,30 +366,36 @@ Setup:
 
 Applications:
 
-   chuck
-   miniaudicle
+   chuck            // Sound coding
+   miniaudicle      // Chuck GUI
+   /* supercollider */
 
-   ardour
-   qtracktor
-   supercollider
-   audacity
-   qsampler (aur) + all deps(linuzsample)
-   gigedit
+   ardour           // Sequencer and editor
+   qtracktor        // Another one editor
+   /* audacity */   // Has unwanted deps
+
+   qsampler (aur) + all deps(linuzsample) // Sampler
+   gigedit                                // Sample editor
 
 Media players:
 
-   mplayer
-   mpv
-   livestreamer
-   gstreamer-*
-   vlc
+   mplayer          // Best player so far
+   mpv              // Good modern alternative
+   livestreamer     // Helper script to live streaming
+   ffmpeg           // Good thing
+
+Codecs:
+
+   lame     // MP3
+   flac     // FLAC
+   x264     // x264
+   x265     // x264
 
 Screen capture:
 
    scrot ( scrot -t 20 -d 5 )
    // using imagemagick import -window root screenshot.jpg
    simple screen recorder ( aur )
-   ff* stuff
 
 ==== Monitor software ===================
 

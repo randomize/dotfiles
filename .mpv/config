@@ -4,7 +4,7 @@
 [default]
 
 # use X11 for video output, use a wayland and framebuffer as fallbacks
-vo=xv,wayland,directfb
+vo=opengl-hq,xv,wayland,directfb
 
 # use alsa for audio output, choose oss4 as fallback
 ao=pulse,alsa,oss

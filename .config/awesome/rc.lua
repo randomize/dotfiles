@@ -158,7 +158,7 @@ vicious.register(cpuwidget, vicious.widgets.cpu, "$1")
 
 -- Keyboard indicator
 mykeyindicator = wibox.widget.imagebox()
-mykeyindicator:set_image(awful.util.getdir("config") .. "/themes/zenburn/ENG.png")
+mykeyindicator:set_image(awful.util.getdir("config") .. "/themes/zenburn/Eng.png")
 function mykey_update()
     local fd = io.popen("skb a")
     local key_layout = fd:read()
@@ -347,7 +347,7 @@ globalkeys = awful.util.table.join(
          naughty.notify({ title="Brightness", text="Down 10 points" })
       end
     ),
-    awful.key({ modkey,           }, "e", function () awful.util.spawn("nautilus") end),
+    awful.key({ modkey,           }, "e", function () awful.util.spawn("urxvtc -e ranger", false) end),
     awful.key({                   }, "Print",
       function ()
          awful.util.spawn("scrot", false)
