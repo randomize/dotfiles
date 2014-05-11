@@ -334,8 +334,11 @@ Partitions will be aligned on 8-sector boundaries
 
    3. IM
 
-   pidgin
-   pidgin-latex
+   //pidgin
+   //pidgin-latex // Useless ;) and to many dependencies
+
+   irssi  // IRC client
+   profanity // XMPP client
 
 
 ==== Audio and sound =============

@@ -389,13 +389,13 @@ globalkeys = awful.util.table.join(
     awful.key({                   }, "XF86AudioPlay",
       function ()
          awful.util.spawn("mpc toggle", false)
-         naughty.notify({ title="MPD player", text="Previous track" })
+         naughty.notify({ title="MPD player", text="Play / Pause" })
       end
     ),
     awful.key({                   }, "XF86AudioPrev",
       function ()
          awful.util.spawn("mpc prev", false)
-         naughty.notify({ title="MPD player", text="Play / Pause" })
+         naughty.notify({ title="MPD player", text="Previous track" })
       end
     ),
     awful.key({                   }, "XF86AudioNext",
@@ -406,8 +406,9 @@ globalkeys = awful.util.table.join(
     ),
     awful.key({ modkey,           }, "F4",
       function ()
-         awful.util.spawn("pidgin")
-         naughty.notify({ title="Pidgin", text="Pidgin starting" })
+         -- awful.util.spawn("pidgin")
+         -- naughty.notify({ title="Pidgin", text="Pidgin starting" })
+          drop("urxvtc -e profanity", "top", "center", 1, 0.6)
       end
     ),
     awful.key({ modkey,           }, "F3",
@@ -547,7 +548,7 @@ awful.rules.rules = {
       properties = { floating = true,
                      skip_taskbar = true,
                      border_width = 0,
-                     above = true
+                     above = false
                    },
       callback = function (c)
          awful.placement.centered(c,nil)

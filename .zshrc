@@ -229,7 +229,13 @@ bindkey '\ew' tcsh-backward-kill-word
 # Make Ctrl+W to erase word
 bindkey '^w' backward-kill-word
 
-
+# Toggle Ctrl+Z vim
+foreground-vi() {
+  fg %vim
+}
+zle -N foreground-vi
+bindkey -a '^Z' foreground-vi
+bindkey -v '^Z' foreground-vi
 
 # Aliases ==================================================================================
 
@@ -259,6 +265,7 @@ alias lsd='ls -ld *(-/DN)'
 alias lsa='ls -ld .*'
 alias la='ls -la'
 alias ll='ls -l'
+alias l='ll'
 alias sl='ls'
 
 # Vim
@@ -401,12 +408,62 @@ less() {
   less "$@"
 }
 
+zman() {
+  PAGER="less -g -s '+/^       "$1"'" man zshall
+}
 
 
 # Color on suggestions to display partial match
 zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==32=00}:${(s.:.)LS_COLORS}")';
 
-# Plugins and external stuff ==================================================================================
+
+
+# Plugins and external stuff ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+# 1. Dir stack =========================================================================
+
+DIRSTACKSIZE=32
+#DIRSTACKFILE=~/.zdirs
+#if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
+#  dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
+#  [[ -d $dirstack[1] ]] && cd $dirstack[1] && cd $OLDPWD
+#fi
+#chpwd() {
+#  print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
+#}
+
+DIRSTACKFILE=~/.cache/.zdirs
+
+autoload -U is-at-least
+# Keep dirstack across logouts
+if [[ -f ${DIRSTACKFILE} ]] && [[ ${#dirstack[*]} -eq 0 ]] ; then
+    dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
+    dirstack=( ${(u)dirstack} )
+fi
+
+# Make sure there are no duplicates
+typeset -U dirstack
+
+# Share dirstack between multiple zsh instances
+function chpwd() {
+    if is-at-least 4.1; then # dirs -p needs 4.1
+        # Get the dirstack from the file and add it to the current dirstack
+        dirstack+=( ${(f)"$(< $DIRSTACKFILE)"} )
+        dirstack=( ${(u)dirstack} )
+        dirs -pl |sort -u >! ${DIRSTACKFILE}
+    fi
+}
+
+alias dh='dirs -v'
+setopt AUTOPUSHD         # push on cd
+setopt PUSHDMINUS        # swap +1 to -1 syntax
+setopt PUSHDSILENT       # no noise
+setopt PUSHDTOHOME       # not sure
+setopt PUSHD_IGNOREDUPS  # unique only
+
+
+# 2. Highlighting ======================================================================
 
 # Highlighting package must be installed by pacman
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -442,13 +499,15 @@ ZSH_HIGHLIGHT_PATTERNS+=('kill *' 'fg=cyan,bold')
 ZSH_HIGHLIGHT_PATTERNS+=('killall *' 'fg=cyan,bold')
 
 
+# 3. Command finished notification =====================================================
+
 # Bell - when command finished
 if [ -f ~/.zsh/zbell.sh ]; then
    . ~/.zsh/zbell.sh
 fi
 
 
-# FFMpeg ===========================================================
+# 4. FFMpeg ============================================================================
 
 ffx_MONO="1"            # mono
 ffx_DUAL="2"            # dual channel

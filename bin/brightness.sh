@@ -3,7 +3,7 @@
 #get current brightness
 presbright=$(sudo ddccontrol dev:/dev/i2c-3 | grep -A1 0x10 | tr -d '\n\t' | sed 's/.*value=\([^a-zA-Z]*\),.*/\1/')
 #stepsize for the brightness change
-stepsize=10
+stepsize=25
 
 case "$1" in
         up)

@@ -419,7 +419,21 @@ autocmd BufRead *.ck inoremap <silent> <F6> <ESC>:call ReplaceChuck()<CR>i
 autocmd BufRead *.ck call system("killall chuck; chuck --loop &")
 autocmd VimLeave *.ck call system("killall chuck &")
 
-
+" Translator with sdcv
+map <F3>  :call TRANSLATE()<cr>
+function TRANSLATE()
+   let  a=getline('.')
+   let co=col('.')-1
+   let starts=strridx(a," ",co)
+   let ends = stridx(a," ",co)
+   if ends==-1
+       let ends=strlen(a)
+   endif
+   let res = strpart(a,starts+1,ends-starts)
+   let cmds = "sdcv -n " . res
+   let out = system(cmds)
+   echo out
+endfunction
 
 " System default for mappings is now the ',' character
 let mapleader = ","

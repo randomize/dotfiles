@@ -55,11 +55,8 @@ paks/
 .pdextended
 .jackdrc
 .xmaximarc
-.zdirs
 .unite/
 .ssr/
-.purple/
-.gstreamer-0.10/
 .ssh/
 .tgdb/
 .cgdb/
@@ -91,7 +88,8 @@ paks/
 .ddccontrol/
 .python_history
 .designer
-.ncmpcpp
+.ncmpcpp            # MPD client ncurses
+.irrsi              # RSS client
 
 
 # Temporary hide...
