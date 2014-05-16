@@ -40,7 +40,6 @@ Partitions will be aligned on 8-sector boundaries
 
    vi
    sudo
-   htop
    screen
    tmux
    bash-completion
@@ -91,6 +90,11 @@ Partitions will be aligned on 8-sector boundaries
    xorg-xprop        // Helper utility for windows info
    xvinfo            // Helper for lightson script
    x11-ssh-askpass   // Helper for SSH
+
+=== Diagnostics  ==========================
+
+   htop
+   sysdig
 
 === DE ==========================
 
@@ -248,6 +252,7 @@ Partitions will be aligned on 8-sector boundaries
       intel-tdd                  // "Parallel STL"
       intel-parallel-studio-2013 // Free for linuxes
       mpich                      // MPI support
+      rr                         // Mozilla debugger for multithreading
 
       // Graphics
       glm                        // Math lib for opengl
@@ -351,21 +356,30 @@ Drivers:
    qjackctl
    jack-dbus
 
-Pulse Audio:
-
-   pulseaudio
-   pulseaudio-alsa
-   paprefs
-   pavucontrol
-
 
 Setup:
-   # gpasswd -a randy audio
 
    Test:
-   speaker-test
+   speaker-test -c 2
    aplay --list
    alsamixer
+
+   cat /etc/modprobe.d/alsa-base.conf
+
+      # Created by randy to define order of cards
+      
+      # First goes Intel PCH
+         options snd-hda-intel index=0 model=auto vid=8086 pid=8c20
+      
+      # HDMI is the second
+         options snd-hda-intel index=1 model=auto vid=8086 pid=0c0c
+
+   This setup will force order of sound cards
+   to see cards list use:
+      cat /proc/asound/modules   // Note they can use same module for misc H/W
+      lspci -nn | grep -i audio  // Tip. Order of output matches detection order - use this fact.
+      cat /proc/asound/cards     // Lists detected cards order
+      aplay -l                   // Lists avaliable outputs
 
 Applications:
 

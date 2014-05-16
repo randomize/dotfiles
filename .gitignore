@@ -88,8 +88,12 @@ paks/
 .ddccontrol/
 .python_history
 .designer
-.ncmpcpp            # MPD client ncurses
-.irrsi              # RSS client
+.irssi/
+.milkytracker_config
+.ncmpcpp/
+.projectM/
+.sdcv_history
+
 
 
 # Temporary hide...

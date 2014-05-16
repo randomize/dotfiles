@@ -17,3 +17,7 @@ grep -rnw 'directory' -e "pattern"
 grep --include={*.c,*.h} -rnw 'directory' -e "pattern"
 grep --exclude=*.o -rnw 'directory' -e "pattern"
 
+# 6 Print current config of Kernel
+cat /proc/config.gz | gunzip
+Or for ninjas
+zcat /proc/config.gz 
