@@ -1,6 +1,7 @@
 " Vimrc for my Archlinux vim
 
 " ====== START Vundle  =====================================
+" TODO: switch to NeoBundle
 
 set nocompatible
 filetype off 
@@ -78,6 +79,9 @@ Bundle 'https://github.com/vim-scripts/ck.vim.git'
 
 " Pentadactyl -- SLOWPOKE
 " Bundle 'dogrover/vim-pentadactyl'
+"
+
+Bundle 'dhruvasagar/vim-table-mode'
 
 
 filetype plugin indent on " required!

@@ -400,6 +400,9 @@ Media players:
    mpv              // Good modern alternative
    livestreamer     // Helper script to live streaming
    ffmpeg           // Good thing
+   youtube-dl
+   mkvtoolnix
+   mediainfo
 
 Codecs:
 
