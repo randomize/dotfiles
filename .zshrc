@@ -23,13 +23,13 @@ export EDITOR="vim"
 export PATH="${PATH}:${HOME}/bin"
 
 # Setup cocos2dx paths ans vars
-export COCOS_CONSOLE_ROOT=/home/randy/cocos2d-x/tools/cocos2d-console/bin
-export PATH=$COCOS_CONSOLE_ROOT:$PATH
-export NDK_ROOT=/home/randy/android/ndk
-export PATH=$NDK_ROOT:$PATH
-export ANDROID_SDK_ROOT=/home/randy/android/sdk
-export PATH=$ANDROID_SDK_ROOT:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
-export ANT_ROOT=/usr/bin
+# export COCOS_CONSOLE_ROOT=/home/randy/cocos2d-x/tools/cocos2d-console/bin
+# export PATH=$COCOS_CONSOLE_ROOT:$PATH
+# export NDK_ROOT=/home/randy/android/ndk
+# export PATH=$NDK_ROOT:$PATH
+# export ANDROID_SDK_ROOT=/home/randy/android/sdk
+# export PATH=$ANDROID_SDK_ROOT:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
+# export ANT_ROOT=/usr/bin
 
 export GCC_COLORS="error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01"
 

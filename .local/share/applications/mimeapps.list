@@ -1,7 +1,7 @@
 [Default Applications]
 video/mp2t=mpv.desktop
 application/pdf=llpp.desktop
-image/jpeg=feh.desktop
+image/jpeg=eog.desktop
 image/png=feh.desktop
 text/plain=gvim.desktop
 video/x-matroska=mpv.desktop
@@ -20,7 +20,7 @@ video/quicktime=mpv.desktop
 [Added Associations]
 video/mp2t=mpv.desktop;
 application/pdf=pdfmod.desktop;llpp.desktop;
-image/jpeg=feh.desktop;randy_feh.desktop;mypaint.desktop;
+image/jpeg=eog.desktop;feh.desktop;randy_feh.desktop;mypaint.desktop;
 image/png=feh.desktop;
 text/plain=gvim.desktop;qtcreator.desktop;ghex.desktop;
 video/x-matroska=mpv.desktop;

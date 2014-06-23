@@ -13,7 +13,7 @@ ao=alsa
 vd-lavc-threads=8
 
 # prefer using six channels audio
-channels=6
+# channels=6
 
 # scale the subtitles to the 3% of the screen size
 sub-scale=1
@@ -56,11 +56,11 @@ idx=yes
 
 # profile for up-mixing two channels audio to six channels
 # use -profile 2chto6ch to activate
-[2chto6ch]
-af-add=pan=6:1:0:.4:0:.6:2:0:1:0:.4:.6:2
+# [2chto6ch]
+# af-add=pan=6:1:0:.4:0:.6:2:0:1:0:.4:.6:2
 
 # profile to down-mixing six channels audio to two channels
 # use -profile 6chto2ch to activate
-[6chto2ch]
-af-add=pan=2:0.7:0:0:0.7:0.5:0:0:0.5:0.6:0.6:0:0
+# [6chto2ch]
+# af-add=pan=2:0.7:0:0:0.7:0.5:0:0:0.5:0.6:0.6:0:0
 

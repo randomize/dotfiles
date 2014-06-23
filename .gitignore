@@ -13,11 +13,11 @@ Music/
 # My stuff
 VirtualBox VMs/
 workspace/
-android/
 cocos2d-x/
 rdev/
 intel/
 paks/
+IdeaProjects/
 
 # Temporals
 .thumbnails/
@@ -93,6 +93,14 @@ paks/
 .ncmpcpp/
 .projectM/
 .sdcv_history
+.gnome/
+.dbus/
+.purple/
+.gstreamer-0.10/
+.IdeaIC13/
+.recently-used               # Keepass 2.0 recent files
+.recently-used
+
 
 
 

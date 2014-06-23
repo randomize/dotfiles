@@ -11,9 +11,12 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
-# setup my preferables
+# Setup my preferables
 export BROWSER=firefox
 export EDITOR=vim
+
+# Enable anti aliasing in java programs
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
 
 # Set path for gtk config
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0" 

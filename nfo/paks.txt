@@ -125,6 +125,16 @@ Partitions will be aligned on 8-sector boundaries
    nautilus-sendto 
    python2-nautilus 
 
+   Put:
+
+   (gtk_accel_path "<Actions>/ShellActions/Up" "BackSpace")
+
+   under
+
+   ~/.config/nautilus/accels
+
+   to get backspace back
+
 
    // Mounting support
    gvfs
