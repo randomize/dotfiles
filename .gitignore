@@ -100,8 +100,11 @@ IdeaProjects/
 .IdeaIC13/
 .recently-used               # Keepass 2.0 recent files
 .recently-used
-
-
+.fltk/
+.goldendict/
+.xournalpp/
+R/
+xournal/
 
 
 # Temporary hide...

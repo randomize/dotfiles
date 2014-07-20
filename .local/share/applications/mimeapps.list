@@ -16,6 +16,7 @@ application/x-shellscript=gvim.desktop
 application/xml=gvim.desktop
 text/x-lua=gvim.desktop
 video/quicktime=mpv.desktop
+video/x-msvideo=mpv.desktop
 
 [Added Associations]
 video/mp2t=mpv.desktop;
@@ -41,3 +42,4 @@ application/xml=gvim.desktop;
 application/octet-stream=ghex.desktop;
 text/x-lua=gvim.desktop;
 video/quicktime=mpv.desktop;
+video/x-msvideo=mpv.desktop;
