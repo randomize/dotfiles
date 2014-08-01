@@ -558,3 +558,4 @@ Convert()
          output.avi
 }
 
+highlightkeynote() { highlight --font=Consolas --font-size=24 --style=molokai -i "$@" -O rtf ;}
