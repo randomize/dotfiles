@@ -291,7 +291,6 @@ Partitions will be aligned on 8-sector boundaries
    cmake                    // The best building system
    gdb                      // Cool debugger
    cgdb                     // "GUI" for it
-   meld                     // Diff tool(graphical)
    valgrind                 // Profiler
 
    Source manipulation:
@@ -302,7 +301,12 @@ Partitions will be aligned on 8-sector boundaries
 
    Version Control:
 
-      git ( and also tk for gitk)
+      git
+      tk       // For gitk
+      tig      // Console git browser
+      gitg     // GUIsh git browser JIC
+      meld     // Diff tool
+
       mercurial
       subversion
 
