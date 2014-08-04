@@ -230,11 +230,6 @@ alias ll='ls -l'
 alias l='ll'
 alias sl='ls'
 
-# Vim
-alias v='vim'
-alias vi='vim'
-alias view='vim -R'
-
 # Shell
 alias :q='exit'
 alias :Q='exit'
@@ -249,6 +244,7 @@ alias rm='rm -I'
 alias ln='ln -i'
 
 alias g='git'
+alias gap='git add --patch'
 alias showclock='watch -n 1 "date +%T | xargs figlet \"Time:\" -c -t"'
 alias histgrep='cat ~/.bash_history | grep'
 alias todo='vim ~/nfo/TODO.txt'
@@ -308,6 +304,9 @@ alias Z='source ~/.zshrc'
 ## Vim Stuff
 alias eV='vim ~/.vimrc'
 alias e='vim'
+alias v='vim'
+alias vi='vim'
+alias view='vim -R'
 
 alias sniff_flv='sudo ngrep -d any '.flv'  port 80'
 
