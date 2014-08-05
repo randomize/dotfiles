@@ -52,7 +52,7 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 -- beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
-beautiful.init(awful.util.getdir("config") .. "/themes/zenburn/theme.lua")
+beautiful.init(awful.util.getdir("config") .. "/zenburn/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvtc"
@@ -168,23 +168,6 @@ vicious.register(mpdwidget, vicious.widgets.mpd,
         end
     end, 10)
 
--- Keyboard indicator
-mykeyindicator = wibox.widget.imagebox()
-mykeyindicator:set_image(awful.util.getdir("config") .. "/themes/zenburn/Eng.png")
-function mykey_update()
-    local fd = io.popen("skb a")
-    local key_layout = fd:read()
-    fd:close()
-    mykeyindicator:set_image(awful.util.getdir("config") .. "/themes/zenburn/" .. key_layout .. ".png")
-    -- mykeyindicator:set_image(awful.util.getdir("config") .. "/themes/zenburn/RUS.png")
-    return
-end
---  dbus.add_match("session", "member='LayoutUpdated'")
---  dbus.connect_signal("org.ayatana.dbusmenu", mykey_update)
--- dbus.add_match("session", "member='XAyatanaNewLabel'")
--- dbus.connect_signal("org.kde.StatusNotifierItem", mykey_update)
-
-
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -265,7 +248,6 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     right_layout:add(mpdwidget)
-    right_layout:add(mykeyindicator)
     right_layout:add(mytextclock)
     right_layout:add(cpuwidget)
     right_layout:add(netwidget)

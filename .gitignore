@@ -18,6 +18,8 @@ rdev/
 intel/
 paks/
 IdeaProjects/
+R/
+xournal/
 
 # Temporals
 .thumbnails/
@@ -37,6 +39,8 @@ IdeaProjects/
 
 # Soft
 .vim/
+.ssh/
+.mozilla/
 .Mathematica/
 .PyCharm30/
 .aMule/
@@ -44,7 +48,6 @@ IdeaProjects/
 .eclipse/
 .macromedia/
 .mypaint/
-.mozilla/
 .gimp-2.8/
 .java/
 .xournal/
@@ -57,12 +60,8 @@ IdeaProjects/
 .xmaximarc
 .unite/
 .ssr/
-.ssh/
 .tgdb/
 .cgdb/
-.xchm
-.fceux/
-.nestopia/
 .stardict/
 .mednafen/
 .mess/
@@ -78,8 +77,6 @@ IdeaProjects/
 .gnupg/
 .ipython/
 .p7zip
-.tor-browser-en/
-.lastpass/
 .wxHexEditor
 .fonts/
 .xdg_menu_cache/
@@ -89,7 +86,6 @@ IdeaProjects/
 .python_history
 .designer
 .irssi/
-.milkytracker_config
 .ncmpcpp/
 .projectM/
 .sdcv_history
@@ -98,13 +94,21 @@ IdeaProjects/
 .purple/
 .gstreamer-0.10/
 .IdeaIC13/
-.recently-used               # Keepass 2.0 recent files
 .recently-used
 .fltk/
 .goldendict/
 .xournalpp/
-R/
-xournal/
+
+# Minor configs
+.config/chromium
+.config/mpd/log
+.config/mpd/pid
+.config/mpd/state
+.config/mpd/sticker.sql
+.config/mpd/database
+.config/nautilus
+.config/dconf
+
 
 
 # Temporary hide...
