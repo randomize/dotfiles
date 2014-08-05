@@ -1,6 +1,6 @@
 
 
-# Default XDG
+# Default XDG folders
 Desktop/
 Documents/
 Downloads/
@@ -11,7 +11,6 @@ Videos/
 Music/
 
 # My stuff
-VirtualBox VMs/
 workspace/
 cocos2d-x/
 rdev/
@@ -21,7 +20,7 @@ IdeaProjects/
 R/
 xournal/
 
-# Temporals
+# Cache and tempory files
 .thumbnails/
 .log/
 .cache/
@@ -33,12 +32,16 @@ xournal/
 .Xauthority
 .esd_auth
 .xsel.log
+.sdcv_history
 .viminfo
 .zcompdump*
 .zsh-update
+.config/awesome/archmenu.lua
+.config/pulse/cookie
 
-# Soft
+# Major soft
 .vim/
+.purple/
 .ssh/
 .mozilla/
 .Mathematica/
@@ -46,25 +49,22 @@ xournal/
 .aMule/
 .android/
 .eclipse/
-.macromedia/
 .mypaint/
-.gimp-2.8/
-.java/
 .xournal/
-.texlive/
 .pentadactyl/
+.irssi/
+.ncmpcpp/
 .pki/
+.ipython/
+
+# Minor soft
 .racket/
-.pdextended
 .jackdrc
-.xmaximarc
 .unite/
 .ssr/
 .tgdb/
 .cgdb/
 .stardict/
-.mednafen/
-.mess/
 .qmc2/
 .kde4/
 .htcfg2
@@ -75,9 +75,7 @@ xournal/
 .cr3/
 .ghc/
 .gnupg/
-.ipython/
 .p7zip
-.wxHexEditor
 .fonts/
 .xdg_menu_cache/
 .xmobarrc
@@ -85,19 +83,13 @@ xournal/
 .ddccontrol/
 .python_history
 .designer
-.irssi/
-.ncmpcpp/
-.projectM/
-.sdcv_history
 .gnome/
 .dbus/
-.purple/
 .gstreamer-0.10/
 .IdeaIC13/
 .recently-used
 .fltk/
 .goldendict/
-.xournalpp/
 
 # Minor configs
 .config/chromium
@@ -108,7 +100,8 @@ xournal/
 .config/mpd/database
 .config/nautilus
 .config/dconf
-
+.config/libreoffice
+.config/llpp.conf
 
 
 # Temporary hide...
