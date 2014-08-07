@@ -261,6 +261,7 @@ alias free='free -m'
 alias twit='ttytter -ansi -ssl -verify'
 alias rss='newsbeuter'
 alias up='uptime'
+alias htop='htop -d 2'
 
 # Programming
 alias cmake-release='cmake -DCMAKE_BUILD_TYPE=Release'
@@ -289,7 +290,7 @@ alias clean_vim_views='rm /home/randy/.vim/view/*'
 alias list_devices='lsblk -f'
 
 ## Awesome
-alias eA='cd ~/.config/awesome && vim rc.lua'
+alias eA='vim ~/.config/awesome/rc.lua'
 alias cdA='cd ~/.config/awesome'
 alias eT='cd ~/.config/awesome/themes/zenburn && vim theme.lua'
 

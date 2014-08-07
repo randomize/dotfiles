@@ -348,6 +348,11 @@ globalkeys = awful.util.table.join(
           -- awful.util.spawn("urxvtc -e ranger", false)
        end
     ),
+    awful.key({ modkey, "Shift"}, "e", 
+       function ()
+          awful.util.spawn("nautilus", false)
+       end
+    ),
     awful.key({                   }, "Print",
       function ()
          awful.util.spawn("scrot", false)
@@ -386,16 +391,21 @@ globalkeys = awful.util.table.join(
          naughty.notify({ title="MPD player", text="Next track" })
       end
     ),
+    awful.key({ modkey,           }, "F5",
+      function ()
+         awful.util.spawn_with_shell("xclip -o | xargs /home/randy/bin/yt.sh")
+         naughty.notify({ title="Playing YouTube player", text="Launching...." })
+      end
+    ),
     awful.key({ modkey,           }, "F4",
       function ()
-         -- awful.util.spawn("pidgin")
-         -- naughty.notify({ title="Pidgin", text="Pidgin starting" })
-          drop("urxvtc -e profanity", "top", "center", 1, 0.6)
+         -- drop("urxvtc -e profanity", "top", "center", 1, 0.6)
+         awful.util.spawn("pidgin")
       end
     ),
     awful.key({ modkey,           }, "F3",
       function ()
-         awful.util.spawn("chromium")
+         awful.util.spawn("chromium --incognito")
       end
     ),
     -- }}}

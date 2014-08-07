@@ -34,7 +34,7 @@ xournal/
 .xsel.log
 .sdcv_history
 .viminfo
-.zcompdump*
+.zcompdump
 .zsh-update
 .config/awesome/archmenu.lua
 .config/pulse/cookie
@@ -91,22 +91,32 @@ xournal/
 .fltk/
 .goldendict/
 
-# Minor configs
-.config/chromium
+# Minor config dirs
+.config/chromium/
 .config/mpd/log
 .config/mpd/pid
 .config/mpd/state
 .config/mpd/sticker.sql
 .config/mpd/database
-.config/nautilus
-.config/dconf
-.config/libreoffice
+.config/nautilus/
+.config/dconf/
+.config/libreoffice/
+.config/htop/
+.config/qBittorrent/
+.config/.mono/
+.config/KeePass/
+.config/DjVuLibre/
+.config/VirtualBox/
+.config/enchant/
+.config/gtk-2.0/
+
+# Minor config files
+.config/QtProject.conf
+.config/Trolltech.conf
 .config/llpp.conf
+.config/ranger/history
 
 
 # Temporary hide...
 .local/
 
-
-# By file type
-*.pyc

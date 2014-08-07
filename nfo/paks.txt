@@ -124,6 +124,8 @@ Partitions will be aligned on 8-sector boundaries
    nautilus-open-terminal 
    nautilus-sendto 
    python2-nautilus 
+   sushi                   // Quick preview
+
 
    Put:
 
