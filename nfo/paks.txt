@@ -104,6 +104,7 @@ Partitions will be aligned on 8-sector boundaries
    compton-git // Composition
    libnotify   // Notifination library
    parcellite  // clipboard manager good and lite
+   gksu        // GUIsh sudo and su
 
  3) file manager:
 

@@ -38,6 +38,7 @@ xournal/
 .zsh-update
 .config/awesome/archmenu.lua
 .config/pulse/cookie
+.gksu.lock
 
 # Major soft
 .vim/
@@ -109,6 +110,8 @@ xournal/
 .config/VirtualBox/
 .config/enchant/
 .config/gtk-2.0/
+.config/mc
+.config/parcellite
 
 # Minor config files
 .config/QtProject.conf

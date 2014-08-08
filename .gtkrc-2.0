@@ -1,3 +1,19 @@
 gtk-icon-theme-name="Faenza-Cupertino"
 gtk-theme-name = "Zukitwo"
 gtk-font-name = "DejaVu Sans 9"
+
+
+style "gksu" {
+   bg[NORMAL] = "#770000"
+   bg[ACTIVE] = "#550000"
+   bg[PRELIGHT] = "#990000"
+   bg[SELECTED] = "#550000"
+   bg[INSENSITIVE] = "#220000"
+   fg[NORMAL] = "#EAEAEA"
+   fg[ACTIVE] = "#EAEAEA"
+   fg[PRELIGHT] = "#FFFFFF"
+   fg[SELECTED] = "#FFFFFF"
+   fg[INSENSITIVE] = "#808080776c58"
+}
+
+widget "GksuuiDialog*" style "gksu"widget "PolkitGnomeAuthenticationDialog*" style "gksu"

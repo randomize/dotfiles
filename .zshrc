@@ -283,6 +283,7 @@ alias mount_ipad_video='ifuse --appid AVPlayerHD.eplayworks.com /mnt/ipad && cd 
 alias mount_ipad_djvu='ifuse --appid com.qzyzx.SoleDjVu /mnt/ipad && cd /mnt/ipad'
 alias mount_ipad_root='ifuse --root /mnt/ipad && cd /mnt/ipad'
 alias umount_ipad='cd ~ && umount /mnt/ipad'
+alias mount_mac='sudo sshfs  randy@10.10.10.105:/ /mnt/macos'
 
 # Tools
 #alias bindiff='cmp -l file1.bin file2.bin | gawk \'{printf \"%08X %02X %02X\n\", $1, strtonum(0$2), strtonum(0$3)}\''
@@ -311,7 +312,14 @@ alias view='vim -R'
 
 alias sniff_flv='sudo ngrep -d any '.flv'  port 80'
 
+## Virtual Box
+alias macos='VBoxManage startvm "VM Mac OS Mavericks"'
+alias windows='VBoxManage startvm "Window 8"'
+
 # Functions ==================================================================================
+
+## Cd and list
+function cdd(){ cd $* ; ls --color}
 
 ## Command-line calculator
 calc() { python -ic "from __future__ import division; from math import *; from random import *" ;}
