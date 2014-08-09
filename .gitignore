@@ -112,6 +112,7 @@ xournal/
 .config/gtk-2.0/
 .config/mc
 .config/parcellite
+.config/awesome/awesompd/
 
 # Minor config files
 .config/QtProject.conf

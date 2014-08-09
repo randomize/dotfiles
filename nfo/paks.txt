@@ -319,6 +319,7 @@ Partitions will be aligned on 8-sector boundaries
       dhex - I like it
       hte
       hexedit
+      ghex
 
 ==== Fonts =======================
 
