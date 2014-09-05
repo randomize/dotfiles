@@ -58,6 +58,9 @@ xournal/
 .pki/
 .ipython/
 .gimp-2.8/
+.thunderbird/
+.texlive/
+
 
 # Minor soft
 .racket/

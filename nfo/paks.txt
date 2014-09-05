@@ -155,9 +155,12 @@ Partitions will be aligned on 8-sector boundaries
 
    wget                   // Old good wget
    curl                   // New downloader
-   unp                    // Console unpacker
+   unp                    // Console universal unpacker
    par2cmdline            // Par2 utility
    rmlint                 // Duplicate files searcher and remover
+
+   // Pipe tools
+   pv                     // echo "You can simulate on-screen typing just like in the movies" | pv -qL 10
 
  4) Screensaver ;)
    lightson script
@@ -167,15 +170,16 @@ Partitions will be aligned on 8-sector boundaries
    llpp-git
    djview
    feh
-   xchs
+   xchs, chssee
    fbreader
    pdfmod
    pdfcrack
 
  6) Office
 
-   libreoffice  // Main office suite
-   stardict     // Dictionary
+   libreoffice-gnome  // GTK version of Libre Office
+   goldendict         // GUIsh dictionary
+   sdcv               // Console version of stardict
 
 
 ===== Ipad support =================

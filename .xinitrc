@@ -50,7 +50,7 @@ xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu > ~/
 # pasystray &
 
 # Clipboard manager
-parcellite &
+# parcellite &
 
 # Composition
 compton -b
