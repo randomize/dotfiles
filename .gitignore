@@ -57,6 +57,7 @@ xournal/
 .ncmpcpp/
 .pki/
 .ipython/
+.gimp-2.8/
 
 # Minor soft
 .racket/
@@ -91,6 +92,7 @@ xournal/
 .recently-used
 .fltk/
 .goldendict/
+.sane/
 
 # Minor config dirs
 .config/chromium/
@@ -113,6 +115,9 @@ xournal/
 .config/mc
 .config/parcellite
 .config/awesome/awesompd/
+.config/unity3d/
+.config/chmsee/
+.config/blender/
 
 # Minor config files
 .config/QtProject.conf

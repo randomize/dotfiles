@@ -108,35 +108,17 @@ Partitions will be aligned on 8-sector boundaries
 
  3) file manager:
 
-   // NOT USED ANYMORE
-   //pcmanfb - uses deprecated udisks
-   //thunar  - good lightweight filemanager, but DJVu thumbnails and poor search
-   //catfish                 // Search support
-   //thunar-volman           // Volume maneger
-   //tumbler                 // Thumbnails plugin
-   //   raw-thumbnailer      // Raw
-   //   libgsf               // For odf formats
-   //thunar-archive-plugin   // Archive plugin
-
    nautilus                // Slow but powerfull
 
    libnautilus-extension 
-   nautilus-actions 
-   nautilus-open-terminal 
-   nautilus-sendto 
+   nautilus-actions        // For custom actions on files and folders
+   nautilus-open-terminal  // To open current dir in TERM
+   nautilus-sendto         // Send to pidgin and other places
+   sushi                   // Quick preview on space
    python2-nautilus 
-   sushi                   // Quick preview
 
-
-   Put:
-
-   (gtk_accel_path "<Actions>/ShellActions/Up" "BackSpace")
-
-   under
-
-   ~/.config/nautilus/accels
-
-   to get backspace back
+   Backspace Fix : Add 'gtk_accel_path "<Actions>/ShellActions/Up" "BackSpace"' to ~/.config/nautilus/accels
+   Disk usage:     Add 'Disk usage' to actions, with 'baobab %M' command
 
 
    // Mounting support
@@ -164,15 +146,18 @@ Partitions will be aligned on 8-sector boundaries
 
    // Console filemanagers
    mc                     // Best
-   unp                    // Console unpacker
 
    ranger                 // Another console, powered by vim keys
     highlight             // for syntax
     atool                 // archives work
 
-    // Console tools
-    curl
-    wget
+   // Console tools
+
+   wget                   // Old good wget
+   curl                   // New downloader
+   unp                    // Console unpacker
+   par2cmdline            // Par2 utility
+   rmlint                 // Duplicate files searcher and remover
 
  4) Screensaver ;)
    lightson script
@@ -337,11 +322,15 @@ Partitions will be aligned on 8-sector boundaries
 
    1. Browsers
 
-   firefox     // Cannot use pepper plugin
-   flashplugin // Deprecated
+   firefox
+   firefox-adblock-plus
+   firefox-noscript
 
    firefox plugins:
     /// TODO
+
+   firefox setup ( about:config )
+   network.standard-url.escape-utf8 = false
 
    chromium
    chromium-pepper-flash
