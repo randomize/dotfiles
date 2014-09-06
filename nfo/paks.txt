@@ -4,6 +4,8 @@
 
 First to install:
 
+   coreutils         // Base stuff
+   bash              // Nowhere without it
    vi                // VI VI VI - evil power editor
    sudo              // Super user do
    screen            // Terminal multiplexer
@@ -18,8 +20,11 @@ UEFI boot:
 
 Packaging:
 
-   aur/yaourt   // Aur "pacman"
+   local/yaourt          // Aur "pacman"
+   local/package-query   // yaourt dependency
+
    namcap         // Package checking
+   abs            // Arch build system
 
 Video:
 
@@ -47,16 +52,25 @@ Diagnostics:
 Window manager and DE:
 
    awesome
-   aur/compton-git   // composition manager
-   libnotify         // notifications
+   archlinux-xdg-menu  // For apps menu in awesome (see setup(17))
+   aur/compton-git     // composition manager
+   libnotify           // notifications lib
 
    //parcellite    // clipboard manager good and lite // Has problems with nautilus Cut/Copy/Paste
+   skb             // simple keyboard layout indicator
+
+Themes:
+
+   aur/faenza-cupertino-icon-theme // GTK icon theme
+   aur/zukitwo-themes              // Nice theme for all things
+
 
 Terminal emulators:
 
-   rxvt-unicode   // Default terminal, using urxvt{d,c} pair
-   aur/st         // JIC fallback
-   xterm          // Another JIC term ;)
+   rxvt-unicode            // Default terminal, using urxvt{d,c} pair
+   aur/st                  // JIC fallback
+   xterm                   // Another JIC term ;)
+   aur/cool-old-term-git   // Eye-candy old school terminal emulator
 
 Console tools:
 
@@ -73,7 +87,6 @@ Nautilus:
 
    nautilus                // Big slow but powerful (see setup(3))
    libnautilus-extension
-   python2-nautilus
 
    nautilus-actions        // For custom actions in context menus
    nautilus-open-terminal  // To open current dir in TERM
@@ -107,7 +120,8 @@ Archives:
 
    p7zip       // 7z support
    zip         // ZIP support
-   unzip       // ZIP support
+   unzip
+   bzip2
    arj         // ARJ support
    lzop        // LZOP support
    cpio        // RPM support
@@ -122,22 +136,26 @@ Archives:
 Viewers:
 
    aur/llpp-git   // PDF fast and powerful
-   djview         // DJVU
+   evince         // Slow PDF and DJVU but can build thumbnails in nautilus
+   djview4        // DJVU faster then evince
    feh            // image viewer
    eog            // GNOME viewer
 
-   xchm       // CHM viewer
-   chmsee     // Modern CHM viewer
+   aur/view3dscene-svn // 3D model viewer
 
-   fbreader
+   xchm           // CHM viewer
+   chmsee-webkit  // Modern CHM viewer
 
-   pdfmod     // PDF GUIsh editor
+   fbreader       // Using it as EPUB reader 
+   //coolreader   // fb reader is better for me
+
+   pdfmod     // PDF GUI-sh editor
    pdfcrack
 
 Office:
 
    libreoffice-gnome  // GTK version of Libre Office
-   goldendict         // GUIsh dictionary
+   goldendict         // GUI-sh dictionary
    sdcv               // Console version of stardict
 
 Ipad support:
@@ -153,17 +171,22 @@ IDE and editors:
    gvim               // The IDE (see setup (5))
 
    pycharm-community  // Python IDE
-   qtcreator          // Nice IDE
    eclipse            // Big and fat but good for Android
    sublime-text-dev   // Don't like currently, but shell give a shot
    monodevelop        // Well good too
+
+   qtcreator          // Nice IDE
+   qt5-examples       // Some examples to qtcreator
 
 C++ compilers and tools:
 
    gcc                        // GNU compiler
    clang                      // Cool and modern apple compiler
-   intel-parallel-studio-2013 // Free for GNU\Linux
    root                       // CERN thing, has interactive cling C++
+
+   cppcheck                 // Static C/C++ analyzer
+   ctags                    // Source index generator (was used for Vim before YCM)
+   clang-analyzer           // Powerful C++ static analyzer
 
 C++ libs:
 
@@ -176,11 +199,14 @@ C++ libs:
    glfw
    glut
    bullet         // Physics lib
+   box2d          // 2D Physics
    assimp         // Assets lib
    ogre           // 3D Engine
 
    mpich          // MPI support
    intel-tdd      // "Parallel STL"
+
+   glade          // GUI builder for GTK 3, also there is glade
 
 Debuggers:
 
@@ -188,6 +214,7 @@ Debuggers:
    gdb            // Cool debugger
    cgdb           // "GUI" for it
    valgrind       // Profiler
+   aur/vogl-git   // OpenGL debugger
 
 Assemblers:
 
@@ -200,13 +227,21 @@ Reverse:
 
    aur/darm-git            // disassembly library
    aur/radare2-git         // Reverse engineering tool
+   aur/libewf              // radare dependency
    aur/smali               // Android DEX reverse engineering tool
    aur/android-apktool     // Android reverse engineering tool
+   aur/dex2jar             // DEX to JAR converter
+   aur/jd-gui              // Java source reversing tool
 
 Build tools:
 
    make
+   autoconf
+   automake
    cmake
+   apache-ant   // Ant build system, for Android mainly
+   gradle       // Another control system
+   gradle-doc
 
 Source code tools:
 
@@ -238,6 +273,8 @@ Emulation:
 
    virtualbox                 // Virtual (see setup(6))
    virtualbox-host-modules    // Kernel modules
+   aur/virtualbox-ext-oracle  // Experimental features
+
    net-tools                  // Dependency for networking support
 
    qemu   // Good alternative, TODO: setup later with kickass KVM
@@ -249,7 +286,6 @@ Python stuff:
    python-numpy
    python-scipy
    aur/python-matplotlib-git  // Building it with latest snapshot
-   python2-unidecode
    python-pillow
    python-pygments
    python-pyzmq
@@ -264,6 +300,10 @@ Python stuff:
    python-jinja       // for ipython notebook
    haskell-pandoc     // ipython notebook conversion
 
+   python2-unidecode  // for YCM in Vim
+   python2-nautilus   // for nautilus-compare
+   aur/python-librtmp // not using currently, used for some package
+
 Other Languages:
 
    racket   // scheme LISP
@@ -276,13 +316,15 @@ Other Languages:
 
 Fonts:
 
-   aur/terminus-cyrillic  // Used in virtual terminals
+   aur/terminus-cyrillic       // Used in virtual terminals
+   adobe-source-code-pro-fonst // Nice monotype font
 
 Browsers:
 
    firefox                 // See setup(7)
    firefox-adblock-plus    // No ads
    firefox-noscript        // No scripts
+   pentadactyl-hg          // Vim-like behavior for firefox
 
    chromium                // Used only when damn Flash is required
    chromium-pepper-flash   // With this player it is maintained (flashplugin is not)
@@ -341,14 +383,18 @@ Music editors & synth:
 Media players:
 
    mplayer
-   mpv
+   aur/mpv-git      // Nice new player, testing git version
 
-   mpd
-   ncnmcpp
+   aur/mpd-git      // Music player daemon (git version)
+   mpc              // Client for it
+   ncnmcpp          // Another client with simple ncurses-based interface
+
+   xmp              // XM modules console player
+   dumb             // One more console player for chiptune
 
 Stream grabbers:
 
-   livestreamer     // Helper script to live streaming
+   aur/livestreamer-git     // Helper script to live streaming
    youtube-dl
 
 Tools:
@@ -356,6 +402,7 @@ Tools:
    ffmpeg
    mkvtoolnix
    mediainfo
+   aur/mp3val  // MP3 file validator and fixer
 
 Codecs:
 
@@ -372,18 +419,20 @@ Screen capture:
 Monitor tools:
 
    xorg-xrandr
-   ddccontrol       // Uses DDC to control brightness (see scripts in ~/bin)
+   ddccontrol       // See also ddccontrol PKGBUILD 
    ddccontrol-db    // Database, no W2600HP yet. TODO: contribute
 
 Sketching:
 
-   xournal-git   // + Add my patches
+   local/xournal-git   // use master + my patches (see PKGBUILD)
    mypaint
 
-Editing:
+Graphics software:
 
    imagemagick   // Best editor/viewer ever (see setup(16))
    gimp
+
+   blender       // Best 3D editor
 
 Books scanning:
 
@@ -392,23 +441,31 @@ Books scanning:
 
 Math:
 
-   octave
-   gnuplot
-   plplot
-   sage
-   maxima
+   bc           // Actually I use python for such stuff. JIC
+   octave       // Matlab free alternative
+   sage         // Big python mathematics system
+   maxima       // Old and powerful algebra system
+   aur/r-mkl    // R (faster edition with Intel MKL)
+   gnuplot      // Graph system
+   plplot        
+
+   aur/mathematica  // Not using anymore, python is better
+   aur/jflap        // Simple automata learning tool
 
 TeX:
 
    texlive-most
    texmaker
-   lyx
+   lyx            // WYSIWYG editor
+   equalx         // LaTeX equation editor
 
-Games:
+Games and fun:
 
-   gnugo
-   gogui
+   gnugo  // Go game engine
+   gogui  // GUI-sh go board
 
+   archey   // Simple script to print out nice Arch logo with some info
+   joyutils // Pad control utilities
 
 Networking:
 
@@ -424,7 +481,6 @@ Android development:
    aur/android-ndk                  // Native support SDK
 
    android-udev      // Udev rules for most popular devices
-   apache-ant        // Ant build system
 
    lib32-libstdc++   // Android SDK is 32 bit, so using this to workaround
    lib32-libxv       // and this..
@@ -435,5 +491,24 @@ Android development:
    lib32-gcc-libs
    lib32-alsa-lib    // Not sure who is using ALSA there...
 
-   swt  // Another dependency for android-sdk
+   swt             // Another dependency for android-sdk
+   heimdall        // Samsung devices flashing tool
+   aur/pidcat-git  // Nice colored logcat with pids
+
+Intel stuff:
+
+local/intel-parallel-studio-2013 // Free for GNU\Linux
+local/intel-compiler-base        // Intel compiler for C++
+local/intel-fortran-compiler     // Intel compiler for Fortran
+local/intel-idb                  // Intel debugger
+local/intel-inspector-xe         // Intel memory and thread debugger
+local/intel-ipp                  // Intel integrated performance primitives
+local/intel-mkl                  // Intel math kernel library
+local/intel-openmp               // Intel OpenMP
+local/intel-sourcechecker        // Intel static analyzer
+local/intel-vtune-amplifier-xe   // Intel profiler
+local/intel-advisor-xe           // Intel threading designer and prototypes tool
+
+
+
 

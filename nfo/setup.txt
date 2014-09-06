@@ -175,3 +175,8 @@ ExecStart=-/usr/bin/agetty --autologin username --noclear %I 38400 linux
 
 // TODO:
 
+==== XDG menu generate for awesome WM ==== (17)
+
+  $ xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu > ~/.config/awesome/archmenu.lua
+
+
