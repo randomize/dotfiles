@@ -171,3 +171,7 @@ Type=simple
 ExecStart=
 ExecStart=-/usr/bin/agetty --autologin username --noclear %I 38400 linux
 
+==== Imagemagick to handle some thumbnails ==== (16)
+
+// TODO:
+
