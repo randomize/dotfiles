@@ -41,7 +41,8 @@ xournal/
 .gksu.lock
 
 # Major soft
-.vim/
+.vim/Bundle
+.vim/view
 .purple/
 .ssh/
 .mozilla/

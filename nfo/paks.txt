@@ -1,3 +1,6 @@
+// My packages file
+// vim: ft=randypacks
+
 First to install:
 
    vi                // VI VI VI - evil power editor
@@ -54,8 +57,8 @@ Terminal emulators:
    st             // JIC fallback
    xterm          // Another JIC term ;)
 
-
 Console tools:
+
    zsh
    zsh-syntax-highlighting
 
@@ -426,7 +429,7 @@ Books scanning:
    scantailor
    pdf2djvu
 
-==== Math ====
+Math:
 
    octave
    gnuplot
