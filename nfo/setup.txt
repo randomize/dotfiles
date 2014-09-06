@@ -1,0 +1,173 @@
+
+   Arch Linux setup
+
+==== Disk partitions ==== (0)
+
+Number  Start (sector)  End (sector)  Size       Code  Name
+1                 34        585936    286.1 MiB   EF00  ESP
+2             585937     313085936    149.0 GiB   0700
+3          313085937     313585936    244.1 MiB   8300  boot
+4          313585937     430773436    55.9 GiB    8300  root
+5          430773437     479601561    23.3 GiB    8300  var
+6          479601562     518664061    18.6 GiB    8200  swap
+7          518664062     625142414    50.8 GiB    8300  home
+
+Filesystem   Size  Used Avail Use% Mounted on  Label
+/dev/sda1    286M   49M  238M  17% /boot       boot
+/dev/sda2    Not mounted
+/dev/sda3    Not mounted, not used
+/dev/sda4     55G   18G   35G  34% /           root
+/dev/sda5     24G  9.5G   14G  41% /var        var
+/dev/sda6    Swap
+/dev/sda7     50G  9.9G   38G  21% /home       home
+/dev/sdb1    932G  733G  199G  79% /mnt/TERRA
+
+==== Pacman and Aur ==== (1)
+
+   Enable color in pacman:
+      /etc/pacman.conf <== enable "Color" "TotalDownload"
+
+   Enable full power compilation:
+      /etc/makepkg.conf <== set -j9
+
+   Setup hook:
+     # pkgfile -u
+
+==== Video ==== (2)
+
+   Set KMS (add hook and mkinitcpo -p linux)
+
+==== Nautilus ==== (3)
+
+   Backspace Fix : 
+     ~/.config/nautilus/accels <==  'gtk_accel_path "<Actions>/ShellActions/Up" "BackSpace"' 
+
+   Disk usage: 
+      Add 'Disk usage' to actions, with 'baobab %M' command
+
+   Open with 
+
+==== Ipad support ==== (4)
+
+   # idevice_id --list  // will show some hash of my iPad
+   # ideviceinfo        // will show more random data on iPad
+   # idevicepair pair
+   # idevicepair validate
+   # mkdir /mnt/ipad
+   # chown randy /mnt/ipad
+   # chgrp users /mnt/ipad
+   # gpasswd -a randy usbmux
+   $ ifuse /mnt/ipad
+   $ /* concrete app */ ifuse --appid com.olimsoft.oplayer.hd.lite /mnt/ipad
+   $ /* all root jailed */ ifuse --root /mnt/ipad
+   $ ...
+   $ umount /mnt/ipad
+
+==== Gvim setup ==== (5)
+
+   $ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+   $ vim
+   :BundleInstall
+   $ cd ~/.vim/bundle/vimproc.vim/
+   $ make
+   $ cd ~/.vim/bundle/YouCompleteMe/
+   $ ./install.sh --clang-completer --system-libclang
+
+==== Virtual Box ==== (6)
+
+   # echo vboxdrv > /etc/modules-load.d/virtualbox.conf
+   # gpasswd -a randy vboxusers
+
+==== Firefox setup ==== (7)
+
+   ( about:config ) network.standard-url.escape-utf8 = false
+
+==== Alsa setup ==== (8)
+
+   This setup will define order of sound cards in my case
+
+   cat /etc/modprobe.d/alsa-base.conf
+
+      # Created by randy to define order of cards
+
+      # First goes Intel PCH
+         options snd-hda-intel index=0 model=auto vid=8086 pid=8c20
+
+      # HDMI is the second
+         options snd-hda-intel index=1 model=auto vid=8086 pid=0c0c
+
+   To see cards list use:
+
+      cat /proc/asound/modules   // Note they can use same module for misc H/W
+      lspci -nn | grep -i audio  // Tip. Order of output matches detection order - use this fact.
+      cat /proc/asound/cards     // Lists detected cards order
+      aplay -l                   // Lists avaliable outputs
+
+
+==== DNS masque ==== (9)
+
+   Set google DNS in:
+     /etc/dnsmasq.conf
+
+   Put to /etc/resolv.conf:
+     nameserver 127.0.0.1
+     nameserver 8.8.8.8
+
+   Enable in network manager
+   # echo dns=dnsmasq >> /etc/NetworkManager/NetworkManager.conf
+
+
+==== Forward journald to /dev/tty12 ==== (10)
+
+ /etc/systemd/journald.conf
+
+      ForwardToConsole=yes
+      TTYPath=/dev/tty12
+      MaxLevelConsole=info
+
+ # systemctl restart systemd-journald.
+
+
+==== Android & cocos ==== (11)
+
+   1) Apache ant : install package apache-ant
+   2) Enable multilib(Google sucks with 32bit SDK), install deps:
+        pacman -S lib32-alsa-lib lib32-libstdc++5 lib32-libxv lib32-ncurses lib32-openal lib32-sdl lib32-zlib lib32-gcc-libs swt
+
+        // SOLUTION! build form source adb-git which is 64bit and replace original later
+
+   3) save latest SDK and NDK to ~/android/{sdk,ndk}
+   4) launch android app and install packages (SDK, platform and build tools)
+   5) setup environment vars for adb - already on ZSH config - check
+   6) compile aur's adb-git, but not install: unpack and move adb to ~/android/sdk/platfrom-tools/adb replacing it
+
+   7) Install android-udev rules - currentlty moced from aur
+   8) clone cocos to ~/cocos2d-x
+
+
+==== ipv6 ==== (12)
+
+   Disable with kernel parameter (see ./global_dotfiles/loader/entries/arch.conf)
+
+==== Man pages ==== (13)
+
+   # mandb
+   Then use search
+   $ apropos SOMETHING
+   And other
+   $ whatis
+
+==== Itmages client ==== (14)
+
+   install perl-lwp-protocol-https
+   configure password/login
+   use it
+
+==== Auto load to console vt1 ==== (15)
+
+cat /etc/systemd/system/getty@tty1.service.d/autologin.conf
+[Service]
+Type=simple
+ExecStart=
+ExecStart=-/usr/bin/agetty --autologin username --noclear %I 38400 linux
+

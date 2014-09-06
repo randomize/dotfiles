@@ -1,0 +1,13 @@
+# Intentionally commented out!
+# This was only used to create SoundMixer recording once
+# Left for future reuse
+
+#pcm.duplex {
+#    type asym
+#    playback.pcm "hw:2,0"
+#    capture.pcm "hw:0,0"
+#}
+#pcm.!default {
+#    type plug
+#    slave.pcm "duplex"
+#}

@@ -96,6 +96,7 @@ xournal/
 .fltk/
 .goldendict/
 .sane/
+.view3dscene.conf
 
 # Minor config dirs
 .config/chromium/
@@ -121,6 +122,9 @@ xournal/
 .config/unity3d/
 .config/chmsee/
 .config/blender/
+.config/ImageMagick/
+.config/Scan Tailor/
+
 
 # Minor config files
 .config/QtProject.conf

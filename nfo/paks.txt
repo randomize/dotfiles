@@ -1,64 +1,30 @@
+First to install:
 
-   Arch Linux setup by randomize
+   vi                // VI VI VI - evil power editor
+   sudo              // Super user do
+   screen            // Terminal multiplexer
+   bash-completion   // Better completion on bash
+   pkgfile           // For command not found hook (see setup (1))
+   openssh           // SSH server (see setup)
 
-#### Disk partitions #########################################
-
-Number  Start (sector)  End (sector)  Size       Code  Name
-1                 34        585936    286.1 MiB   EF00  ESP
-2             585937     313085936    149.0 GiB   0700
-3          313085937     313585936    244.1 MiB   8300  boot
-4          313585937     430773436    55.9 GiB    8300  root
-5          430773437     479601561    23.3 GiB    8300  var
-6          479601562     518664061    18.6 GiB    8200  swap
-7          518664062     625142414    50.8 GiB    8300  home
-
-Filesystem   Size  Used Avail Use% Mounted on  Label
-/dev/sda1    286M   49M  238M  17% /boot       boot
-/dev/sda2    Not mounted
-/dev/sda3    Not mounted, not used
-/dev/sda4     55G   18G   35G  34% /           root
-/dev/sda5     24G  9.5G   14G  41% /var        var
-/dev/sda6    Swap
-/dev/sda7     50G  9.9G   38G  21% /home       home
-/dev/sdb1    932G  733G  199G  79% /mnt/TERRA
-
-#### Packets: ###############################################
-
-==== First to install ===
-
-   vi
-   sudo
-   screen
-   bash-completion
-   // package auto-search hook on "command not found"
-   openssh
-
-
-=== UEFI boot =============
+UEFI boot:
 
    efibootmgr
    gummiboot
 
-=== Pacman and Aur =====================================
+Packaging:
 
-   pacman.conf => enable "Color" "TotalDownload"
+   yaourt   // Aur "pacman"
+   namcap   // Package checking
 
-   yaourt // Build from PKGBUILD
-
-   namcap // checking packages
-
-   makepkg.conf => set -j9 // to compile multithreaded
-
-==== Video ========================
+Video:
 
    intel-dri
    xf86-video-intel
    libva-intel-driver
    mesa-demos          // Beloved glxgears is here
 
-   Set KMS (add hook and mkinitcpo -p linux)
-
-=== Xorg stuff ==========================
+Xorg stuff:
 
    xorg-server
    xorg-xinit
@@ -69,14 +35,12 @@ Filesystem   Size  Used Avail Use% Mounted on  Label
    xvinfo        // Helper for lightson script
    xclip         // For scripting with clipboard
 
-=== Diagnostics  ==========================
+Diagnostics:
 
    htop
    sysdig
 
-=== DE ==========================
-
-Window manager:
+Window manager and DE:
 
    awesome         
    compton-git     
@@ -84,23 +48,27 @@ Window manager:
 
    //parcellite    // clipboard manager good and lite // Has problems with nautilus Cut/Copy/Paste
 
-Console and tools:
+Terminal emulators:
 
-   rxvt-unicode
-   tmux
+   rxvt-unicode   // Default terminal, using urxvt{d,c} pair
+   st             // JIC fallback
+   xterm          // Another JIC term ;)
+
+
+Console tools:
    zsh
    zsh-syntax-highlighting
 
-   unp                    // Console universal unpacker
-   par2cmdline            // Par2 utility
-   rmlint                 // Duplicate files searcher and remover
+   unp            // Console universal unpacker
+   par2cmdline    // Par2 utility
+   rmlint         // Duplicate files searcher and remover
 
-   // Pipe tools
-   pv                     // echo "You can simulate on-screen typing just like in the movies" | pv -qL 10
+   pv             // echo "You can simulate on-screen typing just like in the movies" | pv -qL 10
+   highlight      // for syntax highlighting
 
 Nautilus:
 
-   nautilus
+   nautilus                // Big slow but powerfull (see setup(3))
    libnautilus-extension
    python2-nautilus
 
@@ -110,23 +78,33 @@ Nautilus:
    nautilus-sendto         // Send to pidgin and other places
 
    sushi                   // Quick preview on space
+   baobab                  // Visual disk space usage
 
-   Backspace Fix : Add 'gtk_accel_path "<Actions>/ShellActions/Up" "BackSpace"' to ~/.config/nautilus/accels
-   Disk usage:     Add 'Disk usage' to actions, with 'baobab %M' command
+   gvfs           // GNOME file system abstration
+   gvfs-smb       // Samba support
+   gvfs-mtp       // Android devices MTP mode support
+   gvfs-afc 
+   gvfs-afp
+   gvfs-gphoto2
+   libgphoto2
 
-   gvfs
-   gvfs-smp
-   gvfs-mtp
-   gvfs-gphoto2 + libgphoto2
    dosfstools           // For old FAT etc
    reiserfsprogs        // Reiser formatting / mounting
    gptfdisk             // fdisk for GPT
    ntfs-3g              // to enable mounting of NTFS write(default will be readonly)
 
-   file-roller // Archiver
+Other file managers:
+
+   mc
+   ranger     // Another console, powered by vim keys
+
+Archives:
+
+   file-roller // Archiver for GNOME
+
+   p7zip       // 7z support
    zip         // ZIP support
    unzip       // ZIP support
-   p7zip       // 7z support
    arj         // ARJ support
    lzop        // LZOP support
    cpio        // RPM support
@@ -136,12 +114,7 @@ Nautilus:
    orange
    sharutils
 
-Other file managers:
-
-   mc
-   ranger     // Another console, powered by vim keys
-   highlight  // for syntax
-   atool      // archives work
+   atool      // console one
 
 Viewers:
 
@@ -150,10 +123,12 @@ Viewers:
    feh        // Images
    eog        // Gnomes viewer
 
-   xchs
-   chssee
+   xchm       // CHM viewer
+   chmsee     // Modern CHM viewer
+
    fbreader
-   pdfmod
+
+   pdfmod     // PDF GUIsh editor
    pdfcrack
 
 Office:
@@ -162,45 +137,21 @@ Office:
    goldendict         // GUIsh dictionary
    sdcv               // Console version of stardict
 
-===== Ipad support =================
+Ipad support:
 
-   1) install:
-
-      libplist libimobiledevice libgpod usbmuxd ifuse
-
-   2) Setup:
-       # idevice_id --list  // will show some hash of my iPad
-       # ideviceinfo        // will show more random data on iPad
-       # idevicepair pair
-       # idevicepair validate
-       # mkdir /mnt/ipad
-       # chown randy /mnt/ipad
-       # chgrp users /mnt/ipad
-       # gpasswd -a randy usbmux
-       $ ifuse /mnt/ipad
-       $ /* concrete app */ ifuse --appid com.olimsoft.oplayer.hd.lite /mnt/ipad
-       $ /* all root jailed */ ifuse --root /mnt/ipad
-       $ ...
-       $ umount /mnt/ipad
-
-=== Coding ============
+   ifuse              // (see setup (4))
+   libplist 
+   libimobiledevice 
+   libgpod 
+   usbmuxd 
 
 IDE and editors:
 
-   gvim
+   gvim              // (see setup (5))
    sublime-text-dev
    pycharm-community
    qtcreator
 
-Gvim setup:
-
-   1) git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-   2) launch, :BundleInstall
-   3) cd ~/.vim/bundle/vimproc.vim/
-   4) make
-   5) cd ~/.vim/bundle/YouCompleteMe/
-   6) ./install.sh --clang-completer --system-libclang
-   7) install python2-unidecode for ultisnips
 
 C++ compilers and tools:
 
@@ -213,37 +164,38 @@ C++ libs:
 
    boost
 
-   glm                        // Math lib for opengl
+   glm            // Math lib for opengl
    glew
    libgl
    libglu
    glfw
    glut
-   bullet                     // Psysics lib
-   assimp                     // Assets lib
-   ogre                       // 3D Engine
+   bullet         // Psysics lib
+   assimp         // Assets lib
+   ogre           // 3D Engine
 
-   mpich                      // MPI support
-   intel-tdd                  // "Parallel STL"
+   mpich          // MPI support
+   intel-tdd      // "Parallel STL"
 
 Debuggers:
 
-   rr                       // Mozilla debugger for multithreading
-   gdb                      // Cool debugger
-   cgdb                     // "GUI" for it
-   valgrind                 // Profiler
+   rr             // Mozilla debugger for multithreading
+   gdb            // Cool debugger
+   cgdb           // "GUI" for it
+   valgrind       // Profiler
 
 Assemblers:
 
    fasm
-   fasmarm   // port for ARM
+   fasmarm        // port for ARM
    nasm
    yasm
 
 Reverse:
 
    darm-git       // disasm library
-   radare2
+   radare2-git    // re tool
+   smali          // Android DEX re tool
 
 Build control:
 
@@ -253,7 +205,7 @@ Build control:
 Source code tools:
 
    ack                      // Better than grep
-   the_silver_searcher(ag)  // Better than ack :)
+   the_silver_searcher      // ag - better than ack :)
 
    colordiff
    meld                     // Nice GUIsh diff tool
@@ -268,12 +220,12 @@ Version Control:
    mercurial
    subversion
 
-HEXers:
+HEX editors:
 
-   dhex - I like it
+   dhex
    hte
    hexedit
-   ghex
+   ghex   // (see setup(4) for integration)
 
 Emulation:
 
@@ -291,7 +243,8 @@ Python stuff:
    ipython
 
    python-numpy
-   python-matplotlib-git // Better build from source - without webkit stuff - note python verion in PKGBUILD packaget() routine
+   python-matplotlib-git
+   python2-unidecode
    python-pillow
    python-scipy
    python-pygments
@@ -314,7 +267,7 @@ Other Languages:
    rust     // Rust
    ruby
 
-==== Fonts =======================
+==== Fonts ====
 
    Install infinality pathces via repository
 
@@ -326,7 +279,7 @@ Other Languages:
    terminus-cyrillic
 
 
-=== Internet things =========
+==== Internet things ====
 
 Browsers:
 
@@ -368,7 +321,7 @@ Instant Messaging:
    profanity // XMPP client
    tox
 
-==== Audio and sound =============
+==== Audio and sound ====
 
 Drivers:
 
@@ -450,12 +403,12 @@ Screen capture for ninjas:
 
    imagemagick import -window root screenshot.jpg
 
-==== Monitor software ===================
+==== Monitor software ====
 
    ddccontrol       // Uses DDC to control brightness (see scripts in ~/bin)
    ddccontrol-db    // Database, no W2600HP yet. TODO: contribute
 
-==== Image processing and editing  ============
+==== Image processing and editing  ====
 
 Sketching:
 
@@ -473,7 +426,7 @@ Books scanning:
    scantailor
    pdf2djvu
 
-==== Math =====================
+==== Math ====
 
    octave
    gnuplot
@@ -482,19 +435,19 @@ Books scanning:
    maxima
    mathematica (aur)
 
-=== TeX ============
+==== TeX ====
 
    texlive-most
    texmaker
    lyx
 
-==== Games =============
+==== Games ====
 
    gnugo
    gogui
 
 
-==== DNS =========================================================================================================
+==== DNS ====
 
    dnsmasq
 
@@ -508,7 +461,7 @@ Books scanning:
    Enable in network manager
    # echo dns=dnsmasq >> /etc/NetworkManager/NetworkManager.conf
 
-==== Forward journald to /dev/tty12 ==============================================================================
+==== Forward journald to /dev/tty12 ====
 
  /etc/systemd/journald.conf
 
@@ -518,7 +471,7 @@ Books scanning:
 
  # systemctl restart systemd-journald.
 
-==== Android & cocos ==============================================================================
+==== Android & cocos ====
 
    1) Apache ant : install package apache-ant
    2) Enable multilib(Google sucks with 32bit SDK), install deps:
@@ -534,11 +487,11 @@ Books scanning:
    7) Install android-udev rules - currentlty moced from aur
    8) clone cocos to ~/cocos2d-x
 
-============ ipv6 ===============================================================================
+==== ipv6 ====
 
    Disable with kernel parameter (see ./global_dotfiles/loader/entries/arch.conf)
 
-===== Man pages ======================================================================================
+==== Man pages ====
 
    # mandb
    Then use search
@@ -546,13 +499,13 @@ Books scanning:
    And other
    $ whatis
 
-==== Itmages client ================================================================================
+==== Itmages client ====
 
    install perl-lwp-protocol-https
    configure password/login
    use it
 
-==== Auto load to console vt1 =====================================================================
+==== Auto load to console vt1 ====
 
 cat /etc/systemd/system/getty@tty1.service.d/autologin.conf
 [Service]

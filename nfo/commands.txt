@@ -1,23 +1,39 @@
+# vim: ft=sh
 # This file is collection of useful commands and tricks in Linux shell and related tasks
 
 # 1. Copy my public key (dummy way:open in editor & copy; better way: cat & copy) best way:
- $ xclip -sel clip < ~/.ssh/id_rsa.pub
+
+xclip -sel clip < ~/.ssh/id_rsa.pub
 
 # 2. Create iso:
- $ mkisofs -input-charset default -r -o File.iso Mathematica_8_kg.exe
+
+mkisofs -input-charset default -r -o File.iso Mathematica_8_kg.exe
 
 # 3. Stress sytem:
- $ stress stress --cpu 2 --timeout 60
+
+stress --cpu 2 --timeout 60
 
 # 4. In package moreutils there is a tool called vipe, allows to insert vim into pipeline, to perform editing
- $ echo "GlgAAAAASUVORK5CYII=" | vipe | base64 --decode > /tmp/wat.img 
+
+echo "GlgAAAAASUVORK5CYII=" | vipe | base64 --decode > /tmp/wat.img 
 
 # 5 Searching
+
 grep -rnw 'directory' -e "pattern"
 grep --include={*.c,*.h} -rnw 'directory' -e "pattern"
 grep --exclude=*.o -rnw 'directory' -e "pattern"
 
 # 6 Print current config of Kernel
+
 cat /proc/config.gz | gunzip
-Or for ninjas
+
+# 6.1 Print current config of Kernel (ninja way)
+
 zcat /proc/config.gz 
+
+# 7 Screen capture for ninjas:
+
+imagemagick import -window root screenshot.jpg
+
+# 8
+...
