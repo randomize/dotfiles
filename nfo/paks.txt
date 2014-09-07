@@ -2,12 +2,78 @@
 // vim: ft=randypacks
 // Comments are C++-like
 
+Contents of base group:
+
+   bash
+   bzip2
+   coreutils
+   cryptsetup
+   device-mapper
+   dhcpcd
+   diffutils
+   e2fsprogs
+   file
+   filesystem
+   findutils
+   gawk
+   gcc-libs
+   gettext
+   glibc
+   grep
+   gzip
+   inetutils
+   iproute2
+   iputils
+   jfsutils
+   less
+   licenses
+   linux
+   logrotate
+   lvm2
+   man-db
+   man-pages
+   mdadm
+   nano
+   netctl
+   pacman
+   pciutils
+   pcmciautils
+   perl
+   procps-ng
+   psmisc
+   reiserfsprogs
+   s-nail
+   sed
+   shadow
+   sysfsutils
+   systemd-sysvcompat
+   tar
+   texinfo
+   usbutils
+   util-linux
+   vi
+   which
+   xfsprogs
+
+Contens of base-devel group:
+
+   autoconf
+   automake
+   binutils
+   bison
+   fakeroot
+   flex
+   gcc
+   groff
+   libtool
+   m4
+   make
+   patch
+   pkg-config
+   sudo
+
 First to install:
 
-   coreutils         // Base stuff
-   bash              // Nowhere without it
-   vi                // VI VI VI - evil power editor
-   sudo              // Super user do
    screen            // Terminal multiplexer
    bash-completion   // Better completion on bash
    pkgfile           // For command not found hook (see setup (1))
@@ -41,23 +107,31 @@ Xorg stuff:
    xf86-input-wacom
    xorg-xev
    xorg-xprop    // Helper utility for windows info
-   xvinfo        // Helper for lightson script
+   xorg-xvinfo        // Helper for "lights on" script
    xclip         // For scripting with clipboard
+   xsel          // X selection command line tool
 
 Diagnostics:
 
    htop-vi  // Same as htop, but has vi keys!
    sysdig
+   stress   // Stress testing system
 
 Window manager and DE:
 
    awesome
-   archlinux-xdg-menu  // For apps menu in awesome (see setup(17))
+   vicious             // Widgets for awesome
+   wireless_tools      // For vicious for networking widgets
+   archlinux-xdg-menu  // For applications menu in awesome (see setup(17))
+
    aur/compton-git     // composition manager
    libnotify           // notifications lib
 
-   //parcellite    // clipboard manager good and lite // Has problems with nautilus Cut/Copy/Paste
+   parcellite      // clipboard manager good and lite (Has problems with nautilus Cut/Copy/Paste)
    skb             // simple keyboard layout indicator
+   gksu            // GUI-sh sudo 
+
+   openbox         // Fallback window manager
 
 Themes:
 
@@ -68,20 +142,24 @@ Themes:
 Terminal emulators:
 
    rxvt-unicode            // Default terminal, using urxvt{d,c} pair
-   aur/st                  // JIC fallback
+   aur/st                  // JIC fall-back
    xterm                   // Another JIC term ;)
    aur/cool-old-term-git   // Eye-candy old school terminal emulator
 
 Console tools:
 
-   zsh
-   zsh-syntax-highlighting
+   zsh                      // Good shell
+   zsh-syntax-highlighting  // Even better with syntax highlighting
+   zshdb                    // Script debugger
+
+   tmux           // Terminal multiplexer
 
    unp            // Console universal unpacker
    par2cmdline    // Par2 utility
    aur/rmlint         // Duplicate files searcher and remover
 
    pv             // echo "You can simulate on-screen typing just like in the movies" | pv -qL 10
+   rlwrap         // Read line wrap (for maxima and others)
 
 Nautilus:
 
@@ -105,7 +183,6 @@ Nautilus:
    libgphoto2
 
    dosfstools           // For old FAT etc
-   reiserfsprogs        // Reiser formatting / mounting
    gptfdisk             // fdisk for GPT
    ntfs-3g              // to enable mounting of NTFS write(default will be readonly)
 
@@ -121,7 +198,6 @@ Archives:
    p7zip       // 7z support
    zip         // ZIP support
    unzip
-   bzip2
    arj         // ARJ support
    lzop        // LZOP support
    cpio        // RPM support
@@ -146,8 +222,8 @@ Viewers:
    xchm           // CHM viewer
    chmsee-webkit  // Modern CHM viewer
 
-   fbreader       // Using it as EPUB reader 
-   //coolreader   // fb reader is better for me
+   fbreader       // Using it as EPUB reader
+   //coolreader   // fbreader is better for me
 
    pdfmod     // PDF GUI-sh editor
    pdfcrack
@@ -169,18 +245,19 @@ Ipad support:
 IDE and editors:
 
    gvim               // The IDE (see setup (5))
-
+   emacs              // Another The IDE
    pycharm-community  // Python IDE
    eclipse            // Big and fat but good for Android
-   sublime-text-dev   // Don't like currently, but shell give a shot
-   monodevelop        // Well good too
+
+   sublime-text-dev                   // Don't like currently, but shell give a shot
+   monodevelop                        // Well good too
+   intellij-idea-community-edition    // Idea
 
    qtcreator          // Nice IDE
    qt5-examples       // Some examples to qtcreator
 
 C++ compilers and tools:
 
-   gcc                        // GNU compiler
    clang                      // Cool and modern apple compiler
    root                       // CERN thing, has interactive cling C++
 
@@ -197,11 +274,12 @@ C++ libs:
    libgl
    libglu
    glfw
-   glut
+   freeglut       // New GLUT lib version
    bullet         // Physics lib
    box2d          // 2D Physics
    assimp         // Assets lib
    ogre           // 3D Engine
+   opencv         // Computer vision lib
 
    mpich          // MPI support
    intel-tdd      // "Parallel STL"
@@ -210,7 +288,7 @@ C++ libs:
 
 Debuggers:
 
-   rr             // Mozilla debugger for multi-threading
+   aur/rr-git     // Mozilla debugger for multi-threading (no 64bit)
    gdb            // Cool debugger
    cgdb           // "GUI" for it
    valgrind       // Profiler
@@ -218,10 +296,9 @@ Debuggers:
 
 Assemblers:
 
-   fasm
-   fasmarm        // port for ARM
    nasm
    yasm
+   aur/fasmarm    // port for ARM
 
 Reverse:
 
@@ -235,9 +312,8 @@ Reverse:
 
 Build tools:
 
-   make
-   autoconf
-   automake
+   premake      // Lua based configuration and build tool
+   imake
    cmake
    apache-ant   // Ant build system, for Android mainly
    gradle       // Another control system
@@ -265,7 +341,7 @@ Version Control:
 HEX editors:
 
    dhex
-   hte
+   ht
    hexedit
    ghex   // (see setup(4) for integration)
 
@@ -281,28 +357,30 @@ Emulation:
 
 Python stuff:
 
-   ipython
+   ipython                // Interactive python
 
-   python-numpy
-   python-scipy
-   aur/python-matplotlib-git  // Building it with latest snapshot
-   python-pillow
-   python-pygments
+   python-numpy           // Matlab inside python
+   python-scipy           // Math stuff
+   python-matplotlib      // Powerful plotting library
+   python-pygments        // Coloring syntax library
+   python-scikit-learn    // Machine learning algorithms
    python-pyzmq
+   python-pillow
 
    wxpython           // for ipython
    python-nose        // for ipython test suite
    python-pyqt4       // for ipython qt console
+   python-pyqt5       // for ipython qt console
    python-sip         // for ipython qt console
    python-pygments    // for ipython qt console
    python-pyzmq       // for ipython notebook and ipython qt console
    python-tornado     // for ipython notebook
    python-jinja       // for ipython notebook
    haskell-pandoc     // ipython notebook conversion
+   aur/python-librtmp // not using currently, used for some package
 
    python2-unidecode  // for YCM in Vim
    python2-nautilus   // for nautilus-compare
-   aur/python-librtmp // not using currently, used for some package
 
 Other Languages:
 
@@ -311,13 +389,20 @@ Other Languages:
    rust     // Rust
    ruby
 
-   perl
    perl-lwp-protocol-https  // Used for some scripts
+   gcc-fortran              // Fortran support
 
 Fonts:
 
-   aur/terminus-cyrillic       // Used in virtual terminals
-   adobe-source-code-pro-fonst // Nice monotype font
+   aur/terminus-cyrillic        // Used in virtual terminals
+   adobe-source-code-pro-fonts  // Nice mono type font
+
+   infinality/cairo-infinality-ultimate       // Infinality patches form infinality repo
+   infinality/fontconfig-infinality-ultimate  // same ..
+   infinality/freetype2-infinality-ultimate   // same ..
+
+   infinality/ibfonts-meta-base      // Fonts pack
+   infinality/ibfonts-meta-extended
 
 Browsers:
 
@@ -327,7 +412,7 @@ Browsers:
    pentadactyl-hg          // Vim-like behavior for firefox
 
    chromium                // Used only when damn Flash is required
-   chromium-pepper-flash   // With this player it is maintained (flashplugin is not)
+   chromium-pepper-flash   // With this player it is maintained (flash plugin is not)
 
 Mail:
 
@@ -348,18 +433,18 @@ Sharing:
 
 Instant Messaging:
 
-   pidgin          // for XMPP
-   pidgin-latex    // Add-on for LaTeX support
-   finch           // Console XMPP
-   profanity       // True console XMPP
+   pidgin             // for XMPP
+   aur/pidgin-latex   // Add-on for LaTeX support
+   finch              // Console XMPP
+   profanity          // True console XMPP
 
    irssi     // IRC client
    tox       // for toxing
 
 Audio and sound:
 
-   alsa-utils   // see setup(8)
-   alsa-plugin
+   alsa-utils    // see setup(8)
+   alsa-plugins
 
    qjackctl     // GUI for JACK server
    jack-dbus    // Not sure why this version - TODO: RTFM
@@ -370,15 +455,17 @@ Music editors & synth:
    miniaudicle      // Chuck GUI
 
    supercollider    // For playing around
-   pd-extended      // Same. Not only sound, but using as synthesiser
+   aur/pd-extended  // Same. Not only sound, but using as synthesiser
 
    audacity
    ardour           // Sequencer and editor
    qtracktor        // Another one editor
+   milkytracker     // Tracker for XM
 
    linuxsampler     // Sampler engine
    aur/qsampler     // GUI for linuxsampler
    gigedit          // Sample editor
+   musescore        // Score editor
 
 Media players:
 
@@ -387,7 +474,7 @@ Media players:
 
    aur/mpd-git      // Music player daemon (git version)
    mpc              // Client for it
-   ncnmcpp          // Another client with simple ncurses-based interface
+   ncmpcpp          // Another client with simple ncurses-based interface
 
    xmp              // XM modules console player
    dumb             // One more console player for chiptune
@@ -419,7 +506,7 @@ Screen capture:
 Monitor tools:
 
    xorg-xrandr
-   ddccontrol       // See also ddccontrol PKGBUILD 
+   ddccontrol       // See also ddccontrol PKGBUILD
    ddccontrol-db    // Database, no W2600HP yet. TODO: contribute
 
 Sketching:
@@ -431,23 +518,28 @@ Graphics software:
 
    imagemagick   // Best editor/viewer ever (see setup(16))
    gimp
+   gcolor2       // Color chooser
 
    blender       // Best 3D editor
 
-Books scanning:
+Books and scanning:
 
-   scantailor   // Scankromsator analog
-   pdf2djvu     // One click^wcommand converter
+   sane        // Scanning backend
+   xsane       // X frontend 
+   xsane-gimp  // GIMP plugin frontend
+
+   scantailor   // Automatic scan placement and cleanup 
+   pdf2djvu     // One command converter
 
 Math:
 
-   bc           // Actually I use python for such stuff. JIC
-   octave       // Matlab free alternative
-   sage         // Big python mathematics system
-   maxima       // Old and powerful algebra system
-   aur/r-mkl    // R (faster edition with Intel MKL)
-   gnuplot      // Graph system
-   plplot        
+   bc                // Actually I use python for such stuff. JIC
+   octave            // Matlab free alternative
+   sage-mathematics  // Big python mathematics system
+   maxima            // Old and powerful algebra system
+   aur/r-mkl         // R (faster edition with Intel MKL)
+   gnuplot           // Graph system
+   plplot
 
    aur/mathematica  // Not using anymore, python is better
    aur/jflap        // Simple automata learning tool
@@ -466,6 +558,9 @@ Games and fun:
 
    archey   // Simple script to print out nice Arch logo with some info
    joyutils // Pad control utilities
+   cowsay   // Cows are good
+   fceux    // NES emulator
+   openmw   // Morrowing, my love! Now on GNU/Linux
 
 Networking:
 
@@ -493,7 +588,7 @@ Android development:
 
    swt             // Another dependency for android-sdk
    heimdall        // Samsung devices flashing tool
-   aur/pidcat-git  // Nice colored logcat with pids
+   aur/pidcat-git  // Nice colored logcat with PID
 
 Intel stuff:
 

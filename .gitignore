@@ -17,15 +17,35 @@ rdev/
 intel/
 paks/
 IdeaProjects/
-R/
-xournal/
+.ssh/
 
-# Cache and tempory files
+# Vim temporals/generated
+.vim/bundle
+.vim/view
+.viminfo
+
+# Zsh temporals/generated
+.zsh_history
+.zsh-update
+
+# Awesome temporals/generated
+.config/awesome/archmenu.lua
+.config/awesome/awesompd/
+
+# Mpd
+.config/mpd/log
+.config/mpd/pid
+.config/mpd/state
+.config/mpd/sticker.sql
+.config/mpd/database
+
+# Temporary dirs 
 .thumbnails/
 .log/
 .cache/
+
+# Temporary files
 .bash_history
-.zsh_history
 .octave_hist
 .lesshst
 .ICEauthority
@@ -33,18 +53,14 @@ xournal/
 .esd_auth
 .xsel.log
 .sdcv_history
-.viminfo
 .zcompdump
-.zsh-update
-.config/awesome/archmenu.lua
-.config/pulse/cookie
 .gksu.lock
+.recently-used
+.python_history
+.cgdb/readline_history.txt
 
 # Major soft
-.vim/Bundle
-.vim/view
 .purple/
-.ssh/
 .mozilla/
 .Mathematica/
 .PyCharm30/
@@ -52,9 +68,7 @@ xournal/
 .android/
 .eclipse/
 .mypaint/
-.xournal/
 .pentadactyl/
-.irssi/
 .ncmpcpp/
 .pki/
 .ipython/
@@ -64,76 +78,69 @@ xournal/
 
 
 # Minor soft
-.racket/
+.irssi/config
+.htcfg2
 .jackdrc
+.racket/racket-prefs.rktd
+.p7zip
+.view3dscene.conf
+.designer
+
+.xournal/
 .unite/
 .ssr/
 .tgdb/
-.cgdb/
 .stardict/
 .qmc2/
 .kde4/
-.htcfg2
-.subversion/
 .vifm/
 .FBReader/
 .cmus/
-.cr3/
 .ghc/
 .gnupg/
-.p7zip
 .fonts/
 .xdg_menu_cache/
-.xmobarrc
-.xmonad/
-.ddccontrol/
-.python_history
-.designer
 .gnome/
 .dbus/
 .gstreamer-0.10/
 .IdeaIC13/
-.recently-used
 .fltk/
 .goldendict/
 .sane/
-.view3dscene.conf
 
-# Minor config dirs
+# Dot config dirs
 .config/chromium/
-.config/mpd/log
-.config/mpd/pid
-.config/mpd/state
-.config/mpd/sticker.sql
-.config/mpd/database
 .config/nautilus/
 .config/dconf/
 .config/libreoffice/
-.config/htop/
 .config/qBittorrent/
 .config/.mono/
-.config/KeePass/
 .config/DjVuLibre/
 .config/VirtualBox/
 .config/enchant/
 .config/gtk-2.0/
-.config/mc
-.config/parcellite
-.config/awesome/awesompd/
-.config/unity3d/
 .config/chmsee/
 .config/blender/
 .config/ImageMagick/
 .config/Scan Tailor/
+.config/nautilus-actions/
+.config/pulse/
 
-
-# Minor config files
+# Dot config files
+.config/htop/htoprc
+.config/nautilus-compare.conf
+.config/KeePass/KeePass.config.xml
+.config/rncbc.org/QjackCtl.conf
+.config/mc/ini
+.config/parcellite/parcelliterc
 .config/QtProject.conf
 .config/Trolltech.conf
 .config/llpp.conf
 .config/ranger/history
+.config/user-dirs.dirs
+.config/user-dirs.locale
+.config/equalx/settings.conf
 
-
-# Temporary hide...
+# Temporary hide... TODO: setup
 .local/
-
+.vim/spell/
