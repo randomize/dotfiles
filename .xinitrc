@@ -41,7 +41,7 @@ xset +fp /usr/share/fonts/local
 xset s off
 
 # Rebuild xdg menu for awesome
-xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu > ~/.config/awesome/archmenu.lua &
+# xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu > ~/.config/awesome/archmenu.lua &
 
 # Start xxkb
 # xxkb &
@@ -75,11 +75,12 @@ urxvtd &
 #/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 # Ssh agent
-eval `ssh-agent -s`
+# eval `ssh-agent -s`
 
 # Mpd
 /usr/bin/mpd
 
+# exec openbox
 exec awesome
 # exec xmonad
 # exec i3 -V >> /tmp/i3log 2>&1
@@ -87,5 +88,4 @@ exec awesome
 # exec gnome-session
 # exec startkde
 # exec startxfce4
-# ...or the Window Manager of your choice
 
