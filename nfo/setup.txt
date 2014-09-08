@@ -173,7 +173,13 @@ ExecStart=-/usr/bin/agetty --autologin username --noclear %I 38400 linux
 
 ==== Imagemagick to handle some thumbnails ==== (16)
 
-// TODO:
+sudo vim /usr/share/thumbnailers/dds.thumbnailer
+
+[Thumbnailer Entry]
+Exec=/usr/bin/convert -thumbnail x%s %i png:%o
+MimeType=image/x-dds;
+
+$ nautilus -q
 
 ==== XDG menu generate for awesome WM ==== (17)
 

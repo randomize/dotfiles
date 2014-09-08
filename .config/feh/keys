@@ -1,0 +1,12 @@
+zoom_in i
+zoom_out o
+zoom_default u
+zoom_fit f
+
+next_img j Right
+prev_img k Left
+
+scroll_left C-h C-Left
+scroll_right C-l C-Right
+scroll_down C-j C-Down
+scroll_up C-k C-Up

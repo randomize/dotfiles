@@ -1,7 +1,7 @@
 [Default Applications]
 video/mp2t=mpv.desktop
 application/pdf=llpp.desktop
-image/jpeg=eog.desktop
+image/jpeg=feh.desktop
 image/png=feh.desktop
 text/plain=gvim.desktop
 video/x-matroska=mpv.desktop

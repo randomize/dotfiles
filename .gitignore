@@ -58,6 +58,7 @@ IdeaProjects/
 .recently-used
 .python_history
 .cgdb/readline_history.txt
+.w3m/history
 
 # Major soft
 .purple/
@@ -140,6 +141,7 @@ IdeaProjects/
 .config/user-dirs.dirs
 .config/user-dirs.locale
 .config/equalx/settings.conf
+.config/pavucontrol.ini
 
 # Temporary hide... TODO: setup
 .local/
