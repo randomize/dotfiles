@@ -72,6 +72,52 @@ Contens of base-devel group:
    pkg-config
    sudo
 
+Contents of gnome group:
+
+   // Installing selectively
+
+   baobab                     // Visual disk space usage
+   empathy
+   eog                        // GNOME viewer
+   //epiphany                 // Some Browser I don't use
+   evince                     // Slow PDF and DJVU but can build thumbnails in nautilus
+   //gdm                      // Gnome display manager
+   gnome-backgrounds
+   gnome-calculator
+   gnome-contacts
+   gnome-control-center
+   gnome-desktop
+   gnome-dictionary
+   gnome-disk-utility
+   gnome-font-viewer
+   gnome-icon-theme
+   gnome-icon-theme-extras
+   gnome-icon-theme-symbolic
+   gnome-keyring
+   gnome-screenshot
+   gnome-session
+   gnome-settings-daemon
+   gnome-shell
+   gnome-shell-extensions
+   gnome-system-log
+   gnome-system-monitor
+   gnome-terminal
+   gnome-themes-standard
+   gnome-user-docs
+   gnome-user-share
+   grilo-plugins
+   gucharmap
+   mousetweaks
+   mutter
+   nautilus                // Big slow but powerful (see setup(3))
+   sushi                   // Quick preview on space
+   //totem                 // Gnome player
+   tracker
+   vino
+   xdg-user-dirs-gtk
+   yelp
+
+
 First to install:
 
    screen            // Terminal multiplexer
@@ -92,30 +138,48 @@ Packaging:
    namcap         // Package checking
    abs            // Arch build system
 
+Bluetooth and network:
+
+   dnsmasq           // Local DNS cache (see setup(9))
+   //network-manager
+
+   bluez
+
 Video:
 
-   intel-dri
-   xf86-video-intel
+   xf86-video-intel    // Also installs intel-dri and libgl
    libva-intel-driver
    mesa-demos          // Beloved glxgears is here
 
 Xorg stuff:
 
-   xorg-server
-   xorg-xinit
+   xorg-server        // X
+   xorg-server-xvfb   // Virtual framebuffer
+   xorg-xinit         // startx
 
-   xf86-input-wacom
-   xorg-xev
-   xorg-xprop    // Helper utility for windows info
+   xf86-input-wacom   // Wacom support
+
+   xorg-xev           // Print events
+   xorg-xprop         // Helper utility for windows info
    xorg-xvinfo        // Helper for "lights on" script
-   xclip         // For scripting with clipboard
-   xsel          // X selection command line tool
+   xorg-xwininfo      // Another window info tool
 
-Diagnostics:
+   xclip           // For scripting with clipboard
+   xsel            // X selection command line tool
+   xorg-xfontsel   // Font selection tool
+   xorg-xmessage   // For scripts with GUI-sh prompts
 
-   htop-vi  // Same as htop, but has vi keys!
-   sysdig
-   stress   // Stress testing system
+Diagnostics and HDD:
+
+   aur/htop-vi   // Same as htop, but has vi keys!
+   stress        // Stress testing system
+   aur/sysdig    // Modern kickass tool for diagnostics
+   aur/i7z-git   // i7 Processor info tool
+   
+
+   parted     // Partitioning
+   testdisk   // Diagnostics and undelete
+   ext4magic  // Ext fs deleted files recovery
 
 Window manager and DE:
 
@@ -129,9 +193,21 @@ Window manager and DE:
 
    parcellite      // clipboard manager good and lite (Has problems with nautilus Cut/Copy/Paste)
    skb             // simple keyboard layout indicator
-   gksu            // GUI-sh sudo 
+   gksu            // GUI-sh sudo
 
    openbox         // Fallback window manager
+   i3wm            // Another tiling WM
+
+Recoll and helpers:
+
+   recoll     // Search tool(indexer and searcher) // TODO: setup and integrate
+   antiword           // *.doc => text
+   unrtf              // *.rtf => text
+   catdoc             // Excel => text
+   id3lib             // *.mp3 => text
+   aspell-en          // For stemming support
+   perl-image-exiftol // EXIF info => text
+   pstotext           // Post script => text
 
 Themes:
 
@@ -160,19 +236,19 @@ Console tools:
 
    pv             // echo "You can simulate on-screen typing just like in the movies" | pv -qL 10
    rlwrap         // Read line wrap (for maxima and others)
+   lsof           // Show open files tool
 
 Nautilus:
 
-   nautilus                // Big slow but powerful (see setup(3))
    libnautilus-extension
 
    nautilus-actions        // For custom actions in context menus
-   nautilus-open-terminal  // To open current dir in TERM
+   //nautilus-open-terminal// To open current dir in TERM // Not using, just action
    nautilus-compare        // Integrates meld into context menu
    nautilus-sendto         // Send to pidgin and other places
 
-   sushi                   // Quick preview on space
-   baobab                  // Visual disk space usage
+   ffmpegthumbnailer       // Thumbnails for video files
+
 
    gvfs           // GNOME file system abstraction
    gvfs-smb       // Samba support
@@ -190,6 +266,7 @@ Other file managers:
 
    mc
    ranger     // Another console, powered by Vim keys
+   vifm       // ranger is preferable but this good too
 
 Archives:
 
@@ -212,10 +289,8 @@ Archives:
 Viewers:
 
    aur/llpp-git   // PDF fast and powerful
-   evince         // Slow PDF and DJVU but can build thumbnails in nautilus
    djview4        // DJVU faster then evince
    feh            // image viewer
-   eog            // GNOME viewer
 
    aur/view3dscene-svn // 3D model viewer
 
@@ -230,9 +305,10 @@ Viewers:
 
 Office:
 
-   libreoffice-gnome  // GTK version of Libre Office
-   goldendict         // GUI-sh dictionary
-   sdcv               // Console version of stardict
+   libreoffice-fresh     // Latest version
+   libreoffice-fresh-ru  // Russian locale
+   goldendict            // GUI-sh dictionary
+   sdcv                  // Console version of stardict
 
 Ipad support:
 
@@ -253,7 +329,31 @@ IDE and editors:
    monodevelop                        // Well good too
    intellij-idea-community-edition    // Idea
 
+
+   // qt group
+   qt5-base
+   qt5-xmlpatterns
+   qt5-declarative
+   qt5-connectivity
+   qt5-enginio
+   qt5-graphicaleffects
+   qt5-imageformats
+   qt5-location
+   qt5-multimedia
+   qt5-sensors
+   qt5-webkit
+   qt5-script
+   qt5-quick1
+   qt5-quickcontrols
+   qt5-serialport
+   qt5-svg
+   qt5-translations
+   qt5-tools
+   qt5-websockets
+   qt5-x11extras
+
    qtcreator          // Nice IDE
+   qt5-doc            // Documentation
    qt5-examples       // Some examples to qtcreator
 
 C++ compilers and tools:
@@ -271,15 +371,15 @@ C++ libs:
 
    glm            // Math lib for OpenGL
    glew
-   libgl
-   libglu
    glfw
    freeglut       // New GLUT lib version
    bullet         // Physics lib
    box2d          // 2D Physics
    assimp         // Assets lib
    ogre           // 3D Engine
+
    opencv         // Computer vision lib
+   opencv-samples // and samples
 
    mpich          // MPI support
    intel-tdd      // "Parallel STL"
@@ -387,10 +487,15 @@ Other Languages:
    racket   // scheme LISP
    mono     // Damn C#
    rust     // Rust
-   ruby
+   ruby     // Ruby
+   dlang    // D group
 
    perl-lwp-protocol-https  // Used for some scripts
    gcc-fortran              // Fortran support
+
+   jdk7-openjdk             // JDK
+   jre7-openjdk             // JRE
+   jre7-openjdk-headless
 
 Fonts:
 
@@ -400,9 +505,12 @@ Fonts:
    infinality/cairo-infinality-ultimate       // Infinality patches form infinality repo
    infinality/fontconfig-infinality-ultimate  // same ..
    infinality/freetype2-infinality-ultimate   // same ..
+   lib32-cairo-infinality-ultimate
+   lib32-fontconfig-infinality-ultimate
+   lib32-freetype2-infinality-ultimate
 
-   infinality/ibfonts-meta-base      // Fonts pack
-   infinality/ibfonts-meta-extended
+   infinality/ibfonts-meta-base        // Fonts pack
+   //infinality/ibfonts-meta-extended  // To avoid font cache overwhelming
 
 Browsers:
 
@@ -413,6 +521,8 @@ Browsers:
 
    chromium                // Used only when damn Flash is required
    chromium-pepper-flash   // With this player it is maintained (flash plugin is not)
+
+   w3m // Text browser ;)
 
 Mail:
 
@@ -459,7 +569,7 @@ Music editors & synth:
 
    audacity
    ardour           // Sequencer and editor
-   qtracktor        // Another one editor
+   qtractor         // Another one editor
    milkytracker     // Tracker for XM
 
    linuxsampler     // Sampler engine
@@ -484,7 +594,7 @@ Stream grabbers:
    aur/livestreamer-git     // Helper script to live streaming
    youtube-dl
 
-Tools:
+Multimedia tools:
 
    ffmpeg
    mkvtoolnix
@@ -506,8 +616,8 @@ Screen capture:
 Monitor tools:
 
    xorg-xrandr
-   ddccontrol       // See also ddccontrol PKGBUILD
-   ddccontrol-db    // Database, no W2600HP yet. TODO: contribute
+   //ddccontrol       // See also ddccontrol PKGBUILD
+   //ddccontrol-db    // Database, no W2600HP yet. TODO: contribute
 
 Sketching:
 
@@ -525,11 +635,16 @@ Graphics software:
 Books and scanning:
 
    sane        // Scanning backend
-   xsane       // X frontend 
+   xsane       // X frontend
    xsane-gimp  // GIMP plugin frontend
 
-   scantailor   // Automatic scan placement and cleanup 
+   scantailor   // Automatic scan placement and cleanup
    pdf2djvu     // One command converter
+
+Security :
+
+   keepass
+   gnupg
 
 Math:
 
@@ -537,19 +652,36 @@ Math:
    octave            // Matlab free alternative
    sage-mathematics  // Big python mathematics system
    maxima            // Old and powerful algebra system
-   aur/r-mkl         // R (faster edition with Intel MKL)
+   //aur/r-mkl       // R (faster edition with Intel MKL)
    gnuplot           // Graph system
    plplot
 
-   aur/mathematica  // Not using anymore, python is better
-   aur/jflap        // Simple automata learning tool
+   aur/mathematica   // Not using anymore, python is better
+   //aur/jflap       // Simple automata learning tool
 
 TeX:
 
-   texlive-most
+   // texlive-most group
+   texlive-bibtexextra
+   texlive-core
+   texlive-fontsextra
+   texlive-formatsextra
+   texlive-games
+   texlive-genericextra
+   texlive-htmlxml
+   texlive-humanities
+   texlive-latexextra
+   texlive-music
+   texlive-pictures
+   texlive-plainextra
+   texlive-pstricks
+   texlive-publishers
+   texlive-science
+
    texmaker
    lyx            // WYSIWYG editor
    equalx         // LaTeX equation editor
+   ghostscript    // PostScript interpreter
 
 Games and fun:
 
@@ -562,11 +694,6 @@ Games and fun:
    fceux    // NES emulator
    openmw   // Morrowing, my love! Now on GNU/Linux
 
-Networking:
-
-   dnsmasq           // Local DNS cache (see setup(9))
-   network-manager
-
 Android development:
 
    aur/android-sdk                  // SDK, installs to /opt/android-sdk
@@ -577,7 +704,7 @@ Android development:
 
    android-udev      // Udev rules for most popular devices
 
-   lib32-libstdc++   // Android SDK is 32 bit, so using this to workaround
+   lib32-libstdc++5  // Android SDK is 32 bit, so using this to workaround
    lib32-libxv       // and this..
    lib32-ncurses     // and this..
    lib32-openal      // ...
@@ -592,17 +719,17 @@ Android development:
 
 Intel stuff:
 
-local/intel-parallel-studio-2013 // Free for GNU\Linux
-local/intel-compiler-base        // Intel compiler for C++
-local/intel-fortran-compiler     // Intel compiler for Fortran
-local/intel-idb                  // Intel debugger
-local/intel-inspector-xe         // Intel memory and thread debugger
-local/intel-ipp                  // Intel integrated performance primitives
-local/intel-mkl                  // Intel math kernel library
-local/intel-openmp               // Intel OpenMP
-local/intel-sourcechecker        // Intel static analyzer
-local/intel-vtune-amplifier-xe   // Intel profiler
-local/intel-advisor-xe           // Intel threading designer and prototypes tool
+   local/intel-parallel-studio-2013 // Free for GNU\Linux
+   local/intel-compiler-base        // Intel compiler for C++
+   local/intel-fortran-compiler     // Intel compiler for Fortran
+   local/intel-idb                  // Intel debugger
+   local/intel-inspector-xe         // Intel memory and thread debugger
+   local/intel-ipp                  // Intel integrated performance primitives
+   local/intel-mkl                  // Intel math kernel library
+   local/intel-openmp               // Intel OpenMP
+   local/intel-sourcechecker        // Intel static analyzer
+   local/intel-vtune-amplifier-xe   // Intel profiler
+   local/intel-advisor-xe           // Intel threading designer and prototypes tool
 
 
 

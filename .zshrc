@@ -209,7 +209,7 @@ alias -s com=$BROWSER
 alias -s net=$BROWSER
 alias -s png=feh
 alias -s jpg=feh
-alias -s gif=feg
+alias -s gif=feh
 alias -s sxw=soffice
 alias -s doc=soffice
 alias -s gz=tar -xzvf # Unp ??
@@ -220,6 +220,7 @@ alias -s PKGBUILD=$EDITOR
 
 # Normal aliases
 alias mpd='/usr/bin/mpd'
+alias pac='pacman'
 
 # Listing
 alias ls='ls --color=auto -F -h'
