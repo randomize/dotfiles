@@ -220,7 +220,8 @@ alias -s PKGBUILD=$EDITOR
 
 # Normal aliases
 alias mpd='/usr/bin/mpd'
-alias pac='pacman'
+alias pa='pacman'
+alias ya='yaourt'
 
 # Listing
 alias ls='ls --color=auto -F -h'

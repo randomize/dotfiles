@@ -74,7 +74,7 @@ Contens of base-devel group:
 
 Contents of gnome group:
 
-   // Installing selectively
+   // Installing selectively, not using shell and heavy stuff from GNOME
 
    baobab                     // Visual disk space usage
    empathy
@@ -82,40 +82,40 @@ Contents of gnome group:
    //epiphany                 // Some Browser I don't use
    evince                     // Slow PDF and DJVU but can build thumbnails in nautilus
    //gdm                      // Gnome display manager
-   gnome-backgrounds
+   //gnome-backgrounds        // Wallpapers
    gnome-calculator
    gnome-contacts
    gnome-control-center
-   gnome-desktop
+   gnome-desktop              // Dependency for nautilus
    gnome-dictionary
-   gnome-disk-utility
+   gnome-disk-utility         
    gnome-font-viewer
-   gnome-icon-theme
-   gnome-icon-theme-extras
-   gnome-icon-theme-symbolic
+   gnome-icon-theme           // Standard theme icons
+   gnome-icon-theme-extras    // same ..
+   gnome-icon-theme-symbolic  // ..
    gnome-keyring
-   gnome-screenshot
+   //gnome-screenshot        // Screenshot tool
    gnome-session
    gnome-settings-daemon
-   gnome-shell
-   gnome-shell-extensions
+   //gnome-shell
+   //gnome-shell-extensions
    gnome-system-log
    gnome-system-monitor
-   gnome-terminal
-   gnome-themes-standard
-   gnome-user-docs
+   //gnome-terminal
+   gnome-themes-standard   // Adwaita and friends
+   //gnome-user-docs       // Offline user documentation
    gnome-user-share
    grilo-plugins
    gucharmap
    mousetweaks
-   mutter
+   //mutter
    nautilus                // Big slow but powerful (see setup(3))
    sushi                   // Quick preview on space
    //totem                 // Gnome player
-   tracker
+   tracker                 // Some search tool TODO: test it
    vino
    xdg-user-dirs-gtk
-   yelp
+   //yelp                  // Help browser
 
 
 First to install:
@@ -142,8 +142,11 @@ Bluetooth and network:
 
    dnsmasq           // Local DNS cache (see setup(9))
    //network-manager
+   gnu-netcat        // Network piping application
+   ngrep             // Network packet grep 
+   mtr               // Combines the functionality of traceroute and ping into one tool
 
-   bluez
+   bluez             // Bluetooth
 
 Video:
 
@@ -157,7 +160,7 @@ Xorg stuff:
    xorg-server-xvfb   // Virtual framebuffer
    xorg-xinit         // startx
 
-   xf86-input-wacom   // Wacom support
+   xf86-input-wacom   // Wacom table support
 
    xorg-xev           // Print events
    xorg-xprop         // Helper utility for windows info
@@ -175,13 +178,13 @@ Diagnostics and HDD:
    stress        // Stress testing system
    aur/sysdig    // Modern kickass tool for diagnostics
    aur/i7z-git   // i7 Processor info tool
-   
+
 
    parted     // Partitioning
    testdisk   // Diagnostics and undelete
    ext4magic  // Ext fs deleted files recovery
 
-Window manager and DE:
+Window managers and DE:
 
    awesome
    vicious             // Widgets for awesome
@@ -194,20 +197,26 @@ Window manager and DE:
    parcellite      // clipboard manager good and lite (Has problems with nautilus Cut/Copy/Paste)
    skb             // simple keyboard layout indicator
    gksu            // GUI-sh sudo
+   paprefs         // Pulse audio settings
+   pavucontrol     // Pulse audio mixer
 
    openbox         // Fallback window manager
-   i3wm            // Another tiling WM
+
+   i3-wm           // Another good tiling WM
+   i3status        // Status bar for it
 
 Recoll and helpers:
 
-   recoll     // Search tool(indexer and searcher) // TODO: setup and integrate
-   antiword           // *.doc => text
-   unrtf              // *.rtf => text
-   catdoc             // Excel => text
-   id3lib             // *.mp3 => text
-   aspell-en          // For stemming support
-   perl-image-exiftol // EXIF info => text
-   pstotext           // Post script => text
+   recoll // Search tool(indexer and searcher) // TODO: setup and integrate
+
+   antiword             // *.doc => text
+   unrtf                // *.rtf => text
+   catdoc               // Excel => text
+   id3lib               // *.mp3 => text
+   aspell-en            // For stemming support
+   perl-image-exiftool  // EXIF info => text
+   pstotext             // Post script => text
+   python2-pychm        // chm files => text
 
 Themes:
 
@@ -237,17 +246,27 @@ Console tools:
    pv             // echo "You can simulate on-screen typing just like in the movies" | pv -qL 10
    rlwrap         // Read line wrap (for maxima and others)
    lsof           // Show open files tool
+   moreutils      // Cool toolset (ex vipe for vim editing while passing though pipe)
+   most           // Feature rich pager
+
+Fuse filesystems:
+
+   sshfs    // SSH mounting
+   mtpfs    // MTP devices
+   ifuse    // Apple devices
+   vdfuse   // Virtual Box images mounting
 
 Nautilus:
 
    libnautilus-extension
 
-   nautilus-actions        // For custom actions in context menus
-   //nautilus-open-terminal// To open current dir in TERM // Not using, just action
-   nautilus-compare        // Integrates meld into context menu
-   nautilus-sendto         // Send to pidgin and other places
+   nautilus-actions           // For custom actions in context menus
+   nautilus-sendto            // Send to pidgin and other places
+   nautilus-compare           // Integrates meld into context menu
+   //nautilus-open-terminal   // To open current directory in TERM // Not using, just action
 
    ffmpegthumbnailer       // Thumbnails for video files
+   raw-thumbnailer         // RAW files thumbnails
 
 
    gvfs           // GNOME file system abstraction
@@ -258,9 +277,9 @@ Nautilus:
    gvfs-gphoto2
    libgphoto2
 
-   dosfstools           // For old FAT etc
+   dosfstools           // For old FAT etc.
    gptfdisk             // fdisk for GPT
-   ntfs-3g              // to enable mounting of NTFS write(default will be readonly)
+   ntfs-3g              // to enable mounting of NTFS write(default will be read-only)
 
 Other file managers:
 
@@ -281,8 +300,6 @@ Archives:
    unrar       // RAR support
    unarj
    unace
-   orange
-   sharutils
 
    atool      // console one
 
@@ -298,21 +315,27 @@ Viewers:
    chmsee-webkit  // Modern CHM viewer
 
    fbreader       // Using it as EPUB reader
-   //coolreader   // fbreader is better for me
-
-   pdfmod     // PDF GUI-sh editor
-   pdfcrack
+   //coolreader   // FBreader is better for me
 
 Office:
 
    libreoffice-fresh     // Latest version
    libreoffice-fresh-ru  // Russian locale
+   hunspell              // Spell checking
+   hunspell-en           // English dictionary
+   aur/hunspell-ru       // Russian dictionary
+   hyphen                // Hyphenation
+   hyphen-en             // English
+   aur/hyphen-ru         // Russian
+
+
    goldendict            // GUI-sh dictionary
-   sdcv                  // Console version of stardict
+   sdcv                  // Console version of Stardict
 
 Ipad support:
 
-   ifuse              // (see setup (4))
+   // (see setup (4))
+
    libplist
    libimobiledevice
    libgpod
@@ -321,6 +344,8 @@ Ipad support:
 IDE and editors:
 
    gvim               // The IDE (see setup (5))
+   python2-unidecode  // for YCM in Vim
+
    emacs              // Another The IDE
    pycharm-community  // Python IDE
    eclipse            // Big and fat but good for Android
@@ -381,8 +406,8 @@ C++ libs:
    opencv         // Computer vision lib
    opencv-samples // and samples
 
-   mpich          // MPI support
-   intel-tdd      // "Parallel STL"
+   //mpich          // MPI support
+   intel-tbb      // "Parallel STL"
 
    glade          // GUI builder for GTK 3, also there is glade
 
@@ -424,9 +449,11 @@ Source code tools:
    ack                      // Better than grep
    the_silver_searcher      // ag - better than ack :)
 
-   colordiff
-   meld                     // Nice GUI-sh diff tool
+   colordiff                // Nice colored diffs
    highlight                // for syntax highlighting in scripts
+
+   meld                     // Nice GUI-sh diff tool
+   python2-dbus             // For meld
 
 Version Control:
 
@@ -435,7 +462,7 @@ Version Control:
    tig      // Console git explorer
    gitg     // GUI-sh git explorer JIC
 
-   mercurial     // Installed for aur only. Should give it a shot.
+   mercurial     // Installed for Aur only. Should give it a shot.
    subversion
 
 HEX editors:
@@ -449,6 +476,7 @@ Emulation:
 
    virtualbox                 // Virtual (see setup(6))
    virtualbox-host-modules    // Kernel modules
+   virtualbox-ext-vnc         // VNC support
    aur/virtualbox-ext-oracle  // Experimental features
 
    net-tools                  // Dependency for networking support
@@ -462,25 +490,22 @@ Python stuff:
    python-numpy           // Matlab inside python
    python-scipy           // Math stuff
    python-matplotlib      // Powerful plotting library
-   python-pygments        // Coloring syntax library
    python-scikit-learn    // Machine learning algorithms
-   python-pyzmq
    python-pillow
 
-   wxpython           // for ipython
-   python-nose        // for ipython test suite
-   python-pyqt4       // for ipython qt console
-   python-pyqt5       // for ipython qt console
-   python-sip         // for ipython qt console
-   python-pygments    // for ipython qt console
-   python-pyzmq       // for ipython notebook and ipython qt console
-   python-tornado     // for ipython notebook
-   python-jinja       // for ipython notebook
-   haskell-pandoc     // ipython notebook conversion
-   aur/python-librtmp // not using currently, used for some package
+   wxpython               // for ipython
+   python-nose            // for ipython test suite
+   python-pyqt4           // for ipython qt console
+   python-pyqt5           // for matplotlib
+   python-pygments        // Coloring syntax library (for ipython qt console)
+   python-pyzmq           // for ipython notebook and ipython qt console
+   python-tornado         // for ipython notebook
+   python-jinja           // for ipython notebook
 
-   python2-unidecode  // for YCM in Vim
-   python2-nautilus   // for nautilus-compare
+   //aur/haskell-pandoc   // ipython notebook conversion // has many deps!
+   aur/python-librtmp     // build dependency for livestreamer
+
+
 
 Other Languages:
 
@@ -488,7 +513,7 @@ Other Languages:
    mono     // Damn C#
    rust     // Rust
    ruby     // Ruby
-   dlang    // D group
+   //dlang  // D language group
 
    perl-lwp-protocol-https  // Used for some scripts
    gcc-fortran              // Fortran support
@@ -501,6 +526,7 @@ Fonts:
 
    aur/terminus-cyrillic        // Used in virtual terminals
    adobe-source-code-pro-fonts  // Nice mono type font
+   ttf-bitstream-vera           // For mathematica
 
    infinality/cairo-infinality-ultimate       // Infinality patches form infinality repo
    infinality/fontconfig-infinality-ultimate  // same ..
@@ -537,16 +563,16 @@ Downloaders:
 
 Sharing:
 
-   amule        // e2k still alive?
-   qbittorrent  // Easy torrent way
-   rtorrent     // Hard way
+   amule            // e2k still alive?
+   aur/qbittorrent  // Easy torrent way
+   rtorrent         // Hard way
 
 Instant Messaging:
 
    pidgin             // for XMPP
    aur/pidgin-latex   // Add-on for LaTeX support
    finch              // Console XMPP
-   profanity          // True console XMPP
+   //profanity        // True console XMPP
 
    irssi     // IRC client
    tox       // for toxing
@@ -597,7 +623,7 @@ Stream grabbers:
 Multimedia tools:
 
    ffmpeg
-   mkvtoolnix
+   mkvtoolnix-cli
    mediainfo
    aur/mp3val  // MP3 file validator and fixer
 
@@ -612,6 +638,9 @@ Screen capture:
 
    scrot
    simplescreenrecorder   // Best recorder ever, like it's OpenGL capture feature
+
+   aur/gromit-mpx-git     // Nice annotation tool for casting
+
 
 Monitor tools:
 
@@ -638,12 +667,19 @@ Books and scanning:
    xsane       // X frontend
    xsane-gimp  // GIMP plugin frontend
 
-   scantailor   // Automatic scan placement and cleanup
-   pdf2djvu     // One command converter
+   scantailor       // Automatic scan placement and cleanup
+   pdf2djvu         // One command converter
+   //aur/gscan2pdf  // Interesting thing but currently on aur with lots of deps.
+
+   aur/pdftk-bin    // PDF editor
+   pdfmod           // PDF GUI-sh editor
+   aur/pdfcrack     // Protection remover
+
 
 Security :
 
-   keepass
+   keepass      // Password manager
+   xdotool      // For keepass to auto type
    gnupg
 
 Math:
@@ -652,11 +688,14 @@ Math:
    octave            // Matlab free alternative
    sage-mathematics  // Big python mathematics system
    maxima            // Old and powerful algebra system
+   wxmaxima
    //aur/r-mkl       // R (faster edition with Intel MKL)
-   gnuplot           // Graph system
-   plplot
+
+   gnuplot           // Popular plotter
+   //plplot          // Another modern plotter
 
    aur/mathematica   // Not using anymore, python is better
+
    //aur/jflap       // Simple automata learning tool
 
 TeX:
@@ -681,7 +720,7 @@ TeX:
    texmaker
    lyx            // WYSIWYG editor
    equalx         // LaTeX equation editor
-   ghostscript    // PostScript interpreter
+   ghostscript    // Post Script interpreter
 
 Games and fun:
 
@@ -730,7 +769,5 @@ Intel stuff:
    local/intel-sourcechecker        // Intel static analyzer
    local/intel-vtune-amplifier-xe   // Intel profiler
    local/intel-advisor-xe           // Intel threading designer and prototypes tool
-
-
 
 
