@@ -145,6 +145,7 @@ Bluetooth and network:
    gnu-netcat        // Network piping application
    ngrep             // Network packet grep 
    mtr               // Combines the functionality of traceroute and ping into one tool
+   dnsutils          // dig, nslookup and others
 
    bluez             // Bluetooth
 
@@ -248,6 +249,8 @@ Console tools:
    lsof           // Show open files tool
    moreutils      // Cool toolset (ex vipe for vim editing while passing though pipe)
    most           // Feature rich pager
+   tree           // Nice directory tree listing
+   aur/colortheme // Terminal colors table script
 
 Fuse filesystems:
 
@@ -668,12 +671,14 @@ Books and scanning:
    xsane-gimp  // GIMP plugin frontend
 
    scantailor       // Automatic scan placement and cleanup
+   poppler          // For pdfimages
    pdf2djvu         // One command converter
    //aur/gscan2pdf  // Interesting thing but currently on aur with lots of deps.
 
    aur/pdftk-bin    // PDF editor
    pdfmod           // PDF GUI-sh editor
    aur/pdfcrack     // Protection remover
+
 
 
 Security :

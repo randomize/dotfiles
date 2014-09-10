@@ -185,4 +185,17 @@ $ nautilus -q
 
   $ xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu > ~/.config/awesome/archmenu.lua
 
+==== Custom kernel ======
+
+ $ cd /tmp
+ $ ABSROOT=. abs core/linux
+
+Wanna oldschool beep:
+
+SND_HDA_INPUT_BEEP=n
+
+TODO: More tweaks soon
+
+ $ updpkgsums
+ $ makepkg
 
