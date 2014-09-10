@@ -52,6 +52,9 @@ xset s off
 # Clipboard manager
 # parcellite &
 
+# Hide mouse when not required
+unclutter &
+
 # Composition
 compton -b
 
@@ -65,8 +68,8 @@ xsetwacom --set "Wacom Intuos3 9x12 stylus" Button 3 "button +2"
 # Lightons script
 /home/randy/bin/lightsOn.sh &
 
-# Start xxkb
-urxvtd &
+# Start urxvt daemon (quiet, forked, only for this X session)
+urxvtd -q -f -o
 
 # Easystroke
 # easystroke &

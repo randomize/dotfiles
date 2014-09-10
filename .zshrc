@@ -362,6 +362,7 @@ lls()  { locate "$*" | less }
 
 ## Pacman stuff
 desc() { pacman -Qi $1 | grep "Description" }
+who-owns() { pacman -Qo `which $1` }
 
 ## Command-line calculator
 calc() { python -ic "from __future__ import division; from math import *; from random import *" ;}
