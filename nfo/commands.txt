@@ -35,5 +35,10 @@ zcat /proc/config.gz
 
 imagemagick import -window root screenshot.jpg
 
-# 8
-...
+# 8 Extract original images from PDF (from page X to Y)
+
+pdfimages -f X -l Y -j 1.pdf ./out/end
+
+# 9 Create 300 dpi DJVU out of bunch of image files in ./out/*.image ( -j is only for OCR)
+
+img2djvu -j 8 -d 300 -v1 out

@@ -109,6 +109,7 @@ IdeaProjects/
 .fltk/
 .goldendict/
 .sane/
+.w3m/
 
 # Dot config dirs
 .config/chromium/

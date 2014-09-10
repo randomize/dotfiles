@@ -21,6 +21,8 @@ image/gif=feh.desktop
 application/rtf=libreoffice-writer.desktop
 image/bmp=feh.desktop
 application/vnd.ms-htmlhelp=chmsee.desktop
+image/x-portable-pixmap=feh.desktop
+image/x-portable-bitmap=feh.desktop
 
 [Added Associations]
 video/mp2t=mpv.desktop;
@@ -53,3 +55,5 @@ image/bmp=feh.desktop;
 application/x-archive=ghex.desktop;
 application/x-pef-executable=ghex.desktop;
 application/vnd.ms-htmlhelp=chmsee.desktop;
+image/x-portable-pixmap=feh.desktop;
+image/x-portable-bitmap=feh.desktop;

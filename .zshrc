@@ -16,6 +16,28 @@ then
 set --
 fi
 
+# Setup colors in tty conoles ===============================================================
+#
+if [ "$TERM" = "linux" ]; then
+   echo -en "\e]P0131313" #black
+   echo -en "\e]P82B2B2B" #darkgrey
+   echo -en "\e]P1D75F5F" #darkred
+   echo -en "\e]P9E33636" #red
+   echo -en "\e]P287AF5F" #darkgreen
+   echo -en "\e]PA98E34D" #green
+   echo -en "\e]P3D7AF87" #brown
+   echo -en "\e]PBFFD75F" #yellow
+   echo -en "\e]P48787AF" #darkblue
+   echo -en "\e]PC7373C9" #blue
+   echo -en "\e]P5BD53A5" #darkmagenta
+   echo -en "\e]PDD633B2" #magenta
+   echo -en "\e]P65FAFAF" #darkcyan
+   echo -en "\e]PE44C9C9" #cyan
+   echo -en "\e]P7E5E5E5" #lightgrey
+   echo -en "\e]PFEEEEEE" #white
+   clear #for background artifacting
+fi
+
 # Variables ==================================================================================
 #
 export EDITOR="vim"
@@ -169,6 +191,9 @@ insert_sudo () { zle beginning-of-line; zle -U "sudo " }
 zle -N insert-sudo insert_sudo
 bindkey '\es' insert-sudo
 
+# Mapping <c-o> to add less
+bindkey -s '^O' ' | less'
+
 # Insert last word with Alt+. -- cool!
 bindkey '\e.' insert-last-word
 
@@ -236,7 +261,6 @@ alias sl='ls'
 alias :q='exit'
 alias :Q='exit'
 alias cls='clear'
-alias ..='cd ..'
 alias h='history'
 
 # safety features
@@ -280,43 +304,45 @@ alias halt='sudo halt'
 alias update='sudo pacman -Suy'
 
 # IPad management
-alias mount_ipad_pdf='ifuse --appid com.readdle.PDFExpertIPad /mnt/ipad && cd /mnt/ipad'
-alias mount_ipad_video='ifuse --appid AVPlayerHD.eplayworks.com /mnt/ipad && cd /mnt/ipad'
-alias mount_ipad_djvu='ifuse --appid com.qzyzx.SoleDjVu /mnt/ipad && cd /mnt/ipad'
-alias mount_ipad_root='ifuse --root /mnt/ipad && cd /mnt/ipad'
-alias umount_ipad='cd ~ && umount /mnt/ipad'
-alias mount_mac='sudo sshfs  randy@10.10.10.105:/ /mnt/macos'
+alias mount-ipad-pdf='ifuse --appid com.readdle.PDFExpertIPad /mnt/ipad && cd /mnt/ipad'
+alias mount-ipad-video='ifuse --appid AVPlayerHD.eplayworks.com /mnt/ipad && cd /mnt/ipad'
+alias mount-ipad-djvu='ifuse --appid com.qzyzx.SoleDjVu /mnt/ipad && cd /mnt/ipad'
+alias mount-ipad-root='ifuse --root /mnt/ipad && cd /mnt/ipad'
+alias umount-ipad='cd ~ && umount /mnt/ipad'
+alias mount-mac='sudo sshfs  randy@10.10.10.105:/ /mnt/macos'
 
 # Tools
 #alias bindiff='cmp -l file1.bin file2.bin | gawk \'{printf \"%08X %02X %02X\n\", $1, strtonum(0$2), strtonum(0$3)}\''
-alias clean_vim_views='rm /home/randy/.vim/view/*'
-alias list_devices='lsblk -f'
+alias vim-clean-views='rm ~/.vim/view/*'
+alias list-devices='lsblk -f'
 
-## Awesome
+## Editing aliases
 alias eA='vim ~/.config/awesome/rc.lua'
-alias cdA='cd ~/.config/awesome'
-alias eT='cd ~/.config/awesome/themes/zenburn && vim theme.lua'
-
-## X Resources Stuff
-alias eX='vim ~/.Xresources'
-alias XTR='xrdb -merge ~/.Xresources'
-
-## Zsh Stuff
-alias eZ='vim ~/.zshrc'
-alias Z='source ~/.zshrc'
-
-## Vim Stuff
+alias eX='vim ~/.Xresources && xrdb -merge ~/.Xresources'
+alias eZ='vim ~/.zshrc && source ~/.zshrc'
 alias eV='vim ~/.vimrc'
+alias eC='vim ~/nfo/commands.txt'
+alias eS='vim ~/nfo/setup.txt'
+alias eP='vim ~/nfo/paks.txt'
+
+## Frequent places
+alias ..='cd ..'
+alias cdA='cd ~/.config/awesome'
+alias cdT='cd /mnt/TERRA'
+alias cdB='cd /mnt/TERRA/Books'
+alias cdD='cd ~/Downloads'
+
+## Vim aliases
 alias e='vim'
 alias v='vim'
 alias vi='vim'
 alias view='vim -R'
 
-alias sniff_flv='sudo ngrep -d any '.flv'  port 80'
+alias sniff-flv='sudo ngrep -d any '.flv'  port 80'
 
 ## Virtual Box
-alias macos='VBoxManage startvm "VM Mac OS Mavericks"'
-alias windows='VBoxManage startvm "Window 8"'
+alias vb-macos='VBoxManage startvm "VM Mac OS Mavericks"'
+alias vb-windows='VBoxManage startvm "Window 8"'
 
 # Functions ==================================================================================
 
@@ -327,7 +353,15 @@ function sibdiff() {
 }
 
 ## Cd and list
-function cdd(){ cd $* ; ls --color}
+function cdd(){ cd "$1" ; ls --color}
+
+mkcd() { mkdir -p "$*" && cd "$*"; }
+lss()  { tree $@ | less }
+wiki() { dig +short txt $(echo "$*" | tr ' ' _).wp.dg.cx }
+lls()  { locate "$*" | less }
+
+## Pacman stuff
+desc() { pacman -Qi $1 | grep "Description" }
 
 ## Command-line calculator
 calc() { python -ic "from __future__ import division; from math import *; from random import *" ;}
@@ -404,7 +438,7 @@ zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:
 
 # 1. Dir stack =========================================================================
 
-DIRSTACKSIZE=32
+DIRSTACKSIZE=16
 #DIRSTACKFILE=~/.zdirs
 #if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
 #  dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
