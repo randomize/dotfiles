@@ -59,6 +59,8 @@ IdeaProjects/
 .python_history
 .cgdb/readline_history.txt
 .w3m/history
+.config/ranger/__pycache__/
+.config/ranger/history
 
 # Major soft
 .purple/
