@@ -61,6 +61,7 @@ IdeaProjects/
 .w3m/history
 .config/ranger/__pycache__/
 .config/ranger/history
+.awesome-client_history
 
 # Major soft
 .purple/
@@ -72,7 +73,7 @@ IdeaProjects/
 .eclipse/
 .mypaint/
 .pentadactyl/
-.ncmpcpp/
+.ncmpcpp/error.log
 .pki/
 .ipython/
 .gimp-2.8/
