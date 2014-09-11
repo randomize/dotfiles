@@ -185,7 +185,7 @@ $ nautilus -q
 
   $ xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu > ~/.config/awesome/archmenu.lua
 
-==== Custom kernel ======
+==== Custom kernel ====== (18)
 
  $ cd /tmp
  $ ABSROOT=. abs core/linux
@@ -198,4 +198,16 @@ TODO: More tweaks soon
 
  $ updpkgsums
  $ makepkg
+
+==== Ranger treat DJVU correctly ===== (18)
+
+in file:
+   /usr/lib/python3.4/site-packages/ranger/data/mime.types   
+
+add lines:
+  doc/djvu djvu
+  application/dwg  dwg
+
+to prevent ranger trying these formats with w3m
+
 
