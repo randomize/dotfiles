@@ -262,6 +262,7 @@ Console tools:
    beep           // For beeping nice. (Not working with stock Arch kernel)
    aur/lsw        // Lists windows in X
    aur/cheat-git  // Cheat sheet for many console tools(actually better read man)
+   aur/ls++-git   // Nice colored ls on steroids
 
 
 Fuse filesystems:
@@ -662,6 +663,7 @@ Screen capture:
    simplescreenrecorder   // Best recorder ever, like it's OpenGL capture feature
 
    aur/gromit-mpx-git     // Nice annotation tool for casting
+   aur/screenkeys-git     // Keys display
 
 
 Monitor tools:
