@@ -161,22 +161,36 @@ bindkey -a '^R' redo
 # bindkey '^h' backward-delete-char
 
 # History search
+# Stupid arrows
 bindkey -v '^[[A' history-search-backward
 bindkey -v '^[[B' history-search-forward
+# Ctrl+jk
 bindkey -v '^k'   history-search-backward
 bindkey -v '^j'   history-search-forward
-bindkey -v '^P'   history-search-backward
-bindkey -v '^N'   history-search-forward
+# Ctrl+pn
+bindkey -v '^p'   history-search-backward
+bindkey -v '^n'   history-search-forward
+# Alt+jk
 bindkey -v '\ek'  history-search-backward
 bindkey -v '\ej'  history-search-forward
+# normal mode jk
 bindkey -a 'k'    history-search-backward
 bindkey -a 'j'    history-search-forward
 
 # Search backwards and forwards with a pattern
+# normal mode
 bindkey -a '/' history-incremental-pattern-search-backward
 bindkey -a '?' history-incremental-pattern-search-forward
+# Ctrl+rf
 bindkey -v '^r' history-incremental-pattern-search-backward
 bindkey -v '^f' history-incremental-pattern-search-forward
+# Alr+rf
+bindkey -v '\er' history-incremental-pattern-search-backward
+bindkey -v '\ef' history-incremental-pattern-search-forward
+
+# Clear screen Alt+l
+bindkey -v '\el' clear-screen
+
 
 # Enable exit on Ctrl+D
 extended_logout() {
@@ -268,6 +282,8 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -I'
 alias ln='ln -i'
+alias acp='acp -ig'
+alias amv='amv -ig'
 
 alias g='git'
 alias gap='git add --patch'
@@ -294,6 +310,7 @@ alias cmake-release='cmake -DCMAKE_BUILD_TYPE=Release'
 alias cmake-debug='cmake -DCMAKE_BUILD_TYPE=Debug'
 
 # Sudoing
+alias sudo='sudo '
 alias poweroff='sudo poweroff'
 alias mount='sudo mount'
 alias umount='sudo umount'
@@ -330,7 +347,7 @@ alias ..='cd ..'
 alias cdA='cd ~/.config/awesome'
 alias cdT='cd /mnt/TERRA'
 alias cdB='cd /mnt/TERRA/Books'
-alias cdD='cd ~/Downloads'
+alias cdD='cd ~/Downloads && ll'
 
 ## Vim aliases
 alias e='vim'
