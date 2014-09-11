@@ -12,13 +12,13 @@
 # Support for evaluating a function on startup
 if [[ $1 == eval ]]
 then
-    "$@"
-set --
+   "$@"
+   set --
 fi
 
 # Setup colors in tty conoles ===============================================================
 #
-if [ "$TERM" = "linux" ]; then
+function set-randy-colors() {
    echo -en "\e]P0131313" #black
    echo -en "\e]P82B2B2B" #darkgrey
    echo -en "\e]P1D75F5F" #darkred
@@ -36,6 +36,11 @@ if [ "$TERM" = "linux" ]; then
    echo -en "\e]P7E5E5E5" #lightgrey
    echo -en "\e]PFEEEEEE" #white
    clear #for background artifacting
+}
+
+if [ "$TERM" = "linux" ];
+then
+   set-randy-colors
 fi
 
 # Variables ==================================================================================

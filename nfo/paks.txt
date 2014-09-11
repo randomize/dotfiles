@@ -246,13 +246,16 @@ Console tools:
    aur/rmlint         // Duplicate files searcher and remover
 
    pv             // echo "You can simulate on-screen typing just like in the movies" | pv -qL 10
-   rlwrap         // Read line wrap (for maxima and others)
+   rlwrap         // Read line wrap (for maxima and others) also awesome-client
    lsof           // Show open files tool
    moreutils      // Cool toolset (ex vipe for vim editing while passing though pipe)
    most           // Feature rich pager
    tree           // Nice directory tree listing
    aur/colortheme // Terminal colors table script
    dfc            // Nice df ;)
+
+   vimpager       // Vim for paging and vimcat
+   sharutils      // Shell archives support
 
 
 Fuse filesystems:
@@ -290,7 +293,7 @@ Nautilus:
 Other file managers:
 
    mc
-   ranger     // Another console, powered by Vim keys
+   ranger     // Another console, powered by Vim keys (see setup(18))
    vifm       // ranger is preferable but this good too
 
 Archives:
