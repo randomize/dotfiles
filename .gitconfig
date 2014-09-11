@@ -36,13 +36,13 @@
    # ra = recent commits, all reachable refs
    # l = all commits, only current branch
    # la = all commits, all reachable refs
-   hp = "!. ~/.githelpers && show_git_head"
+   hp = "!. ~/bin/githelpers && show_git_head"
    h = !git head
    ra = !git r --all
    head = !git l -1
    r = !git l -16
    la = !git l --all
-   l = "!. ~/.githelpers && pretty_git_log"
+   l = "!. ~/bin/githelpers && pretty_git_log"
 
 [color]
    ui = true

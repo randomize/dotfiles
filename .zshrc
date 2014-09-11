@@ -60,7 +60,8 @@ export PATH="${PATH}:${HOME}/bin"
 
 export GCC_COLORS="error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01"
 
-eval `dircolors -b`
+#eval `dircolors -b`
+eval `dircolors -b $HOME/.dircolors`
 
 # Zsh Options ==================================================================================
 
@@ -271,8 +272,8 @@ alias ya='yaourt'
 alias ls='ls --color=auto -F -h'
 alias lsd='ls -ld *(-/DN)'
 alias lsa='ls -ld .*'
-alias la='ls -la'
-alias ll='ls -l'
+alias la='ls++ -a'
+alias ll='ls++'
 alias l='ll'
 alias sl='ls'
 

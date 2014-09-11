@@ -1,20 +1,5 @@
-Screenkey - what is this?
-Xfce4-notifyd - alternatives? chose, setup
-Linux player - choose
-cmus-remote -u ?????
-xmodmap???
-parcellite????
-compton or xcompmgr?
 
-
-====================================
-
-Vim C++
-
-1) setter/getter generation
-2) YCM what with Ultisnips
-3) Ultisnips => take form tomato sin/inc/hhh snippets
-4) YCM find references?
-5) YCM create implementations
-5) YCM includes completions
+screenkey   -- screencasting tool
+ncmpcpp -- vim like keys!
+xmodmap
 

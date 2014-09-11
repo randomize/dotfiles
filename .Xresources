@@ -67,7 +67,7 @@ urxvt*colorIT:         #87af5f
 urxvt*colorBD:         #d7d7d7
 urxvt*colorUL:         #87afd7
 urxvt*depth:      32
-urxvt*background: rgba:0000/0000/0000/cccc
+urxvt*background: rgba:0000/0000/0000/eeee
 urxvt*foreground: #DDDDDD
 urxvt*saveLines:  0
 
