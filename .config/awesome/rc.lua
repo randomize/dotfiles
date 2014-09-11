@@ -415,7 +415,7 @@ globalkeys = awful.util.table.join(
     ),
     awful.key({ modkey,           }, "e", 
        function ()
-          drop("urxvtc -e ranger", "top", "center", 1, 0.5)
+          drop("urxvtc -depth 0 -e ranger", "top", "center", 1, 0.5)
           -- awful.util.spawn("urxvtc -e ranger", false)
        end
     ),

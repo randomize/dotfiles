@@ -1,7 +1,7 @@
 # Write your default config options here!
 
 # use X11 for video output, use a wayland and framebuffer as fallbacks
-vo=opengl-hq,xv,wayland,directfb
+vo=opengl-hq,xv,wayland,fbdev2
 
 ao=pulse,alsa
 
