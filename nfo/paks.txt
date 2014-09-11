@@ -154,6 +154,7 @@ Video:
    xf86-video-intel    // Also installs intel-dri and libgl
    libva-intel-driver
    mesa-demos          // Beloved glxgears is here
+   intel-gpu-tools     // Debugging
 
 Xorg stuff:
 
@@ -219,6 +220,7 @@ Recoll and helpers:
    perl-image-exiftool  // EXIF info => text
    pstotext             // Post script => text
    python2-pychm        // chm files => text
+   xmlto                // XML => text
 
 Themes:
 
@@ -229,7 +231,7 @@ Themes:
 Terminal emulators:
 
    rxvt-unicode            // Default terminal, using urxvt{d,c} pair
-   aur/st                  // JIC fall-back
+   local/st-git            // JIC fall-back, (+my patches)
    xterm                   // Another JIC term ;)
    aur/cool-old-term-git   // Eye-candy old school terminal emulator
 
@@ -243,7 +245,7 @@ Console tools:
 
    unp            // Console universal unpacker
    par2cmdline    // Par2 utility
-   aur/rmlint         // Duplicate files searcher and remover
+   aur/rmlint-git // Duplicate files searcher and remover
 
    pv             // echo "You can simulate on-screen typing just like in the movies" | pv -qL 10
    rlwrap         // Read line wrap (for maxima and others) also awesome-client
@@ -254,8 +256,12 @@ Console tools:
    aur/colortheme // Terminal colors table script
    dfc            // Nice df ;)
 
-   vimpager       // Vim for paging and vimcat
-   sharutils      // Shell archives support
+   aur/vimpager-git   // Vim for paging and vimcat
+   sharutils          // Shell archives support
+
+   beep           // For beeping nice. (Not working with stock Arch kernel)
+   aur/lsw        // Lists windows in X
+   aur/cheat-git  // Cheat sheet for many console tools(actually better read man)
 
 
 Fuse filesystems:
@@ -293,8 +299,8 @@ Nautilus:
 Other file managers:
 
    mc
-   ranger     // Another console, powered by Vim keys (see setup(18))
-   vifm       // ranger is preferable but this good too
+   aur/ranger-git   // Fast and pretty manager powered by Vim keys (see setup(18))
+   vifm             // ranger is preferable but this good too
 
 Archives:
 
@@ -325,6 +331,9 @@ Viewers:
 
    fbreader       // Using it as EPUB reader
    //coolreader   // FBreader is better for me
+
+   fbpdf-git      // Terminal framebuffer PDF reader! (also DJVU)
+   fbv            // Image framebuffer viewer
 
 Office:
 
@@ -358,6 +367,7 @@ IDE and editors:
    emacs              // Another The IDE
    pycharm-community  // Python IDE
    eclipse            // Big and fat but good for Android
+   codeblocks         // For oFramework projects
 
    sublime-text-dev                   // Don't like currently, but shell give a shot
    monodevelop                        // Well good too
@@ -394,6 +404,7 @@ C++ compilers and tools:
 
    clang                      // Cool and modern apple compiler
    root                       // CERN thing, has interactive cling C++
+   ccache                     // For faster g++ compiling (see ArchWiki)
 
    cppcheck                 // Static C/C++ analyzer
    ctags                    // Source index generator (was used for Vim before YCM)
@@ -568,7 +579,7 @@ Downloaders:
    curl     // New school
    wget     // Old school
    aria2    // Featured
-   uget     // GUI-sh
+   //uget   // GUI-sh
 
 Sharing:
 
@@ -584,7 +595,8 @@ Instant Messaging:
    //profanity        // True console XMPP
 
    irssi     // IRC client
-   tox       // for toxing
+   aur/tox-git  // for toxing
+   aur/utox-git  // for toxing
 
 Audio and sound:
 
@@ -616,6 +628,7 @@ Media players:
 
    mplayer
    aur/mpv-git      // Nice new player, testing git version
+   vlc              // Good too player
 
    aur/mpd-git      // Music player daemon (git version)
    mpc              // Client for it
@@ -676,10 +689,11 @@ Books and scanning:
    xsane       // X frontend
    xsane-gimp  // GIMP plugin frontend
 
-   scantailor       // Automatic scan placement and cleanup
-   poppler          // For pdfimages
-   pdf2djvu         // One command converter
-   //aur/gscan2pdf  // Interesting thing but currently on aur with lots of deps.
+   aur/scantailor-git  // Automatic scan placement and cleanup
+   poppler             // For pdfimages
+   pdf2djvu            // One command converter
+   aur/img2djvu-git    // Compresses 
+   //aur/gscan2pdf     // Interesting thing but currently on aur with lots of deps.
 
    aur/pdftk-bin    // PDF editor
    pdfmod           // PDF GUI-sh editor
@@ -767,9 +781,8 @@ Android development:
    heimdall        // Samsung devices flashing tool
    aur/pidcat-git  // Nice colored logcat with PID
 
-Intel stuff:
+// Intel aur/intel-parallel-studio-2013 meta:
 
-   local/intel-parallel-studio-2013 // Free for GNU\Linux
    local/intel-compiler-base        // Intel compiler for C++
    local/intel-fortran-compiler     // Intel compiler for Fortran
    local/intel-idb                  // Intel debugger
