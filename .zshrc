@@ -16,6 +16,8 @@ then
    set --
 fi
 
+[[ -s /etc/profile.d/autojump.zsh ]] && . /etc/profile.d/autojump.zsh
+
 # Setup colors in tty conoles ===============================================================
 #
 function set-randy-colors() {

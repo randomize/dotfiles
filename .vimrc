@@ -35,7 +35,8 @@ Bundle 'VisIncr'
 Bundle 'molokai'
 
 " Cool status line
-Bundle 'bling/vim-airline'
+" Bundle 'bling/vim-airline'
+Bundle 'Lokaltog/vim-powerline'
 
 " Show buffers in line
 Bundle 'bling/vim-bufferline'
@@ -77,9 +78,8 @@ Bundle 'Shougo/unite.vim'
 " Chuck syntax
 Bundle 'https://github.com/vim-scripts/ck.vim.git'
 
-" Pentadactyl -- SLOWPOKE
+" Pentadactyl for dactyl syntax, on my big *rc is pretty slow
 " Bundle 'dogrover/vim-pentadactyl'
-"
 
 Bundle 'dhruvasagar/vim-table-mode'
 
@@ -480,8 +480,18 @@ nmap <silent> ,,<space> <c-^>
 " PLUGINS
 " =========================================================================
 
-" == Airline ==
+" == Airline / Powerline  ==
 
+let g:Powerline_symbols="fancy"
+"let g:airline_symbols = {}
+"let g:airline_left_sep="u2b80"
+"let g:airline_left_alt_sep = "u2b81"
+"let g:airline_right_sep = "u2b82"
+"let g:airline_right_alt_sep = "u2b83"
+"let g:airline_symbols.branch = "u2b60"
+"let g:airline_symbols.readonly = "u2b64"
+"let g:airline_symbols.linenr = "u2b61"
+"let g:airline_powerline_fonts = 1
 
 " == Syntastic ==
 
