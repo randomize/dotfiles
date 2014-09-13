@@ -132,6 +132,7 @@ IdeaProjects/
 .config/Scan Tailor/
 .config/nautilus-actions/
 .config/pulse/
+.config/copyq/
 
 # Dot config files
 .config/htop/htoprc

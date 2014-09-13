@@ -1,5 +1,6 @@
 " vim: set ft=pentadactyl
 loadplugins '\.(js|penta)$'
+js editor.defaultRegister="+"
 
 set titlestring=Firefox
 set editor="gvim -f +<line> <file>"
@@ -8,6 +9,9 @@ set cpt=sl
 set newtab=all
 set pageinfo=gefms
 set shell='/usr/bin/bash'
+
+" Install noredirect google search from Mycroft Project
+set defsearch=g 
 
 " set color scheme
 " :colorscheme g
@@ -53,17 +57,19 @@ map -b j 5j
 map -b k 5k
 
 " Ctrl+hjkl navigation
-map -b <C-j> <down>
-map -b <C-k> <up>
-map -b <C-l> <END>
-map -b <C-h> <NOP>
+map -b <C-j> <Begin>
+map -b <C-k> <End>
+map -b <C-l> :tn<CR>
+map -b <C-h> :tp<CR>
 
 map , <Leader>
+
 " recent history "jumps"
 map <Leader>j :jumps<CR>
 
 " focus first input by default with just i
-map i gi
+"map i gi
+
 " view native size of image without clicking it
 map <Leader>z :js window.content.document.toggleImageSize();<CR>
 
@@ -81,7 +87,7 @@ set nextpattern=^>$,[Nn]ext,[Mm]ore,([Ss]ucc|[Ss]uccessiva),([Pp]ross|[Pp]rossim
 set previouspattern=^<$,([Pp]rev|[Pp]revious),([Pp]re|[Pp]recedente),([Ii]ndietro),^(<<|«)$,^(<|«),(<|«)$
 
 " Enable bookmarks
-set guioptions+=B
+"set guioptions+=B
 
 group user
 highlight -link=FontFixed CmdLine font-family: "Consolas"; font-size: 10pt;

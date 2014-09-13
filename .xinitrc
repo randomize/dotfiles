@@ -24,9 +24,15 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 # Load settings from X
 xrdb -merge ~/.Xresources 
 
-# Set layouts and my lovely capslock =)
-setxkbmap -layout "us, ru" -option "grp:caps_toggle"
+# Set layouts and no capslock
+#setxkbmap -layout "us, ru" -option "grp:caps_toggle"
+setxkbmap -layout "us, ru" -option "grp:ctrl_shift_toggle"
+setxkbmap -option ctrl:nocaps       # Make Caps Lock a Control key
+# This will make the Shift+NumLock shortcut toggle mouse keys
+setxkbmap -option "keypad:pointerkeys"
+# Turn on c-a-backspace
 setxkbmap -option terminate:ctrl_alt_bksp
+xmodmap .Xmodmap
 
 # Set repeat rate
 xset r rate 400 80
@@ -51,6 +57,7 @@ xset s off
 
 # Clipboard manager
 # parcellite &
+copyq &
 
 # Hide mouse when not required
 unclutter &

@@ -211,8 +211,8 @@ musicwidget.mpd_config = "/home/randy/.config/mpd/mpd.conf"
 -- Specify decorators on the left and the right side of the
 -- widget. Or just leave empty strings if you decorate the widget
 -- from outside.
-musicwidget.ldecorator = "["
-musicwidget.rdecorator = "]"
+musicwidget.ldecorator = ""
+musicwidget.rdecorator = ""
 
 -- Set all the servers to work with (here can be any servers you use)
 musicwidget.servers = {
@@ -435,14 +435,19 @@ globalkeys = awful.util.table.join(
          naughty.notify({ title="Screenshot", text="Capturing a window" })
       end
     ),
-    awful.key({                   }, "XF86AudioRaiseVolume", function () change_volume("5%+") end),
-    awful.key({                   }, "XF86AudioLowerVolume", function () change_volume("5%-") end),
-    awful.key({                   }, "XF86AudioMute", function () change_volume("toggle") end),
     awful.key({                   }, "XF86HomePage", function () awful.util.spawn("firefox") end),
     awful.key({                   }, "XF86Calculator",
       function ()
          awful.util.spawn("urxvtc -geometry 80x10+0+0 -fg white -e python  -ic 'from math import *; from random import *'")
       end
+    ),
+    awful.key({                   }, "XF86AudioRaiseVolume", function () change_volume("5%+") end),
+    awful.key({                   }, "XF86AudioLowerVolume", function () change_volume("5%-") end),
+    awful.key({                   }, "XF86AudioMute", function () change_volume("toggle") end),
+    awful.key({                   }, "XF86Tools", -- For some reason it is players button 
+       function ()
+          drop("urxvtc -e ncmpcpp", "bottom", "center", 1, 1)
+       end
     ),
     awful.key({                   }, "XF86AudioPlay",
       function ()
@@ -636,9 +641,13 @@ awful.rules.rules = {
          awful.placement.centered(c,nil)
       end
     },
-    -- Set Firefox to always map on tags number 2 of screen 1.
+    -- Set Firefox to always map on tags number 1 of screen 1.
     { rule = { class = "Firefox" },
-    properties = { tag = tags[1][1] } },
+    properties = { tag = tags[1][1],
+                     maximized_vertical   = true,
+                     maximized_horizontal = true,
+                 },
+    },
     -- Set Pidig
     { rule = { class = "Pidgin", role = "buddy_list"},
       properties = { tag = tags[1][9] } },
