@@ -133,6 +133,7 @@ IdeaProjects/
 .config/nautilus-actions/
 .config/pulse/
 .config/copyq/
+.config/linuxsampler.org/
 
 # Dot config files
 .config/htop/htoprc

@@ -64,48 +64,48 @@ xterm*color15:   #EEEEEC
 
 ! Urxvt -----------------------------------------------
 
-urxvt*geometry: 150x50+100+60
-urxvt*letterSpace: 0
-urxvt*lineSpace: 0
+URxvt*geometry: 150x50+100+60
+URxvt*letterSpace: 0
+URxvt*lineSpace: 0
 
-urxvt*font: xft:PragmataPro\ for\ Powerline:size=10
+URxvt*font: xft:PragmataPro\ for\ Powerline:size=10
 ! urxvt*font: xft:Consolas\ for\ Powerline:regular:pixelsize=14
 ! urxvt*boldFont: xft:Consolas\ for\ Powerline:bold:size=12
 ! urxvt*font:   -*-terminus-medium-r-normal-*-16-*-*-*-*-*-*-r
 ! urxvt*boldFont: -*-terminus-bold-r-normal-*-16-*-*-*-*-*-*-r
 
-urxvt*scrollBar:       false
-urxvt*internalBorder:  5
-urxvt*colorIT:         #87af5f
-urxvt*colorBD:         #d7d7d7
-urxvt*colorUL:         #87afd7
-urxvt*depth:      32
-urxvt*background: rgba:0000/0000/0000/eeee
-urxvt*foreground: #DDDDDD
-urxvt*saveLines:  0
+URxvt*scrollBar:       false
+URxvt*internalBorder:  5
+URxvt*colorIT:         #87af5f
+URxvt*colorBD:         #d7d7d7
+URxvt*colorUL:         #87afd7
+URxvt*depth:      32
+URxvt*background: rgba:0000/0000/0000/eeee
+URxvt*foreground: #DDDDDD
+URxvt*saveLines:  0
 
-urxvt*color0:    #000000
-urxvt*color1:    #CC0000
-urxvt*color2:    #4E9A06
-urxvt*color3:    #C4A000
-urxvt*color4:    #3465A4
-urxvt*color5:    #75507B
-urxvt*color6:    #06989A
-urxvt*color7:    #D3D7CF
-urxvt*color8:    #555753
-urxvt*color9:    #EF2929
-urxvt*color10:   #8AE234
-urxvt*color11:   #FCE94F
-urxvt*color12:   #729FCF
-urxvt*color13:   #AD7FA8
-urxvt*color14:   #34E2E2
-urxvt*color15:   #EEEEEC
+URxvt*color0:    #000000
+URxvt*color1:    #CC0000
+URxvt*color2:    #4E9A06
+URxvt*color3:    #C4A000
+URxvt*color4:    #3465A4
+URxvt*color5:    #75507B
+URxvt*color6:    #06989A
+URxvt*color7:    #D3D7CF
+URxvt*color8:    #555753
+URxvt*color9:    #EF2929
+URxvt*color10:   #8AE234
+URxvt*color11:   #FCE94F
+URxvt*color12:   #729FCF
+URxvt*color13:   #AD7FA8
+URxvt*color14:   #34E2E2
+URxvt*color15:   #EEEEEC
 
 ! Disable perl extensions for speed
-urxvt*perl-ext:
-urxvt*perl-ext-common:
+URxvt*perl-ext:
+URxvt*perl-ext-common:
 
 ! Disable Ctrl+Shift keycap mode
-urxvt*iso14755: false
-urxvt*iso14755_52: false
+URxvt*iso14755: false
+URxvt*iso14755_52: false
 
