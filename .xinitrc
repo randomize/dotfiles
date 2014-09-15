@@ -5,11 +5,13 @@
 # Executed by startx (run your window manager from here)
 
 if [ -d /etc/X11/xinit/xinitrc.d ]; then
-  for f in /etc/X11/xinit/xinitrc.d/*; do
-    [ -x "$f" ] && . "$f"
-  done
-  unset f
+   for rcd in /etc/X11/xinit/xinitrc.d/* ; do
+      [ -x "$rcd" ] && . "$rcd"
+   done
+   unset rcd
 fi
+
+echo $BROWSER
 
 # Setup my preferables
 export BROWSER=firefox
@@ -41,6 +43,7 @@ xset r rate 400 80
 feh  --bg-scale /home/randy/Pictures/wall.jpg &
 
 # make terminus visible for xfontsel and clients
+xset +fp /.fonts
 xset +fp /usr/share/fonts/local
 
 # Disable screen turn off
@@ -60,7 +63,7 @@ xset s off
 copyq &
 
 # Hide mouse when not required
-unclutter &
+unclutter -grab &
 
 # Composition
 compton -b
@@ -91,9 +94,9 @@ urxvtd -q -f -o
 /usr/bin/mpd
 
 # exec openbox
-exec awesome
+# exec awesome
 # exec xmonad
-# exec i3 -V >> /tmp/i3log 2>&1
+exec i3 -V >> /tmp/i3log 2>&1
 # exec startfluxbox
 # exec gnome-session
 # exec startkde
