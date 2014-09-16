@@ -47,22 +47,8 @@ fi
 
 # Variables ==================================================================================
 #
-export EDITOR="vim"
-#export PAGER="most -s"
+
 export PATH="${PATH}:${HOME}/bin"
-
-# Setup cocos2dx paths ans vars
-# export COCOS_CONSOLE_ROOT=/home/randy/cocos2d-x/tools/cocos2d-console/bin
-# export PATH=$COCOS_CONSOLE_ROOT:$PATH
-# export NDK_ROOT=/home/randy/android/ndk
-# export PATH=$NDK_ROOT:$PATH
-# export ANDROID_SDK_ROOT=/home/randy/android/sdk
-# export PATH=$ANDROID_SDK_ROOT:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
-# export ANT_ROOT=/usr/bin
-
-export GCC_COLORS="error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01"
-
-#eval `dircolors -b`
 eval `dircolors -b $HOME/.dircolors`
 
 # Zsh Options ==================================================================================
@@ -78,6 +64,11 @@ setopt EXTENDED_HISTORY # Timestamp history
 
 
 # Completion
+
+autoload -Uz compinit
+compinit
+# http://www.acm.uiuc.edu/workshops/zsh/prompt/escapes.html
+
 # Folowing causes empyt directory slowdown
 #zstyle ':completion:*' completer _list _oldlist _expand _complete _ignored _match _correct _approximate
 zstyle ':completion:*' file-sort access
@@ -85,16 +76,26 @@ zstyle ':completion:*' matcher-list '' ''
 zstyle ':completion:*' max-errors 100 numeric
 zstyle ':completetion:*' menu select
 
-autoload -Uz compinit
-compinit
-# http://www.acm.uiuc.edu/workshops/zsh/prompt/escapes.html
+# Color on suggestions to display partial match
+zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==32=00}:${(s.:.)LS_COLORS}")';
+
+# Processes
+# zstyle ':completion:*:processes' command 'ps -aux'
+# zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;32'
+zstyle ':completion:*:processes' command 'NOCOLORS=1 ps -U $(whoami)|sed "/ps/d"'
+zstyle ':completion:*:processes' insert-ids menu yes select
+zstyle ':completion:*:processes-names' command 'NOCOLORS=1 ps xho command|sed "s/://g"'
+zstyle ':completion:*:processes' sort false
+
+
 
 ### 
 # Prompts ==================================================================================
 autoload -U colors && colors
 
-export BASE_PS1="%{$fg_bold[green]%}%n@%M %{$fg_bold[blue]%}%10~%{$reset_color%}"
+export BASE_PS1="%{$fg_bold[green]%}%n@%M %{$fg_bold[blue]%}%1~%{$reset_color%}"
 # export RPROMPT="[%{$fg_no_bold[yellow]%}%?%{$reset_color%}]"
+RPROMPT="%B%{$fg[black]%}%~%{$reset_color%}"
 
 # Making vim modes visible with hooks
 function zle-line-init zle-keymap-select {
@@ -197,7 +198,7 @@ bindkey -v '\er' history-incremental-pattern-search-backward
 bindkey -v '\ef' history-incremental-pattern-search-forward
 
 # Clear screen Alt+l
-bindkey -v '\el' clear-screen
+bindkey -v '\ec' clear-screen
 
 
 # Enable exit on Ctrl+D
@@ -218,6 +219,11 @@ bindkey -s '^O' ' | less'
 
 # Insert last word with Alt+. -- cool!
 bindkey '\e.' insert-last-word
+
+bindkey '\eh' backward-char
+bindkey '\el' forward-char
+
+bindkey '\ey' accept-and-hold
 
 # Use C-x C-e to edit the current command line
 autoload -U edit-command-line
@@ -264,6 +270,8 @@ alias -s bz2=tar -xjvf
 alias -s java=$EDITOR
 alias -s txt=$EDITOR
 alias -s PKGBUILD=$EDITOR
+alias -s pdf=zathura
+alias -s djvu=zathura
 
 # Normal aliases
 alias mpd='/usr/bin/mpd'
@@ -278,6 +286,8 @@ alias la='ls++ -a'
 alias ll='ls++'
 alias l='ll'
 alias sl='ls'
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
 
 # Shell
 alias :q='exit'
@@ -352,6 +362,10 @@ alias eP='vim ~/nfo/paks.txt'
 
 ## Frequent places
 alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
 alias cdA='cd ~/.config/awesome'
 alias cdT='cd /mnt/TERRA'
 alias cdB='cd /mnt/TERRA/Books'
@@ -454,10 +468,6 @@ zman() {
 }
 
 
-# Color on suggestions to display partial match
-zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==32=00}:${(s.:.)LS_COLORS}")';
-
-
 
 # Plugins and external stuff ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -536,8 +546,9 @@ ZSH_HIGHLIGHT_STYLES[cursor-matchingbracket]=fg=white,bold
 
 ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
 ZSH_HIGHLIGHT_PATTERNS+=('rm -fr *' 'fg=white,bold,bg=red')
-ZSH_HIGHLIGHT_PATTERNS+=('kill *' 'fg=cyan,bold')
-ZSH_HIGHLIGHT_PATTERNS+=('killall *' 'fg=cyan,bold')
+ZSH_HIGHLIGHT_PATTERNS+=('kill *' 'fg=red,bold,underline')
+ZSH_HIGHLIGHT_PATTERNS+=('pkill *' 'fg=red,bold,underline')
+ZSH_HIGHLIGHT_PATTERNS+=('killall *' 'fg=red,bold,underline')
 
 
 # 3. Command finished notification =====================================================
@@ -635,6 +646,9 @@ Convert()
 }
 
 highlightkeynote() { highlight --font=Consolas --font-size=24 --style=molokai -i "$@" -O rtf ;}
+
+function psgrep() { ps axuf | grep -v grep | grep "$@" -i }
+function fname() { find . -iname "*$@*"; }
 
 # Add environment variable COCOS_CONSOLE_ROOT for cocos2d-x
 export COCOS_CONSOLE_ROOT=/home/randy/cocos2d-x/tools/cocos2d-console/bin

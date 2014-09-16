@@ -643,7 +643,14 @@ awful.rules.rules = {
     },
     -- Set Firefox to always map on tags number 1 of screen 1.
     { rule = { class = "Firefox" },
-    properties = { tag = tags[1][1],
+    properties = {   
+                     tag = tags[1][1],
+                     maximized_vertical   = true,
+                     maximized_horizontal = true,
+                 },
+    },
+    { rule = { class = "Chromium" },
+    properties = {
                      maximized_vertical   = true,
                      maximized_horizontal = true,
                  },

@@ -14,14 +14,9 @@ xterm*cursorColor:        green
 xterm*cursorBlink:        false
 xterm*cursorOnTime:	     550
 xterm*cursorOffTime:	     150
-xterm*faceName:           Consolas\ for\ Powerline:charwidth=0:antialias=True:pixelsize=14
+xterm*faceName:           PragmataPro:charwidth=0:antialias=True:size=11
 xterm*Geometry:           200x60+100+60
 xterm*termName:           xterm-256color
-! xterm*font:               xft:consolas:size=12
-! xterm*faceName:           Terminus:pixelsize=16
-! xterm*font:               *-terminus-*-*-*-*-14-*-*-*-*-*-iso10646-*
-!xterm*font:               -*-terminus-medium-r-normal-*-16-*-*-*-*-*-*-r
-!xterm*boldFont:           -*-terminus-bold-r-normal-*-16-*-*-*-*-*-*-r
 xterm*utf8: true
 xterm*locale: true
 xterm*utf8Title: true
@@ -30,9 +25,6 @@ xterm*scaleHeight: 1.0
 xterm*preeditType: Root
 xterm*xftAntialias: true
 xterm*cjkWidth: false
-! xterm*fontMenu*fontdefault*Label: Default
-! xterm*faceName: DejaVu Sans Mono:pixelsize=14:antialias=True
-! xterm*faceNameDoublesize: Microsoft YaHei:pixelsize=14:antialias=True
 
 xterm*dynamicColors:      true
 xterm*eightBitInput:      true
@@ -68,11 +60,8 @@ URxvt*geometry: 150x50+100+60
 URxvt*letterSpace: 0
 URxvt*lineSpace: 0
 
-URxvt*font: xft:PragmataPro\ for\ Powerline:size=10
-! urxvt*font: xft:Consolas\ for\ Powerline:regular:pixelsize=14
-! urxvt*boldFont: xft:Consolas\ for\ Powerline:bold:size=12
-! urxvt*font:   -*-terminus-medium-r-normal-*-16-*-*-*-*-*-*-r
-! urxvt*boldFont: -*-terminus-bold-r-normal-*-16-*-*-*-*-*-*-r
+URxvt*font:     xft:PragmataPro:pixelsize=16
+URxvt*boldFont: xft:PragmataPro:style=Bold:pixelsize=16
 
 URxvt*scrollBar:       false
 URxvt*internalBorder:  5
@@ -80,7 +69,7 @@ URxvt*colorIT:         #87af5f
 URxvt*colorBD:         #d7d7d7
 URxvt*colorUL:         #87afd7
 URxvt*depth:      32
-URxvt*background: rgba:0000/0000/0000/eeee
+URxvt*background: rgba:0000/0000/0000/cccc
 URxvt*foreground: #DDDDDD
 URxvt*saveLines:  0
 

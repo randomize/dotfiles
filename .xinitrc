@@ -11,17 +11,6 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
    unset rcd
 fi
 
-echo $BROWSER
-
-# Setup my preferables
-export BROWSER=firefox
-export EDITOR=vim
-
-# Enable anti aliasing in java programs
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
-
-# Set path for gtk config
-export GTK2_RC_FILES="$HOME/.gtkrc-2.0" 
 
 # Load settings from X
 xrdb -merge ~/.Xresources 
@@ -60,10 +49,10 @@ xset s off
 
 # Clipboard manager
 # parcellite &
-copyq &
+# copyq &
 
 # Hide mouse when not required
-unclutter -grab &
+# unclutter -grab &
 
 # Composition
 compton -b
@@ -94,9 +83,9 @@ urxvtd -q -f -o
 /usr/bin/mpd
 
 # exec openbox
-# exec awesome
+exec awesome
 # exec xmonad
-exec i3 -V >> /tmp/i3log 2>&1
+# exec i3 -V >> /tmp/i3log 2>&1
 # exec startfluxbox
 # exec gnome-session
 # exec startkde

@@ -81,6 +81,7 @@ Filesystem   Size  Used Avail Use% Mounted on  Label
 ==== Firefox setup ==== (7)
 
    ( about:config ) network.standard-url.escape-utf8 = false
+   ( about:config ) network.http.sendReferer = 0
 
 ==== Alsa setup ==== (8)
 
@@ -209,5 +210,15 @@ add lines:
   application/dwg  dwg
 
 to prevent ranger trying these formats with w3m
+
+===== Pulse audio no flat volume ===== (19)
+
+/etc/pulse/daemon.conf
+
+flat-volumes = no
+
+$ pulseaudio -k
+$ pulseaudio --start
+
 
 
