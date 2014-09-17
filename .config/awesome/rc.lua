@@ -95,12 +95,8 @@ end
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 namedtags = {
-   names = {"⠐", "⠡", "⠪", "⠵", "⠻", "⠿",
-   "\xE2\x8C\xAC", -- "games" / ⌬
-   "\xE2\x8C\x98", -- “main” / ⌘
-   "\xE2\x98\xB1"  -- “code” / ☱
-   },
-   layout = {layouts[1], layouts[1], layouts[2], layouts[2], layouts[4], layouts[2], layouts[1], layouts[1], layouts[2]}
+   names = {"α", "β", "γ", "δ", "ε", "ζ", "η", "θ", "ι", "κ", "λ" },
+   layout = {layouts[1], layouts[1], layouts[2], layouts[2], layouts[4], layouts[2], layouts[1], layouts[1], layouts[2], layouts[2], layouts[2]}
 }
 -- Define a tag table which hold all screen tags.
 tags = {}
@@ -436,6 +432,7 @@ globalkeys = awful.util.table.join(
       end
     ),
     awful.key({                   }, "XF86HomePage", function () awful.util.spawn("firefox") end),
+    awful.key({                   }, "XF86Mail", function () awful.util.spawn("thunderbird") end),
     awful.key({                   }, "XF86Calculator",
       function ()
          awful.util.spawn("urxvtc -geometry 80x10+0+0 -fg white -e python  -ic 'from math import *; from random import *'")
@@ -446,7 +443,7 @@ globalkeys = awful.util.table.join(
     awful.key({                   }, "XF86AudioMute", function () change_volume("toggle") end),
     awful.key({                   }, "XF86Tools", -- For some reason it is players button 
        function ()
-          drop("urxvtc -e ncmpcpp", "bottom", "center", 1, 1)
+          drop("urxvtc -e ncmpcpp", "center", "center", 0.9, 0.85)
        end
     ),
     awful.key({                   }, "XF86AudioPlay",
@@ -485,26 +482,40 @@ globalkeys = awful.util.table.join(
          naughty.notify({ title="Playing YouTube player", text="Launching...." })
       end
     ),
-    awful.key({ modkey,           }, "F4",
+    awful.key({                   }, "XF86Messenger",
       function ()
          -- drop("urxvtc -e profanity", "top", "center", 1, 0.6)
          awful.util.spawn("pidgin")
       end
     ),
-    awful.key({ modkey,           }, "F3",
+    awful.key({                   }, "XF86Search",
       function ()
          awful.util.spawn("chromium --incognito")
+      end
+    ),
+    awful.key({                   }, "XF86TaskPane",
+      function ()
+         awful.util.spawn("chromium --incognito")
+      end
+    ),
+    awful.key({                   }, "XF86Eject",
+      function ()
+         drop("urxvtc -e htop -d 2", "center", "center", 0.7, 0.65)
       end
     ),
     -- }}}
 
     -- Standard keys
-    awful.key({ modkey            }, "F2",   function () mypromptbox[mouse.screen]:run() end),
+    awful.key({ modkey            }, "F2",
+      function ()
+         awful.util.spawn("dmenu_run -l 32 -fn \"PragmataPro-11:bold\" -b -q -z -o 0.95 -p \"$\" ")
+      end
+    ),
     awful.key({ modkey, "Shift"   }, "c", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
     awful.key({ modkey,           }, "Return",
        function ()
-          drop("urxvtc -e /home/randy/bin/starttmux.sh", "bottom", "center", 1, 0.65)
+          drop("urxvtc -e /home/randy/bin/starttmux.sh", "center", "center", 0.7, 0.65)
        end
     ),
     awful.key({ modkey, "Shift"   }, "Return",
@@ -561,7 +572,7 @@ clientkeys = awful.util.table.join(
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it works on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.
-for i = 1, 9 do
+for i = 1, 10 do
     globalkeys = awful.util.table.join(globalkeys,
         -- View tag only.
         awful.key({ modkey }, "#" .. i + 9,
