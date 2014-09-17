@@ -12,7 +12,7 @@ theme.wallpaper = "/home/randy/Pictures/wall.jpg"
 -- }}}
 
 -- {{{ Styles
-theme.font      = "Terminus 9"
+theme.font      = "PragmataPro 9"
 
 -- {{{ Colors
 theme.fg_normal  = "#DCDCCC"

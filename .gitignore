@@ -80,6 +80,7 @@ IdeaProjects/
 .thunderbird/
 .texlive/
 .codeblocks/
+.mono/
 
 
 # Minor soft
@@ -137,6 +138,7 @@ IdeaProjects/
 .config/linuxsampler.org/
 .config/jack/
 .config/dmenu-extended/
+.config/dwb/
 
 # Dot config files
 .config/htop/htoprc

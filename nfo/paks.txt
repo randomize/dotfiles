@@ -180,6 +180,7 @@ Diagnostics and HDD:
    stress        // Stress testing system
    aur/sysdig    // Modern kickass tool for diagnostics
    aur/i7z-git   // i7 Processor info tool
+   lshw          // lists info about hardware
 
 
    parted     // Partitioning
@@ -197,8 +198,12 @@ Window managers and DE:
    libnotify           // notifications lib
 
    parcellite      // clipboard manager good and lite (Has problems with nautilus Cut/Copy/Paste)
-   unclutter       // Hides mouse cursor when it is not used
+   copyq           // Another clipboard manager
+
+   unclutter       // Hides mouse cursor when it is not used(has problems in i3)
+
    skb             // simple keyboard layout indicator
+
    gksu            // GUI-sh sudo
    paprefs         // Pulse audio settings
    pavucontrol     // Pulse audio mixer
@@ -263,6 +268,9 @@ Console tools:
    aur/lsw        // Lists windows in X
    aur/cheat-git  // Cheat sheet for many console tools(actually better read man)
    aur/ls++-git   // Nice colored ls on steroids
+   aur/autojump-git // For fast navigation with "j somewhere"
+
+   fortune-mod      // Random quote displayer
 
 
 Fuse filesystems:
@@ -320,6 +328,10 @@ Archives:
    atool      // console one
 
 Viewers:
+
+   zathura        // Nice Vim-like viewer with plugin support
+   zathura-djvu       // DJVU backend
+   zathura-pdf-mupdf  // PDF backend
 
    aur/llpp-git   // PDF fast and powerful
    djview4        // DJVU faster then evince
@@ -570,6 +582,8 @@ Browsers:
    chromium-pepper-flash   // With this player it is maintained (flash plugin is not)
 
    w3m // Text browser ;)
+   aur/vimprobable2-git  // Minimalistic vimlike browser
+   dwb                   // Another smal browser
 
 Mail:
 
@@ -604,10 +618,23 @@ Audio and sound:
    alsa-utils    // see setup(8)
    alsa-plugins
 
-   qjackctl     // GUI for JACK server
-   jack-dbus    // Not sure why this version - TODO: RTFM
+   // JACK
 
-Music editors & synth:
+   jack2-dbus    // JACK2 (newer) with dbus support to play nice with pulseaudio
+   qjackctl     // GUI for JACK server
+   aur/aj2midid-git   // ALSA MIDI to JACK MIDI
+
+   // Linux sampler
+
+   jsampler          // GUI for Linux sampler
+   linuxsampler     // Sampler engine
+   aur/qsampler     // GUI for linuxsampler
+   gigedit          // Sample editor
+
+   // Synths
+   zynaddsubfx      // Synthesiser
+
+Music editors
 
    chuck            // Sound coding
    miniaudicle      // Chuck GUI
@@ -620,9 +647,6 @@ Music editors & synth:
    qtractor         // Another one editor
    milkytracker     // Tracker for XM
 
-   linuxsampler     // Sampler engine
-   aur/qsampler     // GUI for linuxsampler
-   gigedit          // Sample editor
    musescore        // Score editor
 
 Media players:
@@ -663,7 +687,7 @@ Screen capture:
    simplescreenrecorder   // Best recorder ever, like it's OpenGL capture feature
 
    aur/gromit-mpx-git     // Nice annotation tool for casting
-   aur/screenkeys-git     // Keys display
+   aur/screenkey-git     // Keys display
 
 
 Monitor tools:
