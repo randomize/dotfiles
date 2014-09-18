@@ -106,7 +106,7 @@ Contents of gnome group:
    //gnome-user-docs       // Offline user documentation
    gnome-user-share
    grilo-plugins
-   gucharmap
+   gucharmap               // Character map
    mousetweaks
    //mutter
    nautilus                // Big slow but powerful (see setup(3))
@@ -247,10 +247,12 @@ Console tools:
    zshdb                    // Script debugger
 
    tmux           // Terminal multiplexer
+   aur/wemux-git  // Add-on for tmux with remote paircoding support
 
    unp            // Console universal unpacker
-   par2cmdline    // Par2 utility
+   par2cmdline    // Par2 utility (backups)
    aur/rmlint-git // Duplicate files searcher and remover
+   aur/pxz-git    // Parallel xz
 
    pv             // echo "You can simulate on-screen typing just like in the movies" | pv -qL 10
    rlwrap         // Read line wrap (for maxima and others) also awesome-client
@@ -326,6 +328,7 @@ Archives:
    unace
 
    atool      // console one
+   pigz       // Parallel GZIP
 
 Viewers:
 

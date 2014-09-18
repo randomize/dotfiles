@@ -359,6 +359,7 @@ alias eV='vim ~/.vimrc'
 alias eC='vim ~/nfo/commands.txt'
 alias eS='vim ~/nfo/setup.txt'
 alias eP='vim ~/nfo/paks.txt'
+alias eT='vim ~/.tmux.conf'
 
 ## Frequent places
 alias ..='cd ..'

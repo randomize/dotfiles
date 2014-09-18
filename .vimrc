@@ -36,7 +36,7 @@ Bundle 'molokai'
 
 " Cool status line
 " Bundle 'bling/vim-airline'
-Bundle 'Lokaltog/vim-powerline'
+" Bundle 'Lokaltog/vim-powerline'
 
 " Show buffers in line
 Bundle 'bling/vim-bufferline'
@@ -117,7 +117,7 @@ if has("gui_running")
 
    " I like consolas in GUI
    " set guifont=consolas\ 11
-   set guifont=Source\ Code\ Pro\ 10
+   " set guifont=Source\ Code\ Pro\ 10
    set guifont=PragmataPro\ 11
 
 
@@ -160,10 +160,27 @@ set shortmess+=I
 " Set spell for ru and eng
 set spelllang=en,ru
 
+" Toggle spelling with the F7 key
+nnoremap <silent> <F7> <ESC>:setlocal spell!<CR>
+inoremap <silent> <F7> <ESC>:setlocal spell!<CR>li
+
+" Spelling
+highlight clear SpellBad
+highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
+highlight clear SpellCap
+highlight SpellCap term=underline cterm=underline
+highlight clear SpellRare
+highlight SpellRare term=underline cterm=underline
+highlight clear SpellLocal
+highlight SpellLocal term=underline cterm=underline
+
 " Encodings
 set termencoding=utf-8
 set fileencodings=utf-8,cp1251
 set encoding=utf-8
+
+" Update time (def 4000)
+set updatetime=750
 
 " Настройки поиска
 set hlsearch            " включить подсветку поиска
@@ -483,15 +500,6 @@ nmap <silent> ,,<space> <c-^>
 " == Airline / Powerline  ==
 
 let g:Powerline_symbols="fancy"
-"let g:airline_symbols = {}
-"let g:airline_left_sep="u2b80"
-"let g:airline_left_alt_sep = "u2b81"
-"let g:airline_right_sep = "u2b82"
-"let g:airline_right_alt_sep = "u2b83"
-"let g:airline_symbols.branch = "u2b60"
-"let g:airline_symbols.readonly = "u2b64"
-"let g:airline_symbols.linenr = "u2b61"
-"let g:airline_powerline_fonts = 1
 
 " == Syntastic ==
 
