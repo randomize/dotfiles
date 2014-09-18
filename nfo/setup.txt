@@ -30,6 +30,10 @@ Filesystem   Size  Used Avail Use% Mounted on  Label
    Enable full power compilation:
       /etc/makepkg.conf <== set -j9
 
+      #COMPRESSXZ=(xz -c -z -)
+      COMPRESSXZ=(pxz -c -T 8 -)
+
+
    Setup hook:
      # pkgfile -u
 

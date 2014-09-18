@@ -42,7 +42,7 @@ xset +fp /usr/share/fonts/local
 xset s off
 
 # Rebuild xdg menu for awesome
-# xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu > ~/.config/awesome/archmenu.lua &
+xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu > ~/.config/awesome/archmenu.lua &
 
 # Start xxkb
 # xxkb &
@@ -52,10 +52,11 @@ xset s off
 
 # Clipboard manager
 # parcellite &
-# copyq &
+copyq &
 
 # Hide mouse when not required
-# unclutter -grab &
+# unclutter -grab & # Win i3 works bad
+unclutter &
 
 # Composition
 compton -b
@@ -83,7 +84,7 @@ urxvtd -q -f -o
 # eval `ssh-agent -s`
 
 # Mpd
-( ( sleep 10 && /usr/bin/mpd) & )
+( ( sleep 2 && /usr/bin/mpd) & )
 
 # exec openbox
 exec awesome
