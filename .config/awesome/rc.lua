@@ -82,6 +82,8 @@ local layouts =
     awful.layout.suit.max.fullscreen,
     awful.layout.suit.magnifier
 }
+
+local layouts_f_keys = { "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12" }
 -- }}}
 
 -- {{{ Wallpaper
@@ -96,7 +98,7 @@ end
 -- Define a tag table which hold all screen tags.
 namedtags = {
    names = {"α", "β", "γ", "δ", "ε", "ζ", "η", "θ", "ι", "κ", "λ" },
-   layout = {layouts[1], layouts[1], layouts[2], layouts[2], layouts[4], layouts[2], layouts[1], layouts[1], layouts[2], layouts[2], layouts[2]}
+   layout = {layouts[2], layouts[2], layouts[1], layouts[1], layouts[4], layouts[2], layouts[1], layouts[1], layouts[2], layouts[2], layouts[2]}
 }
 -- Define a tag table which hold all screen tags.
 tags = {}
@@ -476,15 +478,8 @@ globalkeys = awful.util.table.join(
          naughty.notify({ title="MPD player", text="Seek backward" })
       end
     ),
-    awful.key({ modkey,           }, "F5",
-      function ()
-         awful.util.spawn_with_shell("xclip -o | xargs /home/randy/bin/yt.sh")
-         naughty.notify({ title="Playing YouTube player", text="Launching...." })
-      end
-    ),
     awful.key({                   }, "XF86Messenger",
       function ()
-         -- drop("urxvtc -e profanity", "top", "center", 1, 0.6)
          awful.util.spawn("pidgin")
       end
     ),
@@ -506,7 +501,7 @@ globalkeys = awful.util.table.join(
     -- }}}
 
     -- Standard keys
-    awful.key({ modkey            }, "F2",
+    awful.key({ modkey, "Shoft"   }, "r",
       function ()
          awful.util.spawn("dmenu_run -l 32 -fn \"PragmataPro-11:bold\" -b -q -z -o 0.95 -p \"$\" ")
       end
@@ -515,7 +510,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
     awful.key({ modkey,           }, "Return",
        function ()
-          drop("urxvtc -e /home/randy/bin/starttmux.sh", "center", "center", 0.7, 0.65)
+          drop("urxvtc -e /home/randy/bin/starttmux.sh", "center", "center", 0.7, 0.65, true)
        end
     ),
     awful.key({ modkey, "Shift"   }, "Return",
@@ -614,6 +609,14 @@ for i = 1, 10 do
                   end))
 end
 
+-- Bind all key numbers to tags.
+for i = 1, 12 do
+    globalkeys = awful.util.table.join(globalkeys,
+        -- Swithch layout 
+        awful.key({ modkey, "Control" }, layouts_f_keys[i], function () awful.layout.set(layouts[i]) end)
+   )
+end
+
 clientbuttons = awful.util.table.join(
     awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
     awful.button({ modkey }, 1, awful.mouse.client.move),
@@ -636,37 +639,18 @@ awful.rules.rules = {
                      raise = true,
                      keys = clientkeys,
                      buttons = clientbuttons } },
-    { rule = { class = "MPlayer" },
-      properties = { floating = true } },
-    { rule = { class = "pinentry" },
-      properties = { floating = true } },
-    { rule = { class = "gimp" },
-      properties = { floating = true } },
-    { rule_any = { class = {"URxvt", "gvim"} },
-      properties = { floating = true,
-                     skip_taskbar = true,
-                     border_width = 0,
-                     above = false
-                   },
-      callback = function (c)
+    -- Floating windows by class
+    { rule_any = { class = { "pinentry", "gimp" }}, properties = { floating = true }},
+    --{ rule = { class = "Firefox", name = "Firefox Preferences" }, properties = { floating = true }},
+    { rule = { class = "URxvt" },
+      properties = { floating = true, skip_taskbar = true, above = true },
+      callback = function (c) 
          awful.placement.centered(c,nil)
       end
     },
     -- Set Firefox to always map on tags number 1 of screen 1.
-    { rule = { class = "Firefox" },
-    properties = {   
-                     tag = tags[1][1],
-                     maximized_vertical   = true,
-                     maximized_horizontal = true,
-                 },
-    },
-    { rule = { class = "Chromium" },
-    properties = {
-                     maximized_vertical   = true,
-                     maximized_horizontal = true,
-                 },
-    },
-    -- Set Pidig
+    { rule = { class = "Firefox" }, properties = {   tag = tags[1][1], }, },
+    -- Set Pidgin
     { rule = { class = "Pidgin", role = "buddy_list"},
       properties = { tag = tags[1][9] } },
     { rule = { class = "Pidgin", role = "conversation"},

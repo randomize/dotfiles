@@ -114,8 +114,8 @@ function toggle(prog, vert, horiz, width, height, sticky, screen)
         -- Focus and raise if hidden
         if c.hidden then
             -- Make sure it is centered
-            if vert  == "center" then awful.placement.center_vertical(c)   end
-            if horiz == "center" then awful.placement.center_horizontal(c) end
+            -- if vert  == "center" then awful.placement.center_vertical(c)   end
+            -- if horiz == "center" then awful.placement.center_horizontal(c) end
             c.hidden = false
             c:raise()
             capi.client.focus = c

@@ -115,14 +115,10 @@ set hidden
 " Setup GVIM separately
 if has("gui_running")
 
-   " I like consolas in GUI
-   " set guifont=consolas\ 11
-   " set guifont=Source\ Code\ Pro\ 10
-   set guifont=PragmataPro\ 11
-
+   set guifont=PragmataPro\ 12
 
    " Set default size for GVIM
-   set lines=50 columns=180
+   set lines=60 columns=200
 
    " Setup GVIM look, hide useless bars and 
    set guioptions-=T
