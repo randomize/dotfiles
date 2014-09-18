@@ -56,7 +56,7 @@ copyq &
 
 # Hide mouse when not required
 # unclutter -grab & # Win i3 works bad
-unclutter &
+# unclutter & With Awesome there is focus stealing bug
 
 # Composition
 compton -b
