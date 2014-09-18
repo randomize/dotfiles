@@ -51,19 +51,14 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
--- beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 beautiful.init(awful.util.getdir("config") .. "/zenburn/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvtc"
+terminal = "xterm"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
--- Usually, Mod4 is the key with a logo between Control and Alt.
--- If you do not like this or do not have such a key,
--- I suggest you to remap Mod4 to another key using xmodmap or other tools.
--- However, you can use another modifier like Mod1, but it may interact with others.
 modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
@@ -83,7 +78,7 @@ local layouts =
     awful.layout.suit.magnifier
 }
 
-local layouts_f_keys = { "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12" }
+local layouts_f_keys = { "F9", "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F10", "F11", "F12" }
 -- }}}
 
 -- {{{ Wallpaper
@@ -95,16 +90,16 @@ end
 -- }}}
 
 -- {{{ Tags
+
 -- Define a tag table which hold all screen tags.
 namedtags = {
    names = {"α", "β", "γ", "δ", "ε", "ζ", "η", "θ", "ι", "κ", "λ" },
    layout = {layouts[2], layouts[2], layouts[1], layouts[1], layouts[4], layouts[2], layouts[1], layouts[1], layouts[2], layouts[2], layouts[2]}
 }
+
 -- Define a tag table which hold all screen tags.
 tags = {}
 for s = 1, screen.count() do
-    -- Each screen has its own tag table.
-    -- tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
     tags[s] = awful.tag(namedtags.names, s, namedtags.layout)
     awful.tag.setncol(2, tags[s][9])
     awful.tag.setproperty(tags[s][9], "mwfact", 0.20)
@@ -154,32 +149,20 @@ cpuwidget:set_background_color("#494B4F")
 cpuwidget:set_color({ type = "linear", from = { 0, 0 }, to = { 10,0 }, stops = { {0, "#FF5656"}, {0.5, "#88A175"}, {1, "#AECF96" }}})
 vicious.register(cpuwidget, vicious.widgets.cpu, "$1")
 
--- Initialize MPD widget
--- mpdwidget = wibox.widget.textbox()
--- Register widget
--- vicious.register(mpdwidget, vicious.widgets.mpd,
---     function (mpdwidget, args)
---         if args["{state}"] == "Stop" then 
---             return 'mpd off'
---         else 
---             return args["{state}"]..':'..args["{Artist}"]..' - '.. args["{Title}"]
---         end
---     end, 10)
-
 
 -- Awesome MPD widget
 
 local awesompd = require('awesompd/awesompd')
 
 musicwidget = awesompd:create() -- Create awesompd widget
-musicwidget.font = "Terminus" -- Set widget font
+musicwidget.font = "PragmataPro" -- Set widget font
 musicwidget.font_color = "#EEEEEE" --Set widget font color
 -- musicwidget.background = "#000000" --Set widget background color
 musicwidget.scrolling = true -- If true, the text in the widget will be scrolled
 musicwidget.output_size = 30 -- Set the size of widget in symbols
-musicwidget.update_interval = 10 -- Set the update interval in seconds
+musicwidget.update_interval = 3 -- Set the update interval in seconds
 
--- Set the folder where icons are located 
+-- Set the folder where icons are located
 musicwidget.path_to_icons = "/home/randy/.config/awesome/awesompd/icons"
 
 -- Set the path to the icon to be displayed on the widget itself
@@ -369,7 +352,6 @@ end
 globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
-    awful.key({ modkey,           }, "a", awful.tag.history.restore),
 
     awful.key({ modkey,           }, "j",
         function ()
@@ -381,14 +363,32 @@ globalkeys = awful.util.table.join(
             awful.client.focus.byidx(-1)
             if client.focus then client.focus:raise() end
         end),
-    awful.key({ modkey,           }, "d", function () mymainmenu:show() end),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
+    awful.key({ modkey,           }, "l", function () awful.tag.incmwfact( 0.05)      end),
+    awful.key({ modkey,           }, "h", function () awful.tag.incmwfact(-0.05)      end),
+    awful.key({ modkey, "Shift"   }, "h", function () awful.tag.incnmaster( 1)        end),
+    awful.key({ modkey, "Shift"   }, "l", function () awful.tag.incnmaster(-1)        end),
+    awful.key({ modkey, "Control" }, "h", function () awful.tag.incncol( 1)           end),
+    awful.key({ modkey, "Control" }, "l", function () awful.tag.incncol(-1)           end),
+
+
+    -- Call awesome menu
+    awful.key({ modkey,           }, "d", function () mymainmenu:show() end),
+
+    -- Urgent window
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
+
+    -- Restore
+    awful.key({ modkey, "Control" }, "n", awful.client.restore),
+
+
+    -- Windows and workspace switch
+    awful.key({ modkey,           }, "a", awful.tag.history.restore),
     awful.key({ modkey,           }, "Tab",
         function ()
             awful.client.focus.history.previous()
@@ -399,29 +399,18 @@ globalkeys = awful.util.table.join(
 
     -- {{{ Standard programs launch
 
-    awful.key({ modkey, "Control" }, "Up",
-      function ()
-         awful.util.spawn("/home/randy/bin/brightness.sh up", false)
-         naughty.notify({ title="Brightness", text="Up 10 points" })
-      end
-    ),
-    awful.key({ modkey, "Control" }, "Down",
-      function ()
-         awful.util.spawn("/home/randy/bin/brightness.sh down", false)
-         naughty.notify({ title="Brightness", text="Down 10 points" })
-      end
-    ),
-    awful.key({ modkey,           }, "e", 
+    awful.key({ modkey,           }, "e",
        function ()
-          drop("urxvtc -depth 0 -e ranger", "top", "center", 1, 0.5)
-          -- awful.util.spawn("urxvtc -e ranger", false)
+          drop("urxvtc -depth 0 -name my_floating_ranger -e ranger ", "top", "center", 1, 0.5)
        end
     ),
-    awful.key({ modkey, "Shift"}, "e", 
+    awful.key({ modkey, "Shift"}, "e",
        function ()
           awful.util.spawn("nautilus", false)
        end
     ),
+
+    -- Screenshots
     awful.key({                   }, "Print",
       function ()
          awful.util.spawn("scrot", false)
@@ -433,21 +422,31 @@ globalkeys = awful.util.table.join(
          naughty.notify({ title="Screenshot", text="Capturing a window" })
       end
     ),
+
+    -- Media keys
     awful.key({                   }, "XF86HomePage", function () awful.util.spawn("firefox") end),
     awful.key({                   }, "XF86Mail", function () awful.util.spawn("thunderbird") end),
-    awful.key({                   }, "XF86Calculator",
-      function ()
-         awful.util.spawn("urxvtc -geometry 80x10+0+0 -fg white -e python  -ic 'from math import *; from random import *'")
-      end
-    ),
+    awful.key({                   }, "XF86Messenger", function () awful.util.spawn("pidgin") end),
+    awful.key({                   }, "XF86Search", function () awful.util.spawn("chromium --incognito") end),
+    awful.key({                   }, "XF86TaskPane", function () awful.util.spawn("chromium --incognito") end),
     awful.key({                   }, "XF86AudioRaiseVolume", function () change_volume("5%+") end),
     awful.key({                   }, "XF86AudioLowerVolume", function () change_volume("5%-") end),
     awful.key({                   }, "XF86AudioMute", function () change_volume("toggle") end),
-    awful.key({                   }, "XF86Tools", -- For some reason it is players button 
-       function ()
-          drop("urxvtc -e ncmpcpp", "center", "center", 0.9, 0.85)
-       end
-    ),
+
+    awful.key({                   }, "XF86Eject", function ()
+       drop("urxvtc -name my_floating_htop -e htop -d 2", "center", "center", 0.7, 0.65, true)
+    end),
+
+    awful.key({                   }, "XF86Tools", function ()
+       drop("urxvtc -name my_floating_ncmpcpp -geometry 64x210+0+0 -e ncmpcpp", "center", "center", 0.9, 0.85)
+    end),
+
+    awful.key({                   }, "XF86Calculator", function ()
+         drop("urxvtc -name my_floating_calculator -geometry 80x10+0+0 -fg white -e python  -ic 'from math import *; from random import *'",
+              "center", "center", 0.2, 0.1
+         )
+    end),
+
     awful.key({                   }, "XF86AudioPlay",
       function ()
          awful.util.spawn("mpc toggle", false)
@@ -478,39 +477,16 @@ globalkeys = awful.util.table.join(
          naughty.notify({ title="MPD player", text="Seek backward" })
       end
     ),
-    awful.key({                   }, "XF86Messenger",
-      function ()
-         awful.util.spawn("pidgin")
-      end
-    ),
-    awful.key({                   }, "XF86Search",
-      function ()
-         awful.util.spawn("chromium --incognito")
-      end
-    ),
-    awful.key({                   }, "XF86TaskPane",
-      function ()
-         awful.util.spawn("chromium --incognito")
-      end
-    ),
-    awful.key({                   }, "XF86Eject",
-      function ()
-         drop("urxvtc -e htop -d 2", "center", "center", 0.7, 0.65)
-      end
-    ),
     -- }}}
 
-    -- Standard keys
-    awful.key({ modkey, "Shoft"   }, "r",
-      function ()
-         awful.util.spawn("dmenu_run -l 32 -fn \"PragmataPro-11:bold\" -b -q -z -o 0.95 -p \"$\" ")
-      end
-    ),
+    -- Awesome control
     awful.key({ modkey, "Shift"   }, "c", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
+
+    -- Terminals
     awful.key({ modkey,           }, "Return",
        function ()
-          drop("urxvtc -e /home/randy/bin/starttmux.sh", "center", "center", 0.7, 0.65, true)
+          drop("urxvtc -name my_floating_terminal -e /home/randy/bin/starttmux.sh", "center", "center", 0.7, 0.65, true)
        end
     ),
     awful.key({ modkey, "Shift"   }, "Return",
@@ -519,19 +495,17 @@ globalkeys = awful.util.table.join(
        end
     ),
 
-    awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
-    awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
-    awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end),
-    awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1)      end),
-    awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1)         end),
-    awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1)         end),
+    -- Swithing layouts
     awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
 
-    awful.key({ modkey, "Control" }, "n", awful.client.restore),
-
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
+    awful.key({ modkey, "Shift"   }, "r",
+      function ()
+         awful.util.spawn("dmenu_run -l 32 -fn \"PragmataPro-11:bold\" -b -q -z -o 0.90 -p \"$\" ")
+      end
+    ),
 
     awful.key({ modkey }, "x",
               function ()
@@ -545,18 +519,23 @@ globalkeys = awful.util.table.join(
 )
 
 clientkeys = awful.util.table.join(
+
     awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
     awful.key({ modkey,           }, "w",      function (c) c:kill()                         end),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
     awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end),
+
+    -- Minimize
     awful.key({ modkey,           }, "n",
         function (c)
             -- The client currently has the input focus, so it cannot be
             -- minimized, since minimized clients can't have the focus.
             c.minimized = true
         end),
+
+    -- Toggle maximize
     awful.key({ modkey,           }, "m",
         function (c)
             c.maximized_horizontal = not c.maximized_horizontal
@@ -612,7 +591,7 @@ end
 -- Bind all key numbers to tags.
 for i = 1, 12 do
     globalkeys = awful.util.table.join(globalkeys,
-        -- Swithch layout 
+        -- Swithch layout
         awful.key({ modkey, "Control" }, layouts_f_keys[i], function () awful.layout.set(layouts[i]) end)
    )
 end
@@ -633,20 +612,21 @@ root.keys(globalkeys)
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
-      properties = { border_width = 0,  -- beautiful.border_width,
+      properties = { border_width = beautiful.border_width,
                      border_color = beautiful.border_normal,
                      focus = awful.client.focus.filter,
                      raise = true,
                      keys = clientkeys,
                      buttons = clientbuttons } },
+
     -- Floating windows by class
     { rule_any = { class = { "pinentry", "gimp" }}, properties = { floating = true }},
-    --{ rule = { class = "Firefox", name = "Firefox Preferences" }, properties = { floating = true }},
-    { rule = { class = "URxvt" },
+
+    -- Matching floaters and only them
+    { rule_any = { class = { "my_floating_ranger", "my_floating_htop", "my_floating_ncmpcpp",
+                             "my_floating_calculator", "my_floating_terminal"}},
       properties = { floating = true, skip_taskbar = true, above = true },
-      callback = function (c) 
-         awful.placement.centered(c,nil)
-      end
+      callback = function (c) awful.placement.centered(c,nil) end
     },
     -- Set Firefox to always map on tags number 1 of screen 1.
     { rule = { class = "Firefox" }, properties = {   tag = tags[1][1], }, },
