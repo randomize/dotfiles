@@ -10,46 +10,36 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " let Vundle manage Vundle
-Plugin 'git://github.com/gmarik/Vundle.git'
+Plugin 'gmarik/Vundle.vim'
 
 " cpp/h switch
-Plugin 'git://github.com/derekwyatt/vim-fswitch.git'
+Plugin 'derekwyatt/vim-fswitch'
 
 " creates C++ class method implementations
-Plugin 'git://github.com/derekwyatt/vim-protodef.git'
+Plugin 'derekwyatt/vim-protodef'
 
 " Todo plugin
-Plugin 'git://github.com/neochrome/todo.vim.git'
-
-" Shader GLSL syntax highliight
-Plugin 'git://github.com/vim-scripts/glsl.vim.git'
+Plugin 'neochrome/todo.vim'
 
 " Git support
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
-" Super increment (see help)
+" Super increment
 Plugin 'VisIncr'
 
-" My dear color scheme
+" Color schemes
 Plugin 'molokai'
-
-" Cool status line
-" Plugin 'bling/vim-airline'
-" Plugin 'Lokaltog/vim-powerline' " Comes from system now
-
-" Show buffers in line
-Plugin 'bling/vim-bufferline'
 
 " Auto completion
 Plugin 'Valloric/YouCompleteMe'
 
-" Snipmate
+" Snippets
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 
-"Syntax highl
-Plugin 'scrooloose/syntastic.git'
+" Plugin to show syntax errors
+Plugin 'scrooloose/syntastic'
 
 " LaTeX
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
@@ -60,20 +50,26 @@ Plugin 'Lokaltog/vim-easymotion'
 " Commenting
 Plugin 'tomtom/tcomment_vim'
 
-" Misc
-Plugin 'git://github.com/scrooloose/nerdtree.git'
-Plugin 'L9'
-Plugin 'git://github.com/tpope/vim-surround.git'
-
-" Unite is one place search for vim, command-t, fuzzy-finder and buffer
-" explorer gone
+" Unite - obsoletes: command-t, fuzzy-finder and buffer explorer
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/unite.vim'
 
 " ==== SYNTAX =========================
 
-Plugin 'https://github.com/vim-scripts/ck.vim.git'
+Plugin 'vim-scripts/ck.vim'
 Plugin 'dhruvasagar/vim-table-mode'
+Plugin 'vim-scripts/glsl.vim'
+
+" ==== Other and obsolete  ============
+
+Plugin 'L9'
+Plugin 'tpope/vim-surround'
+Plugin 'bling/vim-bufferline'
+
+" Plugin 'mkitt/tabline.vim'      " Fuck tabs, use buffers
+" Plugin 'scrooloose/nerdtree'    " cmd line is NERDier
+" Plugin 'bling/vim-airline'      " change to Powerline
+" Plugin 'Lokaltog/vim-powerline' " Comes from system now
 
 call vundle#end()
 filetype plugin indent on
@@ -102,6 +98,9 @@ set virtualedit=all
 " Highlight syntax
 syntax on
 
+" No highlighting limit
+"set synmaxcol=0
+
 " Show line numbers
 set nu
 
@@ -113,9 +112,6 @@ set hidden
 
 " place a dollar sign when in change mode to indicate end
 set cpoptions+=$
-
-" enable mouse in terminals
-set mouse=a
 
 " Remove splash on startup
 set shortmess+=I
@@ -135,14 +131,16 @@ set nobackup
 " ????
 set ruler
 
-set showcmd         " показывать вводимую команду
-set history=50      " сохранять 50 строк истории команд
+" Show command in last line
+set showcmd
+
+" Remember 100 commands
+set history=100
 
 " Search
-set hlsearch            " включить подсветку поиска
-set smc=0               " отключить ограничение на максимальную позицию в строке при поиске
-set ignorecase          " игнорировать регистр
-set smartcase           " умный поиск
+set hlsearch
+set ignorecase
+set smartcase
 
 " Tabs vs spaces
 set tabstop=3        " число пробелов для таба
@@ -179,7 +177,7 @@ set iminsert=0                  " insert mode default en
 set imsearch=0                  " search mode default en
 
 " Unprintable
-set listchars=tab:>-,trail:·,extends:>,eol:¶
+set listchars=tab:‣\ ,trail:·,extends:>,eol:¶,precedes:·
 
 " wrapping lines symbol
 set showbreak=»
@@ -215,6 +213,9 @@ if has("gui_running")
    set guicursor+=i-c:blinkwait10
 
 else
+
+   " enable mouse in terminals
+   set mouse=a
 
    " Poor man's terminal spelling colors
    highlight clear SpellBad
@@ -381,7 +382,6 @@ nnoremap <silent> <F7> <ESC>:setlocal spell!<CR>
 inoremap <silent> <F7> <ESC>:setlocal spell!<CR>li
 
 " Toggle keyboard layout
-nnoremap <silent> <F9> <C-^>
 inoremap <silent> <F9> <C-^>
 
 " Toggle unprintable <F10>
@@ -534,7 +534,7 @@ autocmd BufRead *.ck call system("killall chuck; chuck --loop &")
 autocmd VimLeave *.ck call system("killall chuck &")
 
 " Save views
-autocmd BufWinLeave * silent! mkview
-autocmd BufWinEnter * silent! loadview
+" autocmd BufWinLeave * silent! mkview
+" autocmd BufWinEnter * silent! loadview
 
 " }}}
