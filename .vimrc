@@ -1,4 +1,6 @@
-
+" Vim config
+"   vim: foldmethod=marker
+"
 " =========================================================================
 " Vundle
 " =========================================================================
@@ -30,6 +32,7 @@ Plugin 'VisIncr'
 
 " Color schemes
 Plugin 'molokai'
+" Plugin 'benjaminwhite/Benokai'
 
 " Auto completion
 Plugin 'Valloric/YouCompleteMe'
@@ -53,6 +56,9 @@ Plugin 'tomtom/tcomment_vim'
 " Unite - obsoletes: command-t, fuzzy-finder and buffer explorer
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/unite.vim'
+
+" Indent guides
+Plugin 'nathanaelkane/vim-indent-guides'
 
 " ==== SYNTAX =========================
 
@@ -86,8 +92,9 @@ set termencoding=utf-8
 set fileencodings=utf-8,cp1251
 set encoding=utf-8
 
-" This puts  backup to RAM, faster but risky ;)
-set directory=/tmp
+" Set spell for ru and eng
+set spelllang=en,ru
+
 
 " Scheme
 colorscheme molokai
@@ -101,86 +108,83 @@ syntax on
 " No highlighting limit
 "set synmaxcol=0
 
-" Show line numbers
-set nu
+" Visual
+set number         " Show line numbers
+set relativenumber " Relative numbering for fast jumps
+set novisualbell   " No blinking
+set noerrorbells   " No noise
+set laststatus=2   " 2 - always show status line
+set ruler          " Show ruler
+set showcmd        " Show command in last line
+set shortmess+=I   " Remove splash on startup
+set showbreak=»    " wrapping lines symbol
 
-" Relative numbering for fast jumps
-set relativenumber
+" Unprintable
+set nolist
+set listchars=tab:‣\ ,trail:·,extends:>,eol:¶,precedes:·
 
-" allow hidden buffers
-set hidden
+" Buffers ans splits
+set hidden " allow hidden buffers
+set splitbelow " new splits go down
+set splitright " and right
+
 
 " place a dollar sign when in change mode to indicate end
 set cpoptions+=$
 
-" Remove splash on startup
-set shortmess+=I
-
-" Set spell for ru and eng
-set spelllang=en,ru
-
-" 2 - always show status line
-set laststatus=2
-
 " Update time (def 4000)
 set updatetime=750
 
-" Disable file~ backups
-set nobackup
+" Keystrokes timeout
+set timeoutlen=1000
 
-" ????
-set ruler
-
-" Show command in last line
-set showcmd
+" Backups
+set nobackup         " Disable file~ backups
+set directory=/tmp   " This puts  backup to RAM, faster but risky ;)
 
 " Remember 100 commands
 set history=100
 
 " Search
-set hlsearch
-set ignorecase
-set smartcase
+set hlsearch     " Highlight search results
+set ignorecase   " no sensitive to case
+set smartcase    " When meet uppercase -> sensitive
+set noincsearch  " Do not use incremental : type, then start search
 
-" Tabs vs spaces
-set tabstop=3        " число пробелов для таба
-set softtabstop=3    " число пробелов для таба при редактировании
-set shiftwidth=3     " число пробелов для отступа при форматировании
-set expandtab        " превращать табы в пробелы
-
-" Отступы
-set smartindent     " умные отступы
+" Tabs ans indentation
+set tabstop=3       " Tab size
+set softtabstop=3   " Tab size in inset mode
+set shiftwidth=3    " <> shift size
+set expandtab       " Tabs to spaces
+set smarttab        " Consolidated editing
+set smartindent     " When starting new line repeat indentation
 set autoindent
 
-" TODO: read man on wild
-
 set wildmenu
-set wildmode=full               " ??
-set wildignore=*.o,*.obj,*~     " ????
-set wildcharm=<Tab>             " ????
+set wildmode=full
+set wildignore=*.o,*.obj,*~
+set wildcharm=<Tab>
 
-set complete="" " Слова откуда будем завершать
-set complete+=. " Из текущего буфера
-set complete+=k " Из словаря
-set complete+=t " из тегов
+" Vim's default completion
+set complete+=k
+set complete+=kspell
+set completeopt="menu,menuone,longest,preview"
 
-set completeopt+=menu      " Выдавать менюшку с дополнениями
-"set completeopt+=menuone  " Показывать менюшку, даже если дополнение всего одно
-set completeopt+=longest   " Автоматически дописывать совпадающий среди всех возможных дополнений кусок
-set completeopt-=preview   " Показывать дополнительную инфу о дополнениях
-
+" Folding
+set foldenable
 set foldmethod=syntax
+set foldlevel=100       " Unfold on start
+set foldopen=block,hor,mark,percent,quickfix,tag
 
 " Russian layout
 set keymap=russian-jcukenwin    " C-^ to switch
 set iminsert=0                  " insert mode default en
 set imsearch=0                  " search mode default en
 
-" Unprintable
-set listchars=tab:‣\ ,trail:·,extends:>,eol:¶,precedes:·
 
-" wrapping lines symbol
-set showbreak=»
+" Modeline
+set modeline
+set modelines=5
 
 " System default for mappings is now the ',' character
 let mapleader = ","
@@ -200,9 +204,6 @@ if has("gui_running")
    set guioptions-=L
    set guioptions-=r
    set guioptions-=b
-
-   " Bash in gvim will understand my aliases now
-   set shell=/bin/bash\ --login
 
    " Cursor settings
    highlight Cursor guifg=black guibg=white
@@ -351,6 +352,7 @@ endfunction
 " =========================================================================
 " Helper menus
 " =========================================================================
+" {{{
 
 " Encodings
 menu Encoding.UTF-8          :e ++enc=utf-8
@@ -370,9 +372,12 @@ menu FileFormat.UNIX         :e ++ff=unix
 menu FileFormat.DOS          :e ++ff=dos
 menu FileFormat.Mac          :e ++ff=mac
 
+" }}}
+
 " =========================================================================
 " Keyboard mappings
 " =========================================================================
+" {{{
 
 " Translator function
 map <F3>  :call TRANSLATE()<cr>
@@ -409,6 +414,13 @@ nnoremap <c-k> ddkP
 vnoremap <c-j> dp'[V']
 vnoremap <c-k> dkP'[V']
 
+" Duplications
+vnoremap <silent> ,= yP
+nnoremap <silent> ,= YP
+
+" move stuff to the right of cursor to next line
+nnoremap <silent> ,<CR> i<CR><ESC>k$
+
 " cd to the directory containing the file in the buffer
 nmap <silent> ,cd :lcd %:h<CR>
 
@@ -433,12 +445,13 @@ nmap <silent> ,oJ :FSSplitBelow<CR>
 imap jj <esc>
 
 " Line wrap toggle
-nmap <silent> ,ww :set invwrap<CR>:set wrap?<CR>
+nmap <silent> ,w :set invwrap<CR>:set wrap?<CR>
 
 " Buffers
-nmap <silent> ,bn :bn<CR>
-nmap <silent> ,bp :bp<CR>
-nmap <silent> ,bd :bd<CR>
+nnoremap <silent> ,] :bn<CR>
+nnoremap <silent> ,[ :bp<CR>
+nnoremap <silent> ,x :bd<CR>
+nnoremap <silent> ,- :bd<CR>
 
 " Make arrow keys not working hehe wee
 inoremap  <Up>     <NOP>
@@ -513,8 +526,8 @@ autocmd BufRead *.pl inoremap <silent> <F5> <ESC>:call CompilePerl()<CR>i
 " C++
 autocmd BufRead *.cpp nnoremap <silent> <F5> <ESC>:call CompileGcc()<CR>
 autocmd BufRead *.cpp inoremap <silent> <F5> <ESC>:call CompileGcc()<CR>i
-autocmd BufRead *.cpp call Enable100CharsLimit()
-autocmd BufRead *.h   call Enable100CharsLimit()
+autocmd BufRead *.cpp call Enable80CharsLimit()
+autocmd BufRead *.h   call Enable80CharsLimit()
 
 " Latex
 autocmd BufRead *.tex nnoremap <silent> <F5> <ESC>:call CompileLatex()<CR>
