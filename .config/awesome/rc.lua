@@ -442,7 +442,7 @@ globalkeys = awful.util.table.join(
     end),
 
     awful.key({                   }, "XF86Calculator", function ()
-         drop("urxvtc -name my_floating_calculator -geometry 80x10+0+0 -fg white -e python  -ic 'from math import *; from random import *'",
+         drop("urxvtc -name my_floating_calculator -geometry 100x20+0+0 -fg white -e python  -ic 'from math import *; from random import *'",
               "center", "center", 0.2, 0.1
          )
     end),
@@ -620,11 +620,15 @@ awful.rules.rules = {
                      buttons = clientbuttons } },
 
     -- Floating windows by class
-    { rule_any = { class = { "pinentry", "gimp" }}, properties = { floating = true }},
-
+    { rule_any = {
+       class = { "pinentry", "gimp", "Xmessage" },
+       --instance = {"some inst"}
+       }, properties = { floating = true }
+    },
     -- Matching floaters and only them
     { rule_any = { class = { "my_floating_ranger", "my_floating_htop", "my_floating_ncmpcpp",
-                             "my_floating_calculator", "my_floating_terminal"}},
+                             "my_floating_calculator", "my_floating_terminal"},
+                   instance = { "my_floating_terminal" } },
       properties = { floating = true, skip_taskbar = true, above = true },
       callback = function (c) awful.placement.centered(c,nil) end
     },

@@ -60,10 +60,13 @@ Plugin 'Shougo/unite.vim'
 " Indent guides
 Plugin 'nathanaelkane/vim-indent-guides'
 
+" Tabling
+Plugin 'dhruvasagar/vim-table-mode'
+Plugin 'godlygeek/tabular'
+
 " ==== SYNTAX =========================
 
 Plugin 'vim-scripts/ck.vim'
-Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'vim-scripts/glsl.vim'
 
 " ==== Other and obsolete  ============
@@ -76,9 +79,22 @@ Plugin 'bling/vim-bufferline'
 " Plugin 'scrooloose/nerdtree'    " cmd line is NERDier
 " Plugin 'bling/vim-airline'      " change to Powerline
 " Plugin 'Lokaltog/vim-powerline' " Comes from system now
+" Plugin 'majutsushi/tagbar'      " Conflicts with YCM
 
 call vundle#end()
 filetype plugin indent on
+
+" }}}
+
+
+" =========================================================================
+" Colors (should precede colorscheme command)
+" =========================================================================
+" {{{
+
+" Show whitespace
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=124 guibg=red
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 
 " }}}
 
@@ -118,6 +134,8 @@ set ruler          " Show ruler
 set showcmd        " Show command in last line
 set shortmess+=I   " Remove splash on startup
 set showbreak=»    " wrapping lines symbol
+set nowrap         " Not wrap by default
+set formatoptions-=t          " Don't wrap while typing
 
 " Unprintable
 set nolist
@@ -136,7 +154,7 @@ set cpoptions+=$
 set updatetime=750
 
 " Keystrokes timeout
-set timeoutlen=1000
+set timeoutlen=2000
 
 " Backups
 set nobackup         " Disable file~ backups
@@ -238,9 +256,14 @@ endif
 " =========================================================================
 " {{{
 
-" == NERD Tree ==
+" == Indent guides ==
 
-let NERDTreeWinPos='right' " Располагаться NerdTree должно справа
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+let g:indent_guides_auto_colors = 0
+
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=darkgrey ctermbg=234
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey ctermbg=234
 
 " == ProtoDef ==
 
@@ -284,53 +307,96 @@ let g:UltiSnipsListSnippets="<c-tab>"
 function Enable80CharsLimit()
    set colorcolumn=80
    set textwidth=80
-   set formatoptions=cqt
-   set wrapmargin=0
+   " set formatoptions=cqt
+   " set wrapmargin=0
    highlight ColorColumn ctermbg=235 guibg=#2c2d27
    highlight CursorLine ctermbg=235 guibg=#2c2d27
    highlight CursorColumn ctermbg=235 guibg=#2c2d27
    let &colorcolumn=join(range(81,999),",")
 endfunction
 
-function OpenNERDTree()
-  execute ":NERDTree"
-endfunction
-
 " For fast tests quick compile current file
 func! CompileGcc()
-  exec "w"
-  exec "!g++ % -g -std=c++11 -o %< && ./%< "
+   exec "w"
+   exec "!g++ % -g -std=c++11 -o %< && ./%< "
 endfunc
+
 func! CompileClang()
-  exec "w"
-  exec "!clang++ % -g -std=c++11 -o %< "
+   exec "w"
+   exec "!clang++ % -g -std=c++14 -o %< "
 endfunc
+
 func! CompilePerl()
-  exec "w"
-  exec "!perl %"
+   exec "w"
+   exec "!perl %"
 endfunc
+
 func! CompilePython()
-  exec "w"
-  exec "!python %"
+   exec "w"
+   exec "!python %"
 endfunc
+
 func! CompileLatex()
-  exec "w"
-  exec "Latexmk"
+   exec "w"
+   exec "Latexmk"
 endfunc
+
 func! CompileChuck()
-  exec ":w"
-  exec ":silent !chuck --add ./%"
-  exec ":redraw!"
+   exec ":w"
+   exec ":silent !chuck --add ./%"
+   exec ":redraw!"
 endfunc
+
 func! CompileRust()
-  exec ":w"
-  exec "!rustc % -o %< && ./%< "
+   exec ":w"
+   exec "!rustc % -o %< && ./%< "
 endfunc
+
 func! ReplaceChuck()
-  exec "w"
-  exec ":silent !chuck --remove.all"
-  exec ":redraw!"
+   exec "w"
+   exec ":silent !chuck --remove.all"
+   exec ":redraw!"
 endfunc
+
+function SetupCpp()
+   nnoremap <silent> <F5> <ESC>:call CompileGcc()<CR>
+   inoremap <silent> <F5> <ESC>:call CompileGcc()<CR>i
+   nnoremap <silent> <c-F5> <ESC>:call CompileClang()<CR>
+   inoremap <silent> <c-F5> <ESC>:call CompileClang()<CR>i
+endfunction
+
+function SetupPython()
+   nnoremap <silent> <F5> <ESC>:call CompilePython()<CR>
+   inoremap <silent> <F5> <ESC>:call CompilePython()<CR>i
+endfunction
+
+function SetupPerl()
+   nnoremap <silent> <F5> <ESC>:call CompilePerl()<CR>
+   inoremap <silent> <F5> <ESC>:call CompilePerl()<CR>i
+endfunction
+
+function SetupLatex()
+   nnoremap <silent> <F5> <ESC>:call CompileLatex()<CR>
+   inoremap <silent> <F5> <ESC>:call CompileLatex()<CR>i
+endfunction
+
+function SetupRust()
+   nnoremap <silent> <F5> <ESC>:call CompileRust()<CR>
+   inoremap <silent> <F5> <ESC>:call CompileRust()<CR>i
+endfunction
+
+function SetupChuck()
+   exec 'set ft=ck'
+   nnoremap <silent> <F5> <ESC>:call CompileChuck()<CR>
+   inoremap <silent> <F5> <ESC>:call CompileChuck()<CR>i
+   nnoremap <silent> <F6> <ESC>:call ReplaceChuck()<CR>
+   inoremap <silent> <F6> <ESC>:call ReplaceChuck()<CR>i
+   call system("killall chuck; chuck --loop &")
+endfunction
+
+function ResetChuck()
+   call system("killall chuck &")
+endfunction
 
 " Translator with sdcv
 function TRANSLATE()
@@ -396,9 +462,6 @@ inoremap <silent> <F10> <ESC>:set list!<CR>li
 map <F11> :emenu Encoding.<Tab><Tab>
 map <S-F11> :emenu FileFormat.<Tab><Tab>
 
-" NERD Toggle
-nmap <F12> :NERDTreeToggle<CR>
-
 " Make p in Visual mode replace the selected text with the \" register.
 vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 
@@ -414,7 +477,7 @@ nnoremap <c-k> ddkP
 vnoremap <c-j> dp'[V']
 vnoremap <c-k> dkP'[V']
 
-" Duplications
+" Duplications TODO: prevent register wipe
 vnoremap <silent> ,= yP
 nnoremap <silent> ,= YP
 
@@ -427,7 +490,7 @@ nmap <silent> ,cd :lcd %:h<CR>
 " make directory
 nmap <silent> ,md :!mkdir -p %:p:h<CR>
 
-" When search done : ,n to unhighlight
+" When search done : ,n to remove highlight
 nmap <silent> ,n :nohls<CR>
 
 " FSwitch mappings
@@ -451,9 +514,11 @@ nmap <silent> ,w :set invwrap<CR>:set wrap?<CR>
 nnoremap <silent> ,] :bn<CR>
 nnoremap <silent> ,[ :bp<CR>
 nnoremap <silent> ,x :bd<CR>
-nnoremap <silent> ,- :bd<CR>
+nnoremap <silent> <space>] :bn<CR>
+nnoremap <silent> <space>[ :bp<CR>
+nnoremap <silent> <space>x :bd<CR>
 
-" Make arrow keys not working hehe wee
+" Make arrow keys not working
 inoremap  <Up>     <NOP>
 inoremap  <Down>   <NOP>
 inoremap  <Left>   <NOP>
@@ -463,12 +528,16 @@ noremap   <Down>   <c-e>
 noremap   <Left>   zh
 noremap   <Right>  zl
 
-" Typos -- I often type :Q instead of :q
+" Typos
 command! W w
 command! Q q
 
-" Infasters
-nmap <space> :
+" Faster command access
+" nmap <space> :
+nnoremap <space>; :
+nnoremap <space>w :w<CR>
+nnoremap <space>q :q<CR>
+nnoremap <space>wq :wq<CR>
 
 " Search the current file for the word under the cursor and display matches
 nmap <silent> ,gw :vimgrep /<C-r><C-w>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
@@ -484,9 +553,10 @@ nnoremap Y y$
 nnoremap Q <nop>
 
 " Remove trailing whitespaces
-nnoremap <Leader>rtw :%s/\s\+$//e<CR>
+nnoremap ,rtw :%s/\s\+$//e<CR>
+nnoremap <space>rtw :%s/\s\+$//e<CR>
 
-" Sudoing in vim hack, write with forrce!
+" Sudo Vim hack, write with force!
 cmap w!! %!sudo tee > /dev/null %
 
 " When entering command, press %% to quickly insert current path
@@ -495,18 +565,24 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 " Mapping ,, to fast switch between buffers
 nmap <silent> ,,<space> <c-^>
 
+" Copy paste to + register
+nmap <silent> <space>y "+yy
+vmap <silent> <space>y "+y
+vmap <silent> <space>p "+p
+vmap <silent> <space>P "+P
+
 " YCM
-nnoremap <leader>yy :YcmForceCompileAndDiagnostics<CR>
-nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>gc :YcmCompleter GoToDeclaration<CR>
+nnoremap ,yy :YcmForceCompileAndDiagnostics<CR>
+nnoremap ,gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap ,gd :YcmCompleter GoToDefinition<CR>
+nnoremap ,gc :YcmCompleter GoToDeclaration<CR>
 
 " Unite
-nnoremap <leader>t :<C-u>Unite -buffer-name=files -start-insert file_rec<cr>
-nnoremap <leader>T :<C-u>Unite -buffer-name=files -start-insert file_rec/async:!<cr>
-nnoremap <leader>f :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async:!<cr>
-nnoremap <leader>b :<C-u>Unite -quick-match buffer<cr>
-nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru -start-insert file_mru<cr>
+nnoremap ,t :<C-u>Unite -buffer-name=files -start-insert file_rec<cr>
+nnoremap ,T :<C-u>Unite -buffer-name=files -start-insert file_rec/async:!<cr>
+nnoremap ,f :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async:!<cr>
+nnoremap ,b :<C-u>Unite -quick-match buffer<cr>
+nnoremap ,r :<C-u>Unite -no-split -buffer-name=mru -start-insert file_mru<cr>
 
 " }}}
 
@@ -515,36 +591,19 @@ nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru -start-insert file_mru
 " =========================================================================
 " {{{
 
-" Python
-autocmd BufRead *.py nnoremap <silent> <F5> <ESC>:call CompilePython()<CR>
-autocmd BufRead *.py inoremap <silent> <F5> <ESC>:call CompilePython()<CR>i
+" Programming in 80 cols
+autocmd BufNewFile,BufRead *.cpp,*.h,*.c,*.py,.vimrc call Enable80CharsLimit()
 
-" Perl
-autocmd BufRead *.pl nnoremap <silent> <F5> <ESC>:call CompilePerl()<CR>
-autocmd BufRead *.pl inoremap <silent> <F5> <ESC>:call CompilePerl()<CR>i
-
-" C++
-autocmd BufRead *.cpp nnoremap <silent> <F5> <ESC>:call CompileGcc()<CR>
-autocmd BufRead *.cpp inoremap <silent> <F5> <ESC>:call CompileGcc()<CR>i
-autocmd BufRead *.cpp call Enable80CharsLimit()
-autocmd BufRead *.h   call Enable80CharsLimit()
-
-" Latex
-autocmd BufRead *.tex nnoremap <silent> <F5> <ESC>:call CompileLatex()<CR>
-autocmd BufRead *.tex inoremap <silent> <F5> <ESC>:call CompileLatex()<CR>i
-
-" Rust
-autocmd BufRead *.rs nnoremap <silent> <F5> <ESC>:call CompileRust()<CR>
-autocmd BufRead *.rs inoremap <silent> <F5> <ESC>:call CompileRust()<CR>i
+" IDEs
+autocmd BufNewFile,BufRead *.cpp call SetupCpp()
+autocmd BufNewFile,BufRead *.py  call SetupPython()
+autocmd BufNewFile,BufRead *.pl  call SetupPerl()
+autocmd BufNewFile,BufRead *.tex call SetupLatex()
+autocmd BufNewFile,BufRead *.rs  call SetupRust()
 
 " Chuck
-autocmd BufRead *.ck exec 'set ft=ck'
-autocmd BufRead *.ck nnoremap <silent> <F5> <ESC>:call CompileChuck()<CR>
-autocmd BufRead *.ck inoremap <silent> <F5> <ESC>:call CompileChuck()<CR>i
-autocmd BufRead *.ck nnoremap <silent> <F6> <ESC>:call ReplaceChuck()<CR>
-autocmd BufRead *.ck inoremap <silent> <F6> <ESC>:call ReplaceChuck()<CR>i
-autocmd BufRead *.ck call system("killall chuck; chuck --loop &")
-autocmd VimLeave *.ck call system("killall chuck &")
+autocmd BufNewFile,BufRead *.ck call SetupChuck()
+autocmd VimLeave *.ck call ResetChuck()
 
 " Save views
 " autocmd BufWinLeave * silent! mkview

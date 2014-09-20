@@ -1,29 +1,53 @@
-" vim: set ft=pentadactyl
+" {{{ Pentadactyl config -*- vimrc -*-
+"     vim: ft=vim
+"     vim: foldmethod=marker
+"
+"     TODO:
+"     * cursor movement without arrows
+"     * how to use prew/next patterns?
+"
+" }}}
+
+
+
 loadplugins '\.(js|penta)$'
 js editor.defaultRegister="+"
 
+" {{{ Setings =================================================================
+
 set titlestring=Firefox
-set editor="gvim -f +<line> <file>"
+
+" Editor for text fields ( <c-i> )
+set editor="urxvt -name my_floating_terminal -geometry 100x30+0+0 -e vim -f +<line> +\"sil! call cursor(0, <column>)\" <file>"
+
 set maxitems=12
 set cpt=sl
+
+" By default all commands create new tab
 set newtab=all
+
 set pageinfo=gefms
 set shell='/usr/bin/bash'
 
 " Install noredirect google search from Mycroft Project
-set defsearch=g 
+set defsearch=g
 
 " set color scheme
 " :colorscheme g
 
+" {{{ Search settings
+
 " show pattern matches as you type
 set incfind
+" Highlight previous search pattern matches
+set hlfind
+" insensitive unless meets big letter
+set findcase=smart
+
+" }}}
 
 " alphabetic characters instead of numbers for hints
 set hintkeys=asdfghjklvbnmtyuioprewcxz
-
-" Highlight previous search pattern matches
-set hlfind
 
 " show destination links in 1=status line, 2=command line
 set showstatuslinks=status
@@ -45,6 +69,17 @@ set passkeys+=https://duckduckgo.com:jkv
 " set laissez-fair focus to allow passkeys sites to grab focus
 " set strictfocus=google.com:laissez-faire,duckduckgo.com:laissez-faire,twitter.com:laissez-faire,getprismatic.com:laissez-faire,feedly.com:laissez-faire,tumblr.com:laissez-faire,'chrome:*':laissez-faire,*:moderate
 
+" Enable bookmarks
+"set guioptions+=B
+
+" customized next and previous patterns
+set nextpattern=^>$,[Nn]ext,[Mm]ore,([Ss]ucc|[Ss]uccessiva),([Pp]ross|[Pp]rossima),([Aa]vanti),^(>>|»)$,^(>|»),(>|»)$
+set previouspattern=^<$,([Pp]rev|[Pp]revious),([Pp]re|[Pp]recedente),([Ii]ndietro),^(<<|«)$,^(<|«),(<|«)$
+
+" }}}
+
+" {{{ Keyboard shortcuts ========================================
+
 " Add the current url as a task for taskwarrior.org
 " map <C-S-t> -js io.run("task", ["add", buffer.URL], false); dactyl.echomsg("Added task for " + buffer.URL);
 
@@ -52,9 +87,12 @@ set passkeys+=https://duckduckgo.com:jkv
 map <C-v> <Nop>
 map <C-Esc> <pass-all-keys>
 
-" faster scrolling
-map -b j 5j
-map -b k 5k
+" faster scrolling " Has problems with selecting things
+nmap -b j 5j
+nmap -b k 5k
+
+" Backspace to back
+map <BS> :back<CR>
 
 " Ctrl+hjkl navigation
 map -b <C-j> <Begin>
@@ -63,6 +101,8 @@ map -b <C-l> :tn<CR>
 map -b <C-h> :tp<CR>
 
 map , <Leader>
+
+nmap <Leader>n :nohl<CR>
 
 " recent history "jumps"
 map <Leader>j :jumps<CR>
@@ -77,17 +117,9 @@ map <Leader>z :js window.content.document.toggleImageSize();<CR>
 map -b ) :tn<CR>
 map -b ( :tp<CR>
 
-" qmarks
-"qmark k file:///home/gianluca/.tiddlywiki/kortirion_tiddlywiki.html
-"qmark v file:///home/gianluca/.tiddlywiki/viaggi.html
-"qmark d http://donearm.github.com/
+" }}}
 
-" customized next and previous patterns
-set nextpattern=^>$,[Nn]ext,[Mm]ore,([Ss]ucc|[Ss]uccessiva),([Pp]ross|[Pp]rossima),([Aa]vanti),^(>>|»)$,^(>|»),(>|»)$
-set previouspattern=^<$,([Pp]rev|[Pp]revious),([Pp]re|[Pp]recedente),([Ii]ndietro),^(<<|«)$,^(<|«),(<|«)$
-
-" Enable bookmarks
-"set guioptions+=B
+" {{{ Colors ================================================================
 
 group user
 highlight -link=FontFixed CmdLine font-family: "Consolas"; font-size: 10pt;
@@ -111,3 +143,4 @@ highlight StatusModeMsg color: transparent !important; background: url('data:ima
 highlight text-transform: uppercase; font-family : "Helvetica Neue", "Helvetica", "Arial", "Sans"; font-weight: bold; font-size: 11px; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6); color: #302505; padding: 1px 3px 0px 3px; background: -moz-linear-gradient(top, #FFF785, #FFC542); border: 1px #C38A22 solid; -moz-border-radius: 3px; -moz-box-shadow: 0 3px 7px 0px rgba(0,0,0,0.3);
 highlight WarningMsg background: #a00 !important; color: #fff !important; font: 11px "Menlo" !important; padding: 2px 4px !important;
 
+" }}}
