@@ -69,15 +69,19 @@ Plugin 'godlygeek/tabular'
 Plugin 'vim-scripts/ck.vim'
 Plugin 'vim-scripts/glsl.vim'
 
-" ==== Other and obsolete  ============
+" ==== Other ==========================
 
 Plugin 'L9'
 Plugin 'tpope/vim-surround'
-Plugin 'bling/vim-bufferline'
+" Plugin 'bling/vim-bufferline'
+Plugin 'mileszs/ack.vim'
+Plugin 'terryma/vim-expand-region'
+
+" ==== Obsolete  =====================
 
 " Plugin 'mkitt/tabline.vim'      " Fuck tabs, use buffers
 " Plugin 'scrooloose/nerdtree'    " cmd line is NERDier
-" Plugin 'bling/vim-airline'      " change to Powerline
+Plugin 'bling/vim-airline'
 " Plugin 'Lokaltog/vim-powerline' " Comes from system now
 " Plugin 'majutsushi/tagbar'      " Conflicts with YCM
 
@@ -154,7 +158,7 @@ set cpoptions+=$
 set updatetime=750
 
 " Keystrokes timeout
-set timeoutlen=2000
+set timeoutlen=1000
 
 " Backups
 set nobackup         " Disable file~ backups
@@ -246,6 +250,9 @@ else
    highlight clear SpellLocal
    highlight SpellLocal term=underline cterm=underline
 
+   " Italic comments
+   highlight Comment cterm=italic
+
    " TODO: cursor play with blinking
 
 endif
@@ -271,7 +278,18 @@ let g:protodefprotogetter = '/home/randy/.vim/bundle/vim-protodef/pullproto.pl'
 
 " == Airline / Powerline  ==
 
+"bufferline"
+let g:bufferline_modified = '*'
+let g:bufferline_echo = 0
+
 let g:Powerline_symbols="fancy"
+
+let g:airline_theme='powerlineish'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod=':t'
+let g:airline#extensions#tabline#show_buffers = 1
 
 " == Syntastic ==
 
@@ -296,6 +314,10 @@ let g:ycm_key_list_previous_completion=['<Up>']
 
 let g:UltiSnipsExpandTrigger=",<return>"
 let g:UltiSnipsListSnippets="<c-tab>"
+
+" == Ack ===
+
+let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " }}}
 
@@ -513,10 +535,10 @@ nmap <silent> ,w :set invwrap<CR>:set wrap?<CR>
 " Buffers
 nnoremap <silent> ,] :bn<CR>
 nnoremap <silent> ,[ :bp<CR>
-nnoremap <silent> ,x :bd<CR>
+nnoremap <silent> ,c :bd<CR>
 nnoremap <silent> <space>] :bn<CR>
 nnoremap <silent> <space>[ :bp<CR>
-nnoremap <silent> <space>x :bd<CR>
+nnoremap <silent> <space>c :bd<CR>
 
 " Make arrow keys not working
 inoremap  <Up>     <NOP>
@@ -534,6 +556,7 @@ command! Q q
 
 " Faster command access
 " nmap <space> :
+nnoremap <silent> <space> <NOP>
 nnoremap <space>; :
 nnoremap <space>w :w<CR>
 nnoremap <space>q :q<CR>
@@ -584,6 +607,15 @@ nnoremap ,f :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async:!
 nnoremap ,b :<C-u>Unite -quick-match buffer<cr>
 nnoremap ,r :<C-u>Unite -no-split -buffer-name=mru -start-insert file_mru<cr>
 
+" Tab in normal mode is useless - use it to %
+nnoremap <Tab> %
+vnoremap <Tab> %
+
+" Ack on ,a
+nnoremap ,a :Ack<space>
+
+vmap v <Plug>(expand_region_expand)
+vmap <c-v> <Plug>(expand_region_shrink)
 " }}}
 
 " =========================================================================
