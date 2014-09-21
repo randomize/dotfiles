@@ -93,6 +93,7 @@ Plugin 'terryma/vim-expand-region'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-vinegar'
+Plugin 'vim-scripts/restore_view.vim'
 
 " ==== Obsolete  =====================
 
@@ -156,6 +157,8 @@ set showcmd        " Show command in last line
 set shortmess+=I   " Remove splash on startup
 set showbreak=»    " wrapping lines symbol
 set nowrap         " Not wrap by default
+set noshowmode     " Mode is in airline, no need stock one
+set ttyfast        " Term is fast
 
 set formatoptions-=t " Don't wrap while typing
 set cmdwinheight=16  " Command-line window
@@ -228,6 +231,9 @@ set imsearch=0                  " search mode default en
 set modeline
 set modelines=5
 
+" View options
+set viewoptions=cursor,options,folds,slash,unix
+
 " System default for mappings is now the ',' character
 let mapleader = ","
 
@@ -283,8 +289,12 @@ endif
 " =========================================================================
 " {{{
 
+" == restore_view===
+
+" let g:skipview_files = ['*\.vim']
+
 " == session ==
-"
+
 let g:session_directory = "~/.vim/session"
 let g:session_autoload = "no"
 let g:session_autosave = "no"
@@ -352,7 +362,7 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 " =========================================================================
 " {{{
 
-function Enable80CharsLimit()
+function! Enable80CharsLimit()
    set colorcolumn=80
    set textwidth=80
    " set formatoptions=cqt
@@ -364,76 +374,76 @@ function Enable80CharsLimit()
 endfunction
 
 " For fast tests quick compile current file
-func! CompileGcc()
+function! CompileGcc()
    exec "w"
    exec "!g++ % -g -std=c++11 -o %< && ./%< "
 endfunc
 
-func! CompileClang()
+function! CompileClang()
    exec "w"
    exec "!clang++ % -g -std=c++14 -o %< "
 endfunc
 
-func! CompilePerl()
+function! CompilePerl()
    exec "w"
    exec "!perl %"
 endfunc
 
-func! CompilePython()
+function! CompilePython()
    exec "w"
    exec "!python %"
 endfunc
 
-func! CompileLatex()
+function! CompileLatex()
    exec "w"
    exec "Latexmk"
 endfunc
 
-func! CompileChuck()
+function! CompileChuck()
    exec ":w"
    exec ":silent !chuck --add ./%"
    exec ":redraw!"
 endfunc
 
-func! CompileRust()
+function! CompileRust()
    exec ":w"
    exec "!rustc % -o %< && ./%< "
 endfunc
 
-func! ReplaceChuck()
+function! ReplaceChuck()
    exec "w"
    exec ":silent !chuck --remove.all"
    exec ":redraw!"
 endfunc
 
-function SetupCpp()
+function! SetupCpp()
    nmap <silent> <F5> <ESC>:call CompileGcc()<CR>
    imap <silent> <F5> <c-o>:call CompileGcc()<CR>
    nmap <silent> <c-F5> <ESC>:call CompileClang()<CR>
    imap <silent> <c-F5> <c-o>:call CompileClang()<CR>
 endfunction
 
-function SetupPython()
+function! SetupPython()
    nmap <silent> <F5> <ESC>:call CompilePython()<CR>
    imap <silent> <F5> <c-o>:call CompilePython()<CR>
 endfunction
 
-function SetupPerl()
+function! SetupPerl()
    nmap <silent> <F5> <ESC>:call CompilePerl()<CR>
    imap <silent> <F5> <c-o>:call CompilePerl()<CR>
 endfunction
 
-function SetupLatex()
+function! SetupLatex()
    nmap <silent> <F5> <ESC>:call CompileLatex()<CR>
    imap <silent> <F5> <c-o>:call CompileLatex()<CR>
 endfunction
 
-function SetupRust()
+function! SetupRust()
    nmap <silent> <F5> <ESC>:call CompileRust()<CR>
    imap <silent> <F5> <c-o>:call CompileRust()<CR>
 endfunction
 
-function SetupChuck()
+function! SetupChuck()
    exec 'set ft=ck'
    nmap <silent> <F5> <ESC>:call CompileChuck()<CR>
    imap <silent> <F5> <c-o>:call CompileChuck()<CR>
@@ -442,12 +452,12 @@ function SetupChuck()
    call system("killall chuck; chuck --loop &")
 endfunction
 
-function ResetChuck()
+function! ResetChuck()
    call system("killall chuck &")
 endfunction
 
 " Translator with sdcv
-function TRANSLATE()
+function! TRANSLATE()
    let  a=getline('.')
    let co=col('.')-1
    let starts=strridx(a," ",co)
@@ -460,6 +470,17 @@ function TRANSLATE()
    let out = system(cmds)
    echo out
 endfunction
+
+function! KbdLayoutState()
+   if &iminsert == 0
+      return 'en'
+   else
+      return 'ru'
+   endif
+endfunction
+
+call airline#parts#define_function('bikeystat', 'KbdLayoutState')
+let g:airline_section_a = airline#section#create(['mode', ' [', 'bikeystat', ']'])
 
 "}}}
 
@@ -592,7 +613,9 @@ nmap <space>rtw :%s/\s\+$//e<CR>
 nmap <silent> <space>y "+yy
 vmap <silent> <space>y "+y
 nmap <silent> <space>p "+p
+nmap <silent> <space>pp "*p
 nmap <silent> <space>P "+P
+nmap <silent> <space>PP "*P
 
 
 " Search the current file for the word under the cursor and display matches
@@ -659,9 +682,5 @@ autocmd BufNewFile,BufRead *.rs  call SetupRust()
 " Chuck
 autocmd BufNewFile,BufRead *.ck call SetupChuck()
 autocmd VimLeave *.ck call ResetChuck()
-
-" Save views
-" autocmd BufWinLeave * silent! mkview
-" autocmd BufWinEnter * silent! loadview
 
 " }}}
