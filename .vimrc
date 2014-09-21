@@ -1,6 +1,12 @@
 " Vim config
 "   vim: foldmethod=marker
 "
+"   TODO:
+"
+"   1) play with args and argdo commands (like :args `ag -l foo`)
+"   2) quickfix commands (go, t, i etc)
+"   3) Unite setup
+"
 " =========================================================================
 " Vundle
 " =========================================================================
@@ -71,6 +77,13 @@ Plugin 'bling/vim-airline'
 Plugin 'xolox/vim-session'
 Plugin 'xolox/vim-misc'
 
+" Undo visual tree
+" Plugin 'sjl/gundo.vim' " Older one
+Plugin 'mbbill/undotree'
+
+" Tags for C++/C and others
+Plugin 'majutsushi/tagbar'
+
 " ==== SYNTAX =========================
 
 Plugin 'vim-scripts/ck.vim'
@@ -94,13 +107,13 @@ Plugin 'terryma/vim-expand-region'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-vinegar'
 Plugin 'vim-scripts/restore_view.vim'
+Plugin 'tpope/vim-repeat'
 
 " ==== Obsolete  =====================
 
-" Plugin 'mkitt/tabline.vim'      " Fuck tabs, use buffers
-" Plugin 'bling/vim-bufferline'
-" Plugin 'Lokaltog/vim-powerline' " Comes from system now
-" Plugin 'majutsushi/tagbar'      " Conflicts with YCM
+" Plugin 'mkitt/tabline.vim'      " Buildin into airline
+" Plugin 'bling/vim-bufferline'   " Deprecated since tabline buffer support
+" Plugin 'Lokaltog/vim-powerline' " Using airline
 
 call vundle#end()
 filetype plugin indent on
@@ -131,7 +144,6 @@ set encoding=utf-8
 
 " Set spell for ru and eng
 set spelllang=en,ru
-
 
 " Scheme
 let g:rehash256 = 1
@@ -184,11 +196,19 @@ set updatetime=750
 set timeoutlen=1000
 
 " Backups
-set nobackup         " Disable file~ backups
-set directory=/tmp   " This puts  backup to RAM, faster but risky ;)
+set directory=/tmp  " Risky but fast
 
-" Remember 100 commands
-set history=100
+set backup
+set writebackup
+" set backupskip=/tmp/*
+set backupdir=/tmp
+
+" set undofile
+set undodir=/tmp
+
+" History depth
+set history=256
+set undolevels=256
 
 " Search
 set hlsearch     " Highlight search results
@@ -225,7 +245,6 @@ set foldopen=block,hor,mark,percent,quickfix,tag
 set keymap=russian-jcukenwin    " C-^ to switch
 set iminsert=0                  " insert mode default en
 set imsearch=0                  " search mode default en
-
 
 " Modeline
 set modeline
@@ -289,6 +308,11 @@ endif
 " =========================================================================
 " {{{
 
+" == gundo/undotree ==
+
+" Make bigger
+let g:undotree_SplitWidth = 40
+
 " == restore_view===
 
 " let g:skipview_files = ['*\.vim']
@@ -305,9 +329,10 @@ let g:session_command_aliases = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_auto_colors = 0
+let g:indent_guides_enable_on_vim_startup = 1
 
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=darkgrey ctermbg=234
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey ctermbg=234
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=darkgrey ctermbg=235
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey ctermbg=235
 
 " == ProtoDef ==
 
@@ -515,7 +540,8 @@ menu FileFormat.Mac          :e ++ff=mac
 " {{{
 
 " Translator function
-map <F3>  :call TRANSLATE()<cr>
+nmap <F3>  :call TRANSLATE()<cr>
+imap <F3>  <c-o>:call TRANSLATE()<cr>
 
 " Session workflow
 nmap <leader>so :OpenSession<space>
@@ -534,11 +560,12 @@ imap <silent> <F9> <C-^>
 nmap <silent> <F10> <ESC>:set list!<CR>
 imap <silent> <F10> <c-o>:set list!<CR>
 
-map <F11> :emenu Encoding.<Tab><Tab>
-map <S-F11> :emenu FileFormat.<Tab><Tab>
+nmap <F11> :emenu Encoding.<Tab><Tab>
+nmap <S-F11> :emenu FileFormat.<Tab><Tab>
 
 " Toggle things
-nmap <leader>1 :GundoToggle<CR>
+" nmap <leader>1 :GundoToggle<CR>
+nmap <leader>1 :UndotreeToggle<CR>
 set pastetoggle=<leader>2
 nmap <leader>3 :TlistToggle<CR>
 nmap <leader>4 :TagbarToggle<CR>
@@ -600,7 +627,7 @@ nmap <silent> <leader>c :bd<CR>
 " Faster command access
 " nmap <space> :
 nmap <silent> <space> <NOP>
-nmap <silent> <space>;  :
+nmap <space>;  :
 nmap <silent> <space>w  :w<CR>
 nmap <silent> <space>q  :q<CR>
 nmap <silent> <space>wq :wq<CR>
@@ -632,7 +659,7 @@ nmap Y y$
 nmap <leader>rtw :%s/\s\+$//e<CR>
 
 " Sudo Vim hack, write with force!
-cmap w!! %!sudo tee > /dev/null %
+" cmap w!! %!sudo tee > /dev/null %
 
 " When entering command, press %% to quickly insert current path
 cmap %% <C-R>=expand('%:h').'/'<cr>
