@@ -31,7 +31,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'VisIncr'
 
 " Color schemes
-Plugin 'molokai'
+Plugin 'tomasr/molokai'
 " Plugin 'benjaminwhite/Benokai'
 
 " Auto completion
@@ -64,24 +64,40 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'dhruvasagar/vim-table-mode'
 Plugin 'godlygeek/tabular'
 
+" Status line
+Plugin 'bling/vim-airline'
+
+" Session save/restore
+Plugin 'xolox/vim-session'
+Plugin 'xolox/vim-misc'
+
 " ==== SYNTAX =========================
 
 Plugin 'vim-scripts/ck.vim'
 Plugin 'vim-scripts/glsl.vim'
+Plugin 'leshill/vim-json'
+Plugin 'chrisbra/csv.vim'
+Plugin 'dag/vim2hs'
+Plugin 'tpope/vim-markdown'
+Plugin 'vim-scripts/octave.vim--'
+Plugin 'vim-perl/vim-perl'
+Plugin 'wting/rust.vim'
+Plugin 'andersoncustodio/vim-tmux'
 
 " ==== Other ==========================
 
 Plugin 'L9'
 Plugin 'tpope/vim-surround'
-" Plugin 'bling/vim-bufferline'
 Plugin 'mileszs/ack.vim'
 Plugin 'terryma/vim-expand-region'
+
+Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-vinegar'
 
 " ==== Obsolete  =====================
 
 " Plugin 'mkitt/tabline.vim'      " Fuck tabs, use buffers
-" Plugin 'scrooloose/nerdtree'    " cmd line is NERDier
-Plugin 'bling/vim-airline'
+" Plugin 'bling/vim-bufferline'
 " Plugin 'Lokaltog/vim-powerline' " Comes from system now
 " Plugin 'majutsushi/tagbar'      " Conflicts with YCM
 
@@ -117,6 +133,7 @@ set spelllang=en,ru
 
 
 " Scheme
+let g:rehash256 = 1
 colorscheme molokai
 
 " Cursor free positioning
@@ -139,7 +156,10 @@ set showcmd        " Show command in last line
 set shortmess+=I   " Remove splash on startup
 set showbreak=»    " wrapping lines symbol
 set nowrap         " Not wrap by default
-set formatoptions-=t          " Don't wrap while typing
+
+set formatoptions-=t " Don't wrap while typing
+set cmdwinheight=16  " Command-line window
+
 
 " Unprintable
 set nolist
@@ -263,6 +283,13 @@ endif
 " =========================================================================
 " {{{
 
+" == session ==
+"
+let g:session_directory = "~/.vim/session"
+let g:session_autoload = "no"
+let g:session_autosave = "no"
+let g:session_command_aliases = 1
+
 " == Indent guides ==
 
 let g:indent_guides_start_level = 2
@@ -278,11 +305,10 @@ let g:protodefprotogetter = '/home/randy/.vim/bundle/vim-protodef/pullproto.pl'
 
 " == Airline / Powerline  ==
 
-"bufferline"
-let g:bufferline_modified = '*'
-let g:bufferline_echo = 0
-
-let g:Powerline_symbols="fancy"
+" bufferline
+" let g:bufferline_modified = '*'
+" let g:bufferline_echo = 0
+" let g:Powerline_symbols="fancy"
 
 let g:airline_theme='powerlineish'
 let g:airline_powerline_fonts = 1
@@ -381,38 +407,38 @@ func! ReplaceChuck()
 endfunc
 
 function SetupCpp()
-   nnoremap <silent> <F5> <ESC>:call CompileGcc()<CR>
-   inoremap <silent> <F5> <ESC>:call CompileGcc()<CR>i
-   nnoremap <silent> <c-F5> <ESC>:call CompileClang()<CR>
-   inoremap <silent> <c-F5> <ESC>:call CompileClang()<CR>i
+   nmap <silent> <F5> <ESC>:call CompileGcc()<CR>
+   imap <silent> <F5> <c-o>:call CompileGcc()<CR>
+   nmap <silent> <c-F5> <ESC>:call CompileClang()<CR>
+   imap <silent> <c-F5> <c-o>:call CompileClang()<CR>
 endfunction
 
 function SetupPython()
-   nnoremap <silent> <F5> <ESC>:call CompilePython()<CR>
-   inoremap <silent> <F5> <ESC>:call CompilePython()<CR>i
+   nmap <silent> <F5> <ESC>:call CompilePython()<CR>
+   imap <silent> <F5> <c-o>:call CompilePython()<CR>
 endfunction
 
 function SetupPerl()
-   nnoremap <silent> <F5> <ESC>:call CompilePerl()<CR>
-   inoremap <silent> <F5> <ESC>:call CompilePerl()<CR>i
+   nmap <silent> <F5> <ESC>:call CompilePerl()<CR>
+   imap <silent> <F5> <c-o>:call CompilePerl()<CR>
 endfunction
 
 function SetupLatex()
-   nnoremap <silent> <F5> <ESC>:call CompileLatex()<CR>
-   inoremap <silent> <F5> <ESC>:call CompileLatex()<CR>i
+   nmap <silent> <F5> <ESC>:call CompileLatex()<CR>
+   imap <silent> <F5> <c-o>:call CompileLatex()<CR>
 endfunction
 
 function SetupRust()
-   nnoremap <silent> <F5> <ESC>:call CompileRust()<CR>
-   inoremap <silent> <F5> <ESC>:call CompileRust()<CR>i
+   nmap <silent> <F5> <ESC>:call CompileRust()<CR>
+   imap <silent> <F5> <c-o>:call CompileRust()<CR>
 endfunction
 
 function SetupChuck()
    exec 'set ft=ck'
-   nnoremap <silent> <F5> <ESC>:call CompileChuck()<CR>
-   inoremap <silent> <F5> <ESC>:call CompileChuck()<CR>i
-   nnoremap <silent> <F6> <ESC>:call ReplaceChuck()<CR>
-   inoremap <silent> <F6> <ESC>:call ReplaceChuck()<CR>i
+   nmap <silent> <F5> <ESC>:call CompileChuck()<CR>
+   imap <silent> <F5> <c-o>:call CompileChuck()<CR>
+   nmap <silent> <F6> <ESC>:call ReplaceChuck()<CR>
+   imap <silent> <F6> <c-o>:call ReplaceChuck()<CR>i
    call system("killall chuck; chuck --loop &")
 endfunction
 
@@ -470,149 +496,146 @@ menu FileFormat.Mac          :e ++ff=mac
 " Translator function
 map <F3>  :call TRANSLATE()<cr>
 
+" Session workflow
+nmap <leader>so :OpenSession<space>
+nmap <leader>ss :SaveSession<space>
+nmap <leader>sd :DeleteSession<CR>
+nmap <leader>sc :CloseSession<CR>
+
 " Toggle spelling with the F7 key
-nnoremap <silent> <F7> <ESC>:setlocal spell!<CR>
-inoremap <silent> <F7> <ESC>:setlocal spell!<CR>li
+nmap <silent> <F7> <ESC>:setlocal spell!<CR>
+imap <silent> <F7> <c-o>:setlocal spell!<CR>
 
 " Toggle keyboard layout
-inoremap <silent> <F9> <C-^>
+imap <silent> <F9> <C-^>
 
 " Toggle unprintable <F10>
-nnoremap <silent> <F10> <ESC>:set list!<CR>
-inoremap <silent> <F10> <ESC>:set list!<CR>li
+nmap <silent> <F10> <ESC>:set list!<CR>
+imap <silent> <F10> <c-o>:set list!<CR>
 
 map <F11> :emenu Encoding.<Tab><Tab>
 map <S-F11> :emenu FileFormat.<Tab><Tab>
 
+" Toggle things
+nmap <leader>1 :GundoToggle<CR>
+set pastetoggle=<leader>2
+nmap <leader>3 :TlistToggle<CR>
+nmap <leader>4 :TagbarToggle<CR>
+nmap <leader>5 :NERDTreeToggle<CR>
+
 " Make p in Visual mode replace the selected text with the \" register.
-vnoremap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
+vmap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
 
 " Indentation changes, but visual stays
 vnoremap > ><CR>gv
 vnoremap < <<CR>gv
 
 " move current line up/down one
-nnoremap <c-j> ddp
-nnoremap <c-k> ddkP
+nmap <c-j> ddp
+nmap <c-k> ddkP
 
 " move visual block up/down one
-vnoremap <c-j> dp'[V']
-vnoremap <c-k> dkP'[V']
+vmap <c-j> dp'[V']
+vmap <c-k> dkP'[V']
 
 " Duplications TODO: prevent register wipe
-vnoremap <silent> ,= yP
-nnoremap <silent> ,= YP
+vmap <silent> <leader>= yP
+nmap <silent> <leader>= YP
 
 " move stuff to the right of cursor to next line
-nnoremap <silent> ,<CR> i<CR><ESC>k$
+nmap <silent> <leader><CR> i<CR><ESC>k$
 
 " cd to the directory containing the file in the buffer
-nmap <silent> ,cd :lcd %:h<CR>
+nmap <silent> <leader>cd :lcd %:h<CR>
 
 " make directory
-nmap <silent> ,md :!mkdir -p %:p:h<CR>
+nmap <silent> <leader>md :!mkdir -p %:p:h<CR>
 
 " When search done : ,n to remove highlight
-nmap <silent> ,n :nohls<CR>
+nmap <silent> <leader>n :nohls<CR>
 
 " FSwitch mappings
-nmap <silent> ,of :FSHere<CR>
-nmap <silent> ,ol :FSRight<CR>
-nmap <silent> ,oL :FSSplitRight<CR>
-nmap <silent> ,oh :FSLeft<CR>
-nmap <silent> ,oH :FSSplitLeft<CR>
-nmap <silent> ,ok :FSAbove<CR>
-nmap <silent> ,oK :FSSplitAbove<CR>
-nmap <silent> ,oj :FSBelow<CR>
-nmap <silent> ,oJ :FSSplitBelow<CR>
+nmap <silent> <leader>of :FSHere<CR>
+nmap <silent> <leader>ol :FSRight<CR>
+nmap <silent> <leader>oL :FSSplitRight<CR>
+nmap <silent> <leader>oh :FSLeft<CR>
+nmap <silent> <leader>oH :FSSplitLeft<CR>
+nmap <silent> <leader>ok :FSAbove<CR>
+nmap <silent> <leader>oK :FSSplitAbove<CR>
+nmap <silent> <leader>oj :FSBelow<CR>
+nmap <silent> <leader>oJ :FSSplitBelow<CR>
 
 " Alright... let's try this out
 imap jj <esc>
 
 " Line wrap toggle
-nmap <silent> ,w :set invwrap<CR>:set wrap?<CR>
+nmap <silent> <leader>w :set invwrap<CR>:set wrap?<CR>
 
 " Buffers
-nnoremap <silent> ,] :bn<CR>
-nnoremap <silent> ,[ :bp<CR>
-nnoremap <silent> ,c :bd<CR>
-nnoremap <silent> <space>] :bn<CR>
-nnoremap <silent> <space>[ :bp<CR>
-nnoremap <silent> <space>c :bd<CR>
-
-" Make arrow keys not working
-inoremap  <Up>     <NOP>
-inoremap  <Down>   <NOP>
-inoremap  <Left>   <NOP>
-inoremap  <Right>  <NOP>
-noremap   <Up>     <c-y>
-noremap   <Down>   <c-e>
-noremap   <Left>   zh
-noremap   <Right>  zl
-
-" Typos
-command! W w
-command! Q q
+nmap <silent> <leader>] :bn<CR>
+nmap <silent> <leader>[ :bp<CR>
+nmap <silent> <leader>c :bd<CR>
 
 " Faster command access
 " nmap <space> :
-nnoremap <silent> <space> <NOP>
-nnoremap <space>; :
-nnoremap <space>w :w<CR>
-nnoremap <space>q :q<CR>
-nnoremap <space>wq :wq<CR>
+nmap <silent> <space> <NOP>
+nmap <silent> <space>;  :
+nmap <silent> <space>w  :w<CR>
+nmap <silent> <space>q  :q<CR>
+nmap <silent> <space>wq :wq<CR>
+nmap <silent> <space>]  :bn<CR>
+nmap <silent> <space>[  :bp<CR>
+nmap <silent> <space>c  :bd<CR>
+nmap <space>rtw :%s/\s\+$//e<CR>
+
+" Copy paste to + register
+nmap <silent> <space>y "+yy
+vmap <silent> <space>y "+y
+nmap <silent> <space>p "+p
+nmap <silent> <space>P "+P
+
 
 " Search the current file for the word under the cursor and display matches
-nmap <silent> ,gw :vimgrep /<C-r><C-w>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
+nmap <silent> <leader>gw :vimgrep /<C-r><C-w>/ %<CR>:ccl<CR>:cwin<CR><C-W>J:nohls<CR>
 
 " Edit the vimrc file
-nmap <silent> ,ev :e $MYVIMRC<CR>
-nmap <silent> ,sv :so $MYVIMRC<CR>
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " Yank to end (like D and C)
-nnoremap Y y$
-
-" Disable ex-mode toggle
-nnoremap Q <nop>
+nmap Y y$
 
 " Remove trailing whitespaces
-nnoremap ,rtw :%s/\s\+$//e<CR>
-nnoremap <space>rtw :%s/\s\+$//e<CR>
+nmap <leader>rtw :%s/\s\+$//e<CR>
 
 " Sudo Vim hack, write with force!
 cmap w!! %!sudo tee > /dev/null %
 
 " When entering command, press %% to quickly insert current path
-cnoremap %% <C-R>=expand('%:h').'/'<cr>
+cmap %% <C-R>=expand('%:h').'/'<cr>
 
 " Mapping ,, to fast switch between buffers
-nmap <silent> ,,<space> <c-^>
-
-" Copy paste to + register
-nmap <silent> <space>y "+yy
-vmap <silent> <space>y "+y
-vmap <silent> <space>p "+p
-vmap <silent> <space>P "+P
+nmap <silent> <leader><leader><space> <c-^>
 
 " YCM
-nnoremap ,yy :YcmForceCompileAndDiagnostics<CR>
-nnoremap ,gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap ,gd :YcmCompleter GoToDefinition<CR>
-nnoremap ,gc :YcmCompleter GoToDeclaration<CR>
+nmap <leader>yy :YcmForceCompileAndDiagnostics<CR>
+nmap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nmap <leader>gd :YcmCompleter GoToDefinition<CR>
+nmap <leader>gc :YcmCompleter GoToDeclaration<CR>
 
 " Unite
-nnoremap ,t :<C-u>Unite -buffer-name=files -start-insert file_rec<cr>
-nnoremap ,T :<C-u>Unite -buffer-name=files -start-insert file_rec/async:!<cr>
-nnoremap ,f :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async:!<cr>
-nnoremap ,b :<C-u>Unite -quick-match buffer<cr>
-nnoremap ,r :<C-u>Unite -no-split -buffer-name=mru -start-insert file_mru<cr>
+nmap <leader>t :<C-u>Unite -buffer-name=files -start-insert file_rec<cr>
+nmap <leader>T :<C-u>Unite -buffer-name=files -start-insert file_rec/async:!<cr>
+nmap <leader>f :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async:!<cr>
+nmap <leader>b :<C-u>Unite -quick-match buffer<cr>
+nmap <leader>r :<C-u>Unite -no-split -buffer-name=mru -start-insert file_mru<cr>
 
 " Tab in normal mode is useless - use it to %
-nnoremap <Tab> %
-vnoremap <Tab> %
+nmap <Tab> %
+vmap <Tab> %
 
 " Ack on ,a
-nnoremap ,a :Ack<space>
+nmap <leader>a :Ack<space>
 
 vmap v <Plug>(expand_region_expand)
 vmap <c-v> <Plug>(expand_region_shrink)

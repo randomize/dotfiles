@@ -14,16 +14,17 @@ fi
 
 
 # Load settings from X
-xrdb -merge ~/.Xresources 
+xrdb -merge ~/.Xresources
 
-xrandr --dpi 88 
+xrandr --dpi 88
 
 # Set layouts and no capslock
 #setxkbmap -layout "us, ru" -option "grp:caps_toggle"
-setxkbmap -layout "us, ru" -option "grp:ctrl_shift_toggle"
+setxkbmap -layout "us, ru" -option "grp:shifts_toggle"
 setxkbmap -option ctrl:nocaps       # Make Caps Lock a Control key
 # This will make the Shift+NumLock shortcut toggle mouse keys
 setxkbmap -option "keypad:pointerkeys"
+setxkbmap -option "compose:ralt"
 # Turn on c-a-backspace
 setxkbmap -option terminate:ctrl_alt_bksp
 xmodmap .Xmodmap
