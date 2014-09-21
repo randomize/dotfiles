@@ -62,6 +62,7 @@ URxvt*lineSpace: 0
 
 URxvt*font:     xft:PragmataPro:pixelsize=16
 URxvt*boldFont: xft:PragmataPro:style=Bold:pixelsize=16
+URxvt*italicFont: xft:PragmataPro:style=Italic:pixelsize=16
 
 URxvt*scrollBar:       false
 URxvt*internalBorder:  5

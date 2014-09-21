@@ -102,10 +102,17 @@ map -b <C-h> :tp<CR>
 
 map , <Leader>
 
-nmap <Leader>n :nohl<CR>
+" stop highlighting
+nmap ,n :nohl<CR>
 
-" recent history "jumps"
-map <Leader>j :jumps<CR>
+nmap -builtin ,a :dialog addons<CR>
+nmap -builtin ,o :dialog preferences<CR>
+nmap -builtin ,R :rehash<CR>
+nmap -builtin ,p :set private!<CR>
+nmap -builtin ,F :set fullscreen!<CR>
+nmap -builtin ,d :downloads<CR>
+nmap -builtin ,c :tabopen about:config<CR>
+nmap -builtin ,j :jumps<CR>
 
 " focus first input by default with just i
 "map i gi

@@ -89,7 +89,7 @@ zstyle ':completion:*:processes' sort false
 
 
 
-### 
+###
 # Prompts ==================================================================================
 autoload -U colors && colors
 
@@ -174,11 +174,11 @@ bindkey -a '^R' redo
 bindkey -v '^[[A' history-search-backward
 bindkey -v '^[[B' history-search-forward
 # Ctrl+jk
-bindkey -v '^k'   history-search-backward
-bindkey -v '^j'   history-search-forward
+# bindkey -v '^k'   history-search-backward
+# bindkey -v '^j'   history-search-forward
 # Ctrl+pn
-bindkey -v '^p'   history-search-backward
-bindkey -v '^n'   history-search-forward
+# bindkey -v '^p'   history-search-backward
+# bindkey -v '^n'   history-search-forward
 # Alt+jk
 bindkey -v '\ek'  history-search-backward
 bindkey -v '\ej'  history-search-forward
@@ -191,13 +191,13 @@ bindkey -a 'j'    history-search-forward
 bindkey -a '/' history-incremental-pattern-search-backward
 bindkey -a '?' history-incremental-pattern-search-forward
 # Ctrl+rf
-bindkey -v '^r' history-incremental-pattern-search-backward
-bindkey -v '^f' history-incremental-pattern-search-forward
+# bindkey -v '^r' history-incremental-pattern-search-backward
+# bindkey -v '^f' history-incremental-pattern-search-forward
 # Alr+rf
 bindkey -v '\er' history-incremental-pattern-search-backward
 bindkey -v '\ef' history-incremental-pattern-search-forward
 
-# Clear screen Alt+l
+# Clear screen <a-c>
 bindkey -v '\ec' clear-screen
 
 
@@ -214,8 +214,8 @@ insert_sudo () { zle beginning-of-line; zle -U "sudo " }
 zle -N insert-sudo insert_sudo
 bindkey '\es' insert-sudo
 
-# Mapping <c-o> to add less
-bindkey -s '^O' ' | less'
+# Mapping <a-o> to add less
+bindkey -s '\eo' ' | less'
 
 # Insert last word with Alt+. -- cool!
 bindkey '\e.' insert-last-word
@@ -312,7 +312,8 @@ alias openports='netstat --all --numeric --programs --inet --inet6'
 alias webshare='python -m http.server 12721'
 alias webshare2='twistd -no web --path=. --port=12721'
 alias makepassword='< /dev/urandom tr -dc A-Za-z0-9_ | head -c10 | xargs | cat'
-alias ack='ack --color-match="bold red" --color-filename="green"'
+alias ag='ag --color-match 38\;5\;197 --color-line-number 38\;5\;110 --color-path 38\;5\;215\;4'
+alias ack=ag
 alias mstream='mplayer -playlist'
 alias grep='grep --colour'
 alias fgrep='grep --colour'
@@ -387,7 +388,7 @@ alias vb-windows='VBoxManage startvm "Window 8"'
 # Functions ==================================================================================
 
 # sibdiff Source Destination ../../some/tricky/../path/to/file.cpp
-function sibdiff() { 
+function sibdiff() {
    # Simple zsh magick - replacing in full path $3:A $1 with $2
    vimdiff ${${3:A}/${1}/${2}} ${3:A}
 }
@@ -401,7 +402,7 @@ wiki() { dig +short txt $(echo "$*" | tr ' ' _).wp.dg.cx }
 lls()  { locate "$*" | less }
 
 ## Pacman stuff
-desc() { pacman -Qi $1 | grep "Description" }
+pacdesc() { pacman -Qi $1 | grep "Description" }
 who-owns() { pacman -Qo `which $1` }
 
 ## Command-line calculator
@@ -440,14 +441,23 @@ source /usr/share/doc/pkgfile/command-not-found.zsh
 
 # Colorize mans
 man() {
+
+  # LESS_TERMCAP_mb=$(printf "\e[1;34m") \
+  # LESS_TERMCAP_md=$(printf "\e[1;34m") \
+  # LESS_TERMCAP_me=$(printf "\e[0m") \
+  # LESS_TERMCAP_se=$(printf "\e[0m") \
+  # LESS_TERMCAP_so=$(printf "\e[1;31m") \
+  # LESS_TERMCAP_ue=$(printf "\e[0m") \
+  # LESS_TERMCAP_us=$(printf "\e[1;32m") \
+
   env \
-  LESS_TERMCAP_mb=$(printf "\e[1;34m") \
-  LESS_TERMCAP_md=$(printf "\e[1;34m") \
-  LESS_TERMCAP_me=$(printf "\e[0m") \
-  LESS_TERMCAP_se=$(printf "\e[0m") \
-  LESS_TERMCAP_so=$(printf "\e[1;31m") \
-  LESS_TERMCAP_ue=$(printf "\e[0m") \
-  LESS_TERMCAP_us=$(printf "\e[1;32m") \
+  LESS_TERMCAP_mb=$'\E[01;31m'       \
+  LESS_TERMCAP_md=$'\E[01;38;5;74m'  \
+  LESS_TERMCAP_me=$'\E[0m'           \
+  LESS_TERMCAP_se=$'\E[0m'           \
+  LESS_TERMCAP_so=$'\E[38;5;220;1m'  \
+  LESS_TERMCAP_ue=$'\E[0m'           \
+  LESS_TERMCAP_us=$'\E[04;38;5;146m' \
   man "$@"
 }
 
