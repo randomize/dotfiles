@@ -44,6 +44,7 @@ IdeaProjects/
 .thumbnails/
 .log/
 .cache/
+.ccache/
 
 # Temporary files
 .bash_history
@@ -117,6 +118,9 @@ IdeaProjects/
 .goldendict/
 .sane/
 .w3m/
+.fceux/
+.fakenes/
+.golly/
 
 # Dot config dirs
 .config/chromium/
@@ -140,6 +144,7 @@ IdeaProjects/
 .config/jack/
 .config/dmenu-extended/
 .config/dwb/
+.config/openmw/
 
 # Dot config files
 .config/htop/htoprc
@@ -156,6 +161,7 @@ IdeaProjects/
 .config/user-dirs.locale
 .config/equalx/settings.conf
 .config/pavucontrol.ini
+.config/kactivitymanagerdrc
 
 # Temporary hide... TODO: setup
 .local/

@@ -40,10 +40,10 @@ xset +fp /.fonts
 xset +fp /usr/share/fonts/local
 
 # Disable screen turn off
-xset s off
+# xset s off
 
 # Rebuild xdg menu for awesome
-xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu > ~/.config/awesome/archmenu.lua &
+# xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu > ~/.config/awesome/archmenu.lua &
 
 # Start xxkb
 # xxkb &

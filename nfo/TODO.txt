@@ -1,5 +1,1 @@
 
-screenkey   -- screencasting tool
-ncmpcpp -- vim like keys!
-xmodmap
-
