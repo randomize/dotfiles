@@ -6,6 +6,9 @@
 "   1) play with args and argdo commands (like :args `ag -l foo`)
 "   2) quickfix commands (go, t, i etc)
 "   3) Unite setup
+"   4) unimpaired keys learn
+"   5) vim-multiple-cursors
+"   6) vim-easy-align
 "
 " =========================================================================
 " Vundle
@@ -108,6 +111,9 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-vinegar'
 Plugin 'vim-scripts/restore_view.vim'
 Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'Raimondi/delimitMate'
 
 " ==== Obsolete  =====================
 
@@ -127,8 +133,8 @@ filetype plugin indent on
 " {{{
 
 " Show whitespace
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=124 guibg=red
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+" autocmd ColorScheme * highlight ExtraWhitespace ctermbg=124 guibg=red
+" autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 
 " }}}
 
@@ -203,7 +209,7 @@ set writebackup
 " set backupskip=/tmp/*
 set backupdir=/tmp
 
-" set undofile
+set undofile
 set undodir=/tmp
 
 " History depth
@@ -329,7 +335,7 @@ let g:session_command_aliases = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_auto_colors = 0
-let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_enable_on_vim_startup = 0
 
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=darkgrey ctermbg=235
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey ctermbg=235
@@ -375,6 +381,10 @@ let g:ycm_key_list_previous_completion=['<Up>']
 
 let g:UltiSnipsExpandTrigger=",<return>"
 let g:UltiSnipsListSnippets="<c-tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+let g:UltiSnipsEditSplit="vertical"
 
 " == Ack ===
 
@@ -625,16 +635,19 @@ nmap <silent> <leader>[ :bp<CR>
 nmap <silent> <leader>c :bd<CR>
 
 " Faster command access
-" nmap <space> :
 nmap <silent> <space> <NOP>
 nmap <space>;  :
 nmap <silent> <space>w  :w<CR>
+nmap <silent> <space>ww :w<CR>
 nmap <silent> <space>q  :q<CR>
 nmap <silent> <space>wq :wq<CR>
+nmap <silent> <space>wc :w<CR>:bd<CR>
 nmap <silent> <space>]  :bn<CR>
 nmap <silent> <space>[  :bp<CR>
 nmap <silent> <space>c  :bd<CR>
-nmap <space>rtw :%s/\s\+$//e<CR>
+
+" Remove trailing whitespaces
+nmap <space>rtw :%s/\s\+$//e<CR>:nohl<CR>
 
 " Copy paste to + register
 nmap <silent> <space>y "+yy
@@ -655,9 +668,6 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 " Yank to end (like D and C)
 nmap Y y$
 
-" Remove trailing whitespaces
-nmap <leader>rtw :%s/\s\+$//e<CR>
-
 " Sudo Vim hack, write with force!
 " cmap w!! %!sudo tee > /dev/null %
 
@@ -669,16 +679,34 @@ nmap <silent> <leader><leader><space> <c-^>
 
 " YCM
 nmap <leader>yy :YcmForceCompileAndDiagnostics<CR>
-nmap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nmap <leader>gd :YcmCompleter GoToDefinition<CR>
-nmap <leader>gc :YcmCompleter GoToDeclaration<CR>
+nmap <leader>yg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nmap <leader>yd :YcmCompleter GoToDefinition<CR>
+nmap <leader>yc :YcmCompleter GoToDeclaration<CR>
 
 " Unite
-nmap <leader>t :<C-u>Unite -buffer-name=files -start-insert file_rec<cr>
-nmap <leader>T :<C-u>Unite -buffer-name=files -start-insert file_rec/async:!<cr>
-nmap <leader>f :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async:!<cr>
-nmap <leader>b :<C-u>Unite -quick-match buffer<cr>
-nmap <leader>r :<C-u>Unite -no-split -buffer-name=mru -start-insert file_mru<cr>
+" nmap <leader>t :<C-u>Unite -buffer-name=files -start-insert file_rec<cr>
+" nmap <leader>T :<C-u>Unite -buffer-name=files -start-insert file_rec/async:!<cr>
+" nmap <leader>f :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async:!<cr>
+" nmap <leader>b :<C-u>Unite -quick-match buffer<cr>
+" nmap <leader>r :<C-u>Unite -no-split -buffer-name=mru -start-insert file_mru<cr>
+let g:unite_source_history_yank_enable = 1
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+nnoremap <leader>uf :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async<cr>
+nnoremap <leader>ut :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
+nnoremap <leader>ur :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
+nnoremap <leader>uo :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
+nnoremap <leader>uy :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
+nnoremap <leader>ub :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
+
+" Custom mappings for the unite buffer
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+  " Play nice with supertab
+  let b:SuperTabDisabled=1
+  " Enable navigation with control-j and control-k in insert mode
+  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+endfunction
 
 " Tab in normal mode is useless - use it to %
 nmap <Tab> %

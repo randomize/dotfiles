@@ -616,14 +616,13 @@ awful.rules.rules = {
                      border_color = beautiful.border_normal,
                      focus = awful.client.focus.filter,
                      raise = true,
+                     -- floating = false,
                      keys = clientkeys,
                      buttons = clientbuttons } },
 
     -- Floating windows by class
-    { rule_any = {
-       class = { "pinentry", "gimp", "Xmessage" },
-       --instance = {"some inst"}
-       }, properties = { floating = true }
+    { rule_any = { class = { "pinentry", "gimp", "Xmessage" }},
+       properties = { floating = true }
     },
     -- Matching floaters and only them
     { rule_any = { class = { "my_floating_ranger", "my_floating_htop", "my_floating_ncmpcpp",

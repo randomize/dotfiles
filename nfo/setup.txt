@@ -1,7 +1,7 @@
+# vim : ft=sh
+#   Arch Linux setup
 
-   Arch Linux setup
-
-==== Disk partitions ==== (0)
+#==== Disk partitions ==== (0)
 
 Number  Start (sector)  End (sector)  Size       Code  Name
 1                 34        585936    286.1 MiB   EF00  ESP
@@ -22,7 +22,7 @@ Filesystem   Size  Used Avail Use% Mounted on  Label
 /dev/sda7     50G  9.9G   38G  21% /home       home
 /dev/sdb1    932G  733G  199G  79% /mnt/TERRA
 
-==== Pacman and Aur ==== (1)
+#==== Pacman and Aur ==== (1)
 
    Enable color in pacman:
       /etc/pacman.conf <== enable "Color" "TotalDownload"
@@ -37,21 +37,21 @@ Filesystem   Size  Used Avail Use% Mounted on  Label
    Setup hook:
      # pkgfile -u
 
-==== Video ==== (2)
+#==== Video ==== (2)
 
    Set KMS (add hook and mkinitcpo -p linux)
 
-==== Nautilus ==== (3)
+#==== Nautilus ==== (3)
 
-   Backspace Fix : 
-     ~/.config/nautilus/accels <==  'gtk_accel_path "<Actions>/ShellActions/Up" "BackSpace"' 
+   Backspace Fix :
+     ~/.config/nautilus/accels <==  'gtk_accel_path "<Actions>/ShellActions/Up" "BackSpace"'
 
-   Disk usage: 
+   Disk usage:
       Add 'Disk usage' to actions, with 'baobab %M' command
 
-   Open with 
+   Open with
 
-==== Ipad support ==== (4)
+#==== Ipad support ==== (4)
 
    # idevice_id --list  // will show some hash of my iPad
    # ideviceinfo        // will show more random data on iPad
@@ -67,7 +67,7 @@ Filesystem   Size  Used Avail Use% Mounted on  Label
    $ ...
    $ umount /mnt/ipad
 
-==== Gvim setup ==== (5)
+#==== Gvim setup ==== (5)
 
    $ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
    $ vim
@@ -77,21 +77,21 @@ Filesystem   Size  Used Avail Use% Mounted on  Label
    $ cd ~/.vim/bundle/YouCompleteMe/
    $ ./install.sh --clang-completer --system-libclang
 
-==== Virtual Box ==== (6)
+#==== Virtual Box ==== (6)
 
    # echo vboxdrv > /etc/modules-load.d/virtualbox.conf
    # gpasswd -a randy vboxusers
 
-==== Firefox setup ==== (7)
+#==== Firefox setup ==== (7)
 
    ( about:config ) network.standard-url.escape-utf8 = false
    ( about:config ) network.http.sendReferer = 0
 
-==== Alsa setup ==== (8)
+#==== Alsa setup ==== (8)
 
-   This setup will define order of sound cards in my case
+   #This setup will define order of sound cards in my case
 
-   cat /etc/modprobe.d/alsa-base.conf
+   $ cat /etc/modprobe.d/alsa-base.conf
 
       # Created by randy to define order of cards
 
@@ -109,7 +109,7 @@ Filesystem   Size  Used Avail Use% Mounted on  Label
       aplay -l                   // Lists avaliable outputs
 
 
-==== DNS masque ==== (9)
+# ==== DNS masque ==== (9)
 
    Set google DNS in:
      /etc/dnsmasq.conf
@@ -122,7 +122,7 @@ Filesystem   Size  Used Avail Use% Mounted on  Label
    # echo dns=dnsmasq >> /etc/NetworkManager/NetworkManager.conf
 
 
-==== Forward journald to /dev/tty12 ==== (10)
+# ==== Forward journald to /dev/tty12 ==== (10)
 
  /etc/systemd/journald.conf
 
@@ -133,7 +133,7 @@ Filesystem   Size  Used Avail Use% Mounted on  Label
  # systemctl restart systemd-journald.
 
 
-==== Android & cocos ==== (11)
+# ==== Android & cocos ==== (11)
 
    1) Apache ant : install package apache-ant
    2) Enable multilib(Google sucks with 32bit SDK), install deps:
@@ -144,17 +144,17 @@ Filesystem   Size  Used Avail Use% Mounted on  Label
    3) save latest SDK and NDK to ~/android/{sdk,ndk}
    4) launch android app and install packages (SDK, platform and build tools)
    5) setup environment vars for adb - already on ZSH config - check
-   6) compile aur's adb-git, but not install: unpack and move adb to ~/android/sdk/platfrom-tools/adb replacing it
+   6) compile aurs adb-git, but not install: unpack and move adb to ~/android/sdk/platfrom-tools/adb replacing it
 
    7) Install android-udev rules - currentlty moced from aur
    8) clone cocos to ~/cocos2d-x
 
 
-==== ipv6 ==== (12)
+# ==== ipv6 ==== (12)
 
    Disable with kernel parameter (see ./global_dotfiles/loader/entries/arch.conf)
 
-==== Man pages ==== (13)
+# ==== Man pages ==== (13)
 
    # mandb
    Then use search
@@ -162,13 +162,13 @@ Filesystem   Size  Used Avail Use% Mounted on  Label
    And other
    $ whatis
 
-==== Itmages client ==== (14)
+# ==== Itmages client ==== (14)
 
    install perl-lwp-protocol-https
    configure password/login
    use it
 
-==== Auto load to console vt1 ==== (15)
+# ==== Auto load to console vt1 ==== (15)
 
 cat /etc/systemd/system/getty@tty1.service.d/autologin.conf
 [Service]
@@ -176,7 +176,7 @@ Type=simple
 ExecStart=
 ExecStart=-/usr/bin/agetty --autologin username --noclear %I 38400 linux
 
-==== Imagemagick to handle some thumbnails ==== (16)
+# ==== Imagemagick to handle some thumbnails ==== (16)
 
 sudo vim /usr/share/thumbnailers/dds.thumbnailer
 
@@ -186,11 +186,11 @@ MimeType=image/x-dds;
 
 $ nautilus -q
 
-==== XDG menu generate for awesome WM ==== (17)
+# ==== XDG menu generate for awesome WM ==== (17)
 
   $ xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu > ~/.config/awesome/archmenu.lua
 
-==== Custom kernel ====== (18)
+# ==== Custom kernel ====== (18)
 
  $ cd /tmp
  $ ABSROOT=. abs core/linux
@@ -204,10 +204,10 @@ TODO: More tweaks soon
  $ updpkgsums
  $ makepkg
 
-==== Ranger treat DJVU correctly ===== (18)
+# ==== Ranger treat DJVU correctly ===== (18)
 
 in file:
-   /usr/lib/python3.4/site-packages/ranger/data/mime.types   
+   /usr/lib/python3.4/site-packages/ranger/data/mime.types
 
 add lines:
   doc/djvu djvu
@@ -215,7 +215,7 @@ add lines:
 
 to prevent ranger trying these formats with w3m
 
-===== Pulse audio no flat volume ===== (19)
+# ===== Pulse audio no flat volume ===== (19)
 
 /etc/pulse/daemon.conf
 
@@ -224,5 +224,18 @@ flat-volumes = no
 $ pulseaudio -k
 $ pulseaudio --start
 
+# ===== Terminal colors ============= (20)
+
+$ screen_terminfo="screen-256color"
+
+$ infocmp "$screen_terminfo" |
+  sed -e 's/^screen[^|]*|[^,]*,/screen-it|screen with italics support,/' \
+      -e 's/%?%p1%t;3%/%?%p1%t;7%/' \
+      -e 's/smso=[^,]*,/smso=\\E[7m,/' \
+      -e 's/rmso=[^,]*,/rmso=\\E[27m,/' \
+      -e '$s/$/ sitm=\\E[3m, ritm=\\E[23m,/' \
+  >! /tmp/screen.terminfo
+
+$ tic /tmp/screen.terminfo
 
 
