@@ -148,6 +148,13 @@ Bluetooth and network:
    dnsutils          // dig, nslookup and others
 
    bluez             // Bluetooth
+   bluez-utils       // Utils
+
+   python-twisted    // For simple HTTP server sharing
+   python2-twisted
+
+   nethogs           // Network monitor
+
 
 Video:
 
@@ -212,6 +219,10 @@ Window managers and DE:
 
    i3-wm           // Another good tiling WM
    i3status        // Status bar for it
+   conky           // System monitor
+   dmenu2          // Fork of dmenu with some extra stuff, bind on Win+Shift+R
+
+   xmonad          // Haskell window manager
 
 Recoll and helpers:
 
@@ -235,7 +246,7 @@ Themes:
 
 Terminal emulators:
 
-   rxvt-unicode            // Default terminal, using urxvt{d,c} pair
+   aur/rxvt-unicode-patched   // Default terminal, using urxvt{d,c} pair, patched for fonts
    local/st-git            // JIC fall-back, (+my patches)
    xterm                   // Another JIC term ;)
    aur/cool-old-term-git   // Eye-candy old school terminal emulator
@@ -273,6 +284,17 @@ Console tools:
    aur/autojump-git // For fast navigation with "j somewhere"
 
    fortune-mod      // Random quote displayer
+
+   aur/ansiweather-git // Nice console weather
+
+   qrencode         // QR encoder, cool console one
+   vttest           // Terminal emulator capabilities test
+
+   aur/vrms-arch    // Virtal RMS - tells you which packages are bad ;)
+
+   zenity           // Display GUI messages from console tools - Used for some my scripts
+
+   aur/sparklines-git // Very nice console spark lines
 
 
 Fuse filesystems:
@@ -351,6 +373,8 @@ Viewers:
    fbpdf-git      // Terminal framebuffer PDF reader! (also DJVU)
    fbv            // Image framebuffer viewer
 
+   xdot           // Viewer for Dot graphs
+
 Office:
 
    libreoffice-fresh     // Latest version
@@ -363,7 +387,7 @@ Office:
    aur/hyphen-ru         // Russian
 
 
-   goldendict            // GUI-sh dictionary
+   //goldendict          // GUI-sh dictionary. Now I use console one
    sdcv                  // Console version of Stardict
 
 Ipad support:
@@ -419,7 +443,7 @@ IDE and editors:
 C++ compilers and tools:
 
    clang                      // Cool and modern apple compiler
-   root                       // CERN thing, has interactive cling C++
+   aur/root-bin               // CERN ROOT project, has interactive cling C++
    ccache                     // For faster g++ compiling (see ArchWiki)
 
    cppcheck                 // Static C/C++ analyzer
@@ -613,8 +637,7 @@ Instant Messaging:
    //profanity        // True console XMPP
 
    irssi     // IRC client
-   aur/tox-git  // for toxing
-   aur/utox-git  // for toxing
+   aur/utox-git  // for toxing (also installs tox-git
 
 Audio and sound:
 
@@ -625,7 +648,7 @@ Audio and sound:
 
    jack2-dbus    // JACK2 (newer) with dbus support to play nice with pulseaudio
    qjackctl     // GUI for JACK server
-   aur/aj2midid-git   // ALSA MIDI to JACK MIDI
+   aur/a2jmidid-git   // ALSA MIDI to JACK MIDI
 
    // Linux sampler
 
@@ -637,7 +660,7 @@ Audio and sound:
    // Synths
    zynaddsubfx      // Synthesiser
 
-Music editors
+Music editors:
 
    chuck            // Sound coding
    miniaudicle      // Chuck GUI
@@ -655,10 +678,10 @@ Music editors
 Media players:
 
    mplayer
-   aur/mpv-git      // Nice new player, testing git version
+   mpv              // Nice new player
    vlc              // Good too player
 
-   aur/mpd-git      // Music player daemon (git version)
+   mpd              // Music player daemon
    mpc              // Client for it
    ncmpcpp          // Another client with simple ncurses-based interface
 
@@ -744,6 +767,7 @@ Math:
    maxima            // Old and powerful algebra system
    wxmaxima
    //aur/r-mkl       // R (faster edition with Intel MKL)
+   golly             // Powerfull Game Of Life solver, fast(very), tons of tweaks in rules and many presets
 
    gnuplot           // Popular plotter
    //plplot          // Another modern plotter
@@ -785,6 +809,7 @@ Games and fun:
    joyutils // Pad control utilities
    cowsay   // Cows are good
    fceux    // NES emulator
+   fakenes  // Another NES emulator
    openmw   // Morrowing, my love! Now on GNU/Linux
 
 Android development:
