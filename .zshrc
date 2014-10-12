@@ -229,6 +229,7 @@ bindkey '\ey' accept-and-hold
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '\ex' edit-command-line
+bindkey -M vicmd v edit-command-line
 
 # Make Shift-TAB work as backward complete
 bindkey '^[[Z' reverse-menu-complete
@@ -351,6 +352,8 @@ alias mount-mac='sudo sshfs  randy@10.10.10.105:/ /mnt/macos'
 #alias bindiff='cmp -l file1.bin file2.bin | gawk \'{printf \"%08X %02X %02X\n\", $1, strtonum(0$2), strtonum(0$3)}\''
 alias vim-clean-views='rm ~/.vim/view/*'
 alias list-devices='lsblk -f'
+alias sdcv='sdcv --color'
+alias sdc='sdcv -u "LingvoUniversal (En-Ru)" --color'
 
 ## Editing aliases
 alias eA='vim ~/.config/awesome/rc.lua'
@@ -654,6 +657,14 @@ Convert()
         -ab 32k \
         -strict -2 \
          output.avi
+}
+
+# set an ad-hoc GUI timer
+timer() {
+  local N=$1; shift
+
+  (sleep $N && zenity --info --title="Time's Up" --text="${*:-BING}") &
+  echo "timer set for $N"
 }
 
 highlightkeynote() { highlight --font=Consolas --font-size=24 --style=molokai -i "$@" -O rtf ;}

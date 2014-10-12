@@ -94,7 +94,7 @@ end
 -- Define a tag table which hold all screen tags.
 namedtags = {
    names = {"α", "β", "γ", "δ", "ε", "ζ", "η", "θ", "ι", "κ", "λ" },
-   layout = {layouts[2], layouts[2], layouts[1], layouts[1], layouts[4], layouts[2], layouts[1], layouts[1], layouts[2], layouts[2], layouts[2]}
+   layout = {layouts[2], layouts[2], layouts[2], layouts[2], layouts[4], layouts[2], layouts[1], layouts[1], layouts[2], layouts[2], layouts[2]}
 }
 
 -- Define a tag table which hold all screen tags.
@@ -621,7 +621,7 @@ awful.rules.rules = {
                      buttons = clientbuttons } },
 
     -- Floating windows by class
-    { rule_any = { class = { "pinentry", "gimp", "Xmessage" }},
+    { rule_any = { class = { "pinentry", "gimp", "Xmessage", "Xsane" }},
        properties = { floating = true }
     },
     -- Matching floaters and only them

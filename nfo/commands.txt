@@ -42,3 +42,11 @@ pdfimages -f X -l Y -j 1.pdf ./out/end
 # 9 Create 300 dpi DJVU out of bunch of image files in ./out/*.image ( -j is only for OCR)
 
 img2djvu -j 8 -d 300 -v1 out
+
+# 10 Create QR code
+
+qrencode -t ANSI 'My string to encode'
+
+# 11 Display nice dependency tree
+
+pactree pulseaudio -g | xdot -

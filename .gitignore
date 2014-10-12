@@ -145,6 +145,8 @@ IdeaProjects/
 .config/dmenu-extended/
 .config/dwb/
 .config/openmw/
+.config/tox/
+.config/fontforge/
 
 # Dot config files
 .config/htop/htoprc

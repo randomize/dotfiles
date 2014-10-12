@@ -114,6 +114,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'Raimondi/delimitMate'
+Plugin 'mhinz/vim-startify'
 
 " ==== Obsolete  =====================
 
@@ -313,6 +314,14 @@ endif
 " Plugin settings
 " =========================================================================
 " {{{
+
+" == startify ===============
+let g:startify_bookmarks = ['~/.vimrc','~/.zshrc','~/nfo/commands.txt',]
+let g:startify_custom_header =
+ \ map(split(system('fortune | cowsay -W 60'), '\n') , '"   ". v:val') + ['','']
+  " \ split(system('fortune | cowsay -W 60'), '\n') + ['','']
+let g:startify_change_to_dir = 0
+let g:startify_files_number = 8
 
 " == gundo/undotree ==
 
