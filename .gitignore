@@ -18,6 +18,8 @@ intel/
 paks/
 IdeaProjects/
 .ssh/
+.jrnl_config
+nfo/journal.txt
 
 # Vim temporals/generated
 .vim/bundle
@@ -39,6 +41,7 @@ IdeaProjects/
 .config/mpd/state
 .config/mpd/sticker.sql
 .config/mpd/database
+.config/mpd/playlists/
 
 # Temporary dirs
 .thumbnails/
@@ -121,6 +124,7 @@ IdeaProjects/
 .fceux/
 .fakenes/
 .golly/
+.subversion/
 
 # Dot config dirs
 .config/chromium/
@@ -164,6 +168,7 @@ IdeaProjects/
 .config/equalx/settings.conf
 .config/pavucontrol.ini
 .config/kactivitymanagerdrc
+.config/TopMod.conf
 
 # Temporary hide... TODO: setup
 .local/
