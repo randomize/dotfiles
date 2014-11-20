@@ -1,0 +1,12 @@
+[notifications]
+message=true
+message.text=true
+remind=60
+
+[alias]
+c=/clear
+w=/who
+q=/quit
+
+[ui]
+beep=true

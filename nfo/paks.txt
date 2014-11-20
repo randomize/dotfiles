@@ -265,7 +265,7 @@ Console tools:
    aur/rmlint-git // Duplicate files searcher and remover
    aur/pxz-git    // Parallel xz
 
-   pv             // echo "You can simulate on-screen typing just like in the movies" | pv -qL 10
+   pv             // Pipe viewer, can be used for progress monitoring
    rlwrap         // Read line wrap (for maxima and others) also awesome-client
    lsof           // Show open files tool
    moreutils      // Cool toolset (ex vipe for vim editing while passing though pipe)

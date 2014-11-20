@@ -253,6 +253,15 @@ zle -N foreground-vi
 bindkey -a '^Z' foreground-vi
 bindkey -v '^Z' foreground-vi
 
+# Pasting from clipboard
+vi-append-x-selection () { RBUFFER=$(xsel -o -p </dev/null)$RBUFFER; }
+vi-append-x-clipboard () { RBUFFER=$(xsel -o -b </dev/null)$RBUFFER; }
+zle -N vi-append-x-selection
+zle -N vi-append-x-clipboard
+
+bindkey -v '^[[2~' vi-append-x-clipboard
+bindkey -a '^[[2~' vi-append-x-clipboard
+
 # Aliases ==================================================================================
 
 # Set up auto extension stuff
@@ -572,6 +581,11 @@ if [ -f ~/.zsh/zbell.sh ]; then
    . ~/.zsh/zbell.sh
 fi
 
+# 3.1 Listing with k =====================================================
+# K - new ls ;)
+if [ -f ~/.zsh/k.sh ]; then
+   . ~/.zsh/k.sh
+fi
 
 # 4. FFMpeg ============================================================================
 
