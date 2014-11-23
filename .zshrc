@@ -170,21 +170,20 @@ bindkey -a '^R' redo
 # bindkey '^h' backward-delete-char
 
 # History search
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
 # Stupid arrows
-bindkey -v '^[[A' history-search-backward
-bindkey -v '^[[B' history-search-forward
-# Ctrl+jk
-# bindkey -v '^k'   history-search-backward
-# bindkey -v '^j'   history-search-forward
-# Ctrl+pn
-# bindkey -v '^p'   history-search-backward
-# bindkey -v '^n'   history-search-forward
+bindkey -v '^[[A' up-line-or-beginning-search
+bindkey -v '^[[B' down-line-or-beginning-search
 # Alt+jk
-bindkey -v '\ek'  history-search-backward
-bindkey -v '\ej'  history-search-forward
+bindkey -v '\ek'  up-line-or-beginning-search
+bindkey -v '\ej'  down-line-or-beginning-search
 # normal mode jk
-bindkey -a 'k'    history-search-backward
-bindkey -a 'j'    history-search-forward
+bindkey -a 'k'    up-line-or-beginning-search
+bindkey -a 'j'    down-line-or-beginning-search
 
 # Search backwards and forwards with a pattern
 # normal mode
