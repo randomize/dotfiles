@@ -14,7 +14,7 @@ xterm*cursorColor:        green
 xterm*cursorBlink:        false
 xterm*cursorOnTime:	     550
 xterm*cursorOffTime:	     150
-xterm*faceName:           PragmataPro:pixelsize=16
+xterm*faceName:           PragmataPro:pixelsize=17
 xterm*Geometry:           200x60+100+60
 xterm*termName:           xterm-256color
 xterm*utf8: true
@@ -60,9 +60,9 @@ URxvt*geometry: 150x50+100+60
 URxvt*letterSpace: 0
 URxvt*lineSpace: 0
 
-URxvt*font:     xft:PragmataPro:pixelsize=16
-URxvt*boldFont: xft:PragmataPro:style=Bold:pixelsize=16
-URxvt*italicFont: xft:PragmataPro:style=Italic:pixelsize=16
+URxvt*font:     xft:PragmataPro:pixelsize=17
+URxvt*boldFont: xft:PragmataPro:style=Bold:pixelsize=17
+URxvt*italicFont: xft:PragmataPro:style=Italic:pixelsize=17
 
 URxvt*scrollBar:       false
 URxvt*internalBorder:  5
