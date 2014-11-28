@@ -384,14 +384,18 @@ let g:unite_source_rec_async_command= 'ag --nocolor --nogroup --hidden -g ""'
 " == You complete me ==
 
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-let g:ycm_key_list_previous_completion=['<Up>']
+let g:ycm_auto_trigger = 0
+
+" let g:ycm_key_invoke_completion = '<c-Tab>'
+let g:ycm_key_list_select_completion = ['<tab>', '<up>']
+"let g:ycm_key_list_previous_completion = ['<s-tab>']
+
 
 " == Ultisnips ==
-
-let g:UltiSnipsExpandTrigger=",<return>"
-let g:UltiSnipsListSnippets="<c-tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsListSnippets="<F3>"
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 let g:UltiSnipsEditSplit="vertical"
 
@@ -480,6 +484,10 @@ endfunction
 function! SetupLatex()
    nmap <silent> <F5> <ESC>:call CompileLatex()<CR>
    imap <silent> <F5> <c-o>:call CompileLatex()<CR>
+   " Add triggers to ycm for LaTeX-Box autocompletion
+   let g:ycm_semantic_triggers = {
+   \  'tex'  : ['{'],
+   \ }
 endfunction
 
 function! SetupRust()

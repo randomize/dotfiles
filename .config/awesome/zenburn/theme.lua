@@ -12,7 +12,7 @@ theme.wallpaper = "/home/randy/Pictures/wall.jpg"
 -- }}}
 
 -- {{{ Styles
-theme.font      = "PragmataPro 9"
+theme.font      = "PragmataPro 11"
 
 -- {{{ Colors
 theme.fg_normal  = "#DCDCCC"
@@ -67,8 +67,8 @@ theme.mouse_finder_color = "#CC9393"
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
-theme.menu_height = 16
-theme.menu_width  = 150
+theme.menu_height = 18
+theme.menu_width  = 180
 -- }}}
 
 -- {{{ Icons
