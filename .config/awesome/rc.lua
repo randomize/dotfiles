@@ -486,7 +486,11 @@ globalkeys = awful.util.table.join(
     -- Terminals
     awful.key({ modkey,           }, "Return",
        function ()
-          drop("urxvtc -name my_floating_terminal -e /home/randy/bin/starttmux.sh", "center", "center", 0.7, 0.65, true)
+          --if client.focus.screen == 1 then
+          --   drop("urxvtc -fn \"xft:Pragmata Pro:pixelsize=16\" -name my_floating_terminal -e /home/randy/bin/starttmux.sh", "center", "center", 0.9, 0.9, true)
+          --else
+             drop("urxvtc -name my_floating_terminal -e /home/randy/bin/starttmux.sh", "center", "center", 0.7, 0.65, true)
+          --end
        end
     ),
     awful.key({ modkey, "Shift"   }, "Return",
@@ -619,7 +623,17 @@ awful.rules.rules = {
                      -- floating = false,
                      keys = clientkeys,
                      buttons = clientbuttons } },
-
+    -- Conky special window
+    { rule = { class = "Conky" },
+     properties = {
+         floating = true,
+         sticky = true,
+         ontop = false,
+         focusable = false,
+         raise = false,
+         size_hints = {"program_position", "program_size"}
+     }
+    },
     -- Floating windows by class
     { rule_any = { class = { "pinentry", "gimp", "Xmessage", "Xsane" }},
        properties = { floating = true }

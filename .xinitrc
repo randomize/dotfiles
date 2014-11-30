@@ -43,10 +43,13 @@ xset +fp /.fonts
 xset +fp /usr/share/fonts/local
 
 # Rebuild xdg menu for awesome
-( ( sleep 5 && xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu > ~/.config/awesome/archmenu.lua ) & )
+xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu > ~/.config/awesome/archmenu.lua 
+
+# Conky
+( ( sleep 2 && conky ) & )
 
 # Clipboard manager
-copyq &
+( ( sleep 2 && copyq ) & )
 
 # Composition
 compton -b
@@ -63,6 +66,8 @@ urxvtd -q -f -o
 
 # Monitors setup
 xrandr --dpi 100
+xrandr --output VGA1 --off
+xrandr --output HDMI2 --primary
 xrandr --output DP1 --right-of HDMI2
 # Disable screen turn off
 # xset s off
