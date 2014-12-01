@@ -333,7 +333,7 @@ Other file managers:
 
    mc
    aur/ranger-git   // Fast and pretty manager powered by Vim keys (see setup(18))
-   vifm             // ranger is preferable but this good too
+   //vifm             // ranger is preferable but this good too
 
 Archives:
 
