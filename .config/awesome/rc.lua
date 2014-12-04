@@ -413,12 +413,12 @@ globalkeys = awful.util.table.join(
     -- Screenshots
     awful.key({                   }, "Print",
       function ()
-         awful.util.spawn("scrot", false)
+         awful.util.spawn("escrotum", false)
          naughty.notify({ title="Screenshot", text="Capturing full screen" })
       end),
     awful.key({ "Control"         }, "Print",
       function ()
-         awful.util.spawn_with_shell("sleep 0.5 && scrot -s", false)
+         awful.util.spawn("escrotum -s", false)
          naughty.notify({ title="Screenshot", text="Capturing a window" })
       end
     ),
@@ -646,7 +646,7 @@ awful.rules.rules = {
       callback = function (c) awful.placement.centered(c,nil) end
     },
     -- Set Firefox to always map on tags number 1 of screen 1.
-    { rule = { class = "Firefox" }, properties = {   tag = tags[1][1], }, },
+    { rule = { class = "Firefox" }, properties = {   tag = tags[2][1], }, },
     -- Set Pidgin
     { rule = { class = "Pidgin", role = "buddy_list"},
       properties = { tag = tags[1][9] } },
