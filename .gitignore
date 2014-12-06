@@ -17,9 +17,14 @@ rdev/
 intel/
 paks/
 IdeaProjects/
+VM/
+
+# Private
 .ssh/
-.jrnl_config
 nfo/journal.txt
+.jrnl_config
+.itmages.conf
+.dropbox_uploader
 
 # Vim temporals/generated
 .vim/bundle
@@ -67,6 +72,7 @@ nfo/journal.txt
 .config/ranger/__pycache__/
 .config/ranger/history
 .awesome-client_history
+.dropshell_history
 
 # Major soft
 .purple/
@@ -169,6 +175,7 @@ nfo/journal.txt
 .config/pavucontrol.ini
 .config/kactivitymanagerdrc
 .config/TopMod.conf
+
 
 # Temporary hide... TODO: setup
 .local/

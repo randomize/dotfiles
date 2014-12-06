@@ -62,7 +62,7 @@ xsetwacom --set "Wacom Intuos3 9x12 stylus" Button 3 "button +2"
 urxvtd -q -f -o
 
 # Screensaver
-( ( sleep 10 && /usr/bin/xscreensaver -no-splash -display :0.0 ) & )
+xscreensaver -no-splash -display :0.0 &
 
 # Monitors setup
 xrandr --dpi 100

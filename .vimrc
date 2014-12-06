@@ -31,6 +31,7 @@ Plugin 'derekwyatt/vim-protodef'
 
 " Todo plugin
 Plugin 'neochrome/todo.vim'
+" Plugin 'vitalk/vim-simple-todo'
 
 " Git support
 Plugin 'tpope/vim-fugitive'
@@ -402,6 +403,20 @@ let g:UltiSnipsEditSplit="vertical"
 " == Ack ===
 
 let g:ackprg = 'ag --nogroup --nocolor --column'
+
+" == TODO plugin ===
+" todo.vim default highlight groups, feel free to override as wanted
+hi link TodoTitle Title
+hi link TodoTitleMark Normal
+hi link TodoItem Special
+hi link TodoItemAdditionalText Comment
+hi link TodoItemCheckBox Identifier
+hi link TodoItemDone Ignore
+hi link TodoComment Comment
+
+" define like this to enable explicit comments
+" comments then start with //
+let g:TodoExplicitCommentsEnabled = 1
 
 " }}}
 
