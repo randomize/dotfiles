@@ -261,31 +261,55 @@ zle -N vi-append-x-clipboard
 bindkey -v '^[[2~' vi-append-x-clipboard
 bindkey -a '^[[2~' vi-append-x-clipboard
 
-# Aliases ==================================================================================
+# File associations aliases ==================================================================================
 
-# Set up auto extension stuff
+# Browser things
 alias -s html=$BROWSER
 alias -s org=$BROWSER
 alias -s php=$BROWSER
 alias -s com=$BROWSER
 alias -s net=$BROWSER
+
+# Text things
+alias -s txt=$EDITOR
+alias -s h=$EDITOR
+alias -s cpp=$EDITOR
+alias -s java=$EDITOR
+alias -s conf=$EDITOR
+alias -s PKGBUILD=$EDITOR
+
+# Images
 alias -s png=feh
 alias -s jpg=feh
+alias -s jpeg=feh
 alias -s gif=feh
+alias -s tiff=feh
+
+# Office
 alias -s sxw=soffice
 alias -s doc=soffice
-alias -s gz=tar -xzvf # Unp ??
-alias -s bz2=tar -xjvf
-alias -s java=$EDITOR
-alias -s txt=$EDITOR
-alias -s PKGBUILD=$EDITOR
+
+# Media
+alias -s avi=mpv
+alias -s mov=mpv
+alias -s mkv=mpv
+alias -s mp4=mpv
+
+# Archives
+alias -s gz=unp -u
+alias -s tgz=unp -u
+alias -s bz2=unp -u
+alias -s tar=unp -u
+alias -s 7z=unp -u
+alias -s zip=unp -u
+alias -s rar=unp -u
+
+# Other
 alias -s pdf=zathura
 alias -s djvu=zathura
+alias -s torrent=~/bin/download_torrent.sh
 
-# Normal aliases
-alias mpd='/usr/bin/mpd'
-alias pa='pacman'
-alias ya='yaourt'
+# Aliases ==================================================================================
 
 # Listing
 alias ls='ls --color=auto -F -h'
@@ -314,13 +338,17 @@ alias amv='amv -ig'
 
 alias g='git'
 alias gap='git add --patch'
-alias showclock='watch -n 1 "date +%T | xargs figlet \"Time:\" -c -t"'
-alias histgrep='cat ~/.bash_history | grep'
-alias todo='vim ~/nfo/TODO.txt'
+
+alias pa='pacman'
+alias ya='yaourt'
+
+alias clock='watch -n 1 "date +%T | xargs figlet \"Time:\" -c -t"'
+alias todo='vim ~/Desktop/TODO.txt'
 alias openports='netstat --all --numeric --programs --inet --inet6'
 alias webshare='python -m http.server 12721'
 alias webshare2='twistd -no web --path=. --port=12721'
 alias makepassword='< /dev/urandom tr -dc A-Za-z0-9_ | head -c10 | xargs | cat'
+alias makenumber='< /dev/urandom tr -dc 0-9 | head -c16 | xargs | cat'
 alias ag='ag --color-match 38\;5\;197 --color-line-number 38\;5\;110 --color-path 38\;5\;215\;4'
 alias ack=ag
 alias mstream='mplayer -playlist'
@@ -328,9 +356,6 @@ alias grep='grep --colour'
 alias fgrep='grep --colour'
 alias egrep='egrep --colour'
 alias free='free -m'
-alias twit='ttytter -ansi -ssl -verify'
-alias rss='newsbeuter'
-alias up='uptime'
 alias htop='htop -d 2'
 
 # Programming
@@ -343,7 +368,7 @@ alias poweroff='sudo poweroff'
 alias mount='sudo mount'
 alias umount='sudo umount'
 alias scat='sudo cat'
-alias svim='sudo vim'
+alias svim='sudoedit'
 alias reboot='sudo reboot'
 alias halt='sudo halt'
 alias update='sudo pacman -Suy'
@@ -372,6 +397,7 @@ alias eC='vim ~/nfo/commands.txt'
 alias eS='vim ~/nfo/setup.txt'
 alias eP='vim ~/nfo/paks.txt'
 alias eT='vim ~/.tmux.conf'
+alias eI='vim ~/.xinitrc'
 
 ## Frequent places
 alias ..='cd ..'
@@ -395,6 +421,7 @@ alias sniff-flv='sudo ngrep -d any '.flv'  port 80'
 ## Virtual Box
 alias vb-macos='VBoxManage startvm "VM Mac OS Mavericks"'
 alias vb-windows='VBoxManage startvm "Window 8"'
+alias vb-xp='VBoxManage startvm "XP"'
 
 # Functions ==================================================================================
 
