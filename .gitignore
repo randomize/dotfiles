@@ -21,6 +21,7 @@ VM/
 
 # Private
 .ssh/
+.password-store/
 nfo/journal.txt
 .jrnl_config
 .itmages.conf
@@ -92,6 +93,7 @@ nfo/journal.txt
 .texlive/
 .codeblocks/
 .mono/
+.wireshark/
 
 
 # Minor soft
