@@ -635,7 +635,7 @@ awful.rules.rules = {
      }
     },
     -- Floating windows by class
-    { rule_any = { class = { "pinentry", "gimp", "Xmessage", "Xsane" }},
+    { rule_any = { class = { "pinentry", "gimp", "Xmessage", "Xsane", "feh" }},
        properties = { floating = true }
     },
     -- Matching floaters and only them

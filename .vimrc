@@ -100,6 +100,7 @@ Plugin 'vim-scripts/octave.vim--'
 Plugin 'vim-perl/vim-perl'
 Plugin 'wting/rust.vim'
 Plugin 'andersoncustodio/vim-tmux'
+Plugin 'vim-scripts/Logcat-syntax-highlighter'
 
 " ==== Other ==========================
 

@@ -421,7 +421,7 @@ alias sniff-flv='sudo ngrep -d any '.flv'  port 80'
 ## Virtual Box
 alias vb-macos='VBoxManage startvm "VM Mac OS Mavericks"'
 alias vb-windows='VBoxManage startvm "Window 8"'
-alias vb-xp='VBoxManage startvm "XP"'
+alias vb-xp='VBoxManage startvm "WinXP"'
 
 # Functions ==================================================================================
 
@@ -438,6 +438,7 @@ mkcd() { mkdir -p "$*" && cd "$*"; }
 lss()  { tree $@ | less }
 wiki() { dig +short txt $(echo "$*" | tr ' ' _).wp.dg.cx }
 lls()  { locate "$*" | less }
+vkplay() { xclip -o | cut -d \" -f 2 | xargs getvk.py --best | xargs mpv }
 
 ## Pacman stuff
 pacdesc() { pacman -Qi $1 | grep "Description" }
