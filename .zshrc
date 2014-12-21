@@ -65,16 +65,21 @@ setopt EXTENDED_HISTORY # Timestamp history
 
 # Completion
 
-autoload -Uz compinit
-compinit
+autoload -Uz compinit && compinit
 # http://www.acm.uiuc.edu/workshops/zsh/prompt/escapes.html
 
-# Folowing causes empyt directory slowdown
+# From gentoo wiki
+zstyle ':completion:*:descriptions' format '%U%B%d%b%u' 
+zstyle ':completion:*:warnings' format '%BSorry, no matches for: %d%b'
+
+
+# Following causes empty directory slowdown - commented
 #zstyle ':completion:*' completer _list _oldlist _expand _complete _ignored _match _correct _approximate
 zstyle ':completion:*' file-sort access
 zstyle ':completion:*' matcher-list '' ''
 zstyle ':completion:*' max-errors 100 numeric
-zstyle ':completetion:*' menu select
+zstyle ':completion:*' menu select
+zstyle ':completion:*' group-name ''
 
 # Color on suggestions to display partial match
 zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==32=00}:${(s.:.)LS_COLORS}")';
@@ -111,7 +116,10 @@ zle -N zle-line-init
 zle -N zle-keymap-select
 
 setopt autopushd pushdminus pushdsilent pushdtohome
+
+# To avoid tedious 'cd ' typing, just type directory name to cd to it
 setopt autocd
+
 setopt cdablevars
 setopt ignoreeof
 setopt interactivecomments
@@ -119,7 +127,7 @@ setopt nobanghist
 setopt noclobber
 #setopt SH_WORD_SPLIT
 setopt CORRECT
-setopt MENUCOMPLETE
+# setopt MENUCOMPLETE
 setopt nohup
 setopt ALL_EXPORT
 
@@ -357,6 +365,7 @@ alias fgrep='grep --colour'
 alias egrep='egrep --colour'
 alias free='free -m'
 alias htop='htop -d 2'
+alias fehdir='feh -g 640x480 -d -S filename'
 
 # Programming
 alias cmake-release='cmake -DCMAKE_BUILD_TYPE=Release'
@@ -424,6 +433,11 @@ alias vb-windows='VBoxManage startvm "Window 8"'
 alias vb-xp='VBoxManage startvm "WinXP"'
 
 # Functions ==================================================================================
+
+# Set brightness
+function brightness() {
+   sudo ddccontrol -r 0x10 dev:/dev/i2c-6 -w "$1"
+}
 
 # sibdiff Source Destination ../../some/tricky/../path/to/file.cpp
 function sibdiff() {
