@@ -22,10 +22,10 @@ VM/
 # Private
 .ssh/
 .password-store/
-nfo/journal.txt
 .jrnl_config
 .itmages.conf
 .dropbox_uploader
+.config/ranger/bookmarks
 
 # Vim temporals/generated
 .vim/bundle
@@ -35,7 +35,6 @@ nfo/journal.txt
 
 # Zsh temporals/generated
 .zsh_history
-.zsh-update
 
 # Awesome temporals/generated
 .config/awesome/archmenu.lua
@@ -54,9 +53,9 @@ nfo/journal.txt
 .log/
 .cache/
 .ccache/
+.java/
 
 # Temporary files
-.bash_history
 .octave_hist
 .lesshst
 .ICEauthority
@@ -65,7 +64,6 @@ nfo/journal.txt
 .xsel.log
 .sdcv_history
 .zcompdump
-.gksu.lock
 .recently-used
 .python_history
 .cgdb/readline_history.txt
@@ -76,10 +74,9 @@ nfo/journal.txt
 .dropshell_history
 
 # Major soft
-.purple/
 .mozilla/
 .Mathematica/
-.PyCharm30/
+.PyCharm40/
 .aMule/
 .android/
 .eclipse/
@@ -89,22 +86,16 @@ nfo/journal.txt
 .pki/
 .ipython/
 .gimp-2.8/
-.thunderbird/
 .texlive/
 .codeblocks/
 .mono/
 .wireshark/
-
-
-# Minor soft
+.designer/
 .irssi/config
 .htcfg2
 .jackdrc
 .racket/racket-prefs.rktd
 .p7zip
-.view3dscene.conf
-.designer
-.wxMaxima
 .zynaddsubfxXML.cfg
 
 .xournal/
@@ -129,8 +120,6 @@ nfo/journal.txt
 .goldendict/
 .sane/
 .w3m/
-.fceux/
-.fakenes/
 .golly/
 .subversion/
 
@@ -149,7 +138,6 @@ nfo/journal.txt
 .config/blender/
 .config/ImageMagick/
 .config/Scan Tailor/
-.config/nautilus-actions/
 .config/pulse/
 .config/copyq/
 .config/linuxsampler.org/
@@ -162,7 +150,6 @@ nfo/journal.txt
 
 # Dot config files
 .config/htop/htoprc
-.config/nautilus-compare.conf
 .config/KeePass/KeePass.config.xml
 .config/rncbc.org/QjackCtl.conf
 .config/mc/ini
@@ -176,7 +163,6 @@ nfo/journal.txt
 .config/equalx/settings.conf
 .config/pavucontrol.ini
 .config/kactivitymanagerdrc
-.config/TopMod.conf
 
 
 # Temporary hide... TODO: setup
