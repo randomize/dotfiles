@@ -14,6 +14,14 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 
+-- {{{ Notifications handler
+naughty.config.notify_callback = function(args)
+    -- awful.util.spawn_with_shell("~/Scripts/notified awesome '" .. (args.title or "") .. "' '" .. args.text .. "'")
+    awful.util.spawn("paplay --volume=32000 " .. awful.util.getdir("config") .. "/notify.flac");
+    return args
+end
+-- }}}
+
 -- Menu --
 xdg_menu = require("archmenu")
 
@@ -401,7 +409,8 @@ globalkeys = awful.util.table.join(
 
     awful.key({ modkey,           }, "e",
        function ()
-          drop("urxvtc -depth 0 -name my_floating_ranger -e ranger ", "top", "center", 1, 0.5)
+          --drop("urxvtc -depth 0 -name my_floating_ranger -e ranger ", "top", "center", 1, 0.5)
+          drop("xterm -e ranger ", "top", "center", 1, 0.5)
        end
     ),
     awful.key({ modkey, "Shift"}, "e",
@@ -634,11 +643,16 @@ awful.rules.rules = {
          size_hints = {"program_position", "program_size"}
      }
     },
+    -- Floating centered windows by class
+    { rule_any = { class = { "pinentry", "Xmessage", "feh" }},
+       properties = { floating = true },
+       callback = function (c) awful.placement.centered(c,nil) end
+    },
     -- Floating windows by class
-    { rule_any = { class = { "pinentry", "gimp", "Xmessage", "Xsane", "feh" }},
+    { rule_any = { class = { "gimp", "Xsane", "Qjackctl"}},
        properties = { floating = true }
     },
-    -- Matching floaters and only them
+    -- Guake-like drops
     { rule_any = { class = { "my_floating_ranger", "my_floating_htop", "my_floating_ncmpcpp",
                              "my_floating_calculator", "my_floating_terminal"},
                    instance = { "my_floating_terminal" } },
@@ -648,10 +662,10 @@ awful.rules.rules = {
     -- Set Firefox to always map on tags number 1 of screen 1.
     { rule = { class = "Firefox" }, properties = {   tag = tags[2][1], }, },
     -- Set Pidgin
-    { rule = { class = "Pidgin", role = "buddy_list"},
-      properties = { tag = tags[1][9] } },
-    { rule = { class = "Pidgin", role = "conversation"},
-      properties = { tag = tags[1][9]}, callback = awful.client.setslave },
+    -- { rule = { class = "Pidgin", role = "buddy_list"},
+      -- properties = { tag = tags[1][9] } },
+    -- { rule = { class = "Pidgin", role = "conversation"},
+      -- properties = { tag = tags[1][9]}, callback = awful.client.setslave },
 }
 -- }}}
 
