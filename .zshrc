@@ -396,6 +396,7 @@ alias vim-clean-views='rm ~/.vim/view/*'
 alias list-devices='lsblk -f'
 alias sdcv='sdcv --color'
 alias sdc='sdcv -u "LingvoUniversal (En-Ru)" --color'
+alias cgdb='cgdb -- -nx '
 
 ## Editing aliases
 alias eA='vim ~/.config/awesome/rc.lua'
