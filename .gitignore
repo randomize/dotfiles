@@ -72,6 +72,7 @@ VM/
 .config/ranger/history
 .awesome-client_history
 .dropshell_history
+.gdb_history
 
 # Major soft
 .mozilla/
