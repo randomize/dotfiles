@@ -33,7 +33,7 @@ extension=$(/bin/echo -E "${path##*.}" | tr "[:upper:]" "[:lower:]")
 # Functions:
 # runs a command and saves its output into $output.  Useful if you need
 # the return value AND want to use the output in a pipe
-try() {  output=$(eval '"$@"'); }
+try() { output=$(eval '"$@"'); }
 
 # writes the output of the previously used "try" command
 dump() { /bin/echo -E "$output"; }
@@ -45,20 +45,20 @@ trim() { head -n "$maxln"; }
 highlight() { command highlight "$@"; test $? = 0 -o $? = 141; }
 
 case "$extension" in
-    # pdf
+    # Archive extensions:
+    7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|\
+    rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip|rar)
+        als "$path"
+        exit 0;;
+    # PDF documents:
     pdf)
         evince-thumbnailer -s 320 "$path" "$cached" && exit 6 ;;
         #convert "${path}[0]" -thumbnail x320 -background white -alpha remove  "$cached" && exit 6 || exit 1;;
     # DJVU document
-    djvu)
-        ddjvu -format=tiff -quality=80 -page=1 -size=320x320 "$path" "$cached" && exit 6 || exit 1;;
+    djvu|djv)
+        ddjvu -format=tiff -quality=80 -page=1 -size=320x320 "$path" "$cached" && sleep 1 && exit 6 || exit 1;;
     blend)
         /usr/bin/blender-thumbnailer.py "$path" "$cached" && exit 6 || exit 1;;
-    # Archive extensions:
-    7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|rar|jar|lha|lz|lzh|lzma|lzo|\
-    rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip|gz)
-        als "$path"
-        exit 0;;
     # BitTorrent Files
     torrent)
         try transmission-show "$path" && { dump | trim; exit 5; } || exit 1;;
