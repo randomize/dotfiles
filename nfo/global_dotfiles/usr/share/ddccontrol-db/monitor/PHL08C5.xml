@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<monitor name="Philips 272B" init="standard">
+<!--- CAPS: prot(monitor)type(LCD)model(272P4QPJK)cmds(01 02 03 07 0C E3 F3)vcp( 02 04 05 08 0B 0C 10  +/20/100 Brightness 12  +/50/100 Contrast 14(01 04 05 06 07 08 0A 0B) 16 18 1A 52 54(00 01) 60(00 03 11 12 0F 21 22 23 2F) 62 6C 6E 70 72(05 78 FB 50 64 78 8C A0) 86(01 02 08) 8D(01 02) 95 96 97 98 A4 A5 AA(01 02) AC AE B6 C0 C6 C8 C9 CA(01 02) CC(01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 12 14 16 17 1A 1E 24) D6(01 04 05) DC(00 01 02 03 05 08) DF E8(00 01) E9(00 02) EA EB(00 01 02 03) EC(00 01 02 03 04) F0(00 01) F6(01 02) F7(00 01) F9(00 01 02 03 04) FA(00 01 02) FB FC FD FE(00 01 02 04) FF)mswhql(1)asset_eep(40)mccs_ver(2.2) -->
+	<caps add="(type(lcd)vcp(02 04 05 08 0B 0C 10 12 14(01 04 05 06 07 08 0A 0B) 16 18 1A 52 54(00 01) 60(00  03 11 12 0F 21 22 23 2F) 62 6C 6E 70 72(05 78 FB 50 64 78 8C A0) 86(01 02 08) 8D(01 02) 95 96 97 98 A4 A5 AA(01 02) AC AE B6 C0 C6 C8 C9 CA(01 02) CC(01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 12 14 16 17 1A 1E 24) D6(01 04 05) DC(00 01 02 03 05 08) DF E8(00 01) E9(00 02) EA EB(00 01 02 03) EC(00 01 02 03 04) F0(00 01) F6(01 02) F7(00 01) F9(00 01 02 03 04) FA(00 01 02) FB FC FD FE(00 01 02 04) FF))"/>
+   <controls>	
+ 		<control id="brightness" address="0x10"/>
+      <control id="contrast" address="0x12"/>
+      <control id="SmartPreset" address="0xDC">
+         <value id="Off"   value="0x0"/>
+         <value id="Office"   value="0x1"/>
+         <value id="Photo"   value="0x2"/>
+         <value id="Movie"   value="0x3"/>
+         <value id="Game"   value="0x5"/>
+         <value id="Economy"   value="0x8"/>
+      </control>
+      <control id="colorpreset" address="0x14">
+         <value id="srgb"   value="0x1"/>
+         <value id="native" value="0x2"/>
+         <value id="6500k"  value="0x5"/>
+         <value id="9300k"  value="0x8"/>
+         <value id="user1"  value="0xB"/>
+      </control>
+   </controls>
+</monitor>
