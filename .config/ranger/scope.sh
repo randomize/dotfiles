@@ -42,7 +42,9 @@ dump() { /bin/echo -E "$output"; }
 trim() { head -n "$maxln"; }
 
 # wraps highlight to treat exit code 141 (killed by SIGPIPE) as success
-highlight() { command highlight "$@"; test $? = 0 -o $? = 141; }
+# highlight() { command highlight "$@"; test $? = 0 -o $? = 141; }
+pygmentize() { command pygmentize "$@"; test $? = 0 -o $? = 141; }
+
 
 case "$extension" in
     # Archive extensions:
@@ -50,6 +52,11 @@ case "$extension" in
     rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip|rar)
         als "$path"
         exit 0;;
+
+    # documentsa
+    doc|docx)
+       catdoc "$path" && exit 4 || exit 1;;
+
     # PDF documents:
     pdf)
         evince-thumbnailer -s 320 "$path" "$cached" && exit 6 ;;
@@ -71,7 +78,8 @@ esac
 case "$mimetype" in
     # Syntax highlight for text files:
     text/* | */xml)
-        try highlight --out-format=ansi "$path" && { dump | trim; exit 5; } || exit 2;;
+        try pygmentize -f 256 -O style=monokai "$path" && { dump | trim; exit 5; } || exit 2;;
+        # try highlight --out-format=ansi "$path" && { dump | trim; exit 5; } || exit 2;;
         # try vimcat  "$path" && { dump | trim; exit 5; } || exit 2;;
     # Ascii-previews of images:
     image/*)

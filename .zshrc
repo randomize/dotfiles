@@ -454,6 +454,7 @@ lss()  { tree $@ | less }
 wiki() { dig +short txt $(echo "$*" | tr ' ' _).wp.dg.cx }
 lls()  { locate "$*" | less }
 vkplay() { xclip -o | cut -d \" -f 2 | xargs getvk.py --best | xargs mpv }
+vklist() { xclip -o | cut -d \" -f 2 | xargs getvk.py  }
 
 ## Pacman stuff
 pacdesc() { pacman -Qi $1 | grep "Description" }
