@@ -118,6 +118,7 @@ Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'Raimondi/delimitMate'
 Plugin 'mhinz/vim-startify'
+Plugin 'xuhdev/SingleCompile'
 
 " ==== Obsolete  =====================
 
@@ -482,10 +483,10 @@ function! ReplaceChuck()
 endfunc
 
 function! SetupCpp()
-   nmap <silent> <F5> <ESC>:call CompileGcc()<CR>
-   imap <silent> <F5> <c-o>:call CompileGcc()<CR>
-   nmap <silent> <c-F5> <ESC>:call CompileClang()<CR>
-   imap <silent> <c-F5> <c-o>:call CompileClang()<CR>
+   nmap <silent> <F5> <ESC>:SCCompile<CR>
+   imap <silent> <F5> <c-o>:SCCompile<CR>
+   nmap <silent> <F6> <ESC>:SCCompileRun<CR>
+   imap <silent> <F6> <c-o>:SCCompileRun<CR>
 endfunction
 
 function! SetupPython()
@@ -703,7 +704,7 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 nmap Y y$
 
 " Sudo Vim hack, write with force!
-" cmap w!! %!sudo tee > /dev/null %
+cmap w!! %!sudo tee > /dev/null %
 
 " When entering command, press %% to quickly insert current path
 cmap %% <C-R>=expand('%:h').'/'<cr>

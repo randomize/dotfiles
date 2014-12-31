@@ -220,6 +220,7 @@ to prevent ranger trying these formats with w3m
 /etc/pulse/daemon.conf
 
 flat-volumes = no
+# see ArchWiki
 
 $ pulseaudio -k
 $ pulseaudio --start

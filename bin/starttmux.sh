@@ -1,3 +1,4 @@
 #!/bin/bash
 #export TERM=xterm-256color
-tmux attach || tmux new
+SESS_NAME='Rsh'
+tmux attach -t $SESS_NAME || tmux new -s $SESS_NAME

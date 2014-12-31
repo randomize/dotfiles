@@ -17,7 +17,7 @@ local menubar = require("menubar")
 -- {{{ Notifications handler
 naughty.config.notify_callback = function(args)
     -- awful.util.spawn_with_shell("~/Scripts/notified awesome '" .. (args.title or "") .. "' '" .. args.text .. "'")
-    awful.util.spawn("paplay --volume=32000 " .. awful.util.getdir("config") .. "/notify.flac");
+    awful.util.spawn("aplay " .. awful.util.getdir("config") .. "/notify.wav");
     return args
 end
 -- }}}
