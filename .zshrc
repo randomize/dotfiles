@@ -435,6 +435,8 @@ alias vb-xp='VBoxManage startvm "WinXP"'
 
 # Functions ==================================================================================
 
+autoload -U zmv
+
 # Set brightness
 function brightness() {
    sudo ddccontrol -r 0x10 dev:/dev/i2c-6 -w "$1"
