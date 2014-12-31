@@ -38,7 +38,7 @@ chromium_flash_detection=1
 minitube_detection=1
 
 # Names of programs which, when running, you wish to delay the screensaver.
-delay_progs=('chromium') # For example ('ardour2' 'gmpc')
+delay_progs=('chromium', 'mpv') # For example ('ardour2' 'gmpc')
 
 
 # YOU SHOULD NOT NEED TO MODIFY ANYTHING BELOW THIS LINE
