@@ -1,3 +1,17 @@
+# Font
 set font "PragmataPro 11"
-set inputbar-fg "#000000"
-set statusbar-fg "#eeeeee"
+
+# UI
+set statusbar-bg "#202020"
+set statusbar-fg "#606060"
+set inputbar-bg "#202020"
+set inputbar-fg "#909090"
+
+# Keys
+
+map <Tab> toggle_index
+
+set guioptions "sv"
+
+# use sqlite as bookmarks database backend
+set database sqlite
