@@ -58,8 +58,6 @@ compton -b
 xsetwacom --set "Wacom Intuos3 9x12 stylus" Button 2 "button +3"
 xsetwacom --set "Wacom Intuos3 9x12 stylus" Button 3 "button +2"
 
-xsetwacom --set "Wacom Intuos3 9x12 stylus" MapToOutput "DP1" 
-xsetwacom --set "Wacom Intuos3 9x12 eraser" MapToOutput "DP1" 
 
 # Start urxvt daemon (quiet, forked, only for this X session)
 urxvtd -q -f -o
@@ -72,6 +70,11 @@ xrandr --dpi 100
 xrandr --output VGA1 --off
 xrandr --output HDMI2 --primary
 xrandr --output DP1 --right-of HDMI2
+
+# Map wacom
+xsetwacom --set "Wacom Intuos3 9x12 stylus" MapToOutput "DP1" 
+xsetwacom --set "Wacom Intuos3 9x12 eraser" MapToOutput "DP1" 
+
 # Disable screen turn off
 # xset s off
 # Lightons script

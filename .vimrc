@@ -9,6 +9,7 @@
 "   4) unimpaired keys learn
 "   5) vim-multiple-cursors
 "   6) vim-easy-align
+"   7) vim-operator-user
 "
 " =========================================================================
 " Vundle
@@ -87,6 +88,9 @@ Plugin 'mbbill/undotree'
 
 " Tags for C++/C and others
 Plugin 'majutsushi/tagbar'
+
+" Formatting with clanfg format
+Plugin 'rhysd/vim-clang-format'
 
 " ==== SYNTAX =========================
 
@@ -327,6 +331,27 @@ let g:startify_custom_header =
 let g:startify_change_to_dir = 0
 let g:startify_files_number = 8
 
+" === Clang Format ==
+"  "AllowShortIfStatementsOnASingleLine" : "true",
+"  "AlwaysBreakTemplateDeclarations" : "true",
+
+let g:clang_format#style_options = {
+            \ "BasedOnStyle" : "llvm",
+            \ "AccessModifierOffset" : -4,
+            \ "BreakBeforeBinaryOperators" : "true",
+            \ "ColumnLimit" : 80,
+            \ "IndentWidth" : 4,
+            \ "BreakBeforeBraces" : "Linux",
+            \ "Standard" : "Cpp11"}
+
+" map to <Leader>cf in C++ code
+autocmd FileType c,cpp,objc nnoremap <buffer>,cf :<C-u>ClangFormat<CR>
+autocmd FileType c,cpp,objc vnoremap <buffer>,cf :ClangFormat<CR>
+" if you install vim-operator-user
+" autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
+" Toggle auto formatting:
+" nmap <Leader>C :ClangFormatAutoToggle<CR>
+
 " == gundo/undotree ==
 
 " Make bigger
@@ -393,6 +418,8 @@ let g:ycm_auto_trigger = 0
 " let g:ycm_key_invoke_completion = '<c-Tab>'
 let g:ycm_key_list_select_completion = ['<tab>', '<up>']
 "let g:ycm_key_list_previous_completion = ['<s-tab>']
+"
+let g:ycm_extra_conf_globlist = ['~/rdev/cpp/*']
 
 
 " == Ultisnips ==
