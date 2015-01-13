@@ -98,8 +98,9 @@ VM/
 .racket/racket-prefs.rktd
 .p7zip
 .zynaddsubfxXML.cfg
+.wxMaxima
 
-.xournal/
+.xournalpp/
 .unite/
 .ssr/
 .tgdb/
@@ -148,6 +149,9 @@ VM/
 .config/openmw/
 .config/tox/
 .config/fontforge/
+.config/mc/
+.config/radare2/
+.config/QtProject/
 
 # Dot config files
 .config/htop/htoprc

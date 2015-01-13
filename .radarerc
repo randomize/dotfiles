@@ -1,0 +1,7 @@
+eval scr.color = 1
+eval file.id = true
+eval file.flag = true
+eval dbg.bep = entry
+eval dbg.bt = false
+eval graph.depth = 7
+eval graph.callblocks = false
