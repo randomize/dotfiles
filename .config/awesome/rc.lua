@@ -513,8 +513,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
-    awful.key({ modkey, "Shift"   }, "r",
+    awful.key({ modkey, "Shift"   }, "r",     function () mypromptbox[mouse.screen]:run() end),
+    awful.key({ modkey            }, "r",
       function ()
          awful.util.spawn("dmenu_run -l 32 -fn \"PragmataPro-11:bold\" -b -q -z -o 0.90 -p \"$\" ")
       end

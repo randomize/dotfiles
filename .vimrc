@@ -232,9 +232,9 @@ set smartcase    " When meet uppercase -> sensitive
 set noincsearch  " Do not use incremental : type, then start search
 
 " Tabs ans indentation
-set tabstop=3       " Tab size
-set softtabstop=3   " Tab size in inset mode
-set shiftwidth=3    " <> shift size
+set tabstop=4       " Tab size
+set softtabstop=4   " Tab size in inset mode
+set shiftwidth=4    " <> shift size
 set expandtab       " Tabs to spaces
 set smarttab        " Consolidated editing
 set smartindent     " When starting new line repeat indentation
@@ -413,7 +413,7 @@ let g:unite_source_rec_async_command= 'ag --nocolor --nogroup --hidden -g ""'
 " == You complete me ==
 
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-let g:ycm_auto_trigger = 0
+let g:ycm_auto_trigger = 1
 
 " let g:ycm_key_invoke_completion = '<c-Tab>'
 let g:ycm_key_list_select_completion = ['<tab>', '<up>']
@@ -423,7 +423,7 @@ let g:ycm_extra_conf_globlist = ['~/rdev/cpp/*']
 
 
 " == Ultisnips ==
-let g:UltiSnipsListSnippets="<F3>"
+" let g:UltiSnipsListSnippets="<F3>"
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
@@ -466,91 +466,17 @@ function! Enable80CharsLimit()
    let &colorcolumn=join(range(81,999),",")
 endfunction
 
-" For fast tests quick compile current file
-function! CompileGcc()
-   exec "w"
-   exec "!g++ % -g -std=c++11 -o %< && ./%< "
-endfunc
-
-function! CompileClang()
-   exec "w"
-   exec "!clang++ % -g -std=c++14 -o %< "
-endfunc
-
-function! CompilePerl()
-   exec "w"
-   exec "!perl %"
-endfunc
-
-function! CompilePython()
-   exec "w"
-   exec "!python %"
-endfunc
-
-function! CompileLatex()
-   exec "w"
-   exec "Latexmk"
-endfunc
-
-function! CompileChuck()
-   exec ":w"
-   exec ":silent !chuck --add ./%"
-   exec ":redraw!"
-endfunc
-
-function! CompileRust()
-   exec ":w"
-   exec "!rustc % -o %< && ./%< "
-endfunc
-
-function! ReplaceChuck()
-   exec "w"
-   exec ":silent !chuck --remove.all"
-   exec ":redraw!"
-endfunc
-
-function! SetupCpp()
-   nmap <silent> <F5> <ESC>:SCCompile<CR>
-   imap <silent> <F5> <c-o>:SCCompile<CR>
-   nmap <silent> <F6> <ESC>:SCCompileRun<CR>
-   imap <silent> <F6> <c-o>:SCCompileRun<CR>
-endfunction
-
-function! SetupPython()
-   nmap <silent> <F5> <ESC>:call CompilePython()<CR>
-   imap <silent> <F5> <c-o>:call CompilePython()<CR>
-endfunction
-
-function! SetupPerl()
-   nmap <silent> <F5> <ESC>:call CompilePerl()<CR>
-   imap <silent> <F5> <c-o>:call CompilePerl()<CR>
-endfunction
 
 function! SetupLatex()
-   nmap <silent> <F5> <ESC>:call CompileLatex()<CR>
-   imap <silent> <F5> <c-o>:call CompileLatex()<CR>
    " Add triggers to ycm for LaTeX-Box autocompletion
    let g:ycm_semantic_triggers = {
    \  'tex'  : ['{'],
    \ }
 endfunction
 
-function! SetupRust()
-   nmap <silent> <F5> <ESC>:call CompileRust()<CR>
-   imap <silent> <F5> <c-o>:call CompileRust()<CR>
-endfunction
-
-function! SetupChuck()
-   exec 'set ft=ck'
-   nmap <silent> <F5> <ESC>:call CompileChuck()<CR>
-   imap <silent> <F5> <c-o>:call CompileChuck()<CR>
-   nmap <silent> <F6> <ESC>:call ReplaceChuck()<CR>
-   imap <silent> <F6> <c-o>:call ReplaceChuck()<CR>i
-   call system("killall chuck; chuck --loop &")
-endfunction
-
-function! ResetChuck()
-   call system("killall chuck &")
+function! SetupCpp()
+   nmap <buffer> <F5> :SCCompileAF -std=c++11<cr>
+   nmap <buffer> <F6> :SCCompileRunAF -std=c++11<cr>
 endfunction
 
 " Translator with sdcv
@@ -610,6 +536,10 @@ menu FileFormat.Mac          :e ++ff=mac
 " Keyboard mappings
 " =========================================================================
 " {{{
+
+" Sigle compile binding
+nmap <silent> <F5> <ESC>:SCCompile<CR>
+nmap <silent> <F6> <ESC>:SCCompileRun<CR>
 
 " Translator function
 nmap <F3>  :call TRANSLATE()<cr>
@@ -791,13 +721,13 @@ autocmd BufNewFile,BufRead *.cpp,*.h,*.c,*.py,.vimrc call Enable80CharsLimit()
 
 " IDEs
 autocmd BufNewFile,BufRead *.cpp call SetupCpp()
-autocmd BufNewFile,BufRead *.py  call SetupPython()
-autocmd BufNewFile,BufRead *.pl  call SetupPerl()
+" autocmd BufNewFile,BufRead *.py  call SetupPython()
+" autocmd BufNewFile,BufRead *.pl  call SetupPerl()
 autocmd BufNewFile,BufRead *.tex call SetupLatex()
-autocmd BufNewFile,BufRead *.rs  call SetupRust()
+" autocmd BufNewFile,BufRead *.rs  call SetupRust()
 
 " Chuck
-autocmd BufNewFile,BufRead *.ck call SetupChuck()
-autocmd VimLeave *.ck call ResetChuck()
+" autocmd BufNewFile,BufRead *.ck call SetupChuck()
+" autocmd VimLeave *.ck call ResetChuck()
 
 " }}}

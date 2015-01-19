@@ -82,8 +82,10 @@ sub setconfig (@) {
 }
 
 sub interactive_conf () {
-    ml_print "Itmages script configuration", "Настройка скрипта";
-    ml_print "Would you like to get direct links to images (otherwise you would get links to itmages page)? (if you do not, type 'no' or just enter nothing and press Return):", "Хотите ли вы получать прямые ссылки на изображения (иначе скрипт будет выводить ссылки на страницы Itmages)? (Если вы не хотите, напишите 'нет', 'no' или просто не вводите ничего и нажмите Enter):";
+    ml_print "Itmages script configuration", 
+    "Настройка скрипта";
+    ml_print "Would you like to get direct links to images (otherwise you would get links to itmages page)? (if you do not, type 'no' or just enter nothing and press Return):", 
+    "Хотите ли вы получать прямые ссылки на изображения (иначе скрипт будет выводить ссылки на страницы Itmages)? (Если вы не хотите, напишите 'нет', 'no' или просто не вводите ничего и нажмите Enter):";
     my $direct_links = <STDIN>;
     chomp $direct_links;
     if (($direct_links eq "") || ($direct_links eq "no") || ($direct_links eq "нет")){
@@ -91,7 +93,8 @@ sub interactive_conf () {
     }else{
 	$direct_links = "yes";
     }
-    ml_print "OpenId login is not implemented in this script, so you have to register (or use anonymous upload)", "Вход через OpenId не реализован, поэтому вам нужно зарегистрироваться на сайте (или использовать анонимную загрузку";
+    ml_print "OpenId login is not implemented in this script, so you have to register (or use anonymous upload)",
+    "Вход через OpenId не реализован, поэтому вам нужно зарегистрироваться на сайте (или использовать анонимную загрузку";
     ml_print "Enter your login (or enter nothing if you want to use anonymous mode):",
     "Введите логин (или не вводите ничего, если хотите использовать анонимный режим):";
     my $login = <STDIN>;
