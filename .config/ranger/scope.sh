@@ -78,7 +78,7 @@ esac
 case "$mimetype" in
     # Syntax highlight for text files:
     text/* | */xml)
-        try pygmentize -f 256 -O style=monokai "$path" && { dump | trim; exit 5; } || exit 2;;
+        try pygmentize -f 256 -O style=monokai -g "$path" && { dump | trim; exit 5; } || exit 2;;
         # try highlight --out-format=ansi "$path" && { dump | trim; exit 5; } || exit 2;;
         # try vimcat  "$path" && { dump | trim; exit 5; } || exit 2;;
     # Ascii-previews of images:
