@@ -306,13 +306,17 @@ for s = 1, screen.count() do
 
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
+
     -- right_layout:add(mpdwidget)
     right_layout:add(mytextclock)
-    right_layout:add(cpuwidget)
-    right_layout:add(netwidget)
-    right_layout:add(memwidget)
-    right_layout:add(musicwidget.widget)  -- Widget is added here.
-    if s == 1 then right_layout:add(wibox.widget.systray()) end
+    if s == 1 then 
+        right_layout:add(cpuwidget)
+        right_layout:add(netwidget)
+        right_layout:add(memwidget)
+        right_layout:add(musicwidget.widget)
+        right_layout:add(wibox.widget.systray()) 
+    end
+
     right_layout:add(mylayoutbox[s])
 
     -- Now bring it all together (with the tasklist in the middle)
@@ -504,7 +508,8 @@ globalkeys = awful.util.table.join(
     ),
     awful.key({ modkey, "Shift"   }, "Return",
        function ()
-          awful.util.spawn("xterm")
+          -- awful.util.spawn("xterm")
+          awful.util.spawn("urxvtc")
        end
     ),
 
@@ -513,8 +518,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
 
     -- Prompt
-    awful.key({ modkey, "Shift"   }, "r",     function () mypromptbox[mouse.screen]:run() end),
-    awful.key({ modkey            }, "r",
+    awful.key({ modkey            }, "r",     function () mypromptbox[mouse.screen]:run() end),
+    awful.key({ modkey, "Shift"   }, "r",
       function ()
          awful.util.spawn("dmenu_run -l 32 -fn \"PragmataPro-11:bold\" -b -q -z -o 0.90 -p \"$\" ")
       end
@@ -644,12 +649,12 @@ awful.rules.rules = {
      }
     },
     -- Floating centered windows by class
-    { rule_any = { class = { "pinentry", "Xmessage", "feh" }},
+    { rule_any = { class = { "pinentry", "Xmessage", "feh", "screekey" }},
        properties = { floating = true },
        callback = function (c) awful.placement.centered(c,nil) end
     },
     -- Floating windows by class
-    { rule_any = { class = { "gimp", "Xsane", "Qjackctl"}},
+    { rule_any = { class = { "gimp", "Xsane", "Qjackctl", "Screenkey"}},
        properties = { floating = true }
     },
     -- Guake-like drops
