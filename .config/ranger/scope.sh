@@ -52,6 +52,17 @@ case "$extension" in
     rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip|rar)
         als "$path"
         exit 0;;
+    # Go games
+    sgf)
+       gogui-thumbnailer -size 400 "$path" "$cached" && exit 6 ;;
+
+    # PSD
+    psd)
+       convert  "$path" -resize '400x400' "$cached" && exit 6 ;;
+
+    # Chm
+    chm)
+       chm-thumbnailer "$path" "$cached" 400 && exit 6 ;;
 
     # documentsa
     doc|docx)
@@ -59,7 +70,7 @@ case "$extension" in
 
     # PDF documents:
     pdf)
-        evince-thumbnailer -s 320 "$path" "$cached" && exit 6 ;;
+        evince-thumbnailer -l -s 400 "$path" "$cached" && exit 6 ;;
         #convert "${path}[0]" -thumbnail x320 -background white -alpha remove  "$cached" && exit 6 || exit 1;;
     # DJVU document
     djvu|djv)

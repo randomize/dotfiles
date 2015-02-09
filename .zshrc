@@ -392,7 +392,7 @@ alias mount-mac='sudo sshfs  randy@10.10.10.105:/ /mnt/macos'
 
 # Tools
 #alias bindiff='cmp -l file1.bin file2.bin | gawk \'{printf \"%08X %02X %02X\n\", $1, strtonum(0$2), strtonum(0$3)}\''
-alias vim-clean-views='rm ~/.vim/view/*'
+alias vim-clean-views='rm -f ~/.vim/view/*'
 alias list-devices='lsblk -f'
 alias sdcv='sdcv --color'
 alias sdc='sdcv -u "LingvoUniversal (En-Ru)" --color'
@@ -420,11 +420,12 @@ alias cdT='cd /mnt/TERRA'
 alias cdB='cd /mnt/TERRA/Books'
 alias cdD='cd ~/Downloads && ll'
 
-## Vim aliases
-alias e='vim'
+## Editors aliases
+alias e='emacs -nw'
 alias v='vim'
 alias vi='vim'
 alias view='vim -R'
+alias emacs='emacs -nw'
 
 alias sniff-flv='sudo ngrep -d any '.flv'  port 80'
 
@@ -747,3 +748,4 @@ export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
 # Add environment variable ANT_ROOT for cocos2d-x
 export ANT_ROOT=/usr/bin
 export PATH=$ANT_ROOT:$PATH
+

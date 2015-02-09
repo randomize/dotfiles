@@ -57,6 +57,10 @@ compton -b
 # Set wacom buttons correctly
 xsetwacom --set "Wacom Intuos3 9x12 stylus" Button 2 "button +3"
 xsetwacom --set "Wacom Intuos3 9x12 stylus" Button 3 "button +2"
+xsetwacom --set "Wacom Intuos3 9x12 stylus" "StripLeftDown" "0"                                                                                                                                            ~/rdev/cpp/clang-ast
+xsetwacom --set "Wacom Intuos3 9x12 stylus" "StripRightUp" "0"                                                                                                                                             ~/rdev/cpp/clang-ast
+xsetwacom --set "Wacom Intuos3 9x12 stylus" "StripRightDown" "0"                                                                                                                                           ~/rdev/cpp/clang-ast
+xsetwacom --set "Wacom Intuos3 9x12 stylus" "StripLeftUp" "0"
 
 
 # Start urxvt daemon (quiet, forked, only for this X session)

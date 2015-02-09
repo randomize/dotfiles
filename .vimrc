@@ -41,10 +41,6 @@ Plugin 'airblade/vim-gitgutter'
 " Super increment
 Plugin 'VisIncr'
 
-" Color schemes
-Plugin 'tomasr/molokai'
-" Plugin 'benjaminwhite/Benokai'
-
 " Auto completion
 Plugin 'Valloric/YouCompleteMe'
 
@@ -120,9 +116,14 @@ Plugin 'vim-scripts/restore_view.vim'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'Raimondi/delimitMate'
+" Plugin 'Raimondi/delimitMate' " ==== breaks repeat, and makes noise!!!
 Plugin 'mhinz/vim-startify'
 Plugin 'xuhdev/SingleCompile'
+
+"===== Themes ===========================
+" Plugin 'chriskempson/base16-vim' ==== still prefer molokai
+Plugin 'tomasr/molokai'
+
 
 " ==== Obsolete  =====================
 
@@ -161,8 +162,12 @@ set encoding=utf-8
 set spelllang=en,ru
 
 " Scheme
+" set background=dark
 let g:rehash256 = 1
 colorscheme molokai
+" let base16colorspace=256
+" colorscheme base16-default
+" colorscheme base16-tomorrow
 
 " Cursor free positioning
 set virtualedit=all
@@ -335,14 +340,19 @@ let g:startify_files_number = 8
 "  "AllowShortIfStatementsOnASingleLine" : "true",
 "  "AlwaysBreakTemplateDeclarations" : "true",
 
-let g:clang_format#style_options = {
-            \ "BasedOnStyle" : "llvm",
-            \ "AccessModifierOffset" : -4,
-            \ "BreakBeforeBinaryOperators" : "true",
-            \ "ColumnLimit" : 80,
-            \ "IndentWidth" : 4,
-            \ "BreakBeforeBraces" : "Linux",
-            \ "Standard" : "Cpp11"}
+" Uses ~/.clang-format !!!!!!!!!!!!!!
+" let g:clang_format#code_style = "llvm"
+" let g:clang_format#style_options = {
+            " \ "AccessModifierOffset" : -1,
+            " \ "IndentWidth" : 4,
+            " \ "TabWidth" : 4,
+            " \ "ColumnLimit" : 80,
+            " \ "BreakBeforeBraces" : "Stroustrup",
+            " \ "AlwaysBreakTemplateDeclarations" : "true",
+            " \ "Standard" : "Cpp11"}
+            " \ "BreakBeforeBinaryOperators" : "true",
+            " \ "BreakBeforeBraces" : "Linux",
+            " \ "BasedOnStyle" : "LLVM",
 
 " map to <Leader>cf in C++ code
 autocmd FileType c,cpp,objc nnoremap <buffer>,cf :<C-u>ClangFormat<CR>
@@ -475,8 +485,9 @@ function! SetupLatex()
 endfunction
 
 function! SetupCpp()
-   nmap <buffer> <F5> :SCCompileAF -std=c++11<cr>
-   nmap <buffer> <F6> :SCCompileRunAF -std=c++11<cr>
+    call SingleCompile#ChooseCompiler('cpp', 'clang++')
+   nmap <buffer> <F5> :SCCompileAF -std=c++11 -stdlib=libc++ -lc++abi<cr>
+   nmap <buffer> <F6> :SCCompileRunAF -std=c++11 -stdlib=libc++ -lc++abi<cr>
 endfunction
 
 " Translator with sdcv
