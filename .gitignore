@@ -18,6 +18,8 @@ intel/
 paks/
 IdeaProjects/
 VM/
+AndroidStudioProjects/
+android/
 
 # Private
 .ssh/
@@ -73,6 +75,7 @@ VM/
 .awesome-client_history
 .dropshell_history
 .gdb_history
+.emacs.d/eshell/history
 
 # Major soft
 .mozilla/
@@ -152,6 +155,10 @@ VM/
 .config/mc/
 .config/radare2/
 .config/QtProject/
+.config/inkscape/
+.config/gconf/
+.config/sublime-text-3/
+
 
 # Dot config files
 .config/htop/htoprc

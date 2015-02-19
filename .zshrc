@@ -48,7 +48,7 @@ fi
 # Variables ==================================================================================
 #
 
-export PATH="${PATH}:${HOME}/bin"
+export PATH="${PATH}:${HOME}/bin:${HOME}/.gem/ruby/2.2.0/bin"
 eval `dircolors -b $HOME/.dircolors`
 
 # Zsh Options ==================================================================================
@@ -396,7 +396,7 @@ alias vim-clean-views='rm -f ~/.vim/view/*'
 alias list-devices='lsblk -f'
 alias sdcv='sdcv --color'
 alias sdc='sdcv -u "LingvoUniversal (En-Ru)" --color'
-alias cgdb='cgdb -- -nx '
+alias cgdb='cgdb -- -nx -x ~/.cgdbinit '
 
 ## Editing aliases
 alias eA='vim ~/.config/awesome/rc.lua'
@@ -741,11 +741,8 @@ export NDK_ROOT=/opt/android-ndk
 export PATH=$NDK_ROOT:$PATH
 
 # Add environment variable ANDROID_SDK_ROOT for cocos2d-x
-export ANDROID_SDK_ROOT=/opt/android-sdk
+export ANDROID_SDK_ROOT=/home/randy/android/android-sdk
 export PATH=$ANDROID_SDK_ROOT:$PATH
 export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
 
-# Add environment variable ANT_ROOT for cocos2d-x
-export ANT_ROOT=/usr/bin
-export PATH=$ANT_ROOT:$PATH
 
