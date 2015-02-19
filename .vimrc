@@ -431,6 +431,17 @@ let g:ycm_key_list_select_completion = ['<tab>', '<up>']
 "
 let g:ycm_extra_conf_globlist = ['~/rdev/cpp/*']
 
+" Disable for latex
+let g:ycm_filetype_blacklist = {
+      \ 'notes' : 1,
+      \ 'markdown' : 1,
+      \ 'text' : 1,
+      \ 'tex' : 1,
+      \}
+
+" === LaTeX Box =====================
+let g:LatexBox_viewer = 'zathura'
+let g:LatexBox_latexmk_options = '-pvc -pdflatex="pdflatex -shell-escape"'
 
 " == Ultisnips ==
 " let g:UltiSnipsListSnippets="<F3>"
@@ -485,9 +496,9 @@ function! SetupLatex()
 endfunction
 
 function! SetupCpp()
-    call SingleCompile#ChooseCompiler('cpp', 'clang++')
-   nmap <buffer> <F5> :SCCompileAF -std=c++11 -stdlib=libc++ -lc++abi<cr>
-   nmap <buffer> <F6> :SCCompileRunAF -std=c++11 -stdlib=libc++ -lc++abi<cr>
+    call SingleCompile#ChooseCompiler('cpp', 'clang')
+   nmap <buffer> <F5> :SCCompileAF -O0 -ggdb -std=c++11 -stdlib=libc++ -lc++abi -lpthread<cr>
+   nmap <buffer> <F6> :SCCompileRunAF -O0 -ggdb -std=c++11 -stdlib=libc++ -lc++abi -lpthread<cr>
 endfunction
 
 " Translator with sdcv
