@@ -1,9 +1,10 @@
 # Setup defaukts
-export BROWSER=firefox
+export BROWSER=chromium
 export EDITOR=vim
 
 # Enable anti aliasing in java programs
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
+# export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
 # Set path for gtk config
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0" 

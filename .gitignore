@@ -76,6 +76,7 @@ android/
 .dropshell_history
 .gdb_history
 .emacs.d/eshell/history
+.sqlite3_history
 
 # Major soft
 .mozilla/
@@ -102,7 +103,6 @@ android/
 .p7zip
 .zynaddsubfxXML.cfg
 .wxMaxima
-
 .xournalpp/
 .unite/
 .ssr/
@@ -129,54 +129,6 @@ android/
 .subversion/
 
 # Dot config dirs
-.config/chromium/
-.config/nautilus/
-.config/dconf/
-.config/libreoffice/
-.config/qBittorrent/
-.config/.mono/
-.config/DjVuLibre/
-.config/VirtualBox/
-.config/enchant/
-.config/gtk-2.0/
-.config/chmsee/
-.config/blender/
-.config/ImageMagick/
-.config/Scan Tailor/
-.config/pulse/
-.config/copyq/
-.config/linuxsampler.org/
-.config/jack/
-.config/dmenu-extended/
-.config/dwb/
-.config/openmw/
-.config/tox/
-.config/fontforge/
-.config/mc/
-.config/radare2/
-.config/QtProject/
-.config/inkscape/
-.config/gconf/
-.config/sublime-text-3/
-
-
-# Dot config files
-.config/htop/htoprc
-.config/KeePass/KeePass.config.xml
-.config/rncbc.org/QjackCtl.conf
-.config/mc/ini
-.config/parcellite/parcelliterc
-.config/QtProject.conf
-.config/Trolltech.conf
-.config/llpp.conf
-.config/ranger/history
-.config/user-dirs.dirs
-.config/user-dirs.locale
-.config/equalx/settings.conf
-.config/pavucontrol.ini
-.config/kactivitymanagerdrc
-
-
-# Temporary hide... TODO: setup
+.config/
 .local/
 .vim/spell/
