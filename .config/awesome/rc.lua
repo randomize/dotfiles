@@ -126,7 +126,9 @@ myawesomemenu = {
 mymainmenu = awful.menu({ items = { { "Awesome", myawesomemenu, beautiful.awesome_icon },
                                     { "Applications", xdgmenu },
                                     { "Open terminal", terminal },
-                                    { "Firefox", "firefox" }
+                                    { "Firefox", "firefox" },
+                                    { "Android Studio", "android-studio" },
+                                    { "Chromium", "chromium" }
                                   }
                         })
 
@@ -183,7 +185,7 @@ musicwidget.jamendo_format = awesompd.FORMAT_MP3
 
 -- Specify the browser you use so awesompd can open links from
 -- Jamendo in it.
-musicwidget.browser = "firefox"
+musicwidget.browser = "chromium"
 
 -- If true, song notifications for Jamendo tracks and local tracks
 -- will also contain album cover image.
@@ -437,7 +439,7 @@ globalkeys = awful.util.table.join(
     ),
 
     -- Media keys
-    awful.key({                   }, "XF86HomePage", function () awful.util.spawn("firefox") end),
+    awful.key({                   }, "XF86HomePage", function () awful.util.spawn("chromium") end),
     awful.key({                   }, "XF86Mail", function () awful.util.spawn("thunderbird") end),
     awful.key({                   }, "XF86Messenger", function () awful.util.spawn("pidgin") end),
     awful.key({                   }, "XF86Search", function () awful.util.spawn("chromium --incognito") end),

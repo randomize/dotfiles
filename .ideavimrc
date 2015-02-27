@@ -1,0 +1,139 @@
+
+set nu
+set rnu
+set virtualedit=all
+
+"set hlsearch
+"set ignorecase
+"set incsearch
+"set showcmd
+"set showmode
+"set smartcase
+"
+nnoremap ,ev :e ~/.ideavimrc<CR>
+nnoremap ,sv :source ~/.ideavimrc<CR>
+"
+map ,y "+y
+map ,p "*p
+noremap Y y$
+"nnoremap ' `
+"nnoremap ` '
+"nnoremap n nzz
+"nnoremap N Nzz
+"nnoremap vv ggVG
+"nnoremap U :action Vcs.RollbackChangedLines<CR>
+"nnoremap zj m'o<Esc>`'
+"nnoremap zk m'O<Esc>`'
+"
+inoremap jj <Esc>
+"inoremap kk <Esc>
+"
+vnoremap < <gv
+vnoremap > >gv
+"
+"cnoremap <C-h> <BS>
+"
+"noremap <A-j> :action MethodDown<CR>
+"noremap <A-k> :action MethodUp<CR>
+"
+"noremap <S-A-j> :action MoveStatementDown<CR>
+"noremap <S-A-k> :action MoveStatementUp<CR>
+"noremap <C-S-o> :action OverrideMethods<CR>
+"noremap <C-S-i> :action ImplementMethods<CR>
+"noremap <C-S-h> gT
+"noremap <C-S-l> gt
+"" Identifier Highlighter Reloaded plugin mapping
+"" Wait till original Identifier Highlighter plugin will be fixed
+"noremap <C-S-j> :action NextIdentifierReloaded<CR>
+"noremap <C-S-k> :action PreviousIdentifierReloaded<CR>
+"
+"" nerd commenter?
+""nnoremap ,cl :action CommentByLineComment<CR>
+"" not working with selection
+""nnoremap ,cb :action CommentByBlockComment<CR>
+"
+"" unite.vim (lists)
+"noremap <Space>b :action Switcher<CR>
+"noremap <Space>m :action RecentFiles<CR>
+"noremap <Space>c :action GotoClass<CR>
+"noremap <Space>f :action GotoFile<CR>
+"noremap <Space>g :action FindInPath<CR>
+"" unite outline
+"noremap <Space>o :action FileStructurePopup<CR>
+"noremap <Space>u :action FindUsages<CR>
+"
+"" Do I really need this?
+"nmap gm :action ToggleBookmark<CR>
+"nmap gM :action ShowBookmarks<CR>
+"nmap gn :action GotoNextBookmark<CR>
+"nmap gp :action GotoPreviousBookmark<CR>
+"
+"
+""noremap <C-j> <C-W>j
+""noremap <C-k> <C-W>k
+""noremap <C-l> <C-W>l
+""noremap <C-h> <C-W>h
+"
+"" Additional <ESC> required
+""noremap / :action Find<CR>
+""noremap n :action FindNext<CR>
+""noremap N :action FindPrevious<CR>
+"
+"" native back/forward is less buggy, <C-t> still useful
+"noremap <C-o> :action Back<CR>
+"noremap <C-i> :action Forward<CR>
+"
+"" Mnemonic 'extract'
+"" not working with selection
+"noremap ,em :action ExtractMethod<CR>
+"noremap ,ec :action ExtractClass<CR>
+"
+"" Wait for mapleader
+"
+"nnoremap ,nd :action NewDir<CR>
+"nnoremap ,nc :action NewClass<CR>
+"
+"" Mnemonic 'vcs'
+"noremap ,vc :action CheckinProject<CR>
+"noremap ,vu :action Vcs.UpdateProject<CR>
+"
+"" Common
+"noremap ,b :action ToggleLineBreakpoint<CR>
+"noremap ,h <C-w>s
+"noremap ,i :action Inline<CR>
+"noremap ,k :q<CR>
+"noremap ,m :action Move<CR>
+" noremap ,r :action RenameElement<CR>
+"noremap ,v <C-w>v
+"noremap ,, :action HideAllWindows<CR>
+"noremap <ESC><ESC> :nohlsearch<CR>
+"
+
+" nmap ,,w :action AceJumpAction<cr>
+" nmap ,x :action VimFileSaveClose<cr>
+nmap ,r :action Run<cr>
+nmap ,R :action ChooseRunConfiguration<cr>
+nmap ,f :action VimForward<cr>
+nmap ,b :action VimBack<cr>
+" nmap ,,e :action FileStructurePopup<cr>
+" nmap gR :action RenameElement<cr>
+
+"" Mnemonic: 'to'
+nnoremap ,td :action GotoTypeDeclaration<CR>
+nnoremap ,ti :action GotoImplementation<CR>
+nnoremap ,ts :action GotoSuperMethod<CR>
+nnoremap ,tt :action GotoTest<CR>
+nnoremap ,tu :action ShowUsages<CR>
+
+"" Mnemonic 'generate'
+noremap ,gc :action IntroduceConstant<CR>
+noremap ,gf :action IntroduceField<CR>
+noremap ,gp :action IntroduceParameter<CR>
+noremap ,gv :action IntroduceVariable<CR>
+noremap ,gg :action GenerateGetter<CR>
+noremap ,gs :action GenerateSetter<CR>
+noremap ,ga :action GenerateGetterAndSetter<CR>
+
+
+
+
