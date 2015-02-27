@@ -1,3 +1,4 @@
+
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
@@ -30,7 +31,6 @@ vicious = require("vicious")
 
 -- Toggle terminals and other things
 local drop      = require("scratchdrop")
-
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -127,6 +127,7 @@ mymainmenu = awful.menu({ items = { { "Awesome", myawesomemenu, beautiful.awesom
                                     { "Applications", xdgmenu },
                                     { "Open terminal", terminal },
                                     { "Firefox", "firefox" },
+                                    { "Gvim", "gvim" },
                                     { "Android Studio", "android-studio" },
                                     { "Chromium", "chromium" }
                                   }

@@ -555,6 +555,10 @@ DIRSTACKSIZE=16
 
 DIRSTACKFILE=~/.cache/.zdirs
 
+# Create if not exist
+touch $DIRSTACKFILE
+
+
 autoload -U is-at-least
 # Keep dirstack across logouts
 if [[ -f ${DIRSTACKFILE} ]] && [[ ${#dirstack[*]} -eq 0 ]] ; then
