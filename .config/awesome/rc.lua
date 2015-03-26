@@ -18,7 +18,7 @@ local menubar = require("menubar")
 -- {{{ Notifications handler
 naughty.config.notify_callback = function(args)
     -- awful.util.spawn_with_shell("~/Scripts/notified awesome '" .. (args.title or "") .. "' '" .. args.text .. "'")
-    awful.util.spawn("aplay " .. awful.util.getdir("config") .. "/notify.wav");
+    awful.util.spawn("paplay " .. awful.util.getdir("config") .. "/notify.wav");
     return args
 end
 -- }}}
@@ -186,7 +186,7 @@ musicwidget.jamendo_format = awesompd.FORMAT_MP3
 
 -- Specify the browser you use so awesompd can open links from
 -- Jamendo in it.
-musicwidget.browser = "chromium"
+musicwidget.browser = "firefox"
 
 -- If true, song notifications for Jamendo tracks and local tracks
 -- will also contain album cover image.
@@ -440,7 +440,7 @@ globalkeys = awful.util.table.join(
     ),
 
     -- Media keys
-    awful.key({                   }, "XF86HomePage", function () awful.util.spawn("chromium") end),
+    awful.key({                   }, "XF86HomePage", function () awful.util.spawn("firefox") end),
     awful.key({                   }, "XF86Mail", function () awful.util.spawn("thunderbird") end),
     awful.key({                   }, "XF86Messenger", function () awful.util.spawn("pidgin") end),
     awful.key({                   }, "XF86Search", function () awful.util.spawn("chromium --incognito") end),

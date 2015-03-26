@@ -30,8 +30,9 @@ roster.resource=true
 roster.by=presence
 roster.size=25
 
+otr.warn=true
+
 [logging]
 chlog=true
 
 [otr]
-warn=true
