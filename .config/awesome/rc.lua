@@ -17,8 +17,8 @@ local menubar = require("menubar")
 
 -- {{{ Notifications handler
 naughty.config.notify_callback = function(args)
-    -- awful.util.spawn_with_shell("~/Scripts/notified awesome '" .. (args.title or "") .. "' '" .. args.text .. "'")
-    awful.util.spawn("paplay " .. awful.util.getdir("config") .. "/notify.wav");
+    awful.util.spawn_with_shell("/home/randy/bin/log_notification '" .. (args.title or "") .. "' '" .. args.text .. "'")
+    awful.util.spawn("paplay " .. awful.util.getdir("config") .. "/notify.wav", false);
     return args
 end
 -- }}}
@@ -125,11 +125,16 @@ myawesomemenu = {
 
 mymainmenu = awful.menu({ items = { { "Awesome", myawesomemenu, beautiful.awesome_icon },
                                     { "Applications", xdgmenu },
+                                    { "File manager", "nautilus" },
                                     { "Open terminal", terminal },
                                     { "Firefox", "firefox" },
+                                    { "MyPaint", "mypaint" },
                                     { "Gvim", "gvim" },
                                     { "Android Studio", "android-studio" },
-                                    { "Chromium", "chromium" }
+                                    { "Chromium", "chromium" },
+                                    { "IM stuff", "urxvtc -e /home/randy/bin/tmux-im.sh" },
+                                    { "FBReader", "FBReader" },
+                                    { "Virtual Box", "VirtualBox" }
                                   }
                         })
 
@@ -521,10 +526,15 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
 
     -- Prompt
-    awful.key({ modkey            }, "r",     function () mypromptbox[mouse.screen]:run() end),
-    awful.key({ modkey, "Shift"   }, "r",
+    awful.key({ modkey, "Control"    }, "r",     function () mypromptbox[mouse.screen]:run() end),
+    awful.key({ modkey,           }, "r",
       function ()
-         awful.util.spawn("dmenu_run -l 32 -fn \"PragmataPro-11:bold\" -b -q -z -o 0.90 -p \"$\" ")
+         awful.util.spawn("dmenu_run -l 32 -fn \"PragmataPro-12:bold\" -i -p \"$\" -hist /home/randy/.cache/dmenu_hist ")
+      end
+    ),
+    awful.key({ modkey,           }, "b",
+      function ()
+         awful.util.spawn("passmenu --type -l 32 -fn \"PragmataPro-12:bold\" -i -p \"*\" ")
       end
     ),
 
@@ -670,10 +680,10 @@ awful.rules.rules = {
     -- Set Firefox to always map on tags number 1 of screen 1.
     { rule = { class = "Firefox" }, properties = {   tag = tags[2][1], }, },
     -- Set Pidgin
-    -- { rule = { class = "Pidgin", role = "buddy_list"},
-      -- properties = { tag = tags[1][9] } },
-    -- { rule = { class = "Pidgin", role = "conversation"},
-      -- properties = { tag = tags[1][9]}, callback = awful.client.setslave },
+    { rule = { class = "Pidgin", role = "buddy_list"},
+      properties = { tag = tags[1][9] } },
+    { rule = { class = "Pidgin", role = "conversation"},
+      properties = { tag = tags[1][9]}, callback = awful.client.setslave },
 }
 -- }}}
 

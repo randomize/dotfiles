@@ -64,6 +64,10 @@ case "$extension" in
     chm)
        chm-thumbnailer "$path" "$cached" 400 && exit 6 ;;
 
+    # Epub
+    epub)
+       /home/randy/bin/epub-thumbnailer.py "$path" "$cached" 500 && exit 6 ;;
+
     # documentsa
     doc|docx)
        catdoc "$path" && exit 4 || exit 1;;

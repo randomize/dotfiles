@@ -12,6 +12,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
 fi
 
 
+# Manually create
+mkdir .cache/rtorrent_session/
 
 # Load settings from X
 xrdb -merge ~/.Xresources
@@ -46,10 +48,16 @@ xset +fp /usr/share/fonts/local
 xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu > ~/.config/awesome/archmenu.lua 
 
 # Conky
-( ( sleep 2 && conky ) & )
+( ( sleep 3 && conky ) & )
 
 # Clipboard manager
-( ( sleep 2 && copyq ) & )
+( ( sleep 3 && (copyq &) ) & )
+
+# Clipboard manager
+( ( sleep 3 && (goldendict &) ) & )
+
+# Clipboard manager
+( ( sleep 3 && (pasystray &) ) & )
 
 # Composition
 compton -b
@@ -76,8 +84,8 @@ xrandr --output HDMI2 --primary
 xrandr --output DP1 --right-of HDMI2
 
 # Map wacom
-xsetwacom --set "Wacom Intuos3 9x12 stylus" MapToOutput "DP1" 
-xsetwacom --set "Wacom Intuos3 9x12 eraser" MapToOutput "DP1" 
+xsetwacom --set "Wacom Intuos3 9x12 stylus" MapToOutput "HDMI2" 
+xsetwacom --set "Wacom Intuos3 9x12 eraser" MapToOutput "HDMI2" 
 
 # Disable screen turn off
 # xset s off
@@ -87,6 +95,9 @@ xsetwacom --set "Wacom Intuos3 9x12 eraser" MapToOutput "DP1"
 
 # Mpd
 ( ( sleep 10 && /usr/bin/mpd) & )
+
+# layout indicator
+( ( sleep 10 && /usr/bin/sbxkb ) & )
 
 # Awesome
 exec awesome

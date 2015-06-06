@@ -1,0 +1,11 @@
+#!/bin/bash
+# vim: ft=sh
+
+
+timestamp=$(date +"%Y-%m-%d %H:%M:%S")
+
+echo "" $timestamp " > " "$@" >> ~/.notifyhist
+
+
+
+

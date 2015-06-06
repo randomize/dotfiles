@@ -1,5 +1,5 @@
 " {{{ Pentadactyl config -*- vimrc -*-
-"     vim: ft=vim
+"     vim: ft=text
 "     vim: foldmethod=marker
 "
 "     TODO:
@@ -70,7 +70,7 @@ set passkeys+=https://duckduckgo.com:jkv
 " set strictfocus=google.com:laissez-faire,duckduckgo.com:laissez-faire,twitter.com:laissez-faire,getprismatic.com:laissez-faire,feedly.com:laissez-faire,tumblr.com:laissez-faire,'chrome:*':laissez-faire,*:moderate
 
 " Enable bookmarks
-"set guioptions+=B
+set guioptions+=B
 
 " customized next and previous patterns
 set nextpattern=^>$,[Nn]ext,[Mm]ore,([Ss]ucc|[Ss]uccessiva),([Pp]ross|[Pp]rossima),([Aa]vanti),^(>>|»)$,^(>|»),(>|»)$
