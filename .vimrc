@@ -119,6 +119,7 @@ Plugin 'tpope/vim-unimpaired'
 " Plugin 'Raimondi/delimitMate' " ==== breaks repeat, and makes noise!!!
 Plugin 'mhinz/vim-startify'
 Plugin 'xuhdev/SingleCompile'
+Plugin 'OmniSharp/omnisharp-vim'
 
 "===== Themes ===========================
 " Plugin 'chriskempson/base16-vim' ==== still prefer molokai

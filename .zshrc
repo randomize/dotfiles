@@ -353,8 +353,9 @@ alias ya='yaourt'
 alias clock='watch -n 1 "date +%T | xargs figlet \"Time:\" -c -t"'
 alias todo='vim ~/Desktop/TODO.txt'
 alias openports='netstat --all --numeric --programs --inet --inet6'
-alias webshare='python -m http.server 12721'
+alias webshare='webfsd -p 12721 -d -4 -r ./'
 alias webshare2='twistd -no web --path=. --port=12721'
+alias webshare3='python -m http.server 12721'
 alias makepassword='< /dev/urandom tr -dc A-Za-z0-9_ | head -c10 | xargs | cat'
 alias makenumber='< /dev/urandom tr -dc 0-9 | head -c16 | xargs | cat'
 alias ag='ag --color-match 38\;5\;197 --color-line-number 38\;5\;110 --color-path 38\;5\;215\;4'
@@ -371,15 +372,7 @@ alias fehdir='feh -g 640x480 -d -S filename'
 alias cmake-release='cmake -DCMAKE_BUILD_TYPE=Release'
 alias cmake-debug='cmake -DCMAKE_BUILD_TYPE=Debug'
 
-# Sudoing
-alias sudo='sudo '
-alias poweroff='sudo poweroff'
-alias mount='sudo mount'
-alias umount='sudo umount'
-alias scat='sudo cat'
-alias svim='sudoedit'
-alias reboot='sudo reboot'
-alias halt='sudo halt'
+# Update shorthand
 alias update='sudo pacman -Suy'
 
 # IPad management
@@ -476,9 +469,10 @@ down4me() { curl -s "http://www.downforeveryoneorjustme.com/$1" | sed '/just you
 ## Google Translate Functions ##
 
 say() {
-   mplayer -user-agent Mozilla -prefer-ipv4 \
-   "http://translate.google.md/translate_tts?ie=UTF-8&tl="$1"&q=$(echo "$@" \
-   | cut -d ' ' -f2- | sed 's/ /\+/g')" > /dev/null 2>&1 ;
+   find ~/Downloads/en -name "$1.ogg" -exec ogg123 {} \;
+   # mplayer -user-agent Mozilla -prefer-ipv4 \
+   # "http://translate.google.md/translate_tts?ie=UTF-8&tl="$1"&q=$(echo "$@" \
+   # | cut -d ' ' -f2- | sed 's/ /\+/g')" > /dev/null 2>&1 ;
 }
 
 say-translation() {

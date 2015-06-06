@@ -3,12 +3,12 @@ set nu
 set rnu
 set virtualedit=all
 
-"set hlsearch
-"set ignorecase
-"set incsearch
-"set showcmd
-"set showmode
-"set smartcase
+set hlsearch
+set ignorecase
+" set incsearch
+set showcmd
+set showmode
+set smartcase
 "
 nnoremap ,ev :e ~/.ideavimrc<CR>
 nnoremap ,sv :source ~/.ideavimrc<CR>
@@ -16,6 +16,7 @@ nnoremap ,sv :source ~/.ideavimrc<CR>
 map ,y "+y
 map ,p "*p
 noremap Y y$
+
 "nnoremap ' `
 "nnoremap ` '
 "nnoremap n nzz
@@ -24,10 +25,9 @@ noremap Y y$
 "nnoremap U :action Vcs.RollbackChangedLines<CR>
 "nnoremap zj m'o<Esc>`'
 "nnoremap zk m'O<Esc>`'
-"
+
 inoremap jj <Esc>
-"inoremap kk <Esc>
-"
+
 vnoremap < <gv
 vnoremap > >gv
 "
@@ -98,7 +98,6 @@ vnoremap > >gv
 "noremap ,vu :action Vcs.UpdateProject<CR>
 "
 "" Common
-"noremap ,b :action ToggleLineBreakpoint<CR>
 "noremap ,h <C-w>s
 "noremap ,i :action Inline<CR>
 "noremap ,k :q<CR>
@@ -113,19 +112,22 @@ vnoremap > >gv
 " nmap ,x :action VimFileSaveClose<cr>
 nmap ,r :action Run<cr>
 nmap ,R :action ChooseRunConfiguration<cr>
-nmap ,f :action VimForward<cr>
-nmap ,b :action VimBack<cr>
+" nmap ,f :action VimForward<cr>
+" nmap ,b :action VimBack<cr>
 " nmap ,,e :action FileStructurePopup<cr>
 " nmap gR :action RenameElement<cr>
 
 "" Mnemonic: 'to'
-nnoremap ,td :action GotoTypeDeclaration<CR>
+nnoremap ,td :action GotoDeclaration<CR>
+" nnoremap ,td :action GotoTypeDeclaration<CR>
 nnoremap ,ti :action GotoImplementation<CR>
 nnoremap ,ts :action GotoSuperMethod<CR>
 nnoremap ,tt :action GotoTest<CR>
-nnoremap ,tu :action ShowUsages<CR>
+nnoremap ,tc :action GotoClass<CR>
+nnoremap ,tr :action GotoRelated<CR>
+nnoremap ,ty :action GotoSymbol<CR>
 
-"" Mnemonic 'generate'
+"" Mnemonic: 'generate'
 noremap ,gc :action IntroduceConstant<CR>
 noremap ,gf :action IntroduceField<CR>
 noremap ,gp :action IntroduceParameter<CR>
@@ -133,6 +135,42 @@ noremap ,gv :action IntroduceVariable<CR>
 noremap ,gg :action GenerateGetter<CR>
 noremap ,gs :action GenerateSetter<CR>
 noremap ,ga :action GenerateGetterAndSetter<CR>
+
+"" Mnemonic: 'introduce'
+nnoremap ,id :action NewDir<CR>
+nnoremap ,ic :action NewClass<CR>
+nnoremap ,if :action NewFile<CR>
+nnoremap ,ix :action NewXml<CR>
+nnoremap ,it :action NewFromTemplate<CR>
+
+"" Mnemonic: 'help'
+noremap ,ho :action OnlineDocAction<cr>
+noremap ,hp :action ParameterInfo<CR>
+noremap ,hj :action QuickJavaDoc<CR>
+noremap ,hd :action QuickImplementations<CR>
+noremap ,hu :action ShowUsages<CR>
+
+"" Mnemonic: 'debug'
+noremap ,db :action ToggleLineBreakpoint<CR>
+
+"" Mnemonic: 'change'
+noremap ,cn :action RenameElement<CR>
+noremap ,cb :action InvertBoolean<CR>
+noremap ,co :action OverrideMethods<CR>
+noremap ,ci :action ImplementMethods<CR>
+noremap ,cl :action Inline<CR>
+
+"" Vim old habits
+nmap gcc :action CommentByLineComment<CR>
+noremap ,n :nohl<CR>
+noremap <space>q :q<CR>
+noremap <space>w :w<CR>
+nmap <space>r :action RenameElement<CR>
+vnoremap <space>m :action ExtractMethod<CR>
+
+map [c :action GotoPreviousError<CR>:action ShowErrorDescription<CR>
+map ]c :action GotoNextError<CR>:action ShowErrorDescription<CR>
+
 
 
 

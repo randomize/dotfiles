@@ -239,4 +239,10 @@ $ infocmp "$screen_terminfo" |
 
 $ tic /tmp/screen.terminfo
 
+# ===== Awesome Bug with russian ========= (21)
+	
+The simplest solution is actually editing 
+/usr/share/X11/xkb/compat/basic and removing or commenting out 
+the "group [2-4] = AltGr;" lines (all three of them). 
+	
 
