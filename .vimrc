@@ -697,6 +697,7 @@ nmap <leader>yy :YcmForceCompileAndDiagnostics<CR>
 nmap <leader>yg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nmap <leader>yd :YcmCompleter GoToDefinition<CR>
 nmap <leader>yc :YcmCompleter GoToDeclaration<CR>
+nmap <leader>yt :YcmCompleter GetType<CR>
 
 " Unite
 " nmap <leader>t :<C-u>Unite -buffer-name=files -start-insert file_rec<cr>
