@@ -15,6 +15,8 @@
 " Vundle
 " =========================================================================
 " {{{
+"
+
 
 set nocompatible
 filetype off
@@ -60,9 +62,10 @@ Plugin 'Lokaltog/vim-easymotion'
 " Commenting
 Plugin 'tomtom/tcomment_vim'
 
-" Unite - obsoletes: command-t, fuzzy-finder and buffer explorer
+" Unite - obsoletes: command-t, fuzzy-finder, buffer explorer and perhaps ctrlP
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/unite.vim'
+Plugin 'ujihisa/unite-colorscheme'
 
 " Indent guides
 Plugin 'nathanaelkane/vim-indent-guides'
@@ -88,10 +91,17 @@ Plugin 'majutsushi/tagbar'
 " Formatting with clanfg format
 Plugin 'rhysd/vim-clang-format'
 
+" Taglist
+Plugin 'vim-scripts/taglist.vim'
+
+" Rainbow prentheses
+Plugin 'kien/rainbow_parentheses.vim'
+
 " ==== SYNTAX =========================
 
 Plugin 'vim-scripts/ck.vim'
 Plugin 'vim-scripts/glsl.vim'
+Plugin 'vim-scripts/cg.vim'
 Plugin 'leshill/vim-json'
 Plugin 'chrisbra/csv.vim'
 Plugin 'dag/vim2hs'
@@ -119,12 +129,17 @@ Plugin 'tpope/vim-unimpaired'
 " Plugin 'Raimondi/delimitMate' " ==== breaks repeat, and makes noise!!!
 Plugin 'mhinz/vim-startify'
 Plugin 'xuhdev/SingleCompile'
-Plugin 'OmniSharp/omnisharp-vim'
 
-"===== Themes ===========================
+" === C# and Uniy =====================
+Plugin 'OmniSharp/omnisharp-vim'
+Plugin 'OrangeT/vim-csharp'
+
+"===== Themes =========================
 " Plugin 'chriskempson/base16-vim' ==== still prefer molokai
 Plugin 'tomasr/molokai'
-
+Plugin 'sjl/badwolf'
+Plugin 'jordwalke/flatlandia'
+Plugin 'morhetz/gruvbox'
 
 " ==== Obsolete  =====================
 
@@ -150,6 +165,28 @@ filetype plugin indent on
 " }}}
 
 " =========================================================================
+" OS Detector and global swithches
+" =========================================================================
+" {{{
+
+
+if !exists("g:os")
+    if has("win64") || has("win32") || has("win16")
+        let g:os = "Windows"
+    else
+        let g:os = substitute(system('uname'), '\n', '', '')
+    endif
+endif
+
+if !exists("g:bully_dev")
+    let g:bully_dev = "Eugene"
+    " let g:bully_dev = "Dmitry"
+    " let g:bully_dev = "Shag"
+endif
+
+" }}}
+"
+" =========================================================================
 " Settings
 " =========================================================================
 " {{{
@@ -171,7 +208,9 @@ colorscheme molokai
 " colorscheme base16-tomorrow
 
 " Cursor free positioning
-set virtualedit=all
+if g:bully_dev == "Eugene"
+    set virtualedit=all
+endif
 
 " Highlight syntax
 syntax on
@@ -195,6 +234,7 @@ set ttyfast        " Term is fast
 
 set formatoptions-=t " Don't wrap while typing
 set cmdwinheight=16  " Command-line window
+set vb t_vb=
 
 
 " Unprintable
@@ -235,7 +275,7 @@ set undolevels=256
 set hlsearch     " Highlight search results
 set ignorecase   " no sensitive to case
 set smartcase    " When meet uppercase -> sensitive
-set noincsearch  " Do not use incremental : type, then start search
+set incsearch
 
 " Tabs ans indentation
 set tabstop=4       " Tab size
@@ -280,7 +320,13 @@ let mapleader = ","
 " Setup GVIM separately
 if has("gui_running")
 
-   set guifont=PragmataPro\ 12
+    if g:os == "Darwin"
+        set guifont=PragmataPro:h14
+    elseif g:os == "Linux"
+        set guifont=PragmataPro\ 12
+    elseif g:os == "Windows"
+        " TODO: Windows here
+    endif
 
    " Set default size for GVIM
    set lines=60 columns=200
@@ -317,7 +363,9 @@ else
    highlight SpellLocal term=underline cterm=underline
 
    " Italic comments
-   highlight Comment cterm=italic
+   if g:os == "Linux"
+       highlight Comment cterm=italic
+   endif
 
    " TODO: cursor play with blinking
 
@@ -340,28 +388,7 @@ let g:startify_files_number = 8
 " === Clang Format ==
 "  "AllowShortIfStatementsOnASingleLine" : "true",
 "  "AlwaysBreakTemplateDeclarations" : "true",
-
-" Uses ~/.clang-format !!!!!!!!!!!!!!
-" let g:clang_format#code_style = "llvm"
-" let g:clang_format#style_options = {
-            " \ "AccessModifierOffset" : -1,
-            " \ "IndentWidth" : 4,
-            " \ "TabWidth" : 4,
-            " \ "ColumnLimit" : 80,
-            " \ "BreakBeforeBraces" : "Stroustrup",
-            " \ "AlwaysBreakTemplateDeclarations" : "true",
-            " \ "Standard" : "Cpp11"}
-            " \ "BreakBeforeBinaryOperators" : "true",
-            " \ "BreakBeforeBraces" : "Linux",
-            " \ "BasedOnStyle" : "LLVM",
-
-" map to <Leader>cf in C++ code
-autocmd FileType c,cpp,objc nnoremap <buffer>,cf :<C-u>ClangFormat<CR>
-autocmd FileType c,cpp,objc vnoremap <buffer>,cf :ClangFormat<CR>
-" if you install vim-operator-user
-" autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
-" Toggle auto formatting:
-" nmap <Leader>C :ClangFormatAutoToggle<CR>
+" Now uses ~/.clang-format file, no need to define settings here
 
 " == gundo/undotree ==
 
@@ -470,6 +497,13 @@ hi link TodoComment Comment
 " comments then start with //
 let g:TodoExplicitCommentsEnabled = 1
 
+" == OmniSharp ===
+let g:Omnisharp_start_server = 0
+let g:Omnisharp_stop_server  = 0
+let g:OmniSharp_host="http://localhost:20001"
+let g:ycm_csharp_server_port = 20001
+let g:OmniSharp_timeout = 1
+
 " }}}
 
 " =========================================================================
@@ -488,19 +522,6 @@ function! Enable80CharsLimit()
    let &colorcolumn=join(range(81,999),",")
 endfunction
 
-
-function! SetupLatex()
-   " Add triggers to ycm for LaTeX-Box autocompletion
-   let g:ycm_semantic_triggers = {
-   \  'tex'  : ['{'],
-   \ }
-endfunction
-
-function! SetupCpp()
-    call SingleCompile#ChooseCompiler('cpp', 'clang')
-   nmap <buffer> <F5> :SCCompileAF -O0 -ggdb -std=c++11 -stdlib=libc++ -lc++abi -lpthread<cr>
-   nmap <buffer> <F6> :SCCompileRunAF -O0 -ggdb -std=c++11 -stdlib=libc++ -lc++abi -lpthread<cr>
-endfunction
 
 " Translator with sdcv
 function! TRANSLATE()
@@ -528,6 +549,23 @@ endfunction
 call airline#parts#define_function('bikeystat', 'KbdLayoutState')
 let g:airline_section_a = airline#section#create(['mode', ' [', 'bikeystat', ']'])
 
+function! FindProjectRoot(lookFor)
+    let pathMaker='%:p'
+    while(len(expand(pathMaker))>len(expand(pathMaker.':h')))
+        let pathMaker=pathMaker.':h'
+        let fileToCheck=expand(pathMaker).'/'.a:lookFor
+        if filereadable(fileToCheck)||isdirectory(fileToCheck)
+            return expand(pathMaker).'/'.a:lookFor
+        endif
+    endwhile
+    return 0
+endfunction
+
+" Build the ctrlp function, using projectroot to define the
+" working directory.
+function! Unite_ctrlp()
+  execute ':Unite  -buffer-name=files -start-insert buffer file_rec/async:'.fnameescape(FindProjectRoot("Assets")).'/'
+endfunction
 "}}}
 
 " =========================================================================
@@ -560,7 +598,7 @@ menu FileFormat.Mac          :e ++ff=mac
 " =========================================================================
 " {{{
 
-" Sigle compile binding
+" Single compile binding
 nmap <silent> <F5> <ESC>:SCCompile<CR>
 nmap <silent> <F6> <ESC>:SCCompileRun<CR>
 
@@ -611,7 +649,8 @@ nmap <c-k> ddkP
 vmap <c-j> dp'[V']
 vmap <c-k> dkP'[V']
 
-" Duplications TODO: prevent register wipe
+" Duplications
+" TODO: prevent register wipe
 vmap <silent> <leader>= yP
 nmap <silent> <leader>= YP
 
@@ -627,17 +666,6 @@ nmap <silent> <leader>md :!mkdir -p %:p:h<CR>
 " When search done : ,n to remove highlight
 nmap <silent> <leader>n :nohls<CR>
 
-" FSwitch mappings
-nmap <silent> <leader>of :FSHere<CR>
-nmap <silent> <leader>ol :FSRight<CR>
-nmap <silent> <leader>oL :FSSplitRight<CR>
-nmap <silent> <leader>oh :FSLeft<CR>
-nmap <silent> <leader>oH :FSSplitLeft<CR>
-nmap <silent> <leader>ok :FSAbove<CR>
-nmap <silent> <leader>oK :FSSplitAbove<CR>
-nmap <silent> <leader>oj :FSBelow<CR>
-nmap <silent> <leader>oJ :FSSplitBelow<CR>
-
 " Alright... let's try this out
 imap jj <esc>
 
@@ -652,17 +680,18 @@ nmap <silent> <leader>c :bd<CR>
 " Faster command access
 nmap <silent> <space> <NOP>
 nmap <space>;  :
+nmap <space><space>  :
 nmap <silent> <space>w  :w<CR>
-nmap <silent> <space>ww :w<CR>
+" nmap <silent> <space>ww :w<CR>
 nmap <silent> <space>q  :q<CR>
-nmap <silent> <space>wq :wq<CR>
-nmap <silent> <space>wc :w<CR>:bd<CR>
+" nmap <silent> <space>wq :wq<CR>
+" nmap <silent> <space>wc :w<CR>:bd<CR>
 nmap <silent> <space>]  :bn<CR>
 nmap <silent> <space>[  :bp<CR>
 nmap <silent> <space>c  :bd<CR>
 
 " Remove trailing whitespaces
-nmap <space>rtw :%s/\s\+$//e<CR>:nohl<CR>
+nmap <silent> <leader>rtw :%s/\s\+$//e<CR>:nohl<CR>
 
 " Copy paste to + register
 nmap <silent> <space>y "+yy
@@ -683,46 +712,14 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 " Yank to end (like D and C)
 nmap Y y$
 
-" Sudo Vim hack, write with force!
-cmap w!! %!sudo tee > /dev/null %
+" Sudo Vim hack, write with force! (Good guys use sudoedit for this)
+" cmap w!! %!sudo tee > /dev/null %
 
 " When entering command, press %% to quickly insert current path
 cmap %% <C-R>=expand('%:h').'/'<cr>
 
 " Mapping ,, to fast switch between buffers
 nmap <silent> <leader><leader><space> <c-^>
-
-" YCM
-nmap <leader>yy :YcmForceCompileAndDiagnostics<CR>
-nmap <leader>yg :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nmap <leader>yd :YcmCompleter GoToDefinition<CR>
-nmap <leader>yc :YcmCompleter GoToDeclaration<CR>
-nmap <leader>yt :YcmCompleter GetType<CR>
-
-" Unite
-" nmap <leader>t :<C-u>Unite -buffer-name=files -start-insert file_rec<cr>
-" nmap <leader>T :<C-u>Unite -buffer-name=files -start-insert file_rec/async:!<cr>
-" nmap <leader>f :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async:!<cr>
-" nmap <leader>b :<C-u>Unite -quick-match buffer<cr>
-" nmap <leader>r :<C-u>Unite -no-split -buffer-name=mru -start-insert file_mru<cr>
-let g:unite_source_history_yank_enable = 1
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-nnoremap <leader>uf :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async<cr>
-nnoremap <leader>ut :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
-nnoremap <leader>ur :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
-nnoremap <leader>uo :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
-nnoremap <leader>uy :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
-nnoremap <leader>ub :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
-
-" Custom mappings for the unite buffer
-autocmd FileType unite call s:unite_settings()
-function! s:unite_settings()
-  " Play nice with supertab
-  let b:SuperTabDisabled=1
-  " Enable navigation with control-j and control-k in insert mode
-  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-endfunction
 
 " Tab in normal mode is useless - use it to %
 nmap <Tab> %
@@ -733,25 +730,159 @@ nmap <leader>a :Ack<space>
 
 vmap v <Plug>(expand_region_expand)
 vmap <c-v> <Plug>(expand_region_shrink)
+
+
+" === YCM =====
+nmap <leader>yy :YcmForceCompileAndDiagnostics<cr>
+nmap <leader>yg :YcmCompleter GoToDefinitionElseDeclaration<cr>
+nmap <leader>yd :YcmCompleter GoToDefinition<cr>
+nmap <leader>yc :YcmCompleter GoToDeclaration<cr>
+nmap <leader>yt :YcmCompleter GetType<cr>
+
+
+" == Unite =====
+let g:unite_source_history_yank_enable = 1
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+
+nnoremap <leader>uf :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async <cr>
+
+nnoremap <leader>ut :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
+nnoremap <leader>ur :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
+nnoremap <leader>uo :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
+nnoremap <leader>uy :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
+nnoremap <leader>ub :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
+nnoremap <leader>ul :<C-u>Unite -buffer-name=lines  line<cr>
+nnoremap <leader>uc :<C-u>Unite colorscheme<cr>
+nnoremap <leader>uh :<C-u>Unite history/yank<cr>
+
+" Custom mappings for the unite buffer
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+  " Enable navigation with control-j and control-k in insert mode
+  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+endfunction
+
+
+" == Fugitive =======
+noremap <leader>gd :Gdiff<CR>
+noremap <leader>gc :Gcommit<CR>
+noremap <leader>gs :Gstatus<CR>
+noremap <leader>gw :Gwrite<CR>
+noremap <leader>gb :Gblame<CR>
+
+
 " }}}
+
+
+" =========================================================================
+" Filetype speicific
+" =========================================================================
+" {{{
+
+function! SetupLatex()
+
+    call Enable80CharsLimit()
+
+    " Add triggers to ycm for LaTeX-Box autocompletion
+    let g:ycm_semantic_triggers = {
+    \  'tex'  : ['{'],
+    \ }
+
+endfunction
+
+function! SetupCpp()
+
+    call Enable80CharsLimit()
+    :IndentGuidesEnable
+
+    " Clang formar
+    nnoremap <buffer>,cf :<C-u>ClangFormat<CR>
+    vnoremap <buffer>,cf :ClangFormat<CR>
+
+    call SingleCompile#ChooseCompiler('cpp', 'clang')
+
+    nmap <buffer> <F5> :SCCompileAF -O0 -ggdb -std=c++11 -stdlib=libc++ -lc++abi -lpthread<cr>
+    nmap <buffer> <F6> :SCCompileRunAF -O0 -ggdb -std=c++11 -stdlib=libc++ -lc++abi -lpthread<cr>
+
+    " FSwitch mappings
+    nmap <silent> <leader>of :FSHere<CR>
+    nmap <silent> <leader>ol :FSRight<CR>
+    nmap <silent> <leader>oL :FSSplitRight<CR>
+    nmap <silent> <leader>oh :FSLeft<CR>
+    nmap <silent> <leader>oH :FSSplitLeft<CR>
+    nmap <silent> <leader>ok :FSAbove<CR>
+    nmap <silent> <leader>oK :FSSplitAbove<CR>
+    nmap <silent> <leader>oj :FSBelow<CR>
+    nmap <silent> <leader>oJ :FSSplitBelow<CR>
+
+
+endfunction
+
+function! SetupCs()
+
+    call Enable80CharsLimit()
+    :IndentGuidesEnable
+
+    " == Unite ===
+    nnoremap <leader>uf :call Unite_ctrlp()<cr>
+
+    " == Omnisharp ===
+    nnoremap <leader>sd :OmniSharpGotoDefinition<cr>
+    nnoremap <leader>si :OmniSharpFindImplementations<cr>
+    nnoremap <leader>st :OmniSharpFindType<cr>
+    nnoremap <leader>ss :OmniSharpFindSymbol<cr>
+    nnoremap <leader>su :OmniSharpFindUsages<cr>
+    nnoremap <leader>sm :OmniSharpFindMembers<cr>
+    nnoremap <leader>sx  :OmniSharpFixIssue<cr>
+    nnoremap <leader>sxu :OmniSharpFixUsings<cr>
+    nnoremap <leader>st :OmniSharpTypeLookup<cr>
+    nnoremap <leader>sd :OmniSharpDocumentation<cr>
+    nnoremap <leader>sk :OmniSharpNavigateUp<cr>
+    nnoremap <leader>sj :OmniSharpNavigateDown<cr>
+    nnoremap <leader>sl :OmniSharpReloadSolution<cr>
+    nnoremap <leader>sf :OmniSharpCodeFormat<cr>
+    nnoremap <leader>sa :OmniSharpAddToProject<cr>
+
+    " Contextual code actions (requires CtrlP or unite.vim)
+    nnoremap <leader><space> :OmniSharpGetCodeActions<cr>
+    " Run code actions with text selected in visual mode to extract method
+    vnoremap <leader><space> :call OmniSharp#GetCodeActions('visual')<cr>
+
+    " rename with dialog
+    nnoremap <leader>sr :OmniSharpRename<cr>
+    " rename without dialog - with cursor on the symbol to rename... ':Rename newname'
+    command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")
+
+    " (Experimental - uses vim-dispatch or vimproc plugin) - Start the omnisharp server for the current solution
+    nnoremap <leader>ss :OmniSharpStartServer<cr>
+    nnoremap <leader>sp :OmniSharpStopServer<cr>
+
+    " Add syntax highlighting for types and interfaces
+    nnoremap <leader>sh :OmniSharpHighlightTypes<cr>
+
+endfunction
+
+function! SetupPython()
+
+    call Enable80CharsLimit()
+    :IndentGuidesEnable
+
+endfunction
 
 " =========================================================================
 " Autos
 " =========================================================================
 " {{{
 
-" Programming in 80 cols
-autocmd BufNewFile,BufRead *.cpp,*.h,*.c,*.py,.vimrc call Enable80CharsLimit()
+" Working in 80 cols
+autocmd BufNewFile,BufRead .vimrc,.zshrc call Enable80CharsLimit()
+
 
 " IDEs
-autocmd BufNewFile,BufRead *.cpp call SetupCpp()
-" autocmd BufNewFile,BufRead *.py  call SetupPython()
-" autocmd BufNewFile,BufRead *.pl  call SetupPerl()
+autocmd BufNewFile,BufRead *.cpp,*.h,*.c call SetupCpp()
+autocmd BufNewFile,BufRead *.py  call SetupPython()
 autocmd BufNewFile,BufRead *.tex call SetupLatex()
-" autocmd BufNewFile,BufRead *.rs  call SetupRust()
-
-" Chuck
-" autocmd BufNewFile,BufRead *.ck call SetupChuck()
-" autocmd VimLeave *.ck call ResetChuck()
+autocmd BufNewFile,BufRead *.cs call SetupCs()
 
 " }}}
