@@ -10,7 +10,13 @@
 "   5) vim-multiple-cursors
 "   6) vim-easy-align
 "   7) vim-operator-user
+"   8) vim-perforce
 "
+"   Authors:
+"   Mihailenco Eugene, Dmitrii Emeleov, Dmitrii Stavila
+"
+"   Credits:
+"   Derek Wyatt, Tim Pope, Vimawesome.com
 "
 " =========================================================================
 " OS Detector and global swithches
@@ -24,6 +30,7 @@ if !exists("g:os")
         let g:os = "Windows"
     else
         let g:os = substitute(system('uname'), '\n', '', '')
+        " Darwin and Linux most common values for OSX and GNU/Linux
     endif
 endif
 
@@ -70,13 +77,6 @@ Plugin 'airblade/vim-gitgutter'
 
 " Super increment
 Plugin 'VisIncr'
-
-" Color schemes
-"
-Plugin 'flazz/vim-colorschemes'
-
-Plugin 'tomasr/molokai'
-" Plugin 'benjaminwhite/Benokai'
 
 " Auto completion
 Plugin 'Valloric/YouCompleteMe'
@@ -137,7 +137,6 @@ Plugin 'vim-scripts/taglist.vim'
 Plugin 'kien/rainbow_parentheses.vim'
 
 " ==== SYNTAX =========================
-" ==== SYNTAX =========================
 Plugin 'vim-scripts/ck.vim'
 Plugin 'vim-scripts/glsl.vim'
 Plugin 'vim-scripts/cg.vim'
@@ -169,6 +168,8 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'mhinz/vim-startify'
 Plugin 'xuhdev/SingleCompile'
 Plugin 'vim-scripts/Improved-AnsiEsc'
+" Plugin 'vim-scripts/genutils'
+" Plugin 'idbrii/vim-perforce'
 
 " === C# and Uniy =====================
 Plugin 'OmniSharp/omnisharp-vim'
@@ -180,6 +181,9 @@ Plugin 'tomasr/molokai'
 Plugin 'sjl/badwolf'
 Plugin 'jordwalke/flatlandia'
 Plugin 'morhetz/gruvbox'
+Plugin 'flazz/vim-colorschemes'
+" Plugin 'benjaminwhite/Benokai'
+
 
 " ==== Obsolete  =====================
 
@@ -348,26 +352,27 @@ if has("gui_running")
         set guifont=PragmataPro:h14
     endif
 
-   " Set default size for GVIM
-   set lines=60 columns=200
+    " Set default size for GVIM
+    set lines=60 columns=200
 
-   " Setup GVIM look, hide useless bars and
-   set guioptions-=T
-   set guioptions-=m
-   set guioptions-=l
-   set guioptions-=L
-   set guioptions-=r
-   set guioptions-=b
+    " Setup GVIM look, hide useless bars and stuff
+    set guioptions-=T
+    set guioptions-=m
+    set guioptions-=l
+    set guioptions-=L
+    set guioptions-=r
+    set guioptions-=b
 
    " Cursor settings
-if g:bully_dev == "eugene"
-    highlight Cursor guifg=black guibg=white
-    highlight iCursor guifg=black guibg=red
-    set guicursor=n-v-c:block-Cursor
-    set guicursor+=i:ver100-iCursor
-    set guicursor+=n-v:blinkon0
-    set guicursor+=i-c:blinkwait10
-endif
+   " TODO: cursor play with blinking
+    if g:bully_dev == "eugene"
+        highlight Cursor guifg=black guibg=white
+        highlight iCursor guifg=black guibg=red
+        set guicursor=n-v-c:block-Cursor
+        set guicursor+=i:ver100-iCursor
+        set guicursor+=n-v:blinkon0
+        set guicursor+=i-c:blinkwait10
+    endif
 
 else
 
@@ -389,7 +394,6 @@ else
        highlight Comment cterm=italic
    endif
 
-   " TODO: cursor play with blinking
 
 endif
 " }}}
@@ -403,7 +407,6 @@ endif
 let g:startify_bookmarks = ['~/.vimrc','~/.zshrc','~/nfo/commands.txt',]
 let g:startify_custom_header =
  \ map(split(system('fortune | cowsay -W 60'), '\n') , '"   ". v:val') + ['','']
-  " \ split(system('fortune | cowsay -W 60'), '\n') + ['','']
 let g:startify_change_to_dir = 0
 let g:startify_files_number = 8
 
@@ -459,7 +462,7 @@ let g:airline#extensions#tabline#show_buffers = 1
 " == Syntastic ==
 
 let g:syntastic_error_symbol="✖"
-let g:syntastic_warning_symbol="✦"
+let g:syntastic_warning_symbol="⚠"
 
 " == Unite ==
 
@@ -494,7 +497,7 @@ let g:LatexBox_viewer = 'zathura'
 let g:LatexBox_latexmk_options = '-pvc -pdflatex="pdflatex -shell-escape"'
 
 " == Ultisnips ==
-" let g:UltiSnipsListSnippets="<F3>"
+let g:UltiSnipsListSnippets=",usl"
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
@@ -505,7 +508,7 @@ let g:UltiSnipsEditSplit="vertical"
 
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
-" == TODO plugin ===
+" == Todo plugin ===
 " todo.vim default highlight groups, feel free to override as wanted
 hi link TodoTitle Title
 hi link TodoTitleMark Normal
@@ -588,6 +591,34 @@ endfunction
 function! Unite_ctrlp()
   execute ':Unite  -buffer-name=files -start-insert buffer file_rec/async:'.fnameescape(FindProjectRoot("Assets")).'/'
 endfunction
+
+" Quick Fix window on/off
+let g:quickfix_is_open = 0
+function! s:QuickfixToggle()
+    if g:quickfix_is_open
+        cclose
+        let g:quickfix_is_open = 0
+        execute g:quickfix_return_to_window . "wincmd w"
+    else
+        let g:quickfix_return_to_window = winnr()
+        copen
+        let g:quickfix_is_open = 1
+    endif
+endfunction
+
+" Open url in browser
+function! OpenURL(url)
+    if g:os == "Darwin"
+        " TODO: Write cross platform solution
+    elseif g:os == "Linux"
+        exe "silent !chromium \"".a:url."\""
+    else " Win
+        " TODO: Write cross platform solution
+    endif
+    redraw!
+endfunction
+command! -nargs=1 OpenURL :call OpenURL(<q-args>)
+
 "}}}
 
 " =========================================================================
@@ -619,6 +650,7 @@ menu FileFormat.Mac          :e ++ff=mac
 " Keyboard mappings
 " =========================================================================
 " {{{
+"
 
 if g:os == "Darwin"
     nmap µ <A-m>
@@ -626,7 +658,20 @@ if g:os == "Darwin"
     map \ <leader>
 endif
 
+
+
+" == Function keys ==============
+
+" Not mapped yet
+nmap <F2>  :call <SID>QuickfixToggle()<cr>
+imap <F2>  <c-o>:call <SID>QuickfixToggle()<cr>
+
+" Translator function
+nmap <F3>  :call TRANSLATE()<cr>
+imap <F3>  <c-o>:call TRANSLATE()<cr>
+
 if g:bully_dev == "demelev"
+
     " Сохранить файл
     nmap <F4> :w!<CR>
     imap <F4> <Esc>:w!<CR>
@@ -636,38 +681,14 @@ if g:bully_dev == "demelev"
     nmap <F5> :q<CR>
     imap <F5> <Esc>:q<CR>
     vmap <F5> <Esc>:q<CR>
+
+elseif g:bully_dev == "eugene"
+
+    " Single compile binding
+    nmap <silent> <F5> <ESC>:SCCompile<CR>
+    nmap <silent> <F6> <ESC>:SCCompileRun<CR>
+
 endif
-
-" CtrlP maps
-map <A-b> :CtrlPBuffer<cr>
-map <A-m> :CtrlPBufTag<cr>
-
-" OmniSharp bindings
-nnoremap <leader>fi :OmniSharpFindImplementations<cr>
-nnoremap <leader>ft :OmniSharpFindType<cr>
-nnoremap <leader>fs :OmniSharpFindSymbol<cr>
-nnoremap <leader>fu :OmniSharpFindUsages<cr>
-nnoremap <leader>fm :OmniSharpFindMembersInBuffer<cr>
-
-" cursor can be anywhere on the line containing an issue for this one
-nnoremap <leader>x  :OmniSharpFixIssue<cr>
-nnoremap <leader>fx :OmniSharpFixUsings<cr>
-nnoremap <leader>tt :OmniSharpTypeLookup<cr>
-nnoremap <leader>dc :OmniSharpDocumentation<cr>
-
-" Single compile binding
-nmap <silent> <F5> <ESC>:SCCompile<CR>
-nmap <silent> <F6> <ESC>:SCCompileRun<CR>
-
-" Translator function
-nmap <F3>  :call TRANSLATE()<cr>
-imap <F3>  <c-o>:call TRANSLATE()<cr>
-
-" Session workflow
-nmap <leader>so :OpenSession<space>
-nmap <leader>ss :SaveSession<space>
-nmap <leader>sd :DeleteSession<CR>
-nmap <leader>sc :CloseSession<CR>
 
 " Toggle spelling with the F7 key
 nmap <silent> <F7> <ESC>:setlocal spell!<CR>
@@ -682,6 +703,34 @@ imap <silent> <F10> <c-o>:set list!<CR>
 
 nmap <F11> :emenu Encoding.<Tab><Tab>
 nmap <S-F11> :emenu FileFormat.<Tab><Tab>
+
+
+
+" == Leader mappings =============
+
+" CtrlP maps
+map <A-b> :CtrlPBuffer<cr>
+map <A-m> :CtrlPBufTag<cr>
+
+" OmniSharp bindings TODO: compare with Eugene's - CS only!
+nnoremap <leader>fi :OmniSharpFindImplementations<cr>
+nnoremap <leader>ft :OmniSharpFindType<cr>
+nnoremap <leader>fs :OmniSharpFindSymbol<cr>
+nnoremap <leader>fu :OmniSharpFindUsages<cr>
+nnoremap <leader>fm :OmniSharpFindMembersInBuffer<cr>
+
+" cursor can be anywhere on the line containing an issue for this one
+nnoremap <leader>x  :OmniSharpFixIssue<cr>
+nnoremap <leader>fx :OmniSharpFixUsings<cr>
+nnoremap <leader>tt :OmniSharpTypeLookup<cr>
+nnoremap <leader>dc :OmniSharpDocumentation<cr>
+
+" Session workflow
+nmap <leader>so :OpenSession<space>
+nmap <leader>ss :SaveSession<space>
+nmap <leader>sd :DeleteSession<CR>
+nmap <leader>sc :CloseSession<CR>
+
 
 " Toggle things
 " nmap <leader>1 :GundoToggle<CR>
@@ -778,9 +827,6 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 " Yank to end (like D and C)
 nmap Y y$
 
-" Sudo Vim hack, write with force! (Good guys use sudoedit for this)
-" cmap w!! %!sudo tee > /dev/null %
-
 " When entering command, press %% to quickly insert current path
 cmap %% <C-R>=expand('%:h').'/'<cr>
 
@@ -796,6 +842,21 @@ nmap <leader>a :Ack<space>
 
 vmap v <Plug>(expand_region_expand)
 vmap <c-v> <Plug>(expand_region_shrink)
+
+" Search
+nnoremap gb :OpenURL <cfile><CR>
+nnoremap gA :OpenURL http://www.answers.com/<cword><CR>
+nnoremap gG :OpenURL http://www.google.com/search?q=<cword><CR>
+nnoremap gW :OpenURL http://en.wikipedia.org/wiki/Special:Search?search=<cword><CR>
+
+" Folds
+" Mappings to easily toggle fold levels
+nnoremap z0 :set foldlevel=0<cr>
+nnoremap z1 :set foldlevel=1<cr>
+nnoremap z2 :set foldlevel=2<cr>
+nnoremap z3 :set foldlevel=3<cr>
+nnoremap z4 :set foldlevel=4<cr>
+nnoremap z5 :set foldlevel=5<cr>
 
 
 " === YCM =====
@@ -962,9 +1023,16 @@ autocmd BufNewFile,BufRead *.cs call SetupCs()
 
 " }}}
 
-source $VIM\vimfiles\demelev\helpers.vim
 
-" Tab visual {{{
+" TODO: Insert g:bully_dev here?
+if filereadable(expand("$VIM/vimfiles/demelev/helpers.vim"))
+    source $VIM/vimfiles/demelev/helpers.vim
+endif
+
+" =============================================================================
+" Tab visual 
+" =============================================================================
+" {{{
 " Задаем собственные функции для назначения имен заголовкам табов -->
     function! MyTabLine()
         let tabline = ''
@@ -1032,3 +1100,10 @@ source $VIM\vimfiles\demelev\helpers.vim
     set tabline=%!MyTabLine()
     set guitablabel=%!MyGuiTabLabel()
 " Задаем собственные функции для назначения имен заголовкам табов <--
+"
+" }}}
+
+
+" ==============================================================================
+" Appendix
+" ==============================================================================
