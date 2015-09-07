@@ -3,10 +3,10 @@
 
 set prompt >>> 
 
-python
-import sys 
-sys.path.insert(0, '/home/randy/.gdb/libcxx-pretty-printers/src') 
-from libcxx.v1.printers import register_libcxx_printers 
-register_libcxx_printers (None) 
-end
+#python
+#import sys 
+#sys.path.insert(0, '/home/randy/.gdb/libcxx-pretty-printers/src') 
+#from libcxx.v1.printers import register_libcxx_printers 
+#register_libcxx_printers (None) 
+#end
 

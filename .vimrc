@@ -129,6 +129,7 @@ Plugin 'tpope/vim-unimpaired'
 " Plugin 'Raimondi/delimitMate' " ==== breaks repeat, and makes noise!!!
 Plugin 'mhinz/vim-startify'
 Plugin 'xuhdev/SingleCompile'
+Plugin 'vim-scripts/Improved-AnsiEsc'
 
 " === C# and Uniy =====================
 Plugin 'OmniSharp/omnisharp-vim'
@@ -533,7 +534,7 @@ function! TRANSLATE()
        let ends=strlen(a)
    endif
    let res = strpart(a,starts+1,ends-starts)
-   let cmds = "sdcv -n " . res
+   let cmds = "sdcv -n --color --utf8-output " . res
    let out = system(cmds)
    echo out
 endfunction
