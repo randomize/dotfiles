@@ -34,6 +34,8 @@ android/
 .vim/view
 .vim/session
 .viminfo
+.nviminfo
+.nvimlog
 
 # Zsh temporals/generated
 .zsh_history
@@ -127,6 +129,8 @@ android/
 .w3m/
 .golly/
 .subversion/
+.AndroidStudio/
+.Leap Motion/
 
 # Dot config dirs
 .config/

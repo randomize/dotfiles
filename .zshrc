@@ -436,6 +436,11 @@ function brightness() {
    sudo ddccontrol -r 0x10 dev:/dev/i2c-6 -w "$1"
 }
 
+# Set mute/unpute (1 = muted, 2 = unmuted)
+function mutemon() {
+   sudo ddccontrol -r 0x8d dev:/dev/i2c-6 -w "$1"
+}
+
 # sibdiff Source Destination ../../some/tricky/../path/to/file.cpp
 function sibdiff() {
    # Simple zsh magick - replacing in full path $3:A $1 with $2
