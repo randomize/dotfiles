@@ -11,13 +11,35 @@
 "   6) vim-easy-align
 "   7) vim-operator-user
 "
+"
 " =========================================================================
-" Vundle
+" OS Detector and global swithches
 " =========================================================================
 " {{{
 "
 
 
+if !exists("g:os")
+    if has("win64") || has("win32") || has("win16")
+        let g:os = "Windows"
+    else
+        let g:os = substitute(system('uname'), '\n', '', '')
+    endif
+endif
+
+if !exists("g:bully_dev")
+    let g:bully_dev = "eugene"
+    " let g:bully_dev = "dstavila"
+    " let g:bully_dev = "demelev"
+endif
+
+" }}}
+"
+" =========================================================================
+" Vundle
+" =========================================================================
+" {{{
+"
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -25,6 +47,12 @@ call vundle#begin()
 
 " let Vundle manage Vundle
 Plugin 'gmarik/Vundle.vim'
+
+" CtrlP
+Plugin 'ctrlpvim/ctrlp.vim'
+
+" TagHighlight
+Plugin 'vim-scripts/TagHighlight'
 
 " cpp/h switch
 Plugin 'derekwyatt/vim-fswitch'
@@ -43,6 +71,13 @@ Plugin 'airblade/vim-gitgutter'
 " Super increment
 Plugin 'VisIncr'
 
+" Color schemes
+"
+Plugin 'flazz/vim-colorschemes'
+
+Plugin 'tomasr/molokai'
+" Plugin 'benjaminwhite/Benokai'
+
 " Auto completion
 Plugin 'Valloric/YouCompleteMe'
 
@@ -60,9 +95,13 @@ Plugin 'LaTeX-Box-Team/LaTeX-Box'
 Plugin 'Lokaltog/vim-easymotion'
 
 " Commenting
-Plugin 'tomtom/tcomment_vim'
+if g:bully_dev == "demelev" || g:bully_dev == "dstavila"
+    Plugin 'scrooloose/nerdcommenter'
+elseif g:bully_dev == "eugene"
+    Plugin 'tomtom/tcomment_vim'
+endif
 
-" Unite - obsoletes: command-t, fuzzy-finder, buffer explorer and perhaps ctrlP
+" Unite - obsoletes: command-t, fuzzy-finder and buffer explorer
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'ujihisa/unite-colorscheme'
@@ -98,7 +137,7 @@ Plugin 'vim-scripts/taglist.vim'
 Plugin 'kien/rainbow_parentheses.vim'
 
 " ==== SYNTAX =========================
-
+" ==== SYNTAX =========================
 Plugin 'vim-scripts/ck.vim'
 Plugin 'vim-scripts/glsl.vim'
 Plugin 'vim-scripts/cg.vim'
@@ -126,7 +165,7 @@ Plugin 'vim-scripts/restore_view.vim'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-unimpaired'
-" Plugin 'Raimondi/delimitMate' " ==== breaks repeat, and makes noise!!!
+Plugin 'Raimondi/delimitMate'
 Plugin 'mhinz/vim-startify'
 Plugin 'xuhdev/SingleCompile'
 Plugin 'vim-scripts/Improved-AnsiEsc'
@@ -166,28 +205,6 @@ filetype plugin indent on
 " }}}
 
 " =========================================================================
-" OS Detector and global swithches
-" =========================================================================
-" {{{
-
-
-if !exists("g:os")
-    if has("win64") || has("win32") || has("win16")
-        let g:os = "Windows"
-    else
-        let g:os = substitute(system('uname'), '\n', '', '')
-    endif
-endif
-
-if !exists("g:bully_dev")
-    let g:bully_dev = "Eugene"
-    " let g:bully_dev = "Dmitry"
-    " let g:bully_dev = "Shag"
-endif
-
-" }}}
-"
-" =========================================================================
 " Settings
 " =========================================================================
 " {{{
@@ -209,7 +226,7 @@ colorscheme molokai
 " colorscheme base16-tomorrow
 
 " Cursor free positioning
-if g:bully_dev == "Eugene"
+if g:bully_dev == "eugene"
     set virtualedit=all
 endif
 
@@ -249,7 +266,9 @@ set splitright " and right
 
 
 " place a dollar sign when in change mode to indicate end
-set cpoptions+=$
+if g:bully_dev == "eugene"
+    set cpoptions+=$
+endif
 
 " Update time (def 4000)
 set updatetime=750
@@ -275,8 +294,8 @@ set undolevels=256
 " Search
 set hlsearch     " Highlight search results
 set ignorecase   " no sensitive to case
+set incsearch    " enable incremental search
 set smartcase    " When meet uppercase -> sensitive
-set incsearch
 
 " Tabs ans indentation
 set tabstop=4       " Tab size
@@ -326,7 +345,7 @@ if has("gui_running")
     elseif g:os == "Linux"
         set guifont=PragmataPro\ 12
     elseif g:os == "Windows"
-        " TODO: Windows here
+        set guifont=PragmataPro:h14
     endif
 
    " Set default size for GVIM
@@ -341,12 +360,14 @@ if has("gui_running")
    set guioptions-=b
 
    " Cursor settings
-   highlight Cursor guifg=black guibg=white
-   highlight iCursor guifg=black guibg=red
-   set guicursor=n-v-c:block-Cursor
-   set guicursor+=i:ver100-iCursor
-   set guicursor+=n-v:blinkon0
-   set guicursor+=i-c:blinkwait10
+if g:bully_dev == "eugene"
+    highlight Cursor guifg=black guibg=white
+    highlight iCursor guifg=black guibg=red
+    set guicursor=n-v-c:block-Cursor
+    set guicursor+=i:ver100-iCursor
+    set guicursor+=n-v:blinkon0
+    set guicursor+=i-c:blinkwait10
+endif
 
 else
 
@@ -599,6 +620,41 @@ menu FileFormat.Mac          :e ++ff=mac
 " =========================================================================
 " {{{
 
+if g:os == "Darwin"
+    nmap µ <A-m>
+    nmap ∫ <A-b>
+    map \ <leader>
+endif
+
+if g:bully_dev == "demelev"
+    " Сохранить файл
+    nmap <F4> :w!<CR>
+    imap <F4> <Esc>:w!<CR>
+    vmap <F4> <Esc>:w!<CR>
+
+    " Закрыть VIM
+    nmap <F5> :q<CR>
+    imap <F5> <Esc>:q<CR>
+    vmap <F5> <Esc>:q<CR>
+endif
+
+" CtrlP maps
+map <A-b> :CtrlPBuffer<cr>
+map <A-m> :CtrlPBufTag<cr>
+
+" OmniSharp bindings
+nnoremap <leader>fi :OmniSharpFindImplementations<cr>
+nnoremap <leader>ft :OmniSharpFindType<cr>
+nnoremap <leader>fs :OmniSharpFindSymbol<cr>
+nnoremap <leader>fu :OmniSharpFindUsages<cr>
+nnoremap <leader>fm :OmniSharpFindMembersInBuffer<cr>
+
+" cursor can be anywhere on the line containing an issue for this one
+nnoremap <leader>x  :OmniSharpFixIssue<cr>
+nnoremap <leader>fx :OmniSharpFixUsings<cr>
+nnoremap <leader>tt :OmniSharpTypeLookup<cr>
+nnoremap <leader>dc :OmniSharpDocumentation<cr>
+
 " Single compile binding
 nmap <silent> <F5> <ESC>:SCCompile<CR>
 nmap <silent> <F6> <ESC>:SCCompileRun<CR>
@@ -667,6 +723,17 @@ nmap <silent> <leader>md :!mkdir -p %:p:h<CR>
 " When search done : ,n to remove highlight
 nmap <silent> <leader>n :nohls<CR>
 
+" FSwitch mappings
+nmap <silent> <leader>of :FSHere<CR>
+nmap <silent> <leader>ol :FSRight<CR>
+nmap <silent> <leader>oL :FSSplitRight<CR>
+nmap <silent> <leader>oh :FSLeft<CR>
+nmap <silent> <leader>oH :FSSplitLeft<CR>
+nmap <silent> <leader>ok :FSAbove<CR>
+nmap <silent> <leader>oK :FSSplitAbove<CR>
+nmap <silent> <leader>oj :FSBelow<CR>
+nmap <silent> <leader>oJ :FSSplitBelow<CR>
+
 " Alright... let's try this out
 imap jj <esc>
 
@@ -683,16 +750,14 @@ nmap <silent> <space> <NOP>
 nmap <space>;  :
 nmap <space><space>  :
 nmap <silent> <space>w  :w<CR>
-" nmap <silent> <space>ww :w<CR>
 nmap <silent> <space>q  :q<CR>
-" nmap <silent> <space>wq :wq<CR>
-" nmap <silent> <space>wc :w<CR>:bd<CR>
 nmap <silent> <space>]  :bn<CR>
 nmap <silent> <space>[  :bp<CR>
 nmap <silent> <space>c  :bd<CR>
 
 " Remove trailing whitespaces
 nmap <silent> <leader>rtw :%s/\s\+$//e<CR>:nohl<CR>
+nmap <silent> <leader>rrt :%s/\t/    /g<CR>:nohl<CR>
 
 " Copy paste to + register
 nmap <silent> <space>y "+yy
@@ -759,11 +824,19 @@ nnoremap <leader>uh :<C-u>Unite history/yank<cr>
 " Custom mappings for the unite buffer
 autocmd FileType unite call s:unite_settings()
 function! s:unite_settings()
+  " Play nice with supertab
+  let b:SuperTabDisabled=1
   " Enable navigation with control-j and control-k in insert mode
   imap <buffer> <C-j>   <Plug>(unite_select_next_line)
   imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
 endfunction
 
+" Tab in normal mode is useless - use it to %
+nmap <Tab> %
+vmap <Tab> %
+
+" Ack on ,a
+nmap <leader>a :Ack<space>
 
 " == Fugitive =======
 noremap <leader>gd :Gdiff<CR>
@@ -772,7 +845,8 @@ noremap <leader>gs :Gstatus<CR>
 noremap <leader>gw :Gwrite<CR>
 noremap <leader>gb :Gblame<CR>
 
-
+vmap v <Plug>(expand_region_expand)
+vmap <c-v> <Plug>(expand_region_shrink)
 " }}}
 
 
@@ -887,3 +961,74 @@ autocmd BufNewFile,BufRead *.tex call SetupLatex()
 autocmd BufNewFile,BufRead *.cs call SetupCs()
 
 " }}}
+
+source $VIM\vimfiles\demelev\helpers.vim
+
+" Tab visual {{{
+" Задаем собственные функции для назначения имен заголовкам табов -->
+    function! MyTabLine()
+        let tabline = ''
+
+        " Формируем tabline для каждой вкладки -->
+            for i in range(tabpagenr('$'))
+                " Подсвечиваем заголовок выбранной в данный момент вкладки.
+                if i + 1 == tabpagenr()
+                    let tabline .= '%#TabLineSel#'
+                else
+                    let tabline .= '%#TabLine#'
+                endif
+
+                " Устанавливаем номер вкладки
+                let tabline .= '%' . (i + 1) . 'T'
+
+                " Получаем имя вкладки
+                let tabline .= ' %{MyTabLabel(' . (i + 1) . ')} |'
+            endfor
+        " Формируем tabline для каждой вкладки <--
+
+        " Заполняем лишнее пространство
+        let tabline .= '%#TabLineFill#%T'
+
+        " Выровненная по правому краю кнопка закрытия вкладки
+        if tabpagenr('$') > 1
+            let tabline .= '%=%#TabLine#%999XX'
+        endif
+
+        return tabline
+    endfunction
+
+    function! MyTabLabel(n)
+        let label = ''
+        let buflist = tabpagebuflist(a:n)
+
+        " Имя файла и номер вкладки -->
+            let label = substitute(bufname(buflist[tabpagewinnr(a:n) - 1]), '.*/', '', '')
+
+            if label == ''
+                let label = '[No Name]'
+            endif
+
+            let label .= ' (' . a:n . ')'
+        " Имя файла и номер вкладки <--
+
+        " Определяем, есть ли во вкладке хотя бы один
+        " модифицированный буфер.
+        " -->
+            for i in range(len(buflist))
+                if getbufvar(buflist[i], "&modified")
+                    let label = '[+] ' . label
+                    break
+                endif
+            endfor
+        " <--
+
+        return label
+    endfunction
+
+    function! MyGuiTabLabel()
+        return '%{MyTabLabel(' . tabpagenr() . ')}'
+    endfunction
+
+    set tabline=%!MyTabLine()
+    set guitablabel=%!MyGuiTabLabel()
+" Задаем собственные функции для назначения имен заголовкам табов <--
