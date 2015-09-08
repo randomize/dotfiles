@@ -621,6 +621,7 @@ command! -nargs=1 OpenURL :call OpenURL(<q-args>)
 
 "}}}
 
+let g:ctrlp_root_markers = ['Scripts']
 " =========================================================================
 " Helper menus
 " =========================================================================
@@ -957,8 +958,10 @@ endfunction
 
 function! SetupCs()
 
-    call Enable80CharsLimit()
-    :IndentGuidesEnable
+    if g:bully_dev == "eugene"
+        call Enable80CharsLimit()
+        :IndentGuidesEnable
+    endif
 
     " == Unite ===
     nnoremap <leader>uf :call Unite_ctrlp()<cr>
