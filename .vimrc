@@ -28,6 +28,8 @@
 if !exists("g:os")
     if has("win64") || has("win32") || has("win16")
         let g:os = "Windows"
+    elseif  has('win32unix')
+        let g:os = "Cygwin"
     else
         let g:os = substitute(system('uname'), '\n', '', '')
         " Darwin and Linux most common values for OSX and GNU/Linux
@@ -205,6 +207,7 @@ filetype plugin indent on
 " Show whitespace
 " autocmd ColorScheme * highlight ExtraWhitespace ctermbg=124 guibg=red
 " autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+" highlight Pmenu ctermfg=1 ctermbg=4 guibg=grey30
 
 " }}}
 
@@ -331,7 +334,7 @@ set keymap=russian-jcukenwin    " C-^ to switch
 set iminsert=0                  " insert mode default en
 set imsearch=0                  " search mode default en
 
-" Modeline
+" Vim modeline enabled and has 5 lines
 set modeline
 set modelines=5
 
@@ -374,6 +377,9 @@ if has("gui_running")
         set guicursor+=i-c:blinkwait10
     endif
 
+   " Bash in gvim will understand my aliases
+   set shell=/bin/bash\ --login
+
 else
 
    " enable mouse in terminals
@@ -392,6 +398,9 @@ else
    " Italic comments
    if g:os == "Linux"
        highlight Comment cterm=italic
+   elseif g:os == "Cygwin"
+        " Windows cygwin fix backspac
+        set backspace=indent,eol,start
    endif
 
 
@@ -470,9 +479,20 @@ let g:unite_enable_start_insert = 1
 let g:unite_split_rule = "botright"
 let g:unite_force_overwrite_statusline = 0
 let g:unite_winheight = 10
-let g:unite_candidate_icon=">"
+let g:unite_candidate_icon="▷"
 let g:unite_source_rec_async_command= 'ag --nocolor --nogroup --hidden -g ""'
+let g:unite_source_history_yank_enable = 1
 
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
+call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
+\ 'ignore_pattern', join([
+\ '.class$', '\.jar$',
+\ '\.jpg$', '\.jpeg$', '\.bmp$', '\.png$', '\.gif$',
+\ '\.o$', '\.so$', '\.lo$', '\.lib$', '\.out$', '\.obj$', 
+\ '\.zip$', '\.tar\.gz$', '\.tar\.bz2$', '\.rar$', '\.tar\.xz$',
+\ '\.ac$', '\.cache$', '\.0$', '\.meta$'
+\ ], '\|'))
 " == You complete me ==
 
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
@@ -528,6 +548,20 @@ let g:Omnisharp_stop_server  = 0
 let g:OmniSharp_host="http://localhost:20001"
 let g:ycm_csharp_server_port = 20001
 let g:OmniSharp_timeout = 1
+
+" == NERD Tree ======
+let NERDTreeWinPos='right'
+
+" === Conque Settings =================
+"let g:ConqueTerm_FastMode = 1
+"let g:ConqueTerm_ReadUnfocused = 1
+"let g:ConqueTerm_InsertOnEnter = 1
+"let g:ConqueTerm_PromptRegex = '^-->'
+"let g:ConqueTerm_TERM = 'rxvt-unicode-256color'
+"let g:ConqueTerm_CloseOnEnd = 1
+"let g:ConqueTerm_SendFunctionKeys = 1
+"let g:ConqueTerm_Color = 1 "disable colors
+"
 
 " }}}
 
@@ -590,6 +624,14 @@ endfunction
 " working directory.
 function! Unite_ctrlp()
   execute ':Unite  -buffer-name=files -start-insert buffer file_rec/async:'.fnameescape(FindProjectRoot("Assets")).'/'
+endfunction
+
+function! s:unite_settings()
+  " Play nice with supertab
+  let b:SuperTabDisabled=1
+  " Enable navigation with control-j and control-k in insert mode
+  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
 endfunction
 
 " Quick Fix window on/off
@@ -704,7 +746,7 @@ imap <silent> <F10> <c-o>:set list!<CR>
 nmap <F11> :emenu Encoding.<Tab><Tab>
 nmap <S-F11> :emenu FileFormat.<Tab><Tab>
 
-
+nmap <F12> :NERDTreeToggle<CR>
 
 " == Leader mappings =============
 
@@ -739,6 +781,7 @@ set pastetoggle=<leader>2
 nmap <leader>3 :TlistToggle<CR>
 nmap <leader>4 :TagbarToggle<CR>
 nmap <leader>5 :NERDTreeToggle<CR>
+"nmap <silent> <leader>6 :ConqueTermSplit bash<CR><Esc>:setlocal nolist<CR>a
 
 " Make p in Visual mode replace the selected text with the \" register.
 vmap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
@@ -790,9 +833,9 @@ imap jj <esc>
 nmap <silent> <leader>w :set invwrap<CR>:set wrap?<CR>
 
 " Buffers
-nmap <silent> <leader>] :bn<CR>
-nmap <silent> <leader>[ :bp<CR>
-nmap <silent> <leader>c :bd<CR>
+nmap <silent> <leader>bn :bn<CR>
+nmap <silent> <leader>bp :bp<CR>
+nmap <silent> <leader>bd :bd<CR>
 
 " Faster command access
 nmap <silent> <space> <NOP>
@@ -868,11 +911,7 @@ nmap <leader>yt :YcmCompleter GetType<cr>
 
 
 " == Unite =====
-let g:unite_source_history_yank_enable = 1
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-
 nnoremap <leader>uf :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async <cr>
-
 nnoremap <leader>ut :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
 nnoremap <leader>ur :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
 nnoremap <leader>uo :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
@@ -882,15 +921,6 @@ nnoremap <leader>ul :<C-u>Unite -buffer-name=lines  line<cr>
 nnoremap <leader>uc :<C-u>Unite colorscheme<cr>
 nnoremap <leader>uh :<C-u>Unite history/yank<cr>
 
-" Custom mappings for the unite buffer
-autocmd FileType unite call s:unite_settings()
-function! s:unite_settings()
-  " Play nice with supertab
-  let b:SuperTabDisabled=1
-  " Enable navigation with control-j and control-k in insert mode
-  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-endfunction
 
 " Tab in normal mode is useless - use it to %
 nmap <Tab> %
@@ -1010,6 +1040,9 @@ endfunction
 " Autos
 " =========================================================================
 " {{{
+
+" Custom mappings for the unite buffer
+autocmd FileType unite call s:unite_settings()
 
 " Working in 80 cols
 autocmd BufNewFile,BufRead .vimrc,.zshrc call Enable80CharsLimit()
