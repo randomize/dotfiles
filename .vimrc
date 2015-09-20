@@ -37,9 +37,7 @@ if !exists("g:os")
 endif
 
 if !exists("g:bully_dev")
-    let g:bully_dev = "eugene"
-    " let g:bully_dev = "dstavila"
-    " let g:bully_dev = "demelev"
+    let g:bully_dev = $bully_dev
 endif
 
 " }}}
@@ -56,6 +54,9 @@ call vundle#begin()
 
 " let Vundle manage Vundle
 Plugin 'gmarik/Vundle.vim'
+
+" ColorSchemeEditor
+Plugin 'ColorSchemeEditor'
 
 " CtrlP
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -76,6 +77,8 @@ Plugin 'neochrome/todo.vim'
 " Git support
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
+
+Plugin 'tpope/vim-dispatch'
 
 " Super increment
 Plugin 'VisIncr'
@@ -167,7 +170,11 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'Raimondi/delimitMate'
-Plugin 'mhinz/vim-startify'
+
+if bully_dev != "demelev"
+    Plugin 'mhinz/vim-startify'
+endif
+
 Plugin 'xuhdev/SingleCompile'
 Plugin 'vim-scripts/Improved-AnsiEsc'
 " Plugin 'vim-scripts/genutils'
@@ -261,6 +268,10 @@ set formatoptions-=t " Don't wrap while typing
 set cmdwinheight=16  " Command-line window
 set vb t_vb=
 
+if bully_dev == "demelev"
+    set statusline=%<%f%h%m%r%=format=%{&fileformat}\ file=%{&fileencoding}\ enc=%{&encoding}\ %b\ 0x%B\ %l,%c%V\ %P
+endif
+
 
 " Unprintable
 set nolist
@@ -348,11 +359,23 @@ let mapleader = ","
 if has("gui_running")
 
     if g:os == "Darwin"
-        set guifont=PragmataPro:h14
+        if bully_dev == "demelev"
+            set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h14
+        else
+            set guifont=PragmataPro:h14
+        endif
     elseif g:os == "Linux"
-        set guifont=PragmataPro\ 12
+        if bully_dev == "demelev"
+            set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h14
+        else
+            set guifont=PragmataPro\ 12
+        endif
     elseif g:os == "Windows"
-        set guifont=PragmataPro:h14
+        if bully_dev == "demelev"
+            set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h14
+        else
+            set guifont=PragmataPro:h14
+        endif
     endif
 
     " Set default size for GVIM
@@ -518,7 +541,7 @@ let g:LatexBox_latexmk_options = '-pvc -pdflatex="pdflatex -shell-escape"'
 
 " == Ultisnips ==
 let g:UltiSnipsListSnippets=",usl"
-let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsExpandTrigger="<c-l>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
@@ -663,6 +686,7 @@ command! -nargs=1 OpenURL :call OpenURL(<q-args>)
 
 "}}}
 
+let g:ctrlp_root_markers = ['Scripts']
 " =========================================================================
 " Helper menus
 " =========================================================================
@@ -753,6 +777,7 @@ nmap <F12> :NERDTreeToggle<CR>
 " CtrlP maps
 map <A-b> :CtrlPBuffer<cr>
 map <A-m> :CtrlPBufTag<cr>
+map <c-Tab> :tabn<cr>
 
 " OmniSharp bindings TODO: compare with Eugene's - CS only!
 nnoremap <leader>fi :OmniSharpFindImplementations<cr>
@@ -929,12 +954,14 @@ vmap <Tab> %
 " Ack on ,a
 nmap <leader>a :Ack<space>
 
-" == Fugitive =======
-noremap <leader>gd :Gdiff<CR>
-noremap <leader>gc :Gcommit<CR>
-noremap <leader>gs :Gstatus<CR>
-noremap <leader>gw :Gwrite<CR>
-noremap <leader>gb :Gblame<CR>
+if bully_dev != "demelev"
+    " == Fugitive =======
+    noremap <leader>gd :Gdiff<CR>
+    noremap <leader>gc :Gcommit<CR>
+    noremap <leader>gs :Gstatus<CR>
+    noremap <leader>gw :Gwrite<CR>
+    noremap <leader>gb :Gblame<CR>
+endif
 
 vmap v <Plug>(expand_region_expand)
 vmap <c-v> <Plug>(expand_region_shrink)
@@ -987,8 +1014,10 @@ endfunction
 
 function! SetupCs()
 
-    call Enable80CharsLimit()
-    :IndentGuidesEnable
+    if g:bully_dev == "eugene"
+        call Enable80CharsLimit()
+        :IndentGuidesEnable
+    endif
 
     " == Unite ===
     nnoremap <leader>uf :call Unite_ctrlp()<cr>
