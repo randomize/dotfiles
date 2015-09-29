@@ -579,6 +579,10 @@ let g:OmniSharp_host="http://localhost:20001"
 let g:ycm_csharp_server_port = 20001
 let g:OmniSharp_timeout = 1
 
+" === Buffergator ===
+let g:buffergator_suppress_keymaps = 1
+
+=======
 " == NERD Tree ======
 let NERDTreeWinPos='right'
 
@@ -592,7 +596,6 @@ let NERDTreeWinPos='right'
 "let g:ConqueTerm_SendFunctionKeys = 1
 "let g:ConqueTerm_Color = 1 "disable colors
 "
-
 " }}}
 
 " =========================================================================
@@ -814,7 +817,12 @@ set pastetoggle=<leader>2
 nmap <leader>3 :TlistToggle<CR>
 nmap <leader>4 :TagbarToggle<CR>
 nmap <leader>5 :NERDTreeToggle<CR>
+<<<<<<< HEAD
+nmap <leader>6 :BuffergatorToggle<CR>
+||||||| merged common ancestors
+=======
 "nmap <silent> <leader>6 :ConqueTermSplit bash<CR><Esc>:setlocal nolist<CR>a
+>>>>>>> 63eaf369012a3eb2d769a55861bac54a8268fad6
 
 " Make p in Visual mode replace the selected text with the \" register.
 vmap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
