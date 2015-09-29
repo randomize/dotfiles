@@ -301,16 +301,22 @@ set updatetime=750
 " Keystrokes timeout
 set timeoutlen=1000
 
+if g:os == "Linux" || g:os == "Darwin"
+    set g:dev_temp=/tmp
+elseif g:os == "Windows"
+    set g:dev_temp=D:/tmp
+endif
+
 " Backups
-set directory=/tmp  " Risky but fast
+set directory=g:dev_temp  " Risky but fast
 
 set backup
 set writebackup
 " set backupskip=/tmp/*
-set backupdir=/tmp
+set backupdir=g:dev_temp
 
 set undofile
-set undodir=/tmp
+set undodir=g:dev_temp
 
 " History depth
 set history=256
@@ -407,8 +413,10 @@ if has("gui_running")
         set guicursor+=i-c:blinkwait10
     endif
 
+    if g:os == "Linux"
    " Bash in gvim will understand my aliases
    set shell=/bin/bash\ --login
+   endif
 
 else
 
@@ -698,6 +706,10 @@ command! -nargs=1 OpenURL :call OpenURL(<q-args>)
 
 let g:ctrlp_root_markers = ['_vimroot']
 let g:ctrlp_working_path_mode = "r"
+"let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$|.*\.(meta|scene|anim|prefab)$'
+let g:ctrlp_custom_ignore = {
+\ 'file': '\v\.(meta|prefab|png|unity|db)$'
+\ }
 " =========================================================================
 " Helper menus
 " =========================================================================
@@ -796,12 +808,14 @@ nnoremap <leader>ft :OmniSharpFindType<cr>
 nnoremap <leader>fs :OmniSharpFindSymbol<cr>
 nnoremap <leader>fu :OmniSharpFindUsages<cr>
 nnoremap <leader>fm :OmniSharpFindMembersInBuffer<cr>
+nnoremap <leader><space> :OmniSharpFindMembersInBuffer<cr>
 
 " cursor can be anywhere on the line containing an issue for this one
 nnoremap <leader>x  :OmniSharpFixIssue<cr>
 nnoremap <leader>fx :OmniSharpFixUsings<cr>
 nnoremap <leader>tt :OmniSharpTypeLookup<cr>
 nnoremap <leader>dc :OmniSharpDocumentation<cr>
+nnoremap <leader>gd :OmniSharpGotoDefinition<cr>
 
 " Session workflow
 nmap <leader>so :OpenSession<space>
@@ -817,12 +831,8 @@ set pastetoggle=<leader>2
 nmap <leader>3 :TlistToggle<CR>
 nmap <leader>4 :TagbarToggle<CR>
 nmap <leader>5 :NERDTreeToggle<CR>
-<<<<<<< HEAD
 nmap <leader>6 :BuffergatorToggle<CR>
-||||||| merged common ancestors
-=======
 "nmap <silent> <leader>6 :ConqueTermSplit bash<CR><Esc>:setlocal nolist<CR>a
->>>>>>> 63eaf369012a3eb2d769a55861bac54a8268fad6
 
 " Make p in Visual mode replace the selected text with the \" register.
 vmap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
@@ -874,9 +884,9 @@ imap jj <esc>
 nmap <silent> <leader>w :set invwrap<CR>:set wrap?<CR>
 
 " Buffers
-nmap <silent> <leader>bn :bn<CR>
-nmap <silent> <leader>bp :bp<CR>
-nmap <silent> <leader>bd :bd<CR>
+nmap <silent> <leader>] :bn<CR>
+nmap <silent> <leader>[ :bp<CR>
+nmap <silent> <leader>c :bd<CR>
 
 " Faster command access
 nmap <silent> <space> <NOP>
@@ -952,7 +962,11 @@ nmap <leader>yt :YcmCompleter GetType<cr>
 
 
 " == Unite =====
+let g:unite_source_history_yank_enable = 1
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+
 nnoremap <leader>uf :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async <cr>
+
 nnoremap <leader>ut :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
 nnoremap <leader>ur :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
 nnoremap <leader>uo :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
@@ -962,6 +976,15 @@ nnoremap <leader>ul :<C-u>Unite -buffer-name=lines  line<cr>
 nnoremap <leader>uc :<C-u>Unite colorscheme<cr>
 nnoremap <leader>uh :<C-u>Unite history/yank<cr>
 
+" Custom mappings for the unite buffer
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+  " Play nice with supertab
+  let b:SuperTabDisabled=1
+  " Enable navigation with control-j and control-k in insert mode
+  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+endfunction
 
 " Tab in normal mode is useless - use it to %
 nmap <Tab> %
