@@ -38,6 +38,8 @@ endif
 
 if !exists("g:bully_dev")
     let g:bully_dev = $bully_dev
+    "let g:bully_dev = "dstavila"
+    "let g:bully_dev = "demelev"
 endif
 
 " }}}
@@ -52,9 +54,14 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+Plugin 'Buffergator'
+
 " let Vundle manage Vundle
 Plugin 'gmarik/Vundle.vim'
 
+Plugin 'unite-yarm'
+Plugin 'WebAPI.vim'
+Plugin 'open-browser.vim'
 " ColorSchemeEditor
 Plugin 'ColorSchemeEditor'
 
@@ -686,7 +693,8 @@ command! -nargs=1 OpenURL :call OpenURL(<q-args>)
 
 "}}}
 
-let g:ctrlp_root_markers = ['Scripts']
+let g:ctrlp_root_markers = ['_vimroot']
+let g:ctrlp_working_path_mode = "r"
 " =========================================================================
 " Helper menus
 " =========================================================================
@@ -1169,3 +1177,4 @@ endif
 " ==============================================================================
 " Appendix
 " ==============================================================================
+colorscheme monokai
