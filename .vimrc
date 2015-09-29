@@ -559,6 +559,8 @@ let g:OmniSharp_host="http://localhost:20001"
 let g:ycm_csharp_server_port = 20001
 let g:OmniSharp_timeout = 1
 
+" === Buffergator ===
+let g:buffergator_suppress_keymaps = 1
 " }}}
 
 " =========================================================================
@@ -772,6 +774,7 @@ set pastetoggle=<leader>2
 nmap <leader>3 :TlistToggle<CR>
 nmap <leader>4 :TagbarToggle<CR>
 nmap <leader>5 :NERDTreeToggle<CR>
+nmap <leader>6 :BuffergatorToggle<CR>
 
 " Make p in Visual mode replace the selected text with the \" register.
 vmap p <Esc>:let current_reg = @"<CR>gvdi<C-R>=current_reg<CR><Esc>
