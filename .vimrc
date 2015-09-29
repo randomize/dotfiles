@@ -302,27 +302,27 @@ set updatetime=750
 set timeoutlen=1000
 
 if g:os == "Linux" || g:os == "Darwin"
-    set g:dev_temp=/tmp
+    let g:dev_temp='/tmp'
 elseif g:os == "Windows"
-    set g:dev_temp=D:/tmp
+    let g:dev_temp=D:/tmp
 endif
 
-" Backups
-set directory=g:dev_temp  " Risky but fast
+" Backups "Risky but fast
+exec ":set directory=".g:dev_temp
 
 set backup
 set writebackup
 " set backupskip=/tmp/*
-set backupdir=g:dev_temp
+exec ":set backupdir=".g:dev_temp
 
 set undofile
-set undodir=g:dev_temp
+exec ":set undodir=".g:dev_temp
 
 " History depth
 set history=256
 set undolevels=256
-
 " Search
+
 set hlsearch     " Highlight search results
 set ignorecase   " no sensitive to case
 set incsearch    " enable incremental search
@@ -590,9 +590,9 @@ let g:OmniSharp_timeout = 1
 " === Buffergator ===
 let g:buffergator_suppress_keymaps = 1
 
-=======
 " == NERD Tree ======
 let NERDTreeWinPos='right'
+
 
 " === Conque Settings =================
 "let g:ConqueTerm_FastMode = 1
