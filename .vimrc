@@ -301,16 +301,22 @@ set updatetime=750
 " Keystrokes timeout
 set timeoutlen=1000
 
+if g:os == "Linux" || g:os == "Darwin"
+    set g:dev_temp=/tmp
+elseif g:os == "Windows"
+    set g:dev_temp=D:/tmp
+endif
+
 " Backups
-set directory=/tmp  " Risky but fast
+set directory=g:dev_temp  " Risky but fast
 
 set backup
 set writebackup
 " set backupskip=/tmp/*
-set backupdir=/tmp
+set backupdir=g:dev_temp
 
 set undofile
-set undodir=/tmp
+set undodir=g:dev_temp
 
 " History depth
 set history=256
