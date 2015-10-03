@@ -133,6 +133,34 @@ setopt ALL_EXPORT
 
 # Keyboard ==================================================================================
 
+# Ctrl+space : ls current dir
+# Ctrl+shift+space : print Git/Svn status or list files with ls
+#
+vcs-status() {
+  \print; zle accept-line;
+  if [ -d .git ]; then
+    git status --short
+  elif [ -d .svn ]; then
+    svn status
+  else
+    ls++
+  fi
+  zle accept-line
+}
+
+ls-status() {
+  \print; zle accept-line;
+  ls++
+  zle accept-line
+}
+
+zle -N vcs-status
+zle -N ls-status
+
+bindkey '^ ' ls-status
+# bindkey '[d[c ' vcs-status
+
+
 # Run in vim mode
 bindkey -v
 export KEYTIMEOUT=1
@@ -732,8 +760,10 @@ timer() {
 
 highlightkeynote() { highlight --font=Consolas --font-size=24 --style=molokai -i "$@" -O rtf ;}
 
-function psgrep() { ps axuf | grep -v grep | grep "$@" -i }
+function psgrep() { ps axuf | grep -v grep | grep "$@" -i --color=auto; }
 function fname() { find . -iname "*$@*"; }
+function open() { xdg-open $1 &> /dev/null &disown; }
+function lt() { ls -ltrsa "$@" | tail; }
 
 # Add environment variable COCOS_CONSOLE_ROOT for cocos2d-x
 export COCOS_CONSOLE_ROOT=/home/randy/cocos2d-x/tools/cocos2d-console/bin

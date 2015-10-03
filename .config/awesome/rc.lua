@@ -131,7 +131,7 @@ mymainmenu = awful.menu({ items = { { "Awesome", myawesomemenu, beautiful.awesom
                                     { "MyPaint", "mypaint" },
                                     { "Gvim", "gvim" },
                                     { "Android Studio", "android-studio" },
-                                    { "Chromium", "chromium" },
+                                    { "Chromium", "chromium --incognito" },
                                     { "IM stuff", "urxvtc -e /home/randy/bin/tmux-im.sh" },
                                     { "FBReader", "FBReader" },
                                     { "Virtual Box", "VirtualBox" }
