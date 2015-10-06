@@ -318,9 +318,11 @@ exec ":set backupdir=".g:dev_temp
 set undofile
 exec ":set undodir=".g:dev_temp
 
+
 " History depth
 set history=256
 set undolevels=256
+
 " Search
 
 set hlsearch     " Highlight search results
