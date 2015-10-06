@@ -20,3 +20,4 @@ export TERMINAL="urxvtc"
 # Fonts in old aps
 export GDK_USE_XFT=1
 export QT_XFT=true
+export bully_dev="eugene"
