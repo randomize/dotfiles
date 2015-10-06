@@ -39,7 +39,7 @@ endif
 if !exists("g:bully_dev")
     let g:bully_dev = $bully_dev
     "let g:bully_dev = "dstavila"
-    "let g:bully_dev = "demelev"
+    " let g:bully_dev = "demelev"
 endif
 
 " }}}
@@ -160,7 +160,7 @@ Plugin 'jtratner/vim-flavored-markdown'
 Plugin 'vim-scripts/octave.vim--'
 Plugin 'vim-perl/vim-perl'
 Plugin 'wting/rust.vim'
-Plugin 'andersoncustodio/vim-tmux'
+" Plugin 'andersoncustodio/vim-tmux'
 Plugin 'vim-scripts/Logcat-syntax-highlighter'
 
 " ==== Other ==========================
@@ -1210,4 +1210,6 @@ endif
 " ==============================================================================
 " Appendix
 " ==============================================================================
-colorscheme monokai
+if bully_dev == "demelev"
+    colorscheme monokai
+endif
