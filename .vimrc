@@ -1064,7 +1064,7 @@ function! SetupCs()
     nnoremap <leader>uf :call Unite_ctrlp()<cr>
 
     " == Omnisharp ===
-    nnoremap <leader>sd :OmniSharpGotoDefinition<cr>
+    nnoremap <leader>sg :OmniSharpGotoDefinition<cr>
     nnoremap <leader>si :OmniSharpFindImplementations<cr>
     nnoremap <leader>st :OmniSharpFindType<cr>
     nnoremap <leader>ss :OmniSharpFindSymbol<cr>
