@@ -178,9 +178,9 @@ Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'Raimondi/delimitMate'
 
-if bully_dev != "demelev"
+"if bully_dev != "demelev"
     Plugin 'mhinz/vim-startify'
-endif
+"endif
 
 Plugin 'xuhdev/SingleCompile'
 Plugin 'vim-scripts/Improved-AnsiEsc'
@@ -451,6 +451,14 @@ endif
 " Plugin settings
 " =========================================================================
 " {{{
+
+" == openbrowser ===============
+let g:openbrowser_default_search = 'unity3d'
+let g:openbrowser_search_engines = extend(
+    \get(g:, 'openbrowser_search_engines', {}),
+    \{
+    \   'unity3d' : 'http://docs.unity3d.com/ScriptReference/30_search.html?q={query}'
+    \})
 
 " == startify ===============
 let g:startify_bookmarks = ['~/.vimrc','~/.zshrc','~/nfo/commands.txt',]
@@ -798,6 +806,9 @@ nmap <S-F11> :emenu FileFormat.<Tab><Tab>
 nmap <F12> :NERDTreeToggle<CR>
 
 " == Leader mappings =============
+
+" Openbrowser maps
+nmap <leader>sit <Plug>(openbrowser-search)
 
 " CtrlP maps
 map <A-b> :CtrlPBuffer<cr>
@@ -1213,3 +1224,7 @@ endif
 if bully_dev == "demelev"
     colorscheme monokai
 endif
+
+"function! PreviewWord()
+    "exec ":ptjump ".expand("<cword>")
+"endfunction
