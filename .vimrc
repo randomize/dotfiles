@@ -54,6 +54,8 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+Plugin 'echofunc.vim'
+
 Plugin 'Buffergator'
 
 " let Vundle manage Vundle
@@ -276,7 +278,8 @@ set cmdwinheight=16  " Command-line window
 set vb t_vb=
 
 if bully_dev == "demelev"
-    set statusline=%<%f%h%m%r%=format=%{&fileformat}\ file=%{&fileencoding}\ enc=%{&encoding}\ %b\ 0x%B\ %l,%c%V\ %P
+    "set statusline=%<%f%h%m%r%=format=%{&fileformat}\ file=%{&fileencoding}\ enc=%{&encoding}\ %b\ 0x%B\ %l,%c%V\ %P
+    set statusline=%{EchoFuncGetStatusLine()}
 endif
 
 
