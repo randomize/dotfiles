@@ -565,7 +565,7 @@ let g:LatexBox_viewer = 'zathura'
 let g:LatexBox_latexmk_options = '-pvc -pdflatex="pdflatex -shell-escape"'
 
 " == Ultisnips ==
-let g:UltiSnipsListSnippets=",usl"
+let g:UltiSnipsListSnippets="<c-;>"
 let g:UltiSnipsExpandTrigger="<c-l>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
