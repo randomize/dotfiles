@@ -52,9 +52,12 @@ endif
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
 
-Plugin 'echofunc.vim'
+if g:os == "Windows"
+    set rtp+=~/.vim
+endif
+
+call vundle#begin()
 
 Plugin 'Buffergator'
 
@@ -71,7 +74,7 @@ Plugin 'ColorSchemeEditor'
 Plugin 'ctrlpvim/ctrlp.vim'
 
 " TagHighlight
-Plugin 'vim-scripts/TagHighlight'
+Plugin 'demelev/TagHighlight'
 
 " cpp/h switch
 Plugin 'derekwyatt/vim-fswitch'
@@ -350,7 +353,8 @@ set wildcharm=<Tab>
 " Vim's default completion
 set complete+=k
 set complete+=kspell
-set completeopt="menu,menuone,longest,preview"
+set completeopt=menu,menuone,longest,preview
+let g:omnicomplete_fetch_documentation=1
 
 " Folding
 set foldenable
@@ -371,7 +375,9 @@ set modelines=5
 set viewoptions=cursor,options,folds,slash,unix
 
 " System default for mappings is now the ',' character
-let mapleader = ","
+if g:bully_dev != "demelev"
+    let mapleader = ","
+endif
 
 " Setup GVIM separately
 if has("gui_running")
@@ -523,6 +529,8 @@ let g:airline#extensions#tabline#show_buffers = 1
 
 let g:syntastic_error_symbol="✖"
 let g:syntastic_warning_symbol="⚠"
+let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
+set cmdheight=2
 
 " == Unite ==
 
@@ -599,6 +607,8 @@ let g:Omnisharp_stop_server  = 0
 let g:OmniSharp_host="http://localhost:20001"
 let g:ycm_csharp_server_port = 20001
 let g:OmniSharp_timeout = 1
+
+let g:OmniSharp_selector_ui = "ctrlp"
 
 " === Buffergator ===
 let g:buffergator_suppress_keymaps = 1
@@ -1225,9 +1235,10 @@ endif
 " Appendix
 " ==============================================================================
 if bully_dev == "demelev"
-    colorscheme monokai
+    colorscheme monokai_next
 endif
 
 "function! PreviewWord()
     "exec ":ptjump ".expand("<cword>")
 "endfunction
+"
