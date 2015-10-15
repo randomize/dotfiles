@@ -31,6 +31,10 @@ snippet dlw "Debug.LogWarning( ... );"
 Debug.LogWarning("${1:Message}");
 endsnippet
 
+snippet db "Debug.Break();"
+Debug.Break();
+endsnippet
+
 # == MonoBehaviour  =================
 
 snippet upd "void Update() { ... }"
@@ -199,7 +203,7 @@ endsnippet
 snippet re "#region Events"
 
 #region Events
-    ${1}
+	${1}
 #endregion
 
 ${0}
@@ -208,7 +212,7 @@ endsnippet
 snippet rs "#region Serializable data"
 
 #region Serializable data
-    ${1}
+	${1}
 #endregion
 
 ${0}
@@ -217,7 +221,7 @@ endsnippet
 snippet rp "#region Private fields"
 
 #region Private fields
-    ${1}
+	${1}
 #endregion
 
 ${0}
@@ -226,7 +230,7 @@ endsnippet
 snippet rpu "#region Public methods and properties"
 
 #region Public methods and properties
-    ${1}
+	${1}
 #endregion
 
 ${0}
@@ -235,7 +239,7 @@ endsnippet
 snippet rm "#region MonoBehaviour methods"
 
 #region MonoBehaviour methods
-    ${1}
+	${1}
 #endregion
 
 ${0}
@@ -373,6 +377,31 @@ endsnippet
 
 snippet rn "return null;"
 return null;
+endsnippet
+
+# C# Properties =================
+snippet "pro (\w+)" r
+public ${1:bool} `!p snip.rv = match.group(1)`
+{
+	get
+	{
+		${2}
+	}
+}
+endsnippet
+
+snippet "pr (\w+)" r
+public ${1:bool} `!p snip.rv = match.group(1)`
+{
+	get
+	{
+		${2}
+	}
+	set
+	{
+		${3}
+	}
+}
 endsnippet
 
 # === Templates ===================
