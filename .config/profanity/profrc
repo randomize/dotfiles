@@ -18,7 +18,7 @@ flash=false
 privileges=true
 presence=true
 wrap=true
-time=minutes
+time=%H:%M
 statuses.muc=off
 statuses.console=off
 statuses.chat=online
@@ -30,7 +30,8 @@ roster.resource=true
 roster.by=presence
 roster.size=25
 
-otr.warn=true
+
+enc.warn=true
 
 [logging]
 chlog=true

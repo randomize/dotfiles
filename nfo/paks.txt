@@ -149,6 +149,7 @@ Bluetooth and network:
 
    bluez             // Bluetooth
    bluez-utils       // Utils
+   ntp               // Network time sync
 
    python-twisted    // For simple HTTP server sharing
    python2-twisted
@@ -156,8 +157,11 @@ Bluetooth and network:
    nethogs           // Network monitor
    nmap              // Network security scanner
    nload             // Network load monitor
+   ntop              // Another net monitor
 
    wireshark-gtk     // Network sniffer
+
+
 
 Video:
 
@@ -258,7 +262,7 @@ Themes:
 Terminal emulators:
 
    aur/rxvt-unicode-patched   // Default terminal, using urxvt{d,c} pair, patched for fonts
-   local/st-git               // JIC fall-back, (+my patches)
+   local/st                   // JIC fall-back, (+my patches)
    xterm                      // Another JIC term ;)
    aur/cool-retro-term-git      // Eye-candy old school terminal emulator
 
@@ -351,7 +355,7 @@ Nautilus:
 Other file managers:
 
    mc
-   aur/ranger-git   // Fast and pretty manager powered by Vim keys (see setup(18))
+   aur/ranger   // Fast and pretty manager powered by Vim keys (see setup(18))
    //vifm             // ranger is preferable but this good too
 
 Archives:
@@ -435,6 +439,8 @@ IDE and editors:
    eclipse            // Big and fat but good for Android
    codeblocks         // For oFramework projects
    android-studio     // New Android IDE
+   aur/atom-editor    // New nice JS interfaced edior
+   aur/neovim-git     // Neovim - new vim
 
    sublime-text-dev                   // Shiny text editor
    monodevelop                        // Mono IDE
@@ -615,6 +621,7 @@ Other Languages:
    rust     // Rust
    ruby     // Ruby
    //dlang    // D language group
+   scala    // Scala tools (used as ineractive Java REPL)
 
    perl-lwp-protocol-https  // Used for some scripts
    gcc-fortran              // Fortran support
@@ -638,6 +645,14 @@ Fonts:
 
    infinality/ibfonts-meta-base        // Fonts pack
    //infinality/ibfonts-meta-extended  // To avoid font cache overwhelming
+
+   //Chinese
+   tegaki-models-zinnia-traditional-chinese
+   adobe-source-han-sans-cn-fonts
+   adobe-source-han-sans-jp-fonts
+   adobe-source-han-sans-kr-fonts
+   adobe-source-han-sans-otc-fonts
+   adobe-source-han-sans-tw-fonts
 
 Browsers:
 
@@ -681,7 +696,8 @@ Instant Messaging:
    aur/profanity-git  // True console XMPP
 
    irssi     // IRC client
-   aur/utox-git  // for toxing (also installs tox-git
+   //aur/utox-git  // for toxing (also installs tox-git
+   toxic
 
 Audio and Sound:
 
@@ -817,7 +833,8 @@ Math:
 
    bc                // Actually I use python for such stuff. JIC
    octave            // Matlab free alternative
-   sage-mathematics  // Big python mathematics system, brings maxima-ecl as dependency
+   sagemath          // Big python mathematics system, brings maxima-ecl as dependency
+    
    //maxima            // Old and powerful algebra system
    wxmaxima          // GUI version
    //aur/r-mkl       // R (faster edition with Intel MKL)
@@ -868,6 +885,7 @@ Games and fun:
    figlet        // ASCII art text
    fortune-mod   // Random quote displayer
    fortune-mod-vimtips
+   tbclock       // Binary clock
 
    fceux      // NES emulator
    //aur/fakenes  // Another NES emulator
