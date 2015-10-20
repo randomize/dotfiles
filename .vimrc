@@ -282,7 +282,6 @@ set vb t_vb=
 
 if bully_dev == "demelev"
     "set statusline=%<%f%h%m%r%=format=%{&fileformat}\ file=%{&fileencoding}\ enc=%{&encoding}\ %b\ 0x%B\ %l,%c%V\ %P
-    set statusline=%{EchoFuncGetStatusLine()}
 endif
 
 
@@ -310,7 +309,7 @@ set timeoutlen=1000
 if g:os == "Linux" || g:os == "Darwin"
     let g:dev_temp='/tmp'
 elseif g:os == "Windows"
-    let g:dev_temp=D:/tmp
+    let g:dev_temp=$TMP
 endif
 
 " Backups "Risky but fast
@@ -608,7 +607,12 @@ let g:OmniSharp_host="http://localhost:20001"
 let g:ycm_csharp_server_port = 20001
 let g:OmniSharp_timeout = 1
 
-let g:OmniSharp_selector_ui = "ctrlp"
+"let g:OmniSharp_server_type = 'v1'
+let g:OmniSharp_server_type = 'roslyn'
+
+if g:bully_dev != "eugene"
+    let g:OmniSharp_selector_ui = "ctrlp"
+endif
 
 " === Buffergator ===
 let g:buffergator_suppress_keymaps = 1
