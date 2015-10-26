@@ -854,6 +854,7 @@ nmap <leader>sd :DeleteSession<CR>
 nmap <leader>sc :CloseSession<CR>
 
 
+vmap <leader>wr :WrapWithRegion<cr>
 " Toggle things
 " nmap <leader>1 :GundoToggle<CR>
 nmap <leader>1 :UndotreeToggle<CR>
