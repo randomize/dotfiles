@@ -596,6 +596,8 @@ let g:Omnisharp_stop_server  = 0
 let g:OmniSharp_host="http://localhost:20001"
 let g:ycm_csharp_server_port = 20001
 let g:OmniSharp_timeout = 1
+"let g:OmniSharp_server_type = 'v1'
+"let g:OmniSharp_server_type = 'roslyn'
 
 " === Buffergator ===
 let g:buffergator_suppress_keymaps = 1

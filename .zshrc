@@ -779,3 +779,5 @@ export PATH=$ANDROID_SDK_ROOT:$PATH
 export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
 
 
+# Dnvm is required for roslyn omnisharp server
+[ -s "/home/randy/.dnx/dnvm/dnvm.sh" ] && . "/home/randy/.dnx/dnvm/dnvm.sh" # Load dnvm
