@@ -30,9 +30,6 @@ android/
 .config/ranger/bookmarks
 
 # Vim temporals/generated
-.vim/bundle
-.vim/view
-.vim/session
 .viminfo
 .nviminfo
 .nvimlog
