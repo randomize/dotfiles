@@ -52,6 +52,11 @@ endif
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
+
+if g:os == "Windows"
+    set rtp+=~/.vim
+endif
+
 call vundle#begin()
 
 Plugin 'Buffergator'
@@ -69,7 +74,7 @@ Plugin 'ColorSchemeEditor'
 Plugin 'ctrlpvim/ctrlp.vim'
 
 " TagHighlight
-Plugin 'vim-scripts/TagHighlight'
+Plugin 'demelev/TagHighlight'
 
 " cpp/h switch
 Plugin 'derekwyatt/vim-fswitch'
@@ -276,7 +281,7 @@ set cmdwinheight=16  " Command-line window
 set vb t_vb=
 
 if bully_dev == "demelev"
-    set statusline=%<%f%h%m%r%=format=%{&fileformat}\ file=%{&fileencoding}\ enc=%{&encoding}\ %b\ 0x%B\ %l,%c%V\ %P
+    "set statusline=%<%f%h%m%r%=format=%{&fileformat}\ file=%{&fileencoding}\ enc=%{&encoding}\ %b\ 0x%B\ %l,%c%V\ %P
 endif
 
 
@@ -304,7 +309,7 @@ set timeoutlen=1000
 if g:os == "Linux" || g:os == "Darwin"
     let g:dev_temp='/tmp'
 elseif g:os == "Windows"
-    let g:dev_temp=D:/tmp
+    let g:dev_temp=$TMP
 endif
 
 " Backups "Risky but fast
@@ -347,7 +352,8 @@ set wildcharm=<Tab>
 " Vim's default completion
 set complete+=k
 set complete+=kspell
-set completeopt="menu,menuone,longest,preview"
+set completeopt=menu,menuone,longest,preview
+let g:omnicomplete_fetch_documentation=1
 
 " Folding
 set foldenable
@@ -368,7 +374,9 @@ set modelines=5
 set viewoptions=cursor,options,folds,slash,unix
 
 " System default for mappings is now the ',' character
-let mapleader = ","
+if g:bully_dev != "demelev"
+    let mapleader = ","
+endif
 
 " Setup GVIM separately
 if has("gui_running")
@@ -520,6 +528,8 @@ let g:airline#extensions#tabline#show_buffers = 1
 
 let g:syntastic_error_symbol="✖"
 let g:syntastic_warning_symbol="⚠"
+let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
+set cmdheight=2
 
 " == Unite ==
 
@@ -598,6 +608,13 @@ let g:ycm_csharp_server_port = 20001
 let g:OmniSharp_timeout = 1
 "let g:OmniSharp_server_type = 'v1'
 "let g:OmniSharp_server_type = 'roslyn'
+
+"let g:OmniSharp_server_type = 'v1'
+let g:OmniSharp_server_type = 'roslyn'
+
+if g:bully_dev != "eugene"
+    let g:OmniSharp_selector_ui = "ctrlp"
+endif
 
 " === Buffergator ===
 let g:buffergator_suppress_keymaps = 1
@@ -839,6 +856,7 @@ nmap <leader>sd :DeleteSession<CR>
 nmap <leader>sc :CloseSession<CR>
 
 
+vmap <leader>wr :WrapWithRegion<cr>
 " Toggle things
 " nmap <leader>1 :GundoToggle<CR>
 nmap <leader>1 :UndotreeToggle<CR>
@@ -1224,9 +1242,10 @@ endif
 " Appendix
 " ==============================================================================
 if bully_dev == "demelev"
-    colorscheme monokai
+    colorscheme monokai_next
 endif
 
 "function! PreviewWord()
     "exec ":ptjump ".expand("<cword>")
 "endfunction
+"
