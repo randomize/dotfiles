@@ -4,7 +4,7 @@ Arch Linux dotfiles
 # Contents #
 
  * Zsh (uses zsh-syntax-highlighting, zbell, autojump, ls++)
- * Vim (with Vundle as package manager)
+ * Vim (with Vundle as package manager) - as a submodule
  * Tmux (with powerline)
  * Awesome WM (naughty, mpd-widget, drop-down terminals)
  * Conky some basic setup
