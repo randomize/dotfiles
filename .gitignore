@@ -18,6 +18,7 @@
 
 # Zsh temporals/generated
 /.zsh_history
+/.zcompdump
 
 # Awesome temporals/generated
 /.config/awesome/archmenu.lua
