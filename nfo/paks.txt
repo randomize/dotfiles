@@ -264,7 +264,7 @@ Terminal emulators:
    aur/rxvt-unicode-patched   // Default terminal, using urxvt{d,c} pair, patched for fonts
    local/st                   // JIC fall-back, (+my patches)
    xterm                      // Another JIC term ;)
-   aur/cool-retro-term-git      // Eye-candy old school terminal emulator
+   cool-retro-term            // Eye-candy old school terminal emulator
 
 Shells:
 
@@ -440,7 +440,7 @@ IDE and editors:
    codeblocks         // For oFramework projects
    android-studio     // New Android IDE
    aur/atom-editor    // New nice JS interfaced edior
-   aur/neovim-git     // Neovim - new vim
+   neovim             // Neovim - new vim
 
    sublime-text-dev                   // Shiny text editor
    monodevelop                        // Mono IDE
@@ -499,6 +499,7 @@ C++ libs:
    box2d          // 2D Physics
    assimp         // Assets lib
    ogre           // 3D Engine
+   openexr        // Erx image support
 
    opencv         // Computer vision lib
    opencv-samples // and samples
@@ -576,6 +577,7 @@ Database and Web:
    mysql-workbench
    mariadb          // Mysql fork
    nodejs
+   npm
 
 Emulation:
 
@@ -693,7 +695,7 @@ Instant Messaging:
    aur/pidgin-latex   // Add-on for LaTeX support
 
    //finch            // Console XMPP
-   aur/profanity-git  // True console XMPP
+   profanity          // True console XMPP
 
    irssi     // IRC client
    //aur/utox-git  // for toxing (also installs tox-git
@@ -743,7 +745,7 @@ Music and lifecoding:
 Media players:
 
    mplayer          // Good old player
-   aur/mpv-git      // Nice new player (building from source)
+   mpv              // Nice new player 
    vlc              // Good too player
 
    mpd              // Music player daemon
@@ -835,7 +837,7 @@ Math:
    octave            // Matlab free alternative
    sagemath          // Big python mathematics system, brings maxima-ecl as dependency
     
-   //maxima            // Old and powerful algebra system
+   maxima            // Old and powerful algebra system
    wxmaxima          // GUI version
    //aur/r-mkl       // R (faster edition with Intel MKL)
    //golly             // Powerfull Game Of Life solver, fast(very), tons of tweaks in rules and many presets
@@ -889,7 +891,7 @@ Games and fun:
 
    fceux      // NES emulator
    //aur/fakenes  // Another NES emulator
-   //openmw   // Morrowing, my love! Now on GNU/Linux
+   openmw   // Morrowing, my love! Now on GNU/Linux
 
 Android development:
 

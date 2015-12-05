@@ -354,7 +354,7 @@ alias lsa='ls -ld .*'
 alias la='ls++ -a'
 alias ll='ls++'
 alias l='ll'
-alias sl='ls'
+#alias sl='ls' # let the train help it!
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 
@@ -402,6 +402,7 @@ alias cmake-debug='cmake -DCMAKE_BUILD_TYPE=Debug'
 
 # Update shorthand
 alias update='sudo pacman -Suy'
+alias pacinst='sudo pacman -S'
 
 # IPad management
 alias mount-ipad-pdf='ifuse --appid com.readdle.PDFExpertIPad /mnt/ipad && cd /mnt/ipad'
