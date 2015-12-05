@@ -1,135 +1,41 @@
 
 
 # Default XDG folders
-Desktop/
-Documents/
-Downloads/
-Pictures/
-Public/
-Templates/
-Videos/
-Music/
-
-# My stuff
-workspace/
-cocos2d-x/
-rdev/
-intel/
-paks/
-IdeaProjects/
-VM/
-AndroidStudioProjects/
-android/
+/Desktop/
+/Documents/
+/Downloads/
+/Pictures/
+/Public/
+/Templates/
+/Videos/
+/Music/
 
 # Private
-.ssh/
-.password-store/
-.jrnl_config
-.itmages.conf
-.dropbox_uploader
-.config/ranger/bookmarks
+/.ssh/
 
 # Vim temporals/generated
-.viminfo
-.nviminfo
-.nvimlog
+/.viminfo
 
 # Zsh temporals/generated
-.zsh_history
+/.zsh_history
 
 # Awesome temporals/generated
-.config/awesome/archmenu.lua
-.config/awesome/awesompd/
+/.config/awesome/archmenu.lua
+/.config/awesome/awesompd/
 
 # Mpd
-.config/mpd/log
-.config/mpd/pid
-.config/mpd/state
-.config/mpd/sticker.sql
-.config/mpd/database
-.config/mpd/playlists/
+/.config/mpd/log
+/.config/mpd/pid
+/.config/mpd/state
+/.config/mpd/sticker.sql
+/.config/mpd/database
+/.config/mpd/playlists/
 
 # Temporary dirs
-.thumbnails/
-.log/
-.cache/
-.ccache/
-.java/
+/.cache/
 
 # Temporary files
-.octave_hist
-.lesshst
-.ICEauthority
-.Xauthority
-.esd_auth
-.xsel.log
-.sdcv_history
-.zcompdump
-.recently-used
-.python_history
-.cgdb/readline_history.txt
-.w3m/history
-.config/ranger/__pycache__/
-.config/ranger/history
-.awesome-client_history
-.dropshell_history
-.gdb_history
-.emacs.d/eshell/history
-.sqlite3_history
 
 # Major soft
-.mozilla/
-.Mathematica/
-.PyCharm40/
-.aMule/
-.android/
-.eclipse/
-.mypaint/
-.pentadactyl/
-.ncmpcpp/error.log
-.pki/
-.ipython/
-.gimp-2.8/
-.texlive/
-.codeblocks/
-.mono/
-.wireshark/
-.designer/
-.irssi/config
-.htcfg2
-.jackdrc
-.racket/racket-prefs.rktd
-.p7zip
-.zynaddsubfxXML.cfg
-.wxMaxima
-.xournalpp/
-.unite/
-.ssr/
-.tgdb/
-.stardict/
-.qmc2/
-.kde4/
-.vifm/
-.FBReader/
-.cmus/
-.ghc/
-.gnupg/
-.fonts/
-.xdg_menu_cache/
-.gnome/
-.dbus/
-.gstreamer-0.10/
-.IdeaIC13/
-.fltk/
-.goldendict/
-.sane/
-.w3m/
-.golly/
-.subversion/
-.AndroidStudio/
-.Leap Motion/
 
 # Dot config dirs
-.config/
-.local/
-.vim/spell/
