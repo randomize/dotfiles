@@ -8,7 +8,7 @@
 
 -- {{{ Main
 theme = {}
-theme.wallpaper = "/home/randy/Pictures/wall.jpg"
+theme.wallpaper = "/home/randy/Pictures/wall-2.jpg"
 -- }}}
 
 -- {{{ Styles

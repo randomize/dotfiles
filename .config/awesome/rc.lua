@@ -17,6 +17,7 @@ local menubar = require("menubar")
 
 -- {{{ Notifications handler
 naughty.config.notify_callback = function(args)
+    if args.title == "Volume" then return args end
     awful.util.spawn_with_shell("/home/randy/bin/log_notification '" .. (args.title or "") .. "' '" .. args.text .. "'")
     awful.util.spawn("paplay " .. awful.util.getdir("config") .. "/notify.wav", false);
     return args
@@ -118,7 +119,7 @@ end
 -- Create a laucher widget and a main menu
 myawesomemenu = {
    { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
+   { "edit config", "gvim " .. awesome.conffile },
    { "restart", awesome.restart },
    { "quit", awesome.quit }
 }
@@ -131,7 +132,7 @@ mymainmenu = awful.menu({ items = { { "Awesome", myawesomemenu, beautiful.awesom
                                     { "MyPaint", "mypaint" },
                                     { "Gvim", "gvim" },
                                     { "Android Studio", "android-studio" },
-                                    { "Chromium", "chromium --incognito" },
+                                    { "Chromium", "chromium" },
                                     { "IM stuff", "urxvtc -e /home/randy/bin/tmux-im.sh" },
                                     { "FBReader", "FBReader" },
                                     { "Virtual Box", "VirtualBox" }
@@ -662,8 +663,8 @@ awful.rules.rules = {
      }
     },
     -- Floating centered windows by class
-    { rule_any = { class = { "pinentry", "Xmessage", "feh", "screekey" }},
-       properties = { floating = true },
+    { rule_any = { class = { "pinentry", "Xmessage", "feh", "screekey", "mpv", "Sushi-start" }},
+       properties = { floating = true, tag = tags[2][1], },
        callback = function (c) awful.placement.centered(c,nil) end
     },
     -- Floating windows by class
