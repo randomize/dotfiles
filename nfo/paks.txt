@@ -82,7 +82,7 @@ Contents of gnome group:
    //epiphany                 // Some Browser I don't use
    evince                     // Document viewer
    //gdm                      // Gnome display manager
-   //gnome-backgrounds        // Wallpapers
+   gnome-backgrounds        // Wallpapers
    //gnome-calculator
    //gnome-contacts
    //gnome-control-center
@@ -116,6 +116,7 @@ Contents of gnome group:
    vino
    xdg-user-dirs-gtk
    //yelp                  // Help browser
+   pulseaudio              // Pshhhaudio
 
 
 First to install:
@@ -145,7 +146,9 @@ Bluetooth and network:
    gnu-netcat        // Network piping application
    ngrep             // Network packet grep 
    mtr               // Combines the functionality of traceroute and ping into one tool
-   dnsutils          // dig, nslookup and others
+
+   //dnsutils        // dig, nslookup and others
+   bind-tools        // dig, nslookup and others
 
    bluez             // Bluetooth
    bluez-utils       // Utils
@@ -235,9 +238,10 @@ Window managers and DE:
    //i3-wm         // Another good tiling WM
    //i3status      // Status bar for it
    conky           // System monitor
-   dmenu2          // Fork of dmenu with some extra stuff, bind on Win+Shift+R
+   //dmenu2          // Fork of dmenu with some extra stuff, bind on Win+Shift+R
+   aur/dmenu-xft-mouse-height-fuzzy-history
 
-   //xmonad          // Haskell window manager
+   xmonad          // Haskell window manager
 
 Recoll and helpers:
 
@@ -283,7 +287,9 @@ Console tools:
 
    unp            // Console universal unpacker
    par2cmdline    // Par2 utility (backups)
-   aur/rmlint-git // Duplicate files searcher and remover
+   rmlint         // Duplicate files searcher and remover
+   rmlint-shredder  // Duplicate files searcher and remover - helper
+   lostfiles      // Show pacman untracked crap on hdd
    aur/pxz-git    // Parallel xz
 
    pv             // Pipe viewer, can be used for progress monitoring
@@ -346,6 +352,7 @@ Nautilus:
    gvfs-afc
    gvfs-afp
    gvfs-gphoto2
+   gvfs-nfs
    libgphoto2
 
    dosfstools           // For old FAT etc.
@@ -448,6 +455,8 @@ IDE and editors:
 
 
    // qt group
+   qt5-3d
+   qt5-canvas3d
    qt5-base
    qt5-xmlpatterns
    qt5-declarative
@@ -468,6 +477,8 @@ IDE and editors:
    qt5-tools
    qt5-websockets
    qt5-x11extras
+   qt5-wayland
+   qt5-webengine
 
    qtcreator          // Nice IDE
    qt5-doc            // Documentation
@@ -508,6 +519,7 @@ C++ libs:
    intel-tbb      // "Parallel STL"
 
    glade          // GUI builder for GTK 3, also there is glade
+   cppunit
 
 Debuggers:
 
@@ -522,8 +534,8 @@ Assemblers:
 
    nasm           // One
    yasm           // Two
-   fasm           // Three 
-   aur/fasmarm    // port for ARM
+   //fasm           // Requires multilib for lib32 stuff - booooo
+   //aur/fasmarm    // port for ARM - no longer alive
 
 Reverse:
 
@@ -591,6 +603,9 @@ Emulation:
 
    qemu   // Good alternative, TODO: setup later with kickass KVM
 
+CD DVD:
+   cdrkit // For fileroller to understand iso
+
 Python stuff:
 
    ipython                // Interactive python
@@ -599,6 +614,7 @@ Python stuff:
    python-scipy           // Math stuff
    python-matplotlib      // Powerful plotting library
    python-scikit-learn    // Machine learning algorithms
+   python-scikit-image
    python-pillow
 
    wxpython               // for ipython
@@ -606,6 +622,8 @@ Python stuff:
    python-pyqt4           // for ipython qt console
    python-pyqt5           // for matplotlib
    python-pygments        // Coloring syntax library (for ipython qt console)
+   pygmentize             // Standlalone tool for using pygments
+
    python-pyzmq           // for ipython notebook and ipython qt console
    python-tornado         // for ipython notebook
    python-jinja           // for ipython notebook
@@ -669,6 +687,7 @@ Browsers:
    w3m                    // Text browser 
    //aur/vimprobable2-git // Minimalistic vimlike browser
    //dwb                  // Another smal browser
+   qutebrowser            // dwb inspired activly developed vim-browser
 
 Mail:
 
@@ -726,13 +745,21 @@ Audio and Sound:
    // Synths
    zynaddsubfx      // Synthesiser
 
+   // Speech
+   festival
+   festival-english
+   festival-us
+   festvox-ru
+   espeak
+   espeakup
+
 Music and lifecoding:
 
    chuck            // Sound coding
    miniaudicle      // Chuck GUI
 
    //supercollider
-   pd               // Pure data
+   pd-extended      // Pure data
    processing       // coding environment
 
    audacity
@@ -758,16 +785,19 @@ Media players:
 
 Stream grabbers:
 
-   aur/livestreamer-git     // Helper script to live streaming
-   youtube-dl
+   livestreamer     // Helper script to live streaming
+   aur/youtube-dl-git // Donloader
+   you-get          // Anotehr one downloader
 
 Multimedia tools:
 
    ffmpeg
    mkvtoolnix-cli
    mediainfo
-   aur/mp3val  // MP3 file validator and fixer
-   aur/v4l2loopback // Loopback video device /dev/video1
+   aur/mp3val       // MP3 file validator and fixer
+   //aur/v4l2loopback // Loopback video device /dev/video1
+   v4l2ucp            // Contol panel for v4l2
+
 
 Codecs:
 
@@ -775,6 +805,12 @@ Codecs:
    flac     // FLAC
    x264     // x264
    x265
+
+   // Gstreamer stuff
+   gst-plugins-bad
+   gst-plugins-good
+   gst-plugins-ugly
+   gst-libav
 
 Screen capture:
 
@@ -788,7 +824,7 @@ Screen capture:
 Monitor tools:
 
    xorg-xrandr
-   //ddccontrol       // See also ddccontrol PKGBUILD
+   ddccontrol-git       // See also ddccontrol PKGBUILD
    //ddccontrol-db    // Database, no W2600HP yet. TODO: contribute
 
 Sketching:
@@ -880,7 +916,7 @@ Games and fun:
    gnugo  // Go game engine
    gogui  // GUI-sh go board
 
-   archey   // Simple script to print out nice Arch logo with some info
+   archey3   // Simple script to print out nice Arch logo with some info
    joyutils // Pad control utilities
    cowsay   // Cows are good
    cmatrix       // Screensaver ;)
@@ -892,6 +928,7 @@ Games and fun:
    fceux      // NES emulator
    //aur/fakenes  // Another NES emulator
    openmw   // Morrowing, my love! Now on GNU/Linux
+   sl       // Qute train
 
 Android development:
 

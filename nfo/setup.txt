@@ -22,6 +22,13 @@ Filesystem   Size  Used Avail Use% Mounted on  Label
 /dev/sda7     50G  9.9G   38G  21% /home       home
 /dev/sdb1    932G  733G  199G  79% /mnt/TERRA
 
+#==== Net =============================
+
+# hostnamectl set-hostname rbig
+
+set in /etc/hosts manually
+
+
 #==== Pacman and Aur ==== (1)
 
    Enable color in pacman:

@@ -8,4 +8,5 @@ yaourt -Qe | sed -e "s/.*\///g" | sed -e "s/ .*//" | sort > /tmp/locals.txt
 
 sleep 1
 
-meld /tmp/locals.txt /tmp/mentioned.txt >/dev/null 2>&1 &
+#meld /tmp/locals.txt /tmp/mentioned.txt >/dev/null 2>&1 &
+vimdiff /tmp/locals.txt /tmp/mentioned.txt
