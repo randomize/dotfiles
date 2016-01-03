@@ -57,10 +57,12 @@ eval `dircolors -b $HOME/.dircolors`
 export HISTFILE=~/.zsh_history
 export HISTSIZE=50000
 export SAVEHIST=50000
-setopt HIST_IGNORE_DUPS
-setopt HIST_REDUCE_BLANKS
-setopt HIST_IGNORE_SPACE
-setopt EXTENDED_HISTORY # Timestamp history
+setopt hist_ignore_dups
+setopt hist_reduce_blanks
+setopt hist_ignore_space
+setopt extended_history # Timestamp history
+setopt share_history
+setopt inc_append_history
 
 
 # Completion
@@ -403,6 +405,7 @@ alias cmake-debug='cmake -DCMAKE_BUILD_TYPE=Debug'
 # Update shorthand
 alias update='sudo pacman -Suy'
 alias pacinst='sudo pacman -S'
+alias pacexpl='sudo pacman -D --asexplicit'
 
 # IPad management
 alias mount-ipad-pdf='ifuse --appid com.readdle.PDFExpertIPad /mnt/ipad && cd /mnt/ipad'
