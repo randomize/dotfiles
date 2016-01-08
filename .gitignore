@@ -10,6 +10,10 @@
 /Videos/
 /Music/
 
+# My stuff
+/build/
+
+
 # Private
 /.ssh/
 
@@ -31,12 +35,98 @@
 /.config/mpd/sticker.sql
 /.config/mpd/database
 /.config/mpd/playlists/
+/.ncmpcpp/error.log
 
 # Temporary dirs
 /.cache/
 
 # Temporary files
+/.Xauthority
+/.notifyhist
+/.lesshst
 
-# Major soft
+# === Soft =========================
 
-# Dot config dirs
+# My Paint
+/.mypaint/
+
+# Firefox
+/.mozilla/
+
+# Vlc
+/.config/vlc
+
+# Ipython
+/.ipython
+
+# HEx editor HTE
+/.htcfg2
+
+# Perforce
+/.config/Perforce
+.p4qt/
+.p4tickets
+
+# Mono
+/.config/.mono
+/.mono/
+
+# Keepass
+/.config/KeePass/
+/.recently-used
+
+# Qt
+/.config/QtProject.conf
+/.config/Trolltech.conf
+
+# Chrome
+/.config/chromium/
+
+# Dconf
+/.config/dconf/
+
+# Copyq
+/.config/copyq/
+
+# Octave
+/.config/octave/
+/.octave_hist
+
+# Pidgin
+/.purple/
+
+#============================================
+
+/.local/
+/.pki/
+/.recently-used
+/.xdg_menu_cache/
+/.xsel.log
+/.android/
+/.esd_auth
+/.gnupg/
+/.java/
+/.pentadactyl/
+/.sdcv_history
+
+/.config/Unity/
+/.config/enchant/
+/.config/gtk-2.0/
+/.config/htop/
+/.config/libreoffice/
+/.config/mimeapps.list
+/.config/nautilus-actions/
+/.config/nautilus-compare.conf
+/.config/nautilus/
+/.config/pavucontrol.ini
+/.config/pulse/
+/.config/qBittorrent/
+/.config/qutebrowser/
+/.config/radare2/
+/.config/ranger/bookmarks
+/.config/ranger/history
+/.config/unity3d/
+/.config/user-dirs.dirs
+/.config/user-dirs.locale
+/.config/vmpk.sourceforge.net/
+
