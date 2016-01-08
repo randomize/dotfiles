@@ -219,7 +219,7 @@ Window managers and DE:
    libnotify           // notifications lib
 
    parcellite      // clipboard manager good and lite (Has problems with nautilus Cut/Copy/Paste)
-   copyq           // Another clipboard manager
+   aur/copyq           // Another clipboard manager
 
    xscreensaver    // Screen saver
 
@@ -239,7 +239,7 @@ Window managers and DE:
    //i3status      // Status bar for it
    conky           // System monitor
    //dmenu2          // Fork of dmenu with some extra stuff, bind on Win+Shift+R
-   aur/dmenu-xft-mouse-height-fuzzy-history
+   aur/dmenu-xft-mouse-height-fuzzy-history // better fork of dmenu
 
    xmonad          // Haskell window manager
 
