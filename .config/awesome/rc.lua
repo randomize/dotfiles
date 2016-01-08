@@ -15,10 +15,13 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 
+-- Awesome is not parsing ~ -> adding this workaround
+home_dir_path = "/home/randy"
+
 -- {{{ Notifications handler
 naughty.config.notify_callback = function(args)
     if args.title == "Volume" then return args end
-    awful.util.spawn_with_shell("/home/randy/bin/log_notification '" .. (args.title or "") .. "' '" .. args.text .. "'")
+    awful.util.spawn_with_shell(home_dir_path .. "/bin/log_notification '" .. (args.title or "") .. "' '" .. args.text .. "'")
     awful.util.spawn("paplay " .. awful.util.getdir("config") .. "/notify.wav", false);
     return args
 end
@@ -133,7 +136,7 @@ mymainmenu = awful.menu({ items = { { "Awesome", myawesomemenu, beautiful.awesom
                                     { "Gvim", "gvim" },
                                     { "Android Studio", "android-studio" },
                                     { "Chromium", "chromium" },
-                                    { "IM stuff", "urxvtc -e /home/randy/bin/tmux-im.sh" },
+                                    { "IM stuff", "urxvtc -e " .. home_dir_path .. "/bin/tmux-im.sh" },
                                     { "FBReader", "FBReader" },
                                     { "Virtual Box", "VirtualBox" }
                                   }
@@ -180,7 +183,7 @@ musicwidget.output_size = 30 -- Set the size of widget in symbols
 musicwidget.update_interval = 3 -- Set the update interval in seconds
 
 -- Set the folder where icons are located
-musicwidget.path_to_icons = "/home/randy/.config/awesome/awesompd/icons"
+musicwidget.path_to_icons = awful.util.getdir("config") .. "/awesompd/icons"
 
 -- Set the path to the icon to be displayed on the widget itself
 -- musicwidget.widget_icon = "/path/to/icon"
@@ -204,7 +207,7 @@ musicwidget.album_cover_size = 64
 
 -- This option is necessary if you want the album covers to be shown
 -- for your local tracks.
-musicwidget.mpd_config = "/home/randy/.config/mpd/mpd.conf"
+musicwidget.mpd_config = home_dir_path .. "/.config/mpd/mpd.conf"
 
 -- Specify decorators on the left and the right side of the
 -- widget. Or just leave empty strings if you decorate the widget
@@ -422,8 +425,8 @@ globalkeys = awful.util.table.join(
 
     awful.key({ modkey,           }, "e",
        function ()
-          --drop("urxvtc -depth 0 -name my_floating_ranger -e ranger ", "top", "center", 1, 0.5)
-          drop("xterm -e ranger ", "top", "center", 1, 0.5)
+          drop("urxvtc -depth 0 -name my_floating_ranger -e ranger ", "top", "center", 1, 0.5)
+          --drop("xterm -e ranger ", "top", "center", 1, 0.5)
        end
     ),
     awful.key({ modkey, "Shift"}, "e",
@@ -509,9 +512,9 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Return",
        function ()
           --if client.focus.screen == 1 then
-          --   drop("urxvtc -fn \"xft:Pragmata Pro:pixelsize=16\" -name my_floating_terminal -e /home/randy/bin/starttmux.sh", "center", "center", 0.9, 0.9, true)
+          --   drop("urxvtc -fn \"xft:Pragmata Pro:pixelsize=16\" -name my_floating_terminal -e " .. home_dir_path .. "/bin/starttmux.sh", "center", "center", 0.9, 0.9, true)
           --else
-             drop("urxvtc -name my_floating_terminal -e /home/randy/bin/starttmux.sh", "center", "center", 0.7, 0.65, true)
+             drop("urxvtc -name my_floating_terminal -e " .. home_dir_path .. "/bin/starttmux.sh", "center", "center", 0.7, 0.65, true)
           --end
        end
     ),
@@ -530,7 +533,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control"    }, "r",     function () mypromptbox[mouse.screen]:run() end),
     awful.key({ modkey,           }, "r",
       function ()
-         awful.util.spawn("dmenu_run -l 32 -fn \"PragmataPro-12:bold\" -i -p \"$\" -hist /home/randy/.cache/dmenu_hist ")
+         awful.util.spawn("dmenu_run -l 32 -fn \"PragmataPro-12:bold\" -i -p \"$\" -hist " .. home_dir_path .. "/.cache/dmenu_hist ")
       end
     ),
     awful.key({ modkey,           }, "b",
