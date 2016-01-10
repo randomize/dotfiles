@@ -463,6 +463,12 @@ alias vb-xp='VBoxManage startvm "WinXP"'
 
 autoload -U zmv
 
+function clean-git() {
+    rm .gitignore
+    git clean -df
+    git reset HEAD --hard
+}
+
 # Set brightness
 function brightness() {
    sudo ddccontrol -r 0x10 dev:/dev/i2c-6 -w "$1"

@@ -670,6 +670,9 @@ awful.rules.rules = {
        properties = { floating = true, tag = tags[2][1], },
        callback = function (c) awful.placement.centered(c,nil) end
     },
+    -- Floating centered UnityWindows
+    { rule = { class =  "Unity" , name = "Hold On" },           properties = { floating = true }, callback = function (c) awful.placement.centered(c,nil) end },
+    { rule = { class =  "Unity" , name = "Starting Unity..." }, properties = { floating = true }, callback = function (c) awful.placement.centered(c,nil) end },
     -- Floating windows by class
     { rule_any = { class = { "gimp", "Xsane", "Qjackctl", "Screenkey"}},
        properties = { floating = true }
@@ -684,10 +687,8 @@ awful.rules.rules = {
     -- Set Firefox to always map on tags number 1 of screen 1.
     { rule = { class = "Firefox" }, properties = {   tag = tags[2][1], }, },
     -- Set Pidgin
-    { rule = { class = "Pidgin", role = "buddy_list"},
-      properties = { tag = tags[1][9] } },
-    { rule = { class = "Pidgin", role = "conversation"},
-      properties = { tag = tags[1][9]}, callback = awful.client.setslave },
+    { rule = { class = "Pidgin", role = "buddy_list"},   properties = { tag = tags[1][9] } },
+    { rule = { class = "Pidgin", role = "conversation"}, properties = { tag = tags[1][9] }, callback = awful.client.setslave },
 }
 -- }}}
 

@@ -14,7 +14,7 @@ xterm*cursorColor:        green
 xterm*cursorBlink:        false
 xterm*cursorOnTime:	     550
 xterm*cursorOffTime:	     150
-xterm*faceName:           PragmataPro:pixelsize=15
+xterm*faceName:           PragmataProMono:pixelsize=15
 xterm*Geometry:           200x60+100+60
 xterm*termName:           xterm-256color
 xterm*utf8: true
