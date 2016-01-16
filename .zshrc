@@ -5,6 +5,8 @@
 #   Thanks to:
 #   msjche,
 #
+#   TODO: setup keyboard widget (see habr post)
+#
 # =========================================================================== #
 #
 
@@ -419,7 +421,8 @@ alias mount-mac='sudo sshfs  randy@10.10.10.105:/ /mnt/macos'
 #alias bindiff='cmp -l file1.bin file2.bin | gawk \'{printf \"%08X %02X %02X\n\", $1, strtonum(0$2), strtonum(0$3)}\''
 alias vim-clean-views='rm -f ~/.vim/view/*'
 alias list-devices='lsblk -f'
-alias sdcv='sdcv --color'
+alias sdcv='sdcv'
+# alias sdcv='sdcv --color'
 alias sdc='sdcv -u "LingvoUniversal (En-Ru)" --color'
 alias cgdb='cgdb -- -nx -x ~/.cgdbinit '
 

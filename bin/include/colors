@@ -1,0 +1,43 @@
+# vim: ft=sh
+
+# Color constants
+TXT_BLK='\e[0;30m' # Black - Regular
+TXT_RED='\e[0;31m' # Red
+TXT_GRN='\e[0;32m' # Green
+TXT_YLW='\e[0;33m' # Yellow
+TXT_BLU='\e[0;34m' # Blue
+TXT_PUR='\e[0;35m' # Purple
+TXT_CYN='\e[0;36m' # Cyan
+TXT_WHT='\e[0;37m' # White
+BLD_BLK='\e[1;30m' # Black - Bold
+BLD_RED='\e[1;31m' # Red
+BLD_GRN='\e[1;32m' # Green
+BLD_YLW='\e[1;33m' # Yellow
+BLD_BLU='\e[1;34m' # Blue
+BLD_PUR='\e[1;35m' # Purple
+BLD_CYN='\e[1;36m' # Cyan
+BLD_WHT='\e[1;37m' # White
+UNK_BLK='\e[4;30m' # Black - Underline
+UND_RED='\e[4;31m' # Red
+UND_GRN='\e[4;32m' # Green
+UND_YLW='\e[4;33m' # Yellow
+UND_BLU='\e[4;34m' # Blue
+UND_PUR='\e[4;35m' # Purple
+UND_CYN='\e[4;36m' # Cyan
+UND_WHT='\e[4;37m' # White
+BAK_BLK='\e[40m'   # Black - Background
+BAK_RED='\e[41m'   # Red
+BAK_GRN='\e[42m'   # Green
+BAK_YLW='\e[43m'   # Yellow
+BAK_BLU='\e[44m'   # Blue
+BAK_PUR='\e[45m'   # Purple
+BAK_CYN='\e[46m'   # Cyan
+BAK_WHT='\e[47m'   # White
+TXT_RST='\e[0m'    # Text Reset
+
+function echo_white { echo -e "$1"; }
+#function echo_white { echo -e "${BLD_WHT}${1}${TXT_RST}"}
+function echo_red { echo -e "${BLD_RED}${1}${TXT_RST}" ; }
+function echo_green { echo -e "${BLD_GRN}${1}${TXT_RST}"; }
+function echo_blue { echo -e "${BLD_BLU}${1}${TXT_RST}"; }
+
