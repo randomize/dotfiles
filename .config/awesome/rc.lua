@@ -21,7 +21,7 @@ config_dir_path = awful.util.getdir("config")
 
 -- {{{ Notifications handler
 naughty.config.notify_callback = function(args)
-    if args.title == "Volume" then return args end
+    if args.title == "Volume" or args.title == "MPD player" then return args end
     awful.util.spawn_with_shell(home_dir_path .. "/bin/log_notification '" .. (args.title or "") .. "' '" .. args.text .. "'")
     awful.util.spawn("paplay " .. awful.util.getdir("config") .. "/notify.wav", false);
     return args
@@ -461,8 +461,8 @@ globalkeys = awful.util.table.join(
     awful.key({                   }, "XF86Messenger", function () awful.util.spawn("pidgin") end),
     awful.key({                   }, "XF86Search", function () awful.util.spawn("chromium --incognito") end),
     awful.key({                   }, "XF86TaskPane", function () awful.util.spawn("chromium --incognito") end),
-    awful.key({                   }, "XF86AudioRaiseVolume", function () change_volume("5%+") end),
-    awful.key({                   }, "XF86AudioLowerVolume", function () change_volume("5%-") end),
+    awful.key({                   }, "XF86AudioRaiseVolume", function () change_volume("1%+") end),
+    awful.key({                   }, "XF86AudioLowerVolume", function () change_volume("1%-") end),
     awful.key({                   }, "XF86AudioMute", function () change_volume("toggle") end),
 
     awful.key({                   }, "XF86Eject", function ()
@@ -508,6 +508,24 @@ globalkeys = awful.util.table.join(
          awful.util.spawn("mpc seek -0:0:5", false)
          naughty.notify({ title="MPD player", text="Seek backward" })
       end
+    ),
+    awful.key({ "Shift"           }, "XF86AudioRaiseVolume",
+      function ()
+         awful.util.spawn("mpc seek +0:0:5", false)
+         naughty.notify({ title="MPD player", text="Seek forward" })
+      end
+    ),
+    awful.key({ "Shift"           }, "XF86AudioLowerVolume",
+      function ()
+         awful.util.spawn("mpc seek -0:0:5", false)
+         naughty.notify({ title="MPD player", text="Seek backward" })
+      end
+    ),
+    awful.key({ modkey            }, "XF86AudioRaiseVolume",
+      function () awful.layout.inc(layouts,  1) end
+    ),
+    awful.key({ modkey            }, "XF86AudioLowerVolume",
+      function () awful.layout.inc(layouts, -1) end
     ),
     -- }}}
 
