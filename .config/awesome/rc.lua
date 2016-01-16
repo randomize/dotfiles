@@ -17,6 +17,7 @@ local menubar = require("menubar")
 
 -- Awesome is not parsing ~ -> adding this workaround
 home_dir_path = "/home/randy"
+config_dir_path = awful.util.getdir("config") 
 
 -- {{{ Notifications handler
 naughty.config.notify_callback = function(args)
@@ -32,6 +33,12 @@ xdg_menu = require("archmenu")
 
 -- More widgets --
 vicious = require("vicious")
+
+-- Include some funcs --
+function dopath(file)
+  dofile(config_dir_path .. "/" .. file)
+end
+dopath("clientfind.lua");
 
 -- Toggle terminals and other things
 local drop      = require("scratchdrop")
@@ -63,7 +70,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(awful.util.getdir("config") .. "/zenburn/theme.lua")
+beautiful.init(config_dir_path .. "/zenburn/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "xterm"
@@ -164,7 +171,7 @@ vicious.register(memwidget, vicious.widgets.mem, "<span color='#CCCC11'> $1% </s
 
 -- CPU Graph
 cpuwidget = awful.widget.graph()
-cpuwidget:set_width(50)
+cpuwidget:set_width(100)
 cpuwidget:set_background_color("#494B4F")
 cpuwidget:set_color({ type = "linear", from = { 0, 0 }, to = { 10,0 }, stops = { {0, "#FF5656"}, {0.5, "#88A175"}, {1, "#AECF96" }}})
 vicious.register(cpuwidget, vicious.widgets.cpu, "$1")
@@ -180,7 +187,7 @@ musicwidget.font_color = "#EEEEEE" --Set widget font color
 -- musicwidget.background = "#000000" --Set widget background color
 musicwidget.scrolling = true -- If true, the text in the widget will be scrolled
 musicwidget.output_size = 30 -- Set the size of widget in symbols
-musicwidget.update_interval = 3 -- Set the update interval in seconds
+musicwidget.update_interval = 1 -- Set the update interval in seconds
 
 -- Set the folder where icons are located
 musicwidget.path_to_icons = awful.util.getdir("config") .. "/awesompd/icons"
@@ -462,7 +469,7 @@ globalkeys = awful.util.table.join(
        drop("urxvtc -name my_floating_htop -e htop -d 2", "center", "center", 0.7, 0.65, true)
     end),
 
-    awful.key({                   }, "XF86Tools", function ()
+    awful.key({ "Shift"           }, "XF86AudioPlay", function ()
        drop("urxvtc -name my_floating_ncmpcpp -geometry 64x210+0+0 -e ncmpcpp", "center", "center", 0.9, 0.85)
     end),
 
