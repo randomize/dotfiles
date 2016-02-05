@@ -17,11 +17,15 @@ local menubar = require("menubar")
 
 -- Awesome is not parsing ~ -> adding this workaround
 home_dir_path = "/home/randy"
-config_dir_path = awful.util.getdir("config") 
+config_dir_path = awful.util.getdir("config")
 
 -- {{{ Notifications handler
 naughty.config.notify_callback = function(args)
-    if args.title == "Volume" or args.title == "MPD player" then return args end
+    local tit = args.title
+    if tit == "Volume" or 
+       tit == "MPD player" or
+       string.match(tit, "Playing #") 
+       then return args end
     awful.util.spawn_with_shell(home_dir_path .. "/bin/log_notification '" .. (args.title or "") .. "' '" .. args.text .. "'")
     awful.util.spawn("paplay " .. awful.util.getdir("config") .. "/notify.wav", false);
     return args
@@ -328,12 +332,12 @@ for s = 1, screen.count() do
 
     -- right_layout:add(mpdwidget)
     right_layout:add(mytextclock)
-    if s == 1 then 
+    if s == 1 then
         right_layout:add(cpuwidget)
         right_layout:add(netwidget)
         right_layout:add(memwidget)
         right_layout:add(musicwidget.widget)
-        right_layout:add(wibox.widget.systray()) 
+        right_layout:add(wibox.widget.systray())
     end
 
     right_layout:add(mylayoutbox[s])
@@ -527,6 +531,18 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey            }, "XF86AudioLowerVolume",
       function () awful.layout.inc(layouts, -1) end
     ),
+    awful.key({                   }, "XF86Sleep",
+      function ()
+         naughty.notify({ title="Sleep", text="Going to sleep" })
+         awful.util.spawn("sudo pm-suspend", false)
+      end
+    ),
+    awful.key({ "Shift"           }, "XF86Sleep",
+      function ()
+         naughty.notify({ title="Sleep", text="Shutting down" })
+         awful.util.spawn("sudo poweroff", false)
+      end
+    ),
     -- }}}
 
     -- Awesome control
@@ -648,7 +664,7 @@ for i = 1, 10 do
                   end))
 end
 
--- Bind all key numbers to tags.
+-- Bind mod+ctrl+Fkey to layout select
 for i = 1, 12 do
     globalkeys = awful.util.table.join(globalkeys,
         -- Swithch layout
@@ -656,9 +672,22 @@ for i = 1, 12 do
    )
 end
 
+-- Bind mod+Fkey to custom actions
+for i = 1, 12 do
+    globalkeys = awful.util.table.join(globalkeys,
+        -- Call handler
+        awful.key({ modkey, }, "F" .. i, function ()
+            -- naughty.notify({ title="Custom action", text = "#" .. i })
+            awful.util.spawn(home_dir_path .. "/bin/mod4func.sh " .. i , false)
+        end)
+   )
+end
+
 clientbuttons = awful.util.table.join(
     awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
     awful.button({ modkey }, 1, awful.mouse.client.move),
+    awful.button({ modkey }, 9, awful.mouse.client.move),
+    awful.button({ modkey }, 10, awful.mouse.client.move),
     awful.button({ modkey }, 3, awful.mouse.client.resize))
 
 

@@ -1,5 +1,5 @@
-// My packages file
 // vim: ft=randypacks
+// My packages file
 // Comments are C++-like
 
 Contents of base group:
