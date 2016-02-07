@@ -367,6 +367,8 @@ alias :q='exit'
 alias :Q='exit'
 alias cls='clear'
 alias h='history'
+alias dh='dirs -v'
+alias ccp='rsync -av --stats --info=progress2'
 
 # safety features
 alias cp='cp -i'
@@ -619,7 +621,6 @@ function chpwd() {
     fi
 }
 
-alias dh='dirs -v'
 setopt AUTOPUSHD         # push on cd
 setopt PUSHDMINUS        # swap +1 to -1 syntax
 setopt PUSHDSILENT       # no noise
