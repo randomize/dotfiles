@@ -628,42 +628,6 @@ setopt PUSHDTOHOME       # not sure
 setopt PUSHD_IGNOREDUPS  # unique only
 
 
-# 2. Highlighting ======================================================================
-
-# Highlighting package must be installed by pacman
-# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets )
-#ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
-#ZSH_HIGHLIGHT_STYLES[default]=none
-#ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=009
-#ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=009,standout
-#ZSH_HIGHLIGHT_STYLES[alias]=fg=white,bold
-#ZSH_HIGHLIGHT_STYLES[builtin]=fg=white,bold
-#ZSH_HIGHLIGHT_STYLES[function]=fg=yellow
-#ZSH_HIGHLIGHT_STYLES[command]=fg=white,bold
-#ZSH_HIGHLIGHT_STYLES[precommand]=fg=white,underline
-#ZSH_HIGHLIGHT_STYLES[commandseparator]=none
-#ZSH_HIGHLIGHT_STYLES[hashed-command]=fg=009
-#ZSH_HIGHLIGHT_STYLES[path]=fg=214,underline
-#ZSH_HIGHLIGHT_STYLES[globbing]=fg=063
-#ZSH_HIGHLIGHT_STYLES[history-expansion]=fg=white,underline
-#ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=none
-#ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=none
-#ZSH_HIGHLIGHT_STYLES[back-quoted-argument]=none
-#ZSH_HIGHLIGHT_STYLES[single-quoted-argument]=fg=063
-#ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=fg=063
-#ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]=fg=009
-#ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=009
-#ZSH_HIGHLIGHT_STYLES[assign]=none
-#ZSH_HIGHLIGHT_STYLES[cursor-matchingbracket]=fg=white,bold
-#
-#ZSH_HIGHLIGHT_PATTERNS+=('rm -rf *' 'fg=white,bold,bg=red')
-#ZSH_HIGHLIGHT_PATTERNS+=('rm -fr *' 'fg=white,bold,bg=red')
-#ZSH_HIGHLIGHT_PATTERNS+=('kill *' 'fg=red,bold,underline')
-#ZSH_HIGHLIGHT_PATTERNS+=('pkill *' 'fg=red,bold,underline')
-#ZSH_HIGHLIGHT_PATTERNS+=('killall *' 'fg=red,bold,underline')
-
 
 # 3. Command finished notification =====================================================
 
@@ -765,11 +729,11 @@ Convert()
 }
 
 # set an ad-hoc GUI timer
-timer() {
+timer()
+{
   local N=$1; shift
-
-  (sleep $N && zenity --info --title="Time's Up" --text="${*:-BING}") &
-  echo "timer set for $N"
+  (sleep "${N}" && zenity --info --title="Time's Up" --text="${*:-BING}") &
+  echo "timer set for ${N} seconds "
 }
 
 highlightkeynote() { highlight --font=Consolas --font-size=24 --style=molokai -i "$@" -O rtf ;}
@@ -779,6 +743,7 @@ function fname() { find . -iname "*$@*"; }
 function open() { xdg-open $1 &> /dev/null &disown; }
 function lt() { ls -ltrsa "$@" | tail; }
 
+# TODO: clean thist out
 # Add environment variable COCOS_CONSOLE_ROOT for cocos2d-x
 export COCOS_CONSOLE_ROOT=/home/randy/cocos2d-x/tools/cocos2d-console/bin
 export PATH=$COCOS_CONSOLE_ROOT:$PATH
@@ -792,6 +757,73 @@ export ANDROID_SDK_ROOT=/home/randy/android/android-sdk
 export PATH=$ANDROID_SDK_ROOT:$PATH
 export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
 
+# Go env setup
+#
+# go get golang.org/x/tour/gotour
+export GOPATH=~/.godir
+export PATH=$PATH:$GOPATH/bin
+
 
 # Dnvm is required for roslyn omnisharp server
 [ -s "/home/randy/.dnx/dnvm/dnvm.sh" ] && . "/home/randy/.dnx/dnvm/dnvm.sh" # Load dnvm
+
+# 5. Highlighting ======================================================================
+
+# Highlighting package must be installed by pacman 
+# $ sudo pacman -S zsh-syntax-highlighting
+# Comment this line otherwise
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets )
+#
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
+ZSH_HIGHLIGHT_STYLES[default]='none'
+ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=009'
+ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=197,bold' # for, if, do, done etc'
+
+ZSH_HIGHLIGHT_STYLES[alias]='fg=white,bold'
+ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=white,bold'
+ZSH_HIGHLIGHT_STYLES[builtin]='fg=white,bold'
+ZSH_HIGHLIGHT_STYLES[function]='fg=white,bold'
+ZSH_HIGHLIGHT_STYLES[command]='fg=white,bold'
+ZSH_HIGHLIGHT_STYLES[precommand]='fg=white,underline'
+ZSH_HIGHLIGHT_STYLES[commandseparator]='none'
+ZSH_HIGHLIGHT_STYLES[hashed-command]='fg=009'
+ZSH_HIGHLIGHT_STYLES[path]='fg=214,underline'
+ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=214,underline'
+ZSH_HIGHLIGHT_STYLES[globbing]='fg=074,bold'                 # *.txt
+ZSH_HIGHLIGHT_STYLES[history-expansion]='fg=white,underline'
+ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=115'          # -h
+ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=114'          # --help
+
+ZSH_HIGHLIGHT_STYLES[back-quoted-argument]='fg=081'          # `foo`
+ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=222'        # 'foo'
+ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=215'        # "foo"
+ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=191'        # $'foo'
+
+ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]='fg=191' # $foo in ""
+ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]='fg=210'   # \n in ""
+ZSH_HIGHLIGHT_STYLES[back-dollar-quoted-argument]='fg=210'   # \n in $''
+
+ZSH_HIGHLIGHT_STYLES[assign]='none'
+ZSH_HIGHLIGHT_STYLES[redirection]='fg=green,bold'
+ZSH_HIGHLIGHT_STYLES[cursor-matchingbracket]='fg=white,bold'
+
+ZSH_HIGHLIGHT_STYLES[comment]='fg=240'
+
+ZSH_HIGHLIGHT_PATTERNS+=('rm'        'fg=232,bold,bg=197')
+ZSH_HIGHLIGHT_PATTERNS+=('kill'      'fg=232,bold,bg=197')
+ZSH_HIGHLIGHT_PATTERNS+=('pkill'     'fg=232,bold,bg=197')
+ZSH_HIGHLIGHT_PATTERNS+=('killall'   'fg=232,bold,bg=197')
+ZSH_HIGHLIGHT_PATTERNS+=('git reset' 'fg=232,bold,bg=197')
+ZSH_HIGHLIGHT_PATTERNS+=('\|'      'fg=197,bold')
+
+# Highlight MAC addresses, IPs.
+ZSH_HIGHLIGHT_PATTERNS+=('[0-9a-fA-F][0-9a-fA-F]:[0-9a-fA-F][0-9a-fA-F]:[0-9a-fA-F][0-9a-fA-F]:[0-9a-fA-F][0-9a-fA-F]:[0-9a-fA-F][0-9a-fA-F]:[0-9a-fA-F][0-9a-fA-F]' 'fg=yellow')
+ZSH_HIGHLIGHT_PATTERNS+=(' [0-9]##.[0-9]##.[0-9]##.[0-9]##' 'fg=yellow')
+
+# Highlight complex redirection signes.
+ZSH_HIGHLIGHT_PATTERNS+=('[0-9]#[<>]&[-!|0-9]#' 'fg=blue')
+ZSH_HIGHLIGHT_PATTERNS+=('[<>]([<>]|)([|!]|)' 'fg=blue')
+ZSH_HIGHLIGHT_PATTERNS+=('&[|!]' 'fg=blue')
+

@@ -9,6 +9,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 # Set path for gtk config
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0" 
+
 # export PAGER="most -s"
 export LESS="-i -s -R"
 export LESSCHARSET='utf-8'
@@ -20,4 +21,6 @@ export TERMINAL="urxvtc"
 # Fonts in old aps
 export GDK_USE_XFT=1
 export QT_XFT=true
+
+# Vim config dev personal settings
 export bully_dev="eugene"

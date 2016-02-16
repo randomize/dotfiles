@@ -24,7 +24,7 @@ naughty.config.notify_callback = function(args)
     local tit = args.title
     if tit == "Volume" or 
        tit == "MPD player" or
-       string.match(tit, "Playing #") 
+       (tit and string.match(tit, "Playing #"))
        then return args end
     awful.util.spawn_with_shell(home_dir_path .. "/bin/log_notification '" .. (args.title or "") .. "' '" .. args.text .. "'")
     awful.util.spawn("paplay " .. awful.util.getdir("config") .. "/notify.wav", false);
@@ -515,14 +515,14 @@ globalkeys = awful.util.table.join(
     ),
     awful.key({ "Shift"           }, "XF86AudioRaiseVolume",
       function ()
-         awful.util.spawn("mpc seek +0:0:5", false)
-         naughty.notify({ title="MPD player", text="Seek forward" })
+         awful.util.spawn_with_shell("echo -n 'u' | socat - UDP-DATAGRAM:127.0.0.1:9930", false)
+         --naughty.notify({ title="MPD player", text="Seek forward" })
       end
     ),
     awful.key({ "Shift"           }, "XF86AudioLowerVolume",
       function ()
-         awful.util.spawn("mpc seek -0:0:5", false)
-         naughty.notify({ title="MPD player", text="Seek backward" })
+         awful.util.spawn_with_shell("echo -n 'd' | socat - UDP-DATAGRAM:127.0.0.1:9930", false)
+         --naughty.notify({ title="MPD player", text="Seek backward" })
       end
     ),
     awful.key({ modkey            }, "XF86AudioRaiseVolume",
