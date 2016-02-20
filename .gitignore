@@ -14,8 +14,11 @@
 /build/
 
 
-# Private
+# Private and secure
 /.ssh/
+/.2steps
+/.itmages.conf
+/client.ovpn
 
 # Vim temporals/generated
 /.viminfo
@@ -94,6 +97,10 @@
 
 # Pidgin
 /.purple/
+
+# Mikmode
+/.mikmodrc
+/.mikmod_playlist
 
 #============================================
 

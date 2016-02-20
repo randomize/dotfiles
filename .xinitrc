@@ -94,10 +94,13 @@ xsetwacom --set "Wacom Intuos3 9x12 eraser" MapToOutput "HDMI2"
 
 
 # Mpd
-( ( sleep 10 && /usr/bin/mpd) & )
+( ( sleep 4 && /usr/bin/mpd) & )
 
 # layout indicator
-( ( sleep 10 && /usr/bin/sbxkb ) & )
+( ( sleep 4 && /usr/bin/sbxkb ) & )
+
+# DDC controlled brightness
+( ( sleep 4 && /home/randy/bin/ddc-bright ) & )
 
 # Awesome
 exec awesome
