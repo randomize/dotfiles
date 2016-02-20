@@ -745,17 +745,17 @@ function lt() { ls -ltrsa "$@" | tail; }
 
 # TODO: clean thist out
 # Add environment variable COCOS_CONSOLE_ROOT for cocos2d-x
-export COCOS_CONSOLE_ROOT=/home/randy/cocos2d-x/tools/cocos2d-console/bin
-export PATH=$COCOS_CONSOLE_ROOT:$PATH
+# export COCOS_CONSOLE_ROOT=$HOME/cocos2d-x/tools/cocos2d-console/bin
+# export PATH=$COCOS_CONSOLE_ROOT:$PATH
 
 # Add environment variable NDK_ROOT for cocos2d-x
-export NDK_ROOT=/opt/android-ndk
-export PATH=$NDK_ROOT:$PATH
+#export NDK_ROOT=/opt/android-ndk
+#export PATH=$NDK_ROOT:$PATH
 
 # Add environment variable ANDROID_SDK_ROOT for cocos2d-x
-export ANDROID_SDK_ROOT=/home/randy/android/android-sdk
-export PATH=$ANDROID_SDK_ROOT:$PATH
-export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
+#export ANDROID_SDK_ROOT=$HOME/android/android-sdk
+#export PATH=$ANDROID_SDK_ROOT:$PATH
+#export PATH=$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools:$PATH
 
 # Go env setup
 #
@@ -827,3 +827,5 @@ ZSH_HIGHLIGHT_PATTERNS+=('[0-9]#[<>]&[-!|0-9]#' 'fg=blue')
 ZSH_HIGHLIGHT_PATTERNS+=('[<>]([<>]|)([|!]|)' 'fg=blue')
 ZSH_HIGHLIGHT_PATTERNS+=('&[|!]' 'fg=blue')
 
+# 6. bd ========================================================================
+. $HOME/.zsh/bd/bd.zsh
