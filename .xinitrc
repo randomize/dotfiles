@@ -34,8 +34,9 @@ setxkbmap -option "compose:ralt"
 # Turn on c-a-backspace
 setxkbmap -option terminate:ctrl_alt_bksp
 
-# ???
+# Special mappings (see .Xmodmap file)
 xmodmap .Xmodmap
+xcape -e '0x1234=Return;Control_L=Escape'
 
 # Set repeat rate
 xset r rate 400 80

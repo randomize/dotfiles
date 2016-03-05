@@ -232,6 +232,12 @@ flat-volumes = no
 $ pulseaudio -k
 $ pulseaudio --start
 
+# ==== JACK ========================
+install jack2-dbus
+add user to audio group
+use qjackctl
+install pulseaudio-jack
+
 # ===== Terminal colors ============= (20)
 
 $ screen_terminfo="screen-256color"
