@@ -226,6 +226,7 @@ Window managers and DE:
    //unclutter       // Hides mouse cursor when it is not used(has problems in i3)
 
    skb             // simple keyboard layout indicator
+   xcape           // Remap keys, use return as second ctrl and caps and ctrl and esc
 
    gksu              // GUI-sh sudo
    paprefs           // Pulse audio settings

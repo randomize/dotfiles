@@ -103,5 +103,8 @@ xsetwacom --set "Wacom Intuos3 9x12 eraser" MapToOutput "HDMI2"
 # DDC controlled brightness
 ( ( sleep 4 && /home/randy/bin/ddc-bright ) & )
 
+# ALSA 2 JACK - MIDI daemon
+# ( ( sleep 4 && /usr/bin/a2jmidid -e) & )
+
 # Awesome
 exec awesome
