@@ -11,6 +11,7 @@ cleanup-unity-project.sh        |
 coco_build_android.sh           |
 color-spaces.pl                 | Another onw color support test
 compare-packs.sh                | Helper script to diff installed packages and package database
+ddc-bright                      | Binary - to control brightness with DAS Keyboard volume wheel
 disable_wacom_strips.sh         |
 do-backup.sh                    |
 doublempv.sh                    |
@@ -33,6 +34,7 @@ run-command-on-git-revisions    |
 screencast                      |
 sendtext                        |
 setup_develop_tmux.sh           |
+start_jack.sh
 starttmux.sh                    |
 term-img.sh                     |
 tmux-im.sh                      |

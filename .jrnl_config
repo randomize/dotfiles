@@ -1,0 +1,16 @@
+{
+  "default_hour": 9,
+  "encrypt": true,
+  "journals": {
+    "default": {
+      "encrypt": false,
+      "journal": "/mnt/data/journal/journal.txt"
+    }
+  },
+  "tagsymbols": "@",
+  "linewrap": 120,
+  "default_minute": 0,
+  "timeformat": "%Y-%m-%d %H:%M",
+  "highlight": true,
+  "editor": "vim"
+}
