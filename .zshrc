@@ -427,6 +427,7 @@ alias sdcv='sdcv'
 # alias sdcv='sdcv --color'
 alias sdc='sdcv -u "LingvoUniversal (En-Ru)" --color'
 alias cgdb='cgdb -- -nx -x ~/.cgdbinit '
+alias ccat='pygmentize -f 256 -g -O style=monokai,linenos=1'
 
 ## Editing aliases
 alias eA='vim ~/.config/awesome/rc.lua'
