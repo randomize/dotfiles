@@ -74,9 +74,10 @@
 /.config/.mono
 /.mono/
 
-# Keepass
+# Pass & Keepass
 /.config/KeePass/
 /.recently-used
+/.password-store/
 
 # Qt
 /.config/QtProject.conf
@@ -137,3 +138,20 @@
 /.config/user-dirs.locale
 /.config/vmpk.sourceforge.net/
 
+/.atom/
+/.cargo/
+/.cmake/
+/.config/NuGet/
+/.config/fontforge/
+/.config/menus/
+/.dbus/
+/.ddccontrol/
+/.dnx/
+/.gdb_history
+/.gem/
+/.gnome/
+/.node-gyp/
+/.nuget/
+/.python_history
+/.stardict/
+/.wegorc
