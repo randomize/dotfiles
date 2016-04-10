@@ -465,6 +465,9 @@ alias vb-macos='VBoxManage startvm "VM Mac OS Mavericks"'
 alias vb-windows='VBoxManage startvm "Window 8"'
 alias vb-xp='VBoxManage startvm "WinXP"'
 
+## Todos
+alias t='python2 /mnt/data/t/t.py --task-dir ~/tasks --list tasks'
+
 # Functions ==================================================================================
 
 autoload -U zmv
@@ -763,6 +766,9 @@ function lt() { ls -ltrsa "$@" | tail; }
 # go get golang.org/x/tour/gotour
 export GOPATH=~/.godir
 export PATH=$PATH:$GOPATH/bin
+
+# Ruby
+export PATH=$PATH:~/.gem/ruby/2.3.0/bin
 
 
 # Dnvm is required for roslyn omnisharp server

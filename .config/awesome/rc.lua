@@ -555,7 +555,7 @@ globalkeys = awful.util.table.join(
           --if client.focus.screen == 1 then
           --   drop("urxvtc -fn \"xft:Pragmata Pro:pixelsize=16\" -name my_floating_terminal -e " .. home_dir_path .. "/bin/starttmux.sh", "center", "center", 0.9, 0.9, true)
           --else
-             drop("urxvtc -name my_floating_terminal -e " .. home_dir_path .. "/bin/starttmux.sh", "center", "center", 0.7, 0.65, true)
+             drop("st -n my_floating_terminal -e " .. home_dir_path .. "/bin/starttmux.sh", "center", "center", 0.7, 0.65, true)
           --end
        end
     ),
