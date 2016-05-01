@@ -142,12 +142,12 @@ mymainmenu = awful.menu({ items = { { "Awesome", myawesomemenu, beautiful.awesom
                                     { "Applications", xdgmenu },
                                     { "File manager", "nautilus" },
                                     { "Open terminal", terminal },
-                                    { "Firefox", "firefox" },
                                     { "MyPaint", "mypaint" },
-                                    { "Gvim", "gvim" },
-                                    { "Android Studio", "android-studio" },
+                                    { "Firefox", "firefox" },
+                                    { "Unity", "unity-editor" },
                                     { "Chromium", "chromium" },
-                                    { "IM stuff", "urxvtc -e " .. home_dir_path .. "/bin/tmux-im.sh" },
+                                    { "Chromium Incognito", "chromium --incognito" },
+                                    { "IM stuff", "st -e " .. home_dir_path .. "/bin/tmux-im.sh" },
                                     { "FBReader", "FBReader" },
                                     { "Virtual Box", "VirtualBox" }
                                   }

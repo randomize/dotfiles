@@ -12,17 +12,8 @@ fi
 # {{{ Managed Plugins =========================================================
 # Zplug is used - a plugin manager for zsh
 # git clone https://github.com/b4b4r07/zplug ~/.zplug
+
 source ~/.zplug/zplug
-
-# Load the oh-my-zsh's library.
-#antigen use oh-my-zsh
-
-# Bundles from the default repo (robbyrussell's oh-my-zsh).
-#antigen bundle git
-#antigen bundle heroku
-#antigen bundle pip
-#antigen bundle lein
-#antigen bundle command-not-found
 
 # Git helper
 zplug "plugins/git",   from:oh-my-zsh, if:"which git"
@@ -46,9 +37,9 @@ if ! zplug check --verbose; then
     fi
 fi
 
-
 # Then, source plugins and add commands to $PATH
 zplug load --verbose
+
 # }}}
 
 # {{{ Unmanaged plugins & helpers =============================================
@@ -74,6 +65,10 @@ alias t='python2 /mnt/data/t/t.py --task-dir ~/tasks --list tasks'
 [[ -s ~/.zsh/aliaz.zsh ]] && . ~/.zsh/aliaz.zsh
 # }}}
 
+# {{{ Keyboard =================================================================
+[[ -s ~/.zsh/keyboars.zsh ]] && . ~/.zsh/keyboars.zsh
+# }}}
+
 # {{{ Settings ================================================================
 
 # History
@@ -87,13 +82,9 @@ setopt extended_history # Timestamp history
 setopt share_history
 setopt inc_append_history
 
-# Completion
-
-# Keys
-bindkey -v
-
 # Syntax hightlighting settings
 [[ -s ~/.zsh/highligh-settings.zsh ]] && . ~/.zsh/highligh-settings.zsh
 # }}}
 
 
+[ -s "/home/randy/.dnx/dnvm/dnvm.sh" ] && . "/home/randy/.dnx/dnvm/dnvm.sh" # Load dnvm
