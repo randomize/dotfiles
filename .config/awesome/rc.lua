@@ -47,6 +47,10 @@ dopath("clientfind.lua");
 -- Toggle terminals and other things
 local drop      = require("scratchdrop")
 
+dropterminal = function()
+    drop("st -n my_floating_terminal -e " .. home_dir_path .. "/bin/starttmux.sh", "center", "center", 0.7, 0.65, true)
+end
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -555,7 +559,8 @@ globalkeys = awful.util.table.join(
           --if client.focus.screen == 1 then
           --   drop("urxvtc -fn \"xft:Pragmata Pro:pixelsize=16\" -name my_floating_terminal -e " .. home_dir_path .. "/bin/starttmux.sh", "center", "center", 0.9, 0.9, true)
           --else
-             drop("st -n my_floating_terminal -e " .. home_dir_path .. "/bin/starttmux.sh", "center", "center", 0.7, 0.65, true)
+          --   drop("st -n my_floating_terminal -e " .. home_dir_path .. "/bin/starttmux.sh", "center", "center", 0.7, 0.65, true)
+             dropterminal()
           --end
        end
     ),
