@@ -150,6 +150,7 @@ alias e='vim'
 alias v='vim'
 alias vi='vim'
 alias view='vim -R'
+alias vim='nvim'
 
 
 ## Virtual Box

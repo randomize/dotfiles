@@ -43,6 +43,8 @@ zplug load --verbose
 # }}}
 
 # {{{ Unmanaged plugins & helpers =============================================
+# OS detect
+[[ -s ~/.zsh/osdetect.zsh ]] && . ~/.zsh/osdetect.zsh
 
 # Dircolors
 [[ -s ~/.dircolors ]] && eval `dircolors -b $HOME/.dircolors`
@@ -88,3 +90,10 @@ setopt inc_append_history
 
 
 [ -s "/home/randy/.dnx/dnvm/dnvm.sh" ] && . "/home/randy/.dnx/dnvm/dnvm.sh" # Load dnvm
+
+
+# {{{ OS specific ============================================================
+if [[ "$OSX" == "1" ]]
+then
+    [[ -s ~/.zsh/osx-specific.zsh ]] && . ~/.zsh/osx-specific.zsh
+fi
