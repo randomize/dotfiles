@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "local drop=require(\"scratchdrop\"); drop(\"xterm -e ranger \", \"top\", \"center\", 1, 0.5)" | awesome-client
-# echo "local drop=require(\"scratchdrop\"); drop(\"urxvtc -depth 0 -name my_floating_ranger -e ranger \", \"top\", \"center\", 1, 0.5)" | awesome-client
+# echo "local drop=require(\"scratchdrop\"); drop(\"xterm -e ranger \", \"top\", \"center\", 1, 0.5)" | awesome-client
+echo "local drop=require(\"scratchdrop\"); drop(\"urxvtc -depth 0 -name my_floating_ranger -e ranger \", \"top\", \"center\", 1, 0.5)" | awesome-client
 # i3-msg '[instance="randy_scratchpad_ranger"] move scratchpad;'
 exec "$@"
