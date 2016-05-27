@@ -89,11 +89,18 @@ setopt inc_append_history
 # }}}
 
 
-[ -s "/home/randy/.dnx/dnvm/dnvm.sh" ] && . "/home/randy/.dnx/dnvm/dnvm.sh" # Load dnvm
+# {{{ OS specific stuff ============================================================
 
-
-# {{{ OS specific ============================================================
 if [[ "$OSX" == "1" ]]
 then
     [[ -s ~/.zsh/osx-specific.zsh ]] && . ~/.zsh/osx-specific.zsh
+elif [[ "$LINUX" == "1" ]]
+then
+    [[ -s ~/.zsh/linux-specific.zsh ]] && . ~/.zsh/linux-specific.zsh
 fi
+
+# }}}
+
+# {{{ Functions =================================================================
+[[ -s ~/.zsh/functs.zsh ]] && . ~/.zsh/functs.zsh
+# }}}

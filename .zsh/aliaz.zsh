@@ -78,9 +78,6 @@ alias amv='amv -ig'
 alias g='git'
 alias gap='git add --patch'
 
-alias pa='pacman'
-alias ya='yaourt'
-
 alias clock='watch -n 1 "date +%T | xargs figlet \"Time:\" -c -t"'
 alias todo='vim ~/Desktop/TODO.txt'
 alias openports='netstat --all --numeric --programs --inet --inet6'
@@ -103,23 +100,9 @@ alias fehdir='feh -g 640x480 -d -S filename'
 alias cmake-release='cmake -DCMAKE_BUILD_TYPE=Release'
 alias cmake-debug='cmake -DCMAKE_BUILD_TYPE=Debug'
 
-# Package management
-alias update='sudo pacman -Suy'
-alias pacinst='sudo pacman -S'
-alias pacexpl='sudo pacman -D --asexplicit'
-
-# IPad management
-alias mount-ipad-pdf='ifuse --appid com.readdle.PDFExpertIPad /mnt/ipad && cd /mnt/ipad'
-alias mount-ipad-video='ifuse --appid AVPlayerHD.eplayworks.com /mnt/ipad && cd /mnt/ipad'
-alias mount-ipad-djvu='ifuse --appid com.qzyzx.SoleDjVu /mnt/ipad && cd /mnt/ipad'
-alias mount-ipad-root='ifuse --root /mnt/ipad && cd /mnt/ipad'
-alias umount-ipad='cd ~ && umount /mnt/ipad'
-alias mount-mac='sudo sshfs  randy@10.10.10.105:/ /mnt/macos'
-
 # Tools
 #alias bindiff='cmp -l file1.bin file2.bin | gawk \'{printf \"%08X %02X %02X\n\", $1, strtonum(0$2), strtonum(0$3)}\''
 alias vim-clean-views='rm -f ~/.vim/view/*'
-alias list-devices='lsblk -f'
 alias sdcv='sdcv'
 # alias sdcv='sdcv --color'
 alias sdc='sdcv -u "LingvoUniversal (En-Ru)" --color'
@@ -128,15 +111,9 @@ alias ccat='pygmentize -f 256 -g -O style=monokai,linenos=1'
 alias sniff-flv='sudo ngrep -d any '.flv'  port 80'
 
 ## Editing aliases
-alias eA='vim ~/.config/awesome/rc.lua'
-alias eX='vim ~/.Xresources && xrdb -merge ~/.Xresources'
 alias eZ='vim ~/.zshrc && source ~/.zshrc'
 alias eV='vim ~/.vimrc'
-alias eC='vim ~/nfo/commands.txt'
-alias eS='vim ~/nfo/setup.txt'
-alias eP='vim ~/nfo/paks.txt'
 alias eT='vim ~/.tmux.conf'
-alias eI='vim ~/.xinitrc'
 
 ## Dot helpers
 alias ..='cd ..'
@@ -153,7 +130,3 @@ alias view='vim -R'
 alias vim='nvim'
 
 
-## Virtual Box
-alias vb-macos='VBoxManage startvm "VM Mac OS Mavericks"'
-alias vb-windows='VBoxManage startvm "Window 8"'
-alias vb-xp='VBoxManage startvm "WinXP"'

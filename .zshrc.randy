@@ -443,11 +443,10 @@ Convert()
          output.avi
 }
 
-# set an ad-hoc GUI timer
-timer()
+imer()
 {
   local N=$1; shift
-  (sleep "${N}" && zenity --info --title="Time's Up" --text="${*:-BING}") &
+  (sleep "${N}" && notify-send -u critical "Time's Up" "${*:-BING}") &
   echo "timer set for ${N} seconds "
 }
 
