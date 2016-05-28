@@ -5,10 +5,12 @@ function stopwatch()
 {
     date1=`date +%s`; 
     while true; do 
-        clear
+        setterm -cursor off
+        tput clear
         echo -ne "$(date -u --date @$((`date +%s` - $date1)) +%H:%M:%S)\r" | cowsay
-        sleep 0.1
+        sleep 0.5
     done
+    setterm -cursor on
 }
 
 function timer()
