@@ -24,3 +24,6 @@ export QT_XFT=true
 
 # Vim config dev personal settings
 export bully_dev="eugene"
+
+# Rust
+export RUST_SRC_PATH="/usr/src/rust/src"
