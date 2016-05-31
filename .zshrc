@@ -88,6 +88,15 @@ setopt inc_append_history
 [[ -s ~/.zsh/highligh-settings.zsh ]] && . ~/.zsh/highligh-settings.zsh
 # }}}
 
+# COMPLETION SETTINGS: add custom completion scripts
+fpath=(~/.zsh/completion $fpath) 
+
+# compsys initialization
+autoload -U compinit
+compinit
+ 
+# show completion menu when number of options is at least 2
+zstyle ':completion:*' menu select=2
 
 # {{{ OS specific stuff ============================================================
 
@@ -104,3 +113,4 @@ fi
 # {{{ Functions =================================================================
 [[ -s ~/.zsh/functs.zsh ]] && . ~/.zsh/functs.zsh
 # }}}
+
