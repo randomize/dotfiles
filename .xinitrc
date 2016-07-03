@@ -20,7 +20,7 @@ xrdb -merge ~/.Xresources
 
 
 # Set layouts and no capslock
-setxkbmap -layout "us, ru" -option "grp:shifts_toggle"
+setxkbmap -layout "dvp, ru" -option "grp:shifts_toggle"
 
 # Make Caps Lock a Control key
 setxkbmap -option ctrl:nocaps 
