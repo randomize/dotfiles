@@ -114,3 +114,5 @@ fi
 [[ -s ~/.zsh/functs.zsh ]] && . ~/.zsh/functs.zsh
 # }}}
 
+
+[ -s "/home/randy/.dnx/dnvm/dnvm.sh" ] && . "/home/randy/.dnx/dnvm/dnvm.sh" # Load dnvm
