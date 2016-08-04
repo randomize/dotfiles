@@ -28,3 +28,4 @@ source ~/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE}
 bindkey -v "^R" history-incremental-search-backward
 bindkey -v "^N" down-history
 bindkey -v "^P" up-history
+bindkey -v "^_" undo
