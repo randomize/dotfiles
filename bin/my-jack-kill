@@ -1,0 +1,12 @@
+#!/bin/bash
+
+killall qjackctl
+rm -rf ~/.jackdrc
+rm -rf ~/.config/jack/conf.xml
+rm /home/randy/.config/jack/conf.xml
+rm -rf ~/.config/rncbc.org/QjackCtl.conf
+jack_control exit
+killall a2jmidid
+killall jackdbus
+fuser /dev/snd/*
+

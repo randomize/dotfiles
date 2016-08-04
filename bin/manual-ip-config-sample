@@ -1,0 +1,32 @@
+#!/bin/bash
+
+echo "Flush interface..."
+ip addr flush dev enp3s0
+ip addr flush dev enp5s2
+ip route flush dev enp3s0
+ip route flush dev enp5s2
+sleep 1
+
+echo "Bring interfaces down..."
+ip link set down enp5s2
+ip link set down enp3s0
+sleep 1
+
+echo "Bring interfaces up..."
+#  ip link set dev enp3s0 address 64:66:B3:95:B3:21
+ip link set up enp3s0
+sleep 1
+
+
+echo "Setup interfaces and route..."
+#  ip link set dev enp3s0 address 64:66:B3:95:B3:21
+#  ip addr add 178.168.54.33/25 broadcast 178.168.54.127 dev enp3s0
+ip addr add 192.168.0.111/24 broadcast 192.168.0.255 dev enp3s0
+#  ip route add default via 178.168.54.1 dev enp3s0
+ip route add default via 192.168.0.1 dev enp3s0
+
+sleep 1
+echo "DONE"
+
+netstat -nr
+ip addr
