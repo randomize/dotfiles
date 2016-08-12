@@ -1,6 +1,3 @@
-[submodule ".vim"]
-	path = .vim
-	url = https://github.com/randomize/VimConfig
 [submodule ".config/nvim"]
 	path = .config/nvim
 	url = git@github.com:randomize/nvim-config.git
