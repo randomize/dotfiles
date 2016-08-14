@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "Launching JACK server"
 
 jack_control eps realtime true		# enable realtime privilidges for it
 
@@ -11,3 +12,8 @@ jack_control start			# start jackdbus
 jack_control dps rate 48000		# set sample rate
 jack_control dps nperiods 3		# set number of periods
 jack_control dps period 512		# set period size
+
+
+echo "Launching midi router"
+
+a2jmidid -e &

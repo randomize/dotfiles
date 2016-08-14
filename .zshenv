@@ -1,6 +1,6 @@
 # Setup defaukts
-export BROWSER=chromium
-export EDITOR=vim
+export BROWSER=firefox
+export EDITOR=nvim
 
 # Enable anti aliasing in java programs
 # export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'

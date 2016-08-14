@@ -10,15 +10,12 @@
 /Videos/
 /Music/
 
-# My stuff
-/build/
-
-
 # Private and secure
 /.ssh/
 /.2steps
 /.itmages.conf
 /client.ovpn
+/.wegorc
 
 # Vim temporals/generated
 /.viminfo
@@ -62,14 +59,6 @@
 # Ipython
 /.ipython
 
-# HEx editor HTE
-/.htcfg2
-
-# Perforce
-/.config/Perforce
-.p4qt/
-.p4tickets
-
 # Mono
 /.config/.mono
 /.mono/
@@ -99,59 +88,8 @@
 # Pidgin
 /.purple/
 
-# Mikmode
+# Mikmod
 /.mikmodrc
 /.mikmod_playlist
 
 #============================================
-
-/.local/
-/.pki/
-/.recently-used
-/.xdg_menu_cache/
-/.xsel.log
-/.android/
-/.esd_auth
-/.gnupg/
-/.java/
-/.pentadactyl/
-/.sdcv_history
-
-/.config/Unity/
-/.config/enchant/
-/.config/gtk-2.0/
-/.config/htop/
-/.config/libreoffice/
-/.config/mimeapps.list
-/.config/nautilus-actions/
-/.config/nautilus-compare.conf
-/.config/nautilus/
-/.config/pavucontrol.ini
-/.config/pulse/
-/.config/qBittorrent/
-/.config/qutebrowser/
-/.config/radare2/
-/.config/ranger/bookmarks
-/.config/ranger/history
-/.config/unity3d/
-/.config/user-dirs.dirs
-/.config/user-dirs.locale
-/.config/vmpk.sourceforge.net/
-
-/.atom/
-/.cargo/
-/.cmake/
-/.config/NuGet/
-/.config/fontforge/
-/.config/menus/
-/.dbus/
-/.ddccontrol/
-/.dnx/
-/.gdb_history
-/.gem/
-/.gnome/
-/.node-gyp/
-/.nuget/
-/.python_history
-/.stardict/
-/.wegorc

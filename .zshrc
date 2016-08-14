@@ -98,6 +98,15 @@ compinit
 # show completion menu when number of options is at least 2
 zstyle ':completion:*' menu select=2
 
+# theme tweaks
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status history time vi_mode)
+POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND='yellow'
+POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND='white'
+POWERLEVEL9K_VI_MODE_INSERT_BACKGROUND='014'
+POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND='white'
+POWERLEVEL9K_VI_INSERT_MODE_STRING='\UE858' # 
+POWERLEVEL9K_VI_COMMAND_MODE_STRING='\UE801' # 
+
 # {{{ OS specific stuff ============================================================
 
 if [[ "$OSX" == "1" ]]
