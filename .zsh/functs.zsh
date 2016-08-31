@@ -15,12 +15,13 @@ function stopwatch()
 
 function timer()
 {
-  local N=$1; shift
-  (sleep "${N}" && notify-send -u critical "Time's Up" "${*:-BING}") &
-  echo "timer set for ${N} seconds "
+    local N=$1; shift
+    (sleep "${N}" && notify-send -u critical "Time's Up" "${*:-BING}") &
+    echo "timer set for ${N} seconds "
 }
 
-function clean-git() {
+function clean-git()
+{
     rm .gitignore
     git clean -df
     git reset HEAD --hard
@@ -44,3 +45,16 @@ function calc() { python -ic "from __future__ import division; from math import 
 # Check if websites are down
 function down4me() { curl -s "http://www.downforeveryoneorjustme.com/$1" | sed '/just you/!d;s/<[^>]*>//g';}
 
+# Usage: codi [filetype] [filename]
+codi()
+{
+    local syntax="${1:-python}"
+    shift
+    vim -c \
+        "let g:startify_disable_at_vimenter = 1 |\
+        set bt=nofile ls=0 noru nonu nornu |\
+        hi ColorColumn ctermbg=NONE |\
+        hi VertSplit ctermbg=NONE |\
+        hi NonText ctermfg=0 |\
+        Codi $syntax" "$@"
+}
