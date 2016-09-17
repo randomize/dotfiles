@@ -29,3 +29,7 @@ bindkey -v "^R" history-incremental-search-backward
 bindkey -v "^N" down-history
 bindkey -v "^P" up-history
 bindkey -v "^_" undo
+
+
+bindkey -M vicmd v edit-command-line
+
