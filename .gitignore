@@ -16,6 +16,9 @@
 /.itmages.conf
 /client.ovpn
 /.wegorc
+/tasks
+/.password-store/
+/.gnupg/
 
 # Vim temporals/generated
 /.viminfo
@@ -42,19 +45,11 @@
 
 # Temporary files
 /.Xauthority
-/.notifyhist
-/.lesshst
 
 # === Soft =========================
 
-# My Paint
-/.mypaint/
-
 # Firefox
 /.mozilla/
-
-# Vlc
-/.config/vlc
 
 # Ipython
 /.ipython
@@ -65,8 +60,6 @@
 
 # Pass & Keepass
 /.config/KeePass/
-/.recently-used
-/.password-store/
 
 # Qt
 /.config/QtProject.conf
@@ -81,15 +74,11 @@
 # Copyq
 /.config/copyq/
 
-# Octave
-/.config/octave/
-/.octave_hist
+# dicts
+/.stardict/
 
-# Pidgin
-/.purple/
-
-# Mikmod
-/.mikmodrc
-/.mikmod_playlist
+# Other
+/.local/share/nvim/
+/.local/share/autojump/
 
 #============================================
