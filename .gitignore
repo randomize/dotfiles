@@ -9,6 +9,7 @@
 /Templates/
 /Videos/
 /Music/
+/Android/
 
 # Private and secure
 /.ssh/
@@ -85,5 +86,6 @@
 /.local/share/autojump/
 /.config/pulse/
 /.config/qBittorrent/
+/mattermost/
 
 #============================================
