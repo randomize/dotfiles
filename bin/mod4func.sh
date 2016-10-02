@@ -22,7 +22,7 @@ case "$1" in
     ;;
 4)  echo "F4 is pressed"
     notify-send "Lovely keygen stored"
-    tmux capture-pane -t xmp -p | grep -B 1 'Module name' | tail -2 >> ~/nice-xms.txt
+    tmux capture-pane -t xmp -p | grep -B 1 'Module name' | tail -2 >> ~/Documents/nice-xms.txt
     ;;
 5)  echo "F5 is pressed"
     ;;

@@ -1,11 +1,8 @@
 #!/bin/bash
 # vim: ft=sh
-
+# this thing logs awesome messages form popups
 
 timestamp=$(date +"%Y-%m-%d %H:%M:%S")
 
-echo "" $timestamp " > " "$@" >> ~/.notifyhist
-
-
-
+echo " $timestamp  > " "$@" >> /tmp/notify-hist.log
 
