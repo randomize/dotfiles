@@ -27,6 +27,10 @@
 # Zsh temporals/generated
 /.zsh_history
 /.zcompdump
+/.zplug/
+/.zkbd/
+/.zcompdump-rbig-5.2
+/.zsh-update
 
 # Awesome temporals/generated
 /.config/awesome/archmenu.lua
@@ -41,8 +45,8 @@
 /.config/mpd/playlists/
 /.ncmpcpp/error.log
 
-# zplug
-/.zplug/
+# Fonts
+/.local/share/fonts/
 
 # Temporary dirs
 /.cache/
@@ -87,5 +91,7 @@
 /.config/pulse/
 /.config/qBittorrent/
 /mattermost/
+/.config/ranger/bookmarks
+/.config/ranger/history
 
 #============================================
