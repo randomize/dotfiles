@@ -11,6 +11,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
    unset rcd
 fi
 
+# exec gnome-session
+# return
 
 # Manually create
 mkdir .cache/rtorrent_session/
@@ -20,7 +22,7 @@ xrdb -merge ~/.Xresources
 
 
 # Set layouts and no capslock
-setxkbmap -layout "dvp, ru" -option "grp:shifts_toggle"
+setxkbmap -layout "dvp, us, ru" -option "grp:shifts_toggle"
 
 # Make Caps Lock a Control key
 setxkbmap -option ctrl:nocaps 
@@ -82,7 +84,7 @@ xscreensaver -no-splash -display :0.0 &
 xrandr --dpi 100
 xrandr --output VGA1 --off
 xrandr --output HDMI2 --primary
-xrandr --output DP1 --right-of HDMI2
+xrandr --output DP1 --left-of HDMI2
 
 # Map wacom
 xsetwacom --set "Wacom Intuos3 9x12 stylus" MapToOutput "HDMI2" 

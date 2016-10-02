@@ -96,7 +96,7 @@ autoload -U compinit
 compinit
  
 # show completion menu when number of options is at least 2
-zstyle ':completion:*' menu select=2
+zstyle ':completion:*' menu select=4
 
 # theme tweaks
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status history time vi_mode)
