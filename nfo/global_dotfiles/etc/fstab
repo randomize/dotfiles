@@ -1,0 +1,22 @@
+# Partition table
+
+# UUID=5c0277ad-2c68-4fd4-a72a-a2c28b61e037
+/dev/sdc2  			/  					ext4		rw,relatime,data=ordered																				0 1
+
+# /dev/sda1 LABEL=ESP
+#UUID=2089-8040		/boot/efi			vfat		rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro	0 2
+
+# UUID=b5958143-fe8b-409b-8cf0-2e9e572e94ee
+#/dev/sda6			none   				swap		defaults																								0 0
+
+# /dev/sdb1
+LABEL=TERRA			/mnt/TERRA			ntfs-3g		uid=randy,gid=users,dmask=022,fmask=133																	0 0
+
+# UUID=7fcb4f62-5cd7-484d-a6c4-6e01254cee98
+/dev/sda7			/mnt/oldhome		ext4		rw,relatime,data=ordered																				0 2
+
+# UUID=b47261b3-14e5-43fa-942f-95bdae0d7e5d
+/dev/sda4			/mnt/oldlinux		ext4		rw,relatime,data=ordered																				0 2
+
+# UUID=653358462CAC9F58 LABEL=SYSTEM
+/dev/sda2			/mnt/win			ntfs		rw,nosuid,nodev,relatime,user_id=0,group_id=0,allow_other,blksize=4096									0 0
