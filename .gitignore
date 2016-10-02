@@ -40,6 +40,9 @@
 /.config/mpd/playlists/
 /.ncmpcpp/error.log
 
+# zplug
+/.zplug/
+
 # Temporary dirs
 /.cache/
 
@@ -80,5 +83,7 @@
 # Other
 /.local/share/nvim/
 /.local/share/autojump/
+/.config/pulse/
+/.config/qBittorrent/
 
 #============================================
