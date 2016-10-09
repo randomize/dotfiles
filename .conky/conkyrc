@@ -129,5 +129,5 @@ ${goto 40}${color2}${top name 7}${color}${offset -89}${top cpu 7} %
 ${voffset 5}
 \
 ${goto 40}Updates: ${execi 30 checkupdates | wc -l }
-${goto 40}${execi 30 checkupdates | awk '{print $1}' | xargs }
+${goto 40}  ${execi 30 checkupdates | awk '{print $1}' | tr '\n' ' ' | sed -e "s/ /\n\t/g" }
 \
