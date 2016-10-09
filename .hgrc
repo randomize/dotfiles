@@ -1,0 +1,30 @@
+
+[ui]
+username = Eugene Mihailenco
+editor = nvim
+
+[extensions]
+color =
+pager =
+graphlog =
+hgk =
+progress =
+record =
+rebase =
+largefiles =
+shelve =
+purge =
+# chrun =
+histedit =
+hgext.parentrevspec =
+
+
+[progress]
+delay = 1.0
+
+[pager]
+pager = LESS='FSRX' less
+ignore = version, help, update, serve, record
+
+[alias]
+killitwithfire = revert --no-backup --all
