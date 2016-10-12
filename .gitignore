@@ -93,5 +93,12 @@
 /mattermost/
 /.config/ranger/bookmarks
 /.config/ranger/history
+.cargo/
+.config/htop/
+.local/share/cool-retro-term/
+.muttrc
+.rainbow_config.json
+.rainbow_oauth
+aur-unreal-engine/
+rainbowstream/
 
-#============================================
