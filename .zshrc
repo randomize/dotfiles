@@ -13,7 +13,7 @@ fi
 # Zplug is used - a plugin manager for zsh
 # git clone https://github.com/b4b4r07/zplug ~/.zplug
 
-source ~/.zplug/zplug
+source ~/.zplug/init.zsh
 
 # Git helper
 zplug "plugins/git",   from:oh-my-zsh, if:"which git"
@@ -23,7 +23,7 @@ zplug "zsh-users/zsh-syntax-highlighting", nice:10
 
 # Load the theme.
 export DEFAULT_USER=randy
-zplug "bhilburn/powerlevel9k", of:powerlevel9k.zsh-theme
+zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
 
 zplug "rimraf/k"
 zplug "djui/alias-tips"
