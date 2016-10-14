@@ -28,7 +28,7 @@ maxln=200    # Stop after $maxln lines.  Can be used like ls | head -n $maxln
 
 # Find out something about the file:
 mimetype=$(file --mime-type -Lb "$path")
-extension=$(/bin/echo -E "${path##*.}" | tr "[:upper:]" "[:lower:]")
+extension=$(/bin/echo "${path##*.}" | tr "[:upper:]" "[:lower:]")
 
 # Functions:
 # runs a command and saves its output into $output.  Useful if you need
@@ -36,7 +36,7 @@ extension=$(/bin/echo -E "${path##*.}" | tr "[:upper:]" "[:lower:]")
 try() { output=$(eval '"$@"'); }
 
 # writes the output of the previously used "try" command
-dump() { /bin/echo -E "$output"; }
+dump() { /bin/echo "$output"; }
 
 # a common post-processing function used after most commands
 trim() { head -n "$maxln"; }
@@ -75,6 +75,7 @@ case "$extension" in
     # PDF documents:
     pdf)
         evince-thumbnailer -l -s 400 "$path" "$cached" && exit 6 ;;
+        # try pdftotext -l 10 -nopgbrk -q "$path" - && { dump | trim | fmt -s -w $width; exit 0; } || exit 1;;
         #convert "${path}[0]" -thumbnail x320 -background white -alpha remove  "$cached" && exit 6 || exit 1;;
     # DJVU document
     djvu|djv)
@@ -87,6 +88,8 @@ case "$extension" in
     # HTML Pages:
     htm|html|xhtml)
         try w3m    -dump "$path" && { dump | trim | fmt -s -w $width; exit 4; }
+        try lynx   -dump "$path" && { dump | trim | fmt -s -w $width; exit 4; }
+        try elinks -dump "$path" && { dump | trim | fmt -s -w $width; exit 4; }
         ;; # fall back to highlight/cat if the text browsers fail
 esac
 
