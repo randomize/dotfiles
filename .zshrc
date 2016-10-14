@@ -10,10 +10,14 @@ fi
 
 
 # {{{ Managed Plugins =========================================================
-# Zplug is used - a plugin manager for zsh
-# git clone https://github.com/b4b4r07/zplug ~/.zplug
+# Check if zplug is installed and install it
+if [[ ! -d ~/.zplug ]]; then
+  git clone https://github.com/zplug/zplug ~/.zplug
+  source ~/.zplug/init.zsh && zplug update --self
+fi
 
 source ~/.zplug/init.zsh
+
 
 # Git helper
 zplug "plugins/git",   from:oh-my-zsh, if:"which git"
@@ -27,6 +31,8 @@ zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
 
 zplug "rimraf/k"
 zplug "djui/alias-tips"
+zplug "Tarrasch/zsh-bd"
+
 export ZSH_PLUGINS_ALIAS_TIPS_TEXT='💡  '
 
 # Install plugins if there are plugins that have not been installed
@@ -34,6 +40,8 @@ if ! zplug check --verbose; then
     printf "Install? [y/N]: "
     if read -q; then
         echo; zplug install
+    else
+        echo
     fi
 fi
 
@@ -52,8 +60,8 @@ zplug load --verbose
 # Zbell
 [[ -s ~/.zsh/zbell.sh ]] && . ~/.zsh/zbell.sh
 
-# back dir
-[[ -s ~/.zsh/bd/bd.zsh ]] && . ~/.zsh/bd/bd.zsh
+# edit files
+[[ -s ~/.zsh/edit.zsh ]] && . ~/.zsh/edit.zsh
 
 # Autojump
 [[ -s /etc/profile.d/autojump.zsh ]] && . /etc/profile.d/autojump.zsh
@@ -94,7 +102,9 @@ fpath=(~/.zsh/completion $fpath)
 # compsys initialization
 autoload -U compinit
 compinit
- 
+
+autoload -z edit-command-line 
+zle -N edit-command-line
 # show completion menu when number of options is at least 2
 zstyle ':completion:*' menu select=4
 

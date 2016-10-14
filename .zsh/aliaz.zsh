@@ -109,18 +109,6 @@ alias cgdb='cgdb -- -nx -x ~/.cgdbinit '
 alias ccat='pygmentize -f 256 -g -O style=monokai,linenos=1'
 alias sniff-flv='sudo ngrep -d any '.flv'  port 80'
 
-## Editing aliases
-alias eZ='vim ~/.zshrc && source ~/.zshrc'
-alias eV='vim ~/.config/nvim/init.vim'
-alias eT='vim ~/.tmux.conf'
-
-## Dot helpers
-# alias ..='cd ..'
-# alias ...='cd ../..'
-# alias ....='cd ../../..'
-# alias .....='cd ../../../..'
-# alias ......='cd ../../../../..'
-
 ## Editors aliases
 alias vim='nvim'
 alias e='vim'
