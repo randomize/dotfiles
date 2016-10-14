@@ -45,9 +45,14 @@ end
 dopath("clientfind.lua");
 
 -- Toggle terminals and other things
-local drop      = require("scratchdrop")
+local drop = require("scratchdrop")
 
 dropterminal = function()
+    --if client.focus.screen == 1 then
+    --   drop("urxvtc -fn \"xft:Pragmata Pro:pixelsize=16\" -name my_floating_terminal -e " .. home_dir_path .. "/bin/starttmux.sh", "center", "center", 0.9, 0.9, true)
+    --else
+    --   drop("st -n my_floating_terminal -e " .. home_dir_path .. "/bin/starttmux.sh", "center", "center", 0.7, 0.65, true)
+    --end
     drop("st -n my_floating_terminal -e " .. home_dir_path .. "/bin/starttmux.sh", "center", "center", 0.7, 0.65, true)
 end
 
@@ -556,17 +561,11 @@ globalkeys = awful.util.table.join(
     -- Terminals
     awful.key({ modkey,           }, "Return",
        function ()
-          --if client.focus.screen == 1 then
-          --   drop("urxvtc -fn \"xft:Pragmata Pro:pixelsize=16\" -name my_floating_terminal -e " .. home_dir_path .. "/bin/starttmux.sh", "center", "center", 0.9, 0.9, true)
-          --else
-          --   drop("st -n my_floating_terminal -e " .. home_dir_path .. "/bin/starttmux.sh", "center", "center", 0.7, 0.65, true)
-             dropterminal()
-          --end
+          dropterminal()
        end
     ),
     awful.key({ modkey, "Shift"   }, "Return",
        function ()
-          -- awful.util.spawn("xterm")
           awful.util.spawn("urxvtc")
        end
     ),
