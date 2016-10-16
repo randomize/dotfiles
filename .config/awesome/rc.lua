@@ -155,6 +155,7 @@ mymainmenu = awful.menu({ items = { { "Awesome", myawesomemenu, beautiful.awesom
                                     { "Firefox", "firefox" },
                                     { "Unity", "unity-editor" },
                                     { "Chromium", "chromium" },
+                                    { "qBittorrent", "qbittorrent" },
                                     { "Chromium Incognito", "chromium --incognito" },
                                     { "IM stuff", "st -e " .. home_dir_path .. "/bin/tmux-im.sh" },
                                     { "FBReader", "FBReader" },
