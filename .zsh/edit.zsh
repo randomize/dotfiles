@@ -44,6 +44,7 @@ _ec mutt       ~/.muttrc
 _ec nvim       ~/.config/nvim/init.vim
 _ec ncmpcpp    ~/.ncmpcpp/bindings
 _ec awesome    ~/.config/awesome/rc.lua
+_ec git    ~/.gitconfig
 # _ec plug       ~/.config/nvim/plug.vim
 # _ec prompt     ${ZSH_ROOT}/functions/prompt.zsh
 _ec ranger     ~/.config/ranger/rc.conf

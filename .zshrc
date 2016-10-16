@@ -21,14 +21,21 @@ source ~/.zplug/init.zsh
 
 # Git helper
 zplug "plugins/git",   from:oh-my-zsh, if:"which git"
-
-# Syntax highlighting bundle.
+zplug "plugins/vim-mode", from:oh-my-zsh
 zplug "zsh-users/zsh-syntax-highlighting", nice:10
 
-# Load the theme.
-export DEFAULT_USER=randy
-zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
+# export DEFAULT_USER=randy
+# zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
+# zplug "cusxio/delta-prompt", use:delta.zsh
 
+# PURE_PROMPT_SYMBOL='$'
+# zplug "mafredri/zsh-async"
+# zplug "sindresorhus/pure"
+
+zplug 'nojhan/liquidprompt'
+
+# Z is new Autojump
+zplug "rupa/z", use:z.sh
 zplug "rimraf/k"
 zplug "djui/alias-tips"
 zplug "Tarrasch/zsh-bd"
@@ -49,6 +56,27 @@ fi
 zplug load --verbose
 
 # }}}
+
+function zle-keymap-select zle-line-init
+{
+  case $KEYMAP in
+    vicmd)
+      # PROMPT="${PROMPT[1,-2]}8"
+      P="${PROMPT/\[/<}"
+      PROMPT="${P/\]/>}"
+      ;;
+    viins|main)
+      # PROMPT="${PROMPT[1,-2]} "
+      P="${PROMPT/</[}"
+      PROMPT="${P/>/]}"
+      ;;
+  esac
+  zle reset-prompt
+  zle -R
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
 
 # {{{ Unmanaged plugins & helpers =============================================
 # OS detect
@@ -135,3 +163,7 @@ fi
 
 
 [ -s "/home/randy/.dnx/dnvm/dnvm.sh" ] && . "/home/randy/.dnx/dnvm/dnvm.sh" # Load dnvm
+
+# PATH {{{
+export PATH=$PATH:/home/randy/.cargo/bin
+# }}}
