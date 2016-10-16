@@ -116,4 +116,7 @@ alias v='vim'
 alias vi='vim'
 alias view='vim -R'
 
+alias ..='cd ..'
+alias ...='cd ../..'
+
 
