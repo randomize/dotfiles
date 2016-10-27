@@ -59,6 +59,9 @@
 
    # Find todos in repo code.
    todo = grep --heading --break --ignore-case -e ' FIX: *' -e ' TODO: *'
+
+   # Just another one pretty-print
+   wow = log --all --graph --decorate --oneline --simplify-by-decoration
 [color]
    ui = true
 [push]
