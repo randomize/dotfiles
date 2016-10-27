@@ -12,5 +12,5 @@
   "default_minute": 0,
   "timeformat": "%Y-%m-%d %H:%M",
   "highlight": true,
-  "editor": "vim"
+  "editor": "nvim"
 }
