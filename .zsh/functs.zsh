@@ -45,6 +45,9 @@ function calc() { python -ic "from __future__ import division; from math import 
 # Check if websites are down
 function down4me() { curl -s "http://www.downforeveryoneorjustme.com/$1" | sed '/just you/!d;s/<[^>]*>//g';}
 
+# Quck helper for scripting - selects column like: | aprint 2
+function aprint() { awk "{print \$${1:-1}}"; }
+
 # Usage: codi [filetype] [filename]
 codi()
 {
