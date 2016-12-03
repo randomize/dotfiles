@@ -2,6 +2,6 @@
 
 # {{{ Aliases =============================================
 
-alias update='brew update && brew upgrade && brew clean'
+alias update='brew update && brew upgrade && brew cleanup'
 
 # }}}

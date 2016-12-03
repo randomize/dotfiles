@@ -38,6 +38,8 @@ function lss()  { tree $@ | less }
 
 function wiki() { dig +short txt $(echo "$*" | tr ' ' _).wp.dg.cx }
 function lls()  { locate "$*" | less }
+function fn () { find . -iname "*$1*" -print }
+function lsunity() { tar -axf "$1" --wildcards --no-anchored '*pathname*' --to-command="echo '' && cat" | sort }
 
 # Command-line calculator
 function calc() { python -ic "from __future__ import division; from math import *; from random import *" ;}
