@@ -56,6 +56,8 @@
    # the merged branch respectively:
    ours   = "!f() { git checkout --ours $@ && git add $@; }; f"
    theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
+   bra = "!f() { git for-each-ref --sort=committerdate --format='%(refname:short) * %(authorname) * %(committerdate:relative)' refs/remotes/ | column -t -s '*'; }; f"
+   cleanup = "!f() { git reset HEAD --hard && git clean -dfx ; }; f"
 
    # Find todos in repo code.
    todo = grep --heading --break --ignore-case -e ' FIX: *' -e ' TODO: *'
