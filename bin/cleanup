@@ -2,3 +2,16 @@
 # vim: ft=sh
 
 echo "This is cleanup script"
+
+rm -rf ~/.subversion/
+rm -rf ~/.sqlite_history
+rm -rf ~/.lesshst
+rm -rf ~/.python_history
+rm -rf ~/.gdb_history
+rm -rf ~/.root_hist
+rm -rf ~/.sdcv_history
+rm -rf ~/.recently-used
+rm -rf ~/.subversion/
+rm -rf ~/.wget-hsts
+rm -rf ~/.thumbnails/
+rm -rf ~/.npm/
