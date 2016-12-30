@@ -1,0 +1,20 @@
+#/bin/bash
+# vim: ft=sh
+
+STAMP="$(date +'%d-%m-%Y-%H-%M-%S')"
+
+
+FILESLIST="
+       $HOME/.itmages.conf
+       $HOME/.2steps
+       $HOME/.wegorc
+       $HOME/.pocketrc"
+
+
+# echo "${FILESLIST}" > /tmp/list.txt
+# echo "${FILESLIST}"
+
+XZ_OPT=-9 tar cJf "backup-${STAMP}.tar.xz" -v $FILESLIST
+# echo "${FILESLIST}"
+
+
