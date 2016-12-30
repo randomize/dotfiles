@@ -1,0 +1,4 @@
+#!/bin/bash
+# vim: ft=sh
+
+echo "This is cleanup script"
