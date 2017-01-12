@@ -744,7 +744,7 @@ awful.rules.rules = {
       callback = function (c) awful.placement.centered(c,nil) end
     },
     -- Set Firefox to always map on tags number 1 of screen 1.
-    { rule = { class = "Firefox" }, properties = {   tag = tags[2][1], }, },
+    -- { rule = { class = "Firefox" }, properties = {   tag = tags[2][1], }, },
     -- Set Pidgin
     { rule = { class = "Pidgin", role = "buddy_list"},   properties = { tag = tags[1][9] } },
     { rule = { class = "Pidgin", role = "conversation"}, properties = { tag = tags[1][9] }, callback = awful.client.setslave },
