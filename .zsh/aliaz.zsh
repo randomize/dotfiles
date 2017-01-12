@@ -119,4 +119,6 @@ alias view='vim -R'
 alias ..='cd ..'
 alias ...='cd ../..'
 
+alias workmac='TERM="xterm-256color" ssh eugene@10.3.10.59'
+
 
