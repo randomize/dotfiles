@@ -47,7 +47,7 @@ set findcase=smart
 " }}}
 
 " alphabetic characters instead of numbers for hints
-set hintkeys=uhetidyfkbnosaxpgcrmjwqvqz
+set hintkeys='huidtenosayfkbxjwcqvrzl'
 
 " show destination links in 1=status line, 2=command line
 set showstatuslinks=status
