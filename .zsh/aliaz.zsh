@@ -110,7 +110,7 @@ alias ccat='pygmentize -f 256 -g -O style=monokai,linenos=1'
 alias sniff-flv='sudo ngrep -d any '.flv'  port 80'
 
 ## Editors aliases
-alias vim='nvim'
+alias vim='NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim'
 alias e='vim'
 alias v='vim'
 alias vi='vim'
