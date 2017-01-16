@@ -84,7 +84,7 @@ xscreensaver -no-splash -display :0.0 &
 xrandr --dpi 100
 xrandr --output VGA1 --off
 xrandr --output HDMI2 --primary
-xrandr --output DP1 --left-of HDMI2
+xrandr --output DP1 --right-of HDMI2
 
 # Map wacom
 xsetwacom --set "Wacom Intuos3 9x12 stylus" MapToOutput "HDMI2" 
