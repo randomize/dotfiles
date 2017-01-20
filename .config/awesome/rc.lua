@@ -47,6 +47,11 @@ dopath("clientfind.lua");
 -- Toggle terminals and other things
 local drop = require("scratchdrop")
 
+-- Widgets
+widgets = {
+    kbdd = require("widgets.kbdd"),
+}
+
 dropterminal = function()
     --if client.focus.screen == 1 then
     --   drop("urxvtc -fn \"xft:Pragmata Pro:pixelsize=16\" -name my_floating_terminal -e " .. home_dir_path .. "/bin/starttmux.sh", "center", "center", 0.9, 0.9, true)
@@ -189,6 +194,9 @@ cpuwidget:set_width(100)
 cpuwidget:set_background_color("#494B4F")
 cpuwidget:set_color({ type = "linear", from = { 0, 0 }, to = { 10,0 }, stops = { {0, "#FF5656"}, {0.5, "#88A175"}, {1, "#AECF96" }}})
 vicious.register(cpuwidget, vicious.widgets.cpu, "$1")
+
+-- Layout widget
+-- keyboardwidget = awful.widget.keyboardlayout()
 
 
 -- Awesome MPD widget
@@ -350,6 +358,7 @@ for s = 1, screen.count() do
         right_layout:add(wibox.widget.systray())
     end
 
+    right_layout:add(widgets.kbdd())
     right_layout:add(mylayoutbox[s])
 
     -- Now bring it all together (with the tasklist in the middle)
@@ -726,7 +735,8 @@ awful.rules.rules = {
     },
     -- Floating centered windows by class
     { rule_any = { class = { "pinentry", "Xmessage", "feh", "screekey", "mpv", "Sushi-start" }},
-       properties = { floating = true, tag = tags[2][1], },
+       -- properties = { floating = true, tag = tags[2][1], },
+       properties = { floating = true, },
        callback = function (c) awful.placement.centered(c,nil) end
     },
     -- Floating centered UnityWindows
@@ -746,8 +756,8 @@ awful.rules.rules = {
     -- Set Firefox to always map on tags number 1 of screen 1.
     -- { rule = { class = "Firefox" }, properties = {   tag = tags[2][1], }, },
     -- Set Pidgin
-    { rule = { class = "Pidgin", role = "buddy_list"},   properties = { tag = tags[1][9] } },
-    { rule = { class = "Pidgin", role = "conversation"}, properties = { tag = tags[1][9] }, callback = awful.client.setslave },
+    -- { rule = { class = "Pidgin", role = "buddy_list"},   properties = { tag = tags[1][9] } },
+    -- { rule = { class = "Pidgin", role = "conversation"}, properties = { tag = tags[1][9] }, callback = awful.client.setslave },
 }
 -- }}}
 

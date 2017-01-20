@@ -20,6 +20,8 @@ mkdir .cache/rtorrent_session/
 # Load settings from X
 xrdb -merge ~/.Xresources
 
+# Layout manager
+kbdd &
 
 # Set layouts and no capslock
 setxkbmap -layout "dvp, us, ru" -option "grp:shifts_toggle"
