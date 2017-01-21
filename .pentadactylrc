@@ -66,8 +66,11 @@ set passkeys+=https://duckduckgo.com:jkv
 " set passkeys+=tumblr.com:jkln<Space><A-r><A-e>
 " set passkeys+=joindiaspora.com:jk
 
+autocmd LocationChange 'https://docs.google.com/*' :normal! <C-z>
+
 " set laissez-fair focus to allow passkeys sites to grab focus
 " set strictfocus=google.com:laissez-faire,duckduckgo.com:laissez-faire,twitter.com:laissez-faire,getprismatic.com:laissez-faire,feedly.com:laissez-faire,tumblr.com:laissez-faire,'chrome:*':laissez-faire,*:moderate
+set strictfocus=google.com:laissez-faire,docs.google.com:laissez-faire
 
 " Enable bookmarks
 set guioptions+=B
