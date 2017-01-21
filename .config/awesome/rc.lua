@@ -421,6 +421,7 @@ globalkeys = awful.util.table.join(
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
+    awful.key({ modkey, "Shift"   }, "o", function () awful.screen.focus_relative( 1) end),
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
     awful.key({ modkey,           }, "l", function () awful.tag.incmwfact( 0.05)      end),
@@ -576,7 +577,7 @@ globalkeys = awful.util.table.join(
     ),
     awful.key({ modkey, "Shift"   }, "Return",
        function ()
-          awful.util.spawn("urxvtc")
+          awful.util.spawn("st")
        end
     ),
 
