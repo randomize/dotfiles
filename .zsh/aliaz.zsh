@@ -101,7 +101,6 @@ alias cmake-release='cmake -DCMAKE_BUILD_TYPE=Release'
 alias cmake-debug='cmake -DCMAKE_BUILD_TYPE=Debug'
 
 # Tools
-#alias bindiff='cmp -l file1.bin file2.bin | gawk \'{printf \"%08X %02X %02X\n\", $1, strtonum(0$2), strtonum(0$3)}\''
 alias vim-clean-views='rm -f ~/.vim/view/* ; rm -f ~/.local/share/nvim/view/*'
 alias sdcv='sdcv --color'
 alias sdc='sdcv -u "LingvoUniversal (En-Ru)" --color'

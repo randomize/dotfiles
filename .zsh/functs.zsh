@@ -47,6 +47,49 @@ function calc() { python -ic "from __future__ import division; from math import 
 # Check if websites are down
 function down4me() { curl -s "http://www.downforeveryoneorjustme.com/$1" | sed '/just you/!d;s/<[^>]*>//g';}
 
+# Screencasting
+function recordscreen-main() 
+{
+    ffmpeg \
+       -f alsa \
+       -ac 2 \
+       -i pulse \
+       -f x11grab \
+       -framerate 30 \
+       -video_size 2560x1440 \
+       -i :0.0+1280 \
+       -c:v libx264 \
+       -preset ultrafast \
+       -qp 0 \
+       -threads 0 \
+       -c:a pcm_s16le \
+       -af aresample=async=1:first_pts=0 \
+       "cast-$(date +"%F-%I-%M-%s").mkv"
+}
+
+function recordscreen-small() 
+{
+    screenkey --scr 0 -s small
+    ffmpeg \
+       -f alsa \
+       -ac 2 \
+       -i pulse \
+       -f x11grab \
+       -framerate 30 \
+       -video_size 1280x1024 \
+       -i :0.0 \
+       -c:v libx264 \
+       -preset ultrafast \
+       -qp 0 \
+       -threads 0 \
+       -c:a pcm_s16le \
+       -af aresample=async=1:first_pts=0 \
+       "cast-$(date +"%F-%I-%M-%s").mkv"
+    killall screenkey
+}
+
+
+
 # Quck helper for scripting - selects column like: | aprint 2
 function aprint() { awk "{print \$${1:-1}}"; }
 

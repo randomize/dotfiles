@@ -5,3 +5,8 @@ screenkey &
 ffmpeg -f x11grab -s 1280x1024 -r 24 -i $DISPLAY -f pulse -i default -c:v libx264 -b:a 200k -y "cast-$(date +"%F-%I-%M-%s").mkv"
 #ffmpeg -f x11grab -s 1920x1080 -r 24 -i $DISPLAY -f alsa -i default -c:v libx265 -preset medium -x265-params crf=28 -strict experimental -b:a 200k "cast-265.mkv"
 
+# ffmpeg -i output.mkv -an -vcodec libvpx -b 1000k -pass 1 our-final-product.webm
+# ffmpeg -i output.mkv -acodec libvorbis -ab 128k -ac 2 -vcodec libvpx -b 1000k -threads 2 -pass 2 our-final-product.webm
+
+# Change the bitrate (-b 1000k) to control the size/quality tradeoff. Also, change the number of threads (-threads 2) to suit the number of threads your CPU has. If your CPU is not multi-threaded, you can omit the -threads option completely. If you have a modern web browser, you can open the file and play it natively inside it. A WebM file consists of VP8 video and Vorbis audio mulitplexed into a .webm container (which is basically a subset of the Matroska container, aka .mkv).
+
