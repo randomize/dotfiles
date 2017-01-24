@@ -121,3 +121,4 @@ alias ...='cd ../..'
 alias workmac='TERM="xterm-256color" ssh eugene@10.3.10.59'
 
 
+alias share-mon-small='x11vnc -viewonly -rfbauth ~/.x11vncpass -rfbport 12730 -ncache 10 -clip 1280x1024+0+0'
