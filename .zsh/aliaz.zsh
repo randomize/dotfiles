@@ -94,7 +94,7 @@ alias fgrep='grep --colour'
 alias egrep='egrep --colour'
 alias free='free -m'
 alias htop='htop -d 2'
-alias fehdir='feh -g 640x480 -d -S filename'
+alias feh='feh -g 640x480+1290+40 -d -S filename'
 
 # Programming
 alias cmake-release='cmake -DCMAKE_BUILD_TYPE=Release'
