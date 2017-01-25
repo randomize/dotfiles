@@ -735,7 +735,7 @@ awful.rules.rules = {
      }
     },
     -- Floating centered windows by class
-    { rule_any = { class = { "pinentry", "Xmessage", "feh", "screekey", "mpv", "Sushi-start" }},
+    { rule_any = { class = { "pinentry", "Xmessage", "screekey", "mpv", "Sushi-start" }},
        -- properties = { floating = true, tag = tags[2][1], },
        properties = { floating = true, },
        callback = function (c) awful.placement.centered(c,nil) end
@@ -744,7 +744,7 @@ awful.rules.rules = {
     { rule = { class =  "Unity" , name = "Hold On" },           properties = { floating = true }, callback = function (c) awful.placement.centered(c,nil) end },
     { rule = { class =  "Unity" , name = "Starting Unity..." }, properties = { floating = true }, callback = function (c) awful.placement.centered(c,nil) end },
     -- Floating windows by class
-    { rule_any = { class = { "gimp", "Xsane", "Qjackctl", "Screenkey"}},
+    { rule_any = { class = { "gimp", "feh", "Xsane", "Qjackctl", "Screenkey"}},
        properties = { floating = true }
     },
     -- Guake-like drops
