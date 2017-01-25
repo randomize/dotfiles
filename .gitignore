@@ -21,6 +21,7 @@
 /.password-store/
 /.gnupg/
 /.pocketrc
+/.x11vncpass
 
 # Vim temporals/generated
 /.viminfo
