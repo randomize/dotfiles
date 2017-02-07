@@ -91,7 +91,7 @@ end
 beautiful.init(config_dir_path .. "/zenburn/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "xterm"
+terminal = "st"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -577,7 +577,7 @@ globalkeys = awful.util.table.join(
     ),
     awful.key({ modkey, "Shift"   }, "Return",
        function ()
-          awful.util.spawn("st")
+          awful.util.spawn(terminal)
        end
     ),
 
@@ -741,8 +741,10 @@ awful.rules.rules = {
        callback = function (c) awful.placement.centered(c,nil) end
     },
     -- Floating centered UnityWindows
-    { rule = { class =  "Unity" , name = "Hold On" },           properties = { floating = true }, callback = function (c) awful.placement.centered(c,nil) end },
-    { rule = { class =  "Unity" , name = "Starting Unity..." }, properties = { floating = true }, callback = function (c) awful.placement.centered(c,nil) end },
+    { rule_any = { class =  {"Unity"} , name = {"Hold On", "Hold on", "Starting Unity..." } },
+       properties = { floating = true },
+       callback = function (c) awful.placement.centered(c,nil) end 
+    },
     -- Floating windows by class
     { rule_any = { class = { "gimp", "feh", "Xsane", "Qjackctl", "Screenkey"}},
        properties = { floating = true }
