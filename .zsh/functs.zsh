@@ -77,7 +77,7 @@ function recordscreen-small()
        -f x11grab \
        -framerate 30 \
        -video_size 1280x1024 \
-       -i :0.0 \
+       -i :0.0+2560 \
        -c:v libx264 \
        -preset ultrafast \
        -qp 0 \

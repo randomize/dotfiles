@@ -121,7 +121,7 @@ alias ...='cd ../..'
 alias workmac='TERM="xterm-256color" ssh eugene@10.3.10.59'
 
 
-alias share-mon-small='x11vnc -viewonly -rfbauth ~/.x11vncpass -ncache 10 -rfbport 12730 -clip 1280x1024+0+0 -nosel -noprimary -noclipboard -cursor arrow -forever -many -shared'
+alias share-mon-small='x11vnc -viewonly -rfbauth ~/.x11vncpass -ncache 16 -rfbport 12730 -clip 1280x1024+2560+0 -nosel -noprimary -noclipboard -cursor arrow -forever -many -shared'
 alias view-demelev='vncviewer demelev.dyndns.org::12730 -passwd ~/.x11vncpass '
 
 
