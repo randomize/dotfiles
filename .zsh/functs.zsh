@@ -50,6 +50,7 @@ function down4me() { curl -s "http://www.downforeveryoneorjustme.com/$1" | sed '
 # Screencasting
 function recordscreen-main() 
 {
+    screenkey --scr 0 -s small
     ffmpeg \
        -f alsa \
        -ac 2 \
@@ -69,7 +70,7 @@ function recordscreen-main()
 
 function recordscreen-small() 
 {
-    screenkey --scr 0 -s small
+    screenkey --scr 1 -s small
     ffmpeg \
        -f alsa \
        -ac 2 \
