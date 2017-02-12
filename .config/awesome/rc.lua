@@ -465,6 +465,11 @@ globalkeys = awful.util.table.join(
           awful.util.spawn("nautilus", false)
        end
     ),
+    awful.key({ modkey, "Shift"}, "n",
+       function ()
+          awful.util.spawn_with_shell("~/bin/vnc-menu", false)
+       end
+    ),
 
     -- Screenshots
     awful.key({                   }, "Print",
