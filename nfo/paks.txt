@@ -397,7 +397,7 @@ Viewers:
    //aur/view3dscene-svn // 3D model viewer
 
    xchm           // CHM viewer
-   chmsee-webkit  // Modern CHM viewer
+   chmsee         // Modern CHM viewer
 
    fbreader       // Using it as EPUB reader
    //coolreader   // FBreader is better for me
@@ -454,6 +454,7 @@ IDE and editors:
    monodevelop                        // Mono IDE
    intellij-idea-community-edition    // Idea
 
+   cloc // Count lines of code
 
    // qt group
    qt5-3d
@@ -520,7 +521,9 @@ C++ libs:
    intel-tbb      // "Parallel STL"
 
    glade          // GUI builder for GTK 3, also there is glade
-   cppunit
+
+   cppunit        // C++ unit test lib
+   cmocka         // C unit test lib
 
 Debuggers:
 
@@ -547,6 +550,7 @@ Reverse:
    aur/android-apktool     // Android reverse engineering tool
    aur/dex2jar             // DEX to JAR converter
    aur/jd-gui              // Java source reversing tool
+   binwalk                 // Firmware RE Tool
 
 Build tools:
 
@@ -636,8 +640,11 @@ Python stuff:
 
 Other Languages:
 
-   racket   // scheme LISP
-   clisp    // Common LISP
+   // Lisp
+   racket
+   clisp
+   chicken
+
    mono     // Damn C#
    rust     // Rust
    ruby     // Ruby
@@ -730,7 +737,7 @@ Audio and Sound:
 
    jack2-dbus    // JACK2 (newer) with dbus support to play nice with pulseaudio
    qjackctl     // GUI for JACK server
-   aur/a2jmidid-git   // ALSA MIDI to JACK MIDI
+   a2jmidid   // ALSA MIDI to JACK MIDI
 
    // MIDI
    vmpk
@@ -940,6 +947,7 @@ Android development:
    aur/android-ndk                  // Native support SDK
 
    android-udev      // Udev rules for most popular devices
+   android-tools     // fastboot, adb, etc..
 
    lib32-libstdc++5  // Android SDK is 32 bit, so using this to workaround
    lib32-libxv       // and this..
