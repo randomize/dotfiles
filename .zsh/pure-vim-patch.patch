@@ -1,0 +1,41 @@
+diff --git a/pure.zsh b/pure.zsh
+index a62a60e..87b2014 100644
+--- a/pure.zsh
++++ b/pure.zsh
+@@ -137,7 +137,7 @@ prompt_pure_preprompt_render() {
+ 	[[ -n ${prompt_pure_git_last_dirty_check_timestamp+x} ]] && git_color=red
+ 
+ 	# construct preprompt, beginning with path
+-	local preprompt="%F{blue}%~%f"
++	local preprompt="%F{white}%~%f"
+ 	# git info
+ 	preprompt+="%F{$git_color}${vcs_info_msg_0_}${prompt_pure_git_dirty}%f"
+ 	# git pull/push arrows
+@@ -363,8 +363,25 @@ prompt_pure_setup() {
+ 	# show username@host if root, with username in white
+ 	[[ $UID -eq 0 ]] && prompt_pure_username=' %F{white}%n%f%F{242}@%m%f'
+ 
+-	# prompt turns red if the previous command didn't exit with 0
+-	PROMPT="%(?.%F{magenta}.%F{red})${PURE_PROMPT_SYMBOL:-❯}%f "
++    # set prompt
++    VIM_ON="%{$fg_bold[red]%}${PURE_PROMPT_SYMBOL}%{$reset_color%}"
++    VIM_OFF="%{$fg_bold[green]%}${PURE_PROMPT_SYMBOL}%{$reset_color%}"
++    PROMPT="%(?. .!)$VIM_OFF "
++
++
++}
++
++
++# Making vim modes visible with hooks
++function zle-line-init zle-keymap-select {
++   VIM_ON="%{$fg_bold[red]%}${PURE_PROMPT_SYMBOL}%{$reset_color%}"
++   VIM_OFF="%{$fg_bold[green]%}${PURE_PROMPT_SYMBOL}%{$reset_color%}"
++   VIMPS="${${KEYMAP/vicmd/$VIM_ON}/(main|viins)/$VIM_OFF}"
++   PROMPT="%(?. .!)$VIMPS "
++   zle reset-prompt
+ }
+ 
++zle -N zle-line-init
++zle -N zle-keymap-select
++
+ prompt_pure_setup "$@"

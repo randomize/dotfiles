@@ -22,15 +22,15 @@ source ~/.zplug/init.zsh
 # Git helper
 zplug "plugins/git",   from:oh-my-zsh, if:"which git"
 zplug "plugins/vim-mode", from:oh-my-zsh
-zplug "zsh-users/zsh-syntax-highlighting", nice:10
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 # export DEFAULT_USER=randy
 # zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
 # zplug "cusxio/delta-prompt", use:delta.zsh
 
 # PURE_PROMPT_SYMBOL='$'
-# zplug "mafredri/zsh-async"
-# zplug "sindresorhus/pure"
+# zplug "mafredri/zsh-async", from:github
+# zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 
 zplug 'nojhan/liquidprompt'
 
@@ -53,7 +53,8 @@ if ! zplug check --verbose; then
 fi
 
 # Then, source plugins and add commands to $PATH
-zplug load --verbose
+# zplug load --verbose
+zplug load
 
 # }}}
 

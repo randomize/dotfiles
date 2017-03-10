@@ -58,7 +58,7 @@ function recordscreen-main()
        -f x11grab \
        -framerate 30 \
        -video_size 2560x1440 \
-       -i :0.0+1280 \
+       -i :0.0 \
        -c:v libx264 \
        -preset ultrafast \
        -qp 0 \
