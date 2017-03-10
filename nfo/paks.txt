@@ -139,6 +139,8 @@ Packaging:
    namcap         // Package checking
    abs            // Arch build system
 
+   arch-install-scripts
+
 Bluetooth and network:
 
    dnsmasq           // Local DNS cache (see setup(9))
@@ -301,6 +303,9 @@ Console tools:
    tree           // Nice directory tree listing
    aur/colortheme // Terminal colors table script
    dfc            // Nice df ;)
+   aur/colout-git        // console color utility
+   asciinema      // screen recorder for cli
+   c-lolcat       // rainbow color tool
 
    aur/vimpager-git   // Vim for paging and vimcat
    sharutils          // Shell archives support
@@ -486,6 +491,21 @@ IDE and editors:
    qt5-doc            // Documentation
    qt5-examples       // Some examples to qtcreator
 
+Game development:
+
+   alembic   // Open CG format
+
+   glm            // Math lib for OpenGL
+   glew
+   glfw
+   freeglut       // New GLUT lib version
+   bullet         // Physics lib
+   box2d          // 2D Physics
+   assimp         // Assets lib
+   ogre           // 3D Engine
+   openexr        // Erx image support
+
+
 C++ compilers and tools:
 
    clang                      // Cool and modern apple compiler
@@ -503,16 +523,6 @@ C++ libs:
 
    libc++         // LLVM clang STL
    boost
-
-   glm            // Math lib for OpenGL
-   glew
-   glfw
-   freeglut       // New GLUT lib version
-   bullet         // Physics lib
-   box2d          // 2D Physics
-   assimp         // Assets lib
-   ogre           // 3D Engine
-   openexr        // Erx image support
 
    opencv         // Computer vision lib
    opencv-samples // and samples
