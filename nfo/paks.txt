@@ -63,7 +63,7 @@ Contens of base-devel group:
    bison
    fakeroot
    flex
-   gcc
+   gcc-multilib
    groff
    libtool
    m4
@@ -126,10 +126,11 @@ First to install:
    pkgfile           // For command not found hook (see setup (1))
    openssh           // SSH server (see setup)
 
-UEFI boot:
+UEFI boot and stuff
 
    efibootmgr
-   gummiboot
+   // gummiboot - now systemb boot
+   intel-ucode
 
 Packaging:
 
@@ -165,6 +166,7 @@ Bluetooth and network:
    ntop              // Another net monitor
 
    wireshark-gtk     // Network sniffer
+   dstat             // Statistics tool
 
 
 
@@ -194,6 +196,7 @@ Xorg stuff:
    xorg-xmessage   // For scripts with GUI-sh prompts
 
    x11vnc          // VNC desktop sharing
+   freerdp
 
 Diagnostics and HDD:
 
@@ -202,6 +205,8 @@ Diagnostics and HDD:
    aur/sysdig    // Modern kickass tool for diagnostics
    aur/i7z-git   // i7 Processor info tool
    lshw          // lists info about hardware
+   atop          // nice top replacement
+   glances
 
 
    parted     // Partitioning
@@ -209,6 +214,7 @@ Diagnostics and HDD:
    ext4magic  // Ext fs deleted files recovery
 
    unetbootin  // USB bootable creator
+   lm_sensors
 
 Window managers and DE:
 
@@ -216,8 +222,9 @@ Window managers and DE:
    vicious             // Widgets for awesome
    wireless_tools      // For vicious for networking widgets
    archlinux-xdg-menu  // For applications menu in awesome (see setup(17))
+   programmers-dvorak
 
-   aur/compton-git     // composition manager
+   compton     // composition manager
    libnotify           // notifications lib
 
    parcellite      // clipboard manager good and lite (Has problems with nautilus Cut/Copy/Paste)
@@ -229,12 +236,14 @@ Window managers and DE:
 
    skb             // simple keyboard layout indicator
    xcape           // Remap keys, use return as second ctrl and caps and ctrl and esc
+   sbxkb           // layout daemon
 
    gksu              // GUI-sh sudo
    paprefs           // Pulse audio settings
    pavucontrol       // Pulse audio mixer
    aur/pasystray-git // Simple tray icon for pulse mixer
    pavumeter         // Pulse meter
+   ponymix           // CLI mixer
 
    openbox         // Fallback window manager
 
@@ -244,7 +253,7 @@ Window managers and DE:
    //dmenu2          // Fork of dmenu with some extra stuff, bind on Win+Shift+R
    aur/dmenu-xft-mouse-height-fuzzy-history // better fork of dmenu
 
-   xmonad          // Haskell window manager
+   //xmonad          // Haskell window manager
 
 Recoll and helpers:
 
@@ -269,9 +278,9 @@ Themes:
 Terminal emulators:
 
    aur/rxvt-unicode-patched   // Default terminal, using urxvt{d,c} pair, patched for fonts
-   local/st                   // JIC fall-back, (+my patches)
+   local/st-git               // JIC fall-back, (+my patches)
    xterm                      // Another JIC term ;)
-   cool-retro-term            // Eye-candy old school terminal emulator
+   //cool-retro-term            // Eye-candy old school terminal emulator
 
 Shells:
 
@@ -280,7 +289,7 @@ Shells:
    zsh-completions          // More completions
    zshdb                    // Script debugger
 
-   fish // Alternative shell
+   //fish // Alternative shell
 
 Console tools:
 
@@ -306,6 +315,7 @@ Console tools:
    aur/colout-git        // console color utility
    asciinema      // screen recorder for cli
    c-lolcat       // rainbow color tool
+   massren        // rename files
 
    aur/vimpager-git   // Vim for paging and vimcat
    sharutils          // Shell archives support
@@ -316,7 +326,7 @@ Console tools:
    autojump       // For fast navigation with "j somewhere"
 
 
-   aur/ansiweather-git // Nice console weather
+   //aur/ansiweather-git // Nice console weather
 
    qrencode         // QR encoder, cool console one
    vttest           // Terminal emulator capabilities test
@@ -329,6 +339,8 @@ Console tools:
    aur/hr-git         // Horizontal lines maker
    aur/cv-git         // Shows running coreutils basic commands and displays stats
    aur/jrnl           // Nice journal with CLI
+   shellcheck         // Static analyzer for bash
+   aur/maybe-git      // Another secure checker for bash
 
 
 
@@ -343,9 +355,9 @@ Nautilus:
 
    libnautilus-extension
 
-   nautilus-actions           // For custom actions in context menus
+   //nautilus-actions           // For custom actions in context menus
    nautilus-sendto            // Send to pidgin and other places
-   nautilus-compare           // Integrates meld into context menu
+   //nautilus-compare           // Integrates meld into context menu
    //nautilus-open-terminal   // To open current directory in TERM // Not using, just action
 
    ffmpegthumbnailer       // Thumbnails for video files
@@ -384,9 +396,11 @@ Archives:
    unrar       // RAR support
    unarj
    unace
+   cabextract
 
    atool      // console one
    pigz       // Parallel GZIP
+   lhasa      // lzh/lza tool
 
 Viewers:
 
@@ -408,14 +422,14 @@ Viewers:
    //coolreader   // FBreader is better for me
 
    //fbpdf-git      // Terminal framebuffer PDF reader! (also DJVU)
-   fbv            // Image framebuffer viewer
+   //fbv            // Image framebuffer viewer
 
    xdot           // Viewer for Dot graphs
 
 Office:
 
    libreoffice-fresh     // Latest version
-   libreoffice-fresh-ru  // Russian locale
+   //libreoffice-fresh-ru  // Russian locale
    hunspell              // Spell checking
    hunspell-en           // English dictionary
    aur/hunspell-ru       // Russian dictionary
@@ -433,7 +447,7 @@ Office:
    tesseract-data-ron
    tesseract-data-rus
 
-Ipad support:
+iOS/OSX support:
 
    // (see setup (4))
 
@@ -441,19 +455,23 @@ Ipad support:
    libimobiledevice
    libgpod
    usbmuxd
+   cctools   // Set of OSX dev tools
 
 IDE and editors:
 
+   ed                 // THE editor
    gvim               // The IDE (see setup (5))
    python2-unidecode  // for YCM in Vim
 
    emacs              // Another The IDE
    pycharm-community  // Python IDE
-   eclipse            // Big and fat but good for Android
+   //eclipse            // Big and fat but good for Android
    codeblocks         // For oFramework projects
    android-studio     // New Android IDE
-   aur/atom-editor    // New nice JS interfaced edior
+   //aur/atom-editor  // New nice JS interfaced edior
    neovim             // Neovim - new vim
+   neovim-remote      // Python wrappor for remote features
+   python-neovim      // Python support for nvim
 
    sublime-text-dev                   // Shiny text editor
    monodevelop                        // Mono IDE
@@ -461,35 +479,43 @@ IDE and editors:
 
    cloc // Count lines of code
 
-   // qt group
+   // qt5 group
    qt5-3d
-   qt5-canvas3d
    qt5-base
-   qt5-xmlpatterns
-   qt5-declarative
+   qt5-canvas3d
+   qt5-charts
    qt5-connectivity
+   qt5-datavis3d
+   qt5-declarative
+   qt5-doc
    qt5-enginio
+   qt5-examples
+   qt5-gamepad
    qt5-graphicaleffects
    qt5-imageformats
    qt5-location
    qt5-multimedia
-   qt5-sensors
-   qt5-webkit
-   qt5-script
-   qt5-quick1
+   qt5-networkauth
    qt5-quickcontrols
+   qt5-script
+   qt5-scxml
+   qt5-sensors
+   qt5-serialbus
    qt5-serialport
+   qt5-speech
    qt5-svg
-   qt5-translations
    qt5-tools
-   qt5-websockets
-   qt5-x11extras
+   qt5-translations
+   qt5-virtualkeyboard
    qt5-wayland
    qt5-webengine
+   qt5-webkit
+   qt5-websockets
+   qt5-webview
+   qt5-x11extras
+   qt5-xmlpatterns
 
-   qtcreator          // Nice IDE
-   qt5-doc            // Documentation
-   qt5-examples       // Some examples to qtcreator
+   qtcreator          // Qt IDE
 
 Game development:
 
@@ -504,6 +530,7 @@ Game development:
    assimp         // Assets lib
    ogre           // 3D Engine
    openexr        // Erx image support
+   eigen          // one more math lib
 
 
 C++ compilers and tools:
@@ -511,24 +538,29 @@ C++ compilers and tools:
    clang                      // Cool and modern apple compiler
    aur/root                   // CERN ROOT project, has interactive cling C++
    //aur/root-bin             // CERN ROOT bin version
-   ccache                     // For faster g++ compiling (see ArchWiki)
+   //ccache                     // For faster g++ compiling (see ArchWiki)
 
    cppcheck                 // Static C/C++ analyzer
    ctags                    // Source index generator (was used for Vim before YCM)
-   clang-analyzer           // Powerful C++ static analyzer
+   //clang-analyzer           // Powerful C++ static analyzer
    clang-tools-extra        // Small refactoring tools
    cdecl                    // Nice tool for decrypting complex C/C++ declarations
+
 
 C++ libs:
 
    libc++         // LLVM clang STL
    boost
+   capnproto
+   chaiscript
+   csfml          // small footprit lib sfml
 
    opencv         // Computer vision lib
    opencv-samples // and samples
 
    //mpich          // MPI support
    intel-tbb      // "Parallel STL"
+   armadillo      // C++ lineal alg
 
    glade          // GUI builder for GTK 3, also there is glade
 
@@ -555,12 +587,14 @@ Reverse:
 
    //aur/darm-git          // disassembly library
    //aur/radare2-git         // Reverse engineering tool
+   radare2
    aur/libewf              // radare dependency
    aur/smali               // Android DEX reverse engineering tool
    aur/android-apktool     // Android reverse engineering tool
    aur/dex2jar             // DEX to JAR converter
    aur/jd-gui              // Java source reversing tool
    binwalk                 // Firmware RE Tool
+   upx                     // Packer/Unpacker for binaries
 
 Build tools:
 
@@ -579,8 +613,11 @@ Source code tools:
    colordiff                // Nice colored diffs
    highlight                // for syntax highlighting in scripts
 
-   meld                     // Nice GUI-sh diff tool
-   python2-dbus             // For meld
+   //meld                   // Nice GUI-sh diff tool
+   //python2-dbus           // For meld
+   uncrustify               // Styler
+   dos2unix                 // CRLF killer
+   doxygen                  // Doca generator
 
 Version Control:
 
@@ -588,13 +625,15 @@ Version Control:
    tk       // For gitk
    tig      // Console git explorer
    gitg     // GUI-sh git explorer JIC
+   aur/git-lfs-bin // Bin version of lfs
 
    mercurial     // Installed for Aur only. Should give it a shot.
    subversion
+   bzr
 
 HEX editors:
 
-   dhex
+   //dhex
    ht
    hexedit
    ghex   // (see setup(4) for integration)
@@ -605,21 +644,24 @@ Database and Web:
    mariadb          // Mysql fork
    nodejs
    npm
+   emscripten
 
-Emulation:
+Emulation and virtualization:
 
-   virtualbox                 // Virtual (see setup(6))
-   virtualbox-host-modules    // Kernel modules
-   virtualbox-ext-vnc         // VNC support
-   aur/virtualbox-ext-oracle  // Experimental features
+   //virtualbox                 // Virtual (see setup(6))
+   //virtualbox-host-modules    // Kernel modules
+   //virtualbox-ext-vnc         // VNC support
+   //aur/virtualbox-ext-oracle  // Experimental features
    linux-headers              // For custom modules compilation
 
    net-tools                  // Dependency for networking support
 
    qemu   // Good alternative, TODO: setup later with kickass KVM
+   docker
+   dosbox
 
 CD DVD:
-   cdrkit // For fileroller to understand iso
+   cdrtools // For fileroller to understand iso
 
 Python stuff:
 
@@ -657,16 +699,17 @@ Other Languages:
 
    mono     // Damn C#
    rust     // Rust
+   cargo
+
    ruby     // Ruby
    //dlang    // D language group
    scala    // Scala tools (used as ineractive Java REPL)
 
    perl-lwp-protocol-https  // Used for some scripts
-   gcc-fortran              // Fortran support
 
-   jdk7-openjdk             // JDK
-   jre7-openjdk             // JRE
-   jre7-openjdk-headless
+   jdk8-openjdk             // JDK
+   jre8-openjdk             // JRE
+   jre8-openjdk-headless
 
 Fonts:
 
@@ -674,23 +717,30 @@ Fonts:
    adobe-source-code-pro-fonts  // Nice mono type font
    ttf-bitstream-vera           // For mathematica
 
-   infinality/cairo-infinality-ultimate       // Infinality patches form infinality repo
-   infinality/fontconfig-infinality-ultimate  // same ..
-   infinality/freetype2-infinality-ultimate   // same ..
-   lib32-cairo-infinality-ultimate
-   lib32-fontconfig-infinality-ultimate
-   lib32-freetype2-infinality-ultimate
+   // Infinality is dead //
+   //infinality/cairo-infinality-ultimate       // Infinality patches form infinality repo
+   //infinality/fontconfig-infinality-ultimate  // same ..
+   //infinality/freetype2-infinality-ultimate   // same ..
+   //lib32-cairo-infinality-ultimate
+   //lib32-fontconfig-infinality-ultimate
+   //lib32-freetype2-infinality-ultimate
 
-   infinality/ibfonts-meta-base        // Fonts pack
+   //infinality/ibfonts-meta-base        // Fonts pack
    //infinality/ibfonts-meta-extended  // To avoid font cache overwhelming
 
-   //Chinese
-   tegaki-models-zinnia-traditional-chinese
+   // Asian fonts
+   //tegaki-models-zinnia-traditional-chinese
    adobe-source-han-sans-cn-fonts
    adobe-source-han-sans-jp-fonts
    adobe-source-han-sans-kr-fonts
-   adobe-source-han-sans-otc-fonts
-   adobe-source-han-sans-tw-fonts
+   //adobe-source-han-sans-otc-fonts
+   //adobe-source-han-sans-tw-fonts
+
+   // Some std fonts
+   ttf-dejavu
+   ttf-hack
+   ttf-liberation
+   ttf-ubuntu-font-family
 
 Browsers:
 
@@ -737,6 +787,7 @@ Instant Messaging:
    irssi     // IRC client
    //aur/utox-git  // for toxing (also installs tox-git
    toxic
+   qtox
 
 Audio and Sound:
 
@@ -792,6 +843,7 @@ Media players:
    mplayer          // Good old player
    mpv              // Nice new player 
    vlc              // Good too player
+   fswebcam         // CLI web cam helper
 
    mpd              // Music player daemon
    mpc              // Client for it
@@ -832,7 +884,7 @@ Codecs:
 
 Screen capture:
 
-   scrot
+   aur/escrotum-git       // Screenshot tool
    simplescreenrecorder   // Best recorder ever, like it's OpenGL capture feature
 
    aur/gromit-mpx-git     // Nice annotation tool for casting
@@ -859,6 +911,8 @@ Graphics software:
 
    blender       // Best 3D editor
    povray        // Old photorealistic renderer
+   aur/awesomebump-git // Free crazybump replacement
+   fontforge
 
 Books and scanning:
 
@@ -880,7 +934,7 @@ Books and scanning:
 
 Security :
 
-   keepass      // Password manager
+   keepassx2      // Password manager
    xdotool      // For keepass to auto type
    gnupg
    pass         // New password manager
@@ -924,7 +978,7 @@ TeX:
 
    texmaker
    lyx            // WYSIWYG editor
-   equalx         // LaTeX equation editor
+   //equalx         // LaTeX equation editor
    ghostscript    // Post Script interpreter
 
    scribus        // Not TeX but professional page layout software
@@ -947,6 +1001,7 @@ Games and fun:
    //aur/fakenes  // Another NES emulator
    openmw   // Morrowing, my love! Now on GNU/Linux
    sl       // Qute train
+   gtypist
 
 Android development:
 
@@ -959,14 +1014,14 @@ Android development:
    android-udev      // Udev rules for most popular devices
    android-tools     // fastboot, adb, etc..
 
-   lib32-libstdc++5  // Android SDK is 32 bit, so using this to workaround
-   lib32-libxv       // and this..
-   lib32-ncurses     // and this..
-   lib32-openal      // ...
-   lib32-sdl
-   lib32-zlib
-   lib32-gcc-libs
-   lib32-alsa-lib    // Not sure who is using ALSA there...
+   //lib32-libstdc++5  // Android SDK is 32 bit, so using this to workaround
+   //lib32-libxv       // and this..
+   //lib32-ncurses     // and this..
+   //lib32-openal      // ...
+   //lib32-sdl
+   //lib32-zlib
+   //lib32-gcc-libs
+   //lib32-alsa-lib    // Not sure who is using ALSA there...
 
    swt             // Another dependency for android-sdk
    heimdall        // Samsung devices flashing tool
