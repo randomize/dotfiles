@@ -11,17 +11,20 @@
 /Music/
 /Android/
 
-# Private and secure
+# Private data, configs with keys and passwords
 /.ssh/
 /.2steps
 /.itmages.conf
 /client.ovpn
 /.wegorc
-/tasks
+/tasks/
 /.password-store/
 /.gnupg/
 /.pocketrc
 /.x11vncpass
+/.muttrc
+/.gitshots/
+.config/asciinema/config
 
 # Vim temporals/generated
 /.viminfo
@@ -60,6 +63,7 @@
 
 # Firefox
 /.mozilla/
+/.pentadactyl/
 
 # Ipython
 /.ipython
@@ -87,14 +91,23 @@
 # dicts
 /.stardict/
 
-# Other
+# Neovim
 /.local/share/nvim/
-/.local/share/autojump/
+
+# Simple screen recorder
+/.ssr/
+
+# Pulse Audio
 /.config/pulse/
+/.esd_auth
+
+# Other
 /.config/qBittorrent/
 /.config/ranger/bookmarks
 /.config/ranger/history
-.cargo/
-.config/htop/
-.muttrc
+/.cargo/
+/.config/htop/
 
+# Autojumping stuff
+/.z
+/.local/share/autojump/

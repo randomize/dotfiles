@@ -1,9 +1,10 @@
 #!/bin/bash
 # vim: ft=sh
 
-echo "This is cleanup script"
+echo "<<<<< Starting cleanup >>>>>"
 
-rm -rf ~/.subversion/
+echo "<<<<< History files >>>>>"
+
 rm -rf ~/.sqlite_history
 rm -rf ~/.lesshst
 rm -rf ~/.python_history
@@ -13,4 +14,24 @@ rm -rf ~/.sdcv_history
 rm -rf ~/.recently-used
 rm -rf ~/.wget-hsts
 rm -rf ~/.thumbnails/
-rm -rf ~/.npm/
+rm -rf ~/.octave_hist
+rm -rf ~/.cgdb/readline_history.txt
+
+echo "<<<<< Logs >>>>>"
+rm -rf ~/.local/share/xorg
+rm -rf ~/.local/share/copyq
+
+echo "<<<<< Cache files >>>>>"
+rm -rf ~/.xdg_menu_cache/
+rm -rf ~/.tgdb/
+rm -rf ~/.config/unity3d/
+
+echo "<<<<< AUR temp stuff >>>>>"
+# Sometimes left by AUR packages being compiling
+rm -rf ~/.cmake/
+rm -rf ~/.subversion/
+
+echo "<<<<< Unknown trash >>>>>"
+# Sometimes left by AUR packages being compiling
+rm -rf ~/.java/
+# rm -rf ~/.npm/
