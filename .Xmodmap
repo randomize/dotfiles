@@ -1,7 +1,7 @@
 !! Disable left Ctrl
 !keycode 37 =
 !! Map menu to super
-keycode 135 = Super_L NoSymbol Super_L
+! keycode 135 = Super_L NoSymbol Super_L
 
 !! Return is Ctrl :)
 keycode 36 = 0x1234
