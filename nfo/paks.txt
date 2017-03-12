@@ -126,7 +126,7 @@ First to install:
    pkgfile           // For command not found hook (see setup (1))
    openssh           // SSH server (see setup)
 
-UEFI boot and stuff
+UEFI boot and stuff:
 
    efibootmgr
    // gummiboot - now systemb boot
@@ -139,6 +139,7 @@ Packaging:
 
    namcap         // Package checking
    abs            // Arch build system
+   pacutils
 
    arch-install-scripts
 
@@ -149,6 +150,7 @@ Bluetooth and network:
    gnu-netcat        // Network piping application
    ngrep             // Network packet grep 
    mtr               // Combines the functionality of traceroute and ping into one tool
+   ipcalc
 
    //dnsutils        // dig, nslookup and others
    bind-tools        // dig, nslookup and others
@@ -194,27 +196,39 @@ Xorg stuff:
    xsel            // X selection command line tool
    xorg-xfontsel   // Font selection tool
    xorg-xmessage   // For scripts with GUI-sh prompts
+   xorg-server-xephyr // For nesting sessions and test awesome wm configs
 
    x11vnc          // VNC desktop sharing
+   tigervnc
    freerdp
+
+Wayland:
+  
+   //wayland
+   sway  // Tiling WM for wayland
 
 Diagnostics and HDD:
 
-   aur/htop-vi   // Same as htop, but has vi keys!
+   //aur/htop-vi   // Same as htop, but has vi keys!
+   htop
    stress        // Stress testing system
-   aur/sysdig    // Modern kickass tool for diagnostics
-   aur/i7z-git   // i7 Processor info tool
+   sysdig        // Modern tool for diagnostics
+   i7z           // i7 Processor info tool
    lshw          // lists info about hardware
    atop          // nice top replacement
    glances
+   ethtool
 
 
    parted     // Partitioning
    testdisk   // Diagnostics and undelete
    ext4magic  // Ext fs deleted files recovery
+   hdparm
+   hddtemp
 
    unetbootin  // USB bootable creator
    lm_sensors
+   qdirstat    // Nice tree viewer for disk usage analysis
 
 Window managers and DE:
 
@@ -237,6 +251,7 @@ Window managers and DE:
    skb             // simple keyboard layout indicator
    xcape           // Remap keys, use return as second ctrl and caps and ctrl and esc
    sbxkb           // layout daemon
+   aur/kbdd-git    // simple kbd layout daemon, used by awesowe indicator
 
    gksu              // GUI-sh sudo
    paprefs           // Pulse audio settings
@@ -310,7 +325,7 @@ Console tools:
    moreutils      // Cool toolset (ex vipe for vim editing while passing though pipe)
    most           // Feature rich pager
    tree           // Nice directory tree listing
-   aur/colortheme // Terminal colors table script
+   //aur/colortheme // Terminal colors table script
    dfc            // Nice df ;)
    aur/colout-git        // console color utility
    asciinema      // screen recorder for cli
@@ -324,11 +339,13 @@ Console tools:
    aur/lsw        // Lists windows in X
    aur/ls++-git   // Nice colored ls on steroids
    autojump       // For fast navigation with "j somewhere"
+   socat          // socket tool
 
 
    //aur/ansiweather-git // Nice console weather
 
    qrencode         // QR encoder, cool console one
+   zbar             // barcode lib
    vttest           // Terminal emulator capabilities test
 
    aur/vrms-arch    // Virtal RMS - tells you which packages are bad ;)
@@ -336,11 +353,14 @@ Console tools:
    zenity           // Display GUI messages from console tools - Used for some my scripts
 
    aur/sparklines-git // Very nice console spark lines
-   aur/hr-git         // Horizontal lines maker
-   aur/cv-git         // Shows running coreutils basic commands and displays stats
+   //aur/hr-git         // Horizontal lines maker
+   //aur/cv-git         // Shows running coreutils basic commands and displays stats
    aur/jrnl           // Nice journal with CLI
    shellcheck         // Static analyzer for bash
    aur/maybe-git      // Another secure checker for bash
+
+   parallel          // helper to do parallel jubs in shell
+   inotify-tools     // inotify wrappers, used for watching file changes in my scripts
 
 
 
@@ -349,7 +369,7 @@ Fuse filesystems:
    sshfs    // SSH mounting
    mtpfs    // MTP devices
    ifuse    // Apple devices
-   vdfuse   // Virtual Box images mounting
+   //vdfuse   // Virtual Box images mounting
 
 Nautilus:
 
@@ -367,8 +387,7 @@ Nautilus:
    gvfs           // GNOME file system abstraction
    gvfs-smb       // Samba support
    gvfs-mtp       // Android devices MTP mode support
-   gvfs-afc
-   gvfs-afp
+   gvfs-afc       // Apple
    gvfs-gphoto2
    gvfs-nfs
    libgphoto2
@@ -438,8 +457,10 @@ Office:
    aur/hyphen-ru         // Russian
 
 
-   goldendict            // Good dictionary
-   local/sdcv-beta       // Console version of Stardict (my own PKGBUILD is used currently)
+   //goldendict            // Good dictionary
+   //local/sdcv-beta       // Console version of Stardict (my own PKGBUILD is used currently)
+   sdcv
+   words                 // Just a list of dictionaries
 
    tesseract             // Good old OCR
    tesseract-data-deu    // OCR language packs
@@ -473,7 +494,7 @@ IDE and editors:
    neovim-remote      // Python wrappor for remote features
    python-neovim      // Python support for nvim
 
-   sublime-text-dev                   // Shiny text editor
+   //sublime-text-dev                   // Shiny text editor
    monodevelop                        // Mono IDE
    intellij-idea-community-edition    // Idea
 
@@ -521,17 +542,32 @@ Game development:
 
    alembic   // Open CG format
 
+   // Libs
    glm            // Math lib for OpenGL
    glew
-   glfw
+   glfw-x11
    freeglut       // New GLUT lib version
    bullet         // Physics lib
    box2d          // 2D Physics
    assimp         // Assets lib
-   ogre           // 3D Engine
    openexr        // Erx image support
    eigen          // one more math lib
+   glslang        // GLSL tool
 
+   // Engines
+   unity-editor   // Finally on Linux
+   ogre           // 3D Engine
+
+   // Vulkan
+   vulkan-extra-layers
+   vulkan-intel
+   vulkan-man-pages
+   vulkan-trace
+   vulkan-validation-layers
+   aur/vkcube-git  // Little sample
+
+   // Tools
+   renderdoc
 
 C++ compilers and tools:
 
@@ -546,6 +582,7 @@ C++ compilers and tools:
    clang-tools-extra        // Small refactoring tools
    cdecl                    // Nice tool for decrypting complex C/C++ declarations
 
+   swig  // Generate wrappers for native code for Csharp, Java and others
 
 C++ libs:
 
@@ -566,6 +603,7 @@ C++ libs:
 
    cppunit        // C++ unit test lib
    cmocka         // C unit test lib
+   openblas       // LA lib
 
 Debuggers:
 
@@ -583,7 +621,7 @@ Assemblers:
    //fasm           // Requires multilib for lib32 stuff - booooo
    //aur/fasmarm    // port for ARM - no longer alive
 
-Reverse:
+Reverse and hack:
 
    //aur/darm-git          // disassembly library
    //aur/radare2-git         // Reverse engineering tool
@@ -595,15 +633,19 @@ Reverse:
    aur/jd-gui              // Java source reversing tool
    binwalk                 // Firmware RE Tool
    upx                     // Packer/Unpacker for binaries
+   xorsearch
+
+   john // hash bruter
 
 Build tools:
 
    premake      // Lua based configuration and build tool
-   imake
+   //imake
    cmake
    apache-ant   // Ant build system, for Android mainly
-   //gradle       // Another control system
+   gradle       // For Android development
    //gradle-doc
+   waf
 
 Source code tools:
 
@@ -622,6 +664,7 @@ Source code tools:
 Version Control:
 
    git
+   hub      // Github cli tool
    tk       // For gitk
    tig      // Console git explorer
    gitg     // GUI-sh git explorer JIC
@@ -640,11 +683,19 @@ HEX editors:
 
 Database and Web:
 
+   // DB
    mysql-workbench
    mariadb          // Mysql fork
-   nodejs
+   mongodb
+   mongodb-tools
+
+   // Backend
    npm
+   nodejs
    emscripten
+   yarn
+
+   pelican // Static blog generator
 
 Emulation and virtualization:
 
@@ -666,6 +717,7 @@ CD DVD:
 Python stuff:
 
    ipython                // Interactive python
+   ipython2               // Same for 2
 
    python-numpy           // Matlab inside python
    python-scipy           // Math stuff
@@ -688,6 +740,10 @@ Python stuff:
    //aur/haskell-pandoc   // ipython notebook conversion // has many deps!
    aur/python-librtmp     // build dependency for livestreamer
 
+   // Jupyter is a new web interface for sci python tasks
+   jupyter
+   ipython2-notebook      // for Python2 support
+   mathjax                // for jupyter
 
 
 Other Languages:
@@ -697,23 +753,34 @@ Other Languages:
    clisp
    chicken
 
-   mono     // Damn C#
+   // Rust
    rust     // Rust
+   rust-src     // Rust completion helper needs source
    cargo
 
-   ruby     // Ruby
-   //dlang    // D language group
-   scala    // Scala tools (used as ineractive Java REPL)
 
-   perl-lwp-protocol-https  // Used for some scripts
-
+   // Java
    jdk8-openjdk             // JDK
    jre8-openjdk             // JRE
    jre8-openjdk-headless
+   scala
+
+   // Go
+   go
+   go-tools
+
+   // Other
+   ruby
+   //dlang
+   mono
+   perl-lwp-protocol-https  // Used for some scripts
+
 
 Fonts:
 
-   aur/terminus-cyrillic        // Used in virtual terminals
+   //aur/terminus-cyrillic        // Used in virtual terminals
+   terminus-font
+
    adobe-source-code-pro-fonts  // Nice mono type font
    ttf-bitstream-vera           // For mathematica
 
@@ -760,7 +827,8 @@ Browsers:
 Mail:
 
    //thunderbird
-   mutt
+   //mutt
+   neomutt
 
 Downloaders:
 
@@ -775,6 +843,7 @@ File Sharing:
 
    qbittorrent      // Easy torrent way
    rtorrent         // Hard way
+   tramsmission-cli
 
 Instant Messaging:
 
@@ -788,21 +857,31 @@ Instant Messaging:
    //aur/utox-git  // for toxing (also installs tox-git
    toxic
    qtox
+   aur/ghetto-skype-git // Bettor unoficial Skype
+   google-talkplugin   // Firefox Hangouts integration
 
 Audio and Sound:
 
    alsa-utils    // see setup(8)
    alsa-plugins
 
+   // Audio swissers knife
+   sox 
+
    // JACK
 
    jack2-dbus    // JACK2 (newer) with dbus support to play nice with pulseaudio
    qjackctl     // GUI for JACK server
    a2jmidid   // ALSA MIDI to JACK MIDI
+   mididings
 
    // MIDI
    vmpk
    vkeybd
+
+   // fluidsynth
+   qsynth
+   fluidsynth
 
    // Linux sampler
 
@@ -825,7 +904,7 @@ Audio and Sound:
 Music and lifecoding:
 
    chuck            // Sound coding
-   miniaudicle      // Chuck GUI
+   //miniaudicle      // Chuck GUI
 
    //supercollider
    pd-extended      // Pure data
@@ -835,6 +914,8 @@ Music and lifecoding:
    ardour           // Sequencer and editor
    qtractor         // Another one editor
    milkytracker     // Tracker for XM
+   modplay
+   //zxtune-git     // Great crossplatform zx music player
 
    //musescore        // Score editor
 
@@ -851,6 +932,7 @@ Media players:
 
    xmp              // XM modules console player
    dumb             // One more console player for chiptune
+   mikmod           // And one more
    pyradio-git      // Simple radio
 
 Stream grabbers:
@@ -867,6 +949,7 @@ Multimedia tools:
    aur/mp3val       // MP3 file validator and fixer
    //aur/v4l2loopback // Loopback video device /dev/video1
    v4l2ucp            // Contol panel for v4l2
+   id3              // tags edit
 
 
 Codecs:
@@ -899,7 +982,7 @@ Monitor tools:
 
 Sketching:
 
-   local/xournal-git   // use master + my patches (see PKGBUILD)
+   //local/xournal-git   // use master + my patches (see PKGBUILD)
    mypaint
 
 Graphics software:
@@ -907,7 +990,9 @@ Graphics software:
    imagemagick   // Best editor/viewer ever (see setup(16))
    gimp          // Raster
    inkscape      // Vector
+   aur/inkscape-open-symbols-git // Free clipart lib
    gcolor2       // Color chooser
+   icoutils      // Windows ico format image extractor
 
    blender       // Best 3D editor
    povray        // Old photorealistic renderer
@@ -920,7 +1005,9 @@ Books and scanning:
    xsane       // X frontend
    xsane-gimp  // GIMP plugin frontend
 
-   aur/scantailor-git  // Automatic scan placement and cleanup
+   //aur/scantailor-git
+   scantailor          // Automatic scan placement and cleanup
+
    poppler             // For pdfimages
    pdf2djvu            // One command converter
    aur/img2djvu-git    // Compresses 
@@ -953,7 +1040,7 @@ Math:
    gnuplot           // Popular plotter
    //plplot          // Another modern plotter
 
-   aur/mathematica   // Not using anymore, python is better
+   //aur/mathematica   // Not using anymore, python is better
 
    //aur/jflap       // Simple automata learning tool
 
@@ -1002,6 +1089,10 @@ Games and fun:
    openmw   // Morrowing, my love! Now on GNU/Linux
    sl       // Qute train
    gtypist
+
+   // Leap motion
+   leap-motion-driver
+   leap-motion-sdk
 
 Android development:
 
