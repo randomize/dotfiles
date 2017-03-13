@@ -276,7 +276,7 @@ Window managers and DE:
 
    //xmonad          // Haskell window manager
    openvpn         // VPN client
-   pm-utils        // Hibernate, sleep, etc
+   aur/pm-utils        // Hibernate, sleep, etc
 
 Recoll and helpers:
 
@@ -520,7 +520,7 @@ IDE and editors:
    qt5-datavis3d
    qt5-declarative
    qt5-doc
-   qt5-enginio
+   aur/qt5-enginio // enginio
    qt5-examples
    qt5-gamepad
    qt5-graphicaleffects
@@ -598,7 +598,7 @@ C++ compilers and tools:
    aur/cdecl                    // Nice tool for decrypting complex C/C++ declarations
 
    swig  // Generate wrappers for native code for Csharp, Java and others
-   qt-installer-framework   // installers tools
+   aur/qt-installer-framework   // installers tools
 
 C++ libs:
 
@@ -620,7 +620,7 @@ C++ libs:
 
    cppunit        // C++ unit test lib
    cmocka         // C unit test lib
-   openblas       // LA lib
+   aur/openblas       // LA lib
    musl           // light stdlib
    aur/superlu    // MAT lib
 
@@ -720,7 +720,7 @@ Database and Web:
    npm
    nodejs
    emscripten
-   yarn
+   aur/yarn // new npm
 
    pelican // Static blog generator
 
@@ -986,7 +986,7 @@ Media players:
    aur/xmp              // XM modules console player
    dumb             // One more console player for chiptune
    aur/mikmod           // And one more
-   pyradio-git      // Simple radio
+   aur/pyradio-git      // Simple radio
 
 Stream grabbers:
 
