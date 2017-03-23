@@ -1,0 +1,23 @@
+#!/bin/bash
+git clone https://aur.archlinux.org/package-query.git
+cd package-query
+makepkg -si
+cd ..
+git clone https://aur.archlinux.org/yaourt.git
+cd yaourt
+makepkg -si
+cd ..
+
+
+# TODO:
+# install 
+
+# local/kbdd-git 0.7.1.r8.g0e1056f-1
+# local/neovim-remote 1.5.0-1
+# local/package-query 1.8-2
+# local/programmers-dvorak 1.2-5
+# local/rust-src 1.15.1-1
+# local/skb 0.4-3
+# local/xcape 1.2-1
+# local/yaourt 1.8.1-1
+
