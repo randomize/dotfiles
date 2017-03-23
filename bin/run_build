@@ -1,0 +1,11 @@
+#!/bin/bash
+# vim: ft=sh
+
+curl -X POST
+'http://emihailenco:66b34178f96cee792e4a789d482c9919@build1.bullytech.local/job/DreamWorks/job/Color_iOS/build' \
+    --data-urlencode json='{"parameter": [{"name": "BUNDLE_ID", "value": "com.bullyentertainment.dwcolor"}, {"name": "PERFORCE_PROJECT_PATH", "value": "DWColor_UnityProject"}, {"name": "BUILD_STEP", "value": "ALL"}, {"name": "BUILD_TYPE", "value": "develop"}, {"name": "UNITY_BUILD_DEFINES", "value": "+USE_CLOUD_SAVE;+PRODUCTION;-DEVELOPMENT"}, {"name": "HOCKEY_ICON_RELATIVE_PATH", "value": "Assets/AppArt/HockeyIcon.png"}, {"name": "SOURCE_BRANCH", "value": "develop"}], "statusCode": "303", "redirectTo": "."}'
+
+
+
+# curl -X POST 'http://emihailenco:66b34178f96cee792e4a789d482c9919@10.1.10.243/job/DreamWorks/job/Color_Android/build' \
+    # --data-urlencode json='{"parameter": [{"name": "BUNDLE_ID", "value": "com.bullyentertainment.dwcolor"}, {"name": "PERFORCE_PROJECT_PATH", "value": "DWColor_UnityProject"}, {"name": "BUILD_STEP", "value": "ALL"}, {"name": "BUILD_TYPE", "value": "develop"}, {"name": "UNITY_BUILD_DEFINES", "value": "+USE_CLOUD_SAVE;+PRODUCTION;-DEVELOPMENT"}, {"name": "HOCKEY_ICON_RELATIVE_PATH", "value": "Assets/AppArt/HockeyIcon.png"}, {"name": "SOURCE_BRANCH", "value": "develop"}], "statusCode": "303", "redirectTo": "."}'
