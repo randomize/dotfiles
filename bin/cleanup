@@ -34,4 +34,52 @@ rm -rf ~/.subversion/
 echo "<<<<< Unknown trash >>>>>"
 # Sometimes left by AUR packages being compiling
 rm -rf ~/.java/
-# rm -rf ~/.npm/
+rm -rf ~/.npm/
+rm -rf ~/.node-gyp/
+
+echo "<<<<< Soft, whos configs I dont need to persist >>>>>"
+rm -rf ~/.config/NuGet
+rm -rf ~/.config/massren
+rm -rf ~/.local/share/mc
+rm -rf ~/.config/configstore
+rm -rf ~/.config/freerdp
+rm -rf ~/.config/google-googletalkplugin
+rm -rf ~/.config/octave
+rm -rf ~/.config/pavucontrol.ini
+rm -rf ~/.config/skypeforlinux
+rm -rf ~/.config/user-dirs.dirs
+rm -rf ~/.config/user-dirs.locale
+rm -rf ~/.config/keepassx
+rm -rf ~/.config/vlc/
+rm -rf ~/.config/Ghetto\ Skype
+rm -rf ~/.config/rncbc.org/
+rm -rf ~/.config/xbuild
+rm -rf ~/.config/stetic
+
+rm -rf ~/.local/share/fish
+rm -rf ~/.local/share/data/qBittorrent
+rm -rf ~/.local/share/data/ZXTune
+rm -rf ~/.local/share/gegl-0.2
+rm -rf ~/.local/share/jupyter
+rm -rf ~/.local/share/zathura
+rm -rf ~/.local/share/vlc
+rm -rf ~/.local/share/icons
+rm -rf ~/.local/share/keyrings
+
+rm -rf ~/.gnome/
+rm -rf ~/.pki/
+rm -rf ~/.local/share/gvfs-metadata
+rm -rf ~/.local/share/recently-used.xbel
+rm -rf ~/.local/share/tracker
+rm -rf ~/.local/share/unity3d
+
+
+find ~/.cache/ \
+  -not -path "*.cache/" \
+  -not -path "*.cache/thumbnails*" \
+  -not -path "*.cache/dmenu_*" \
+  -not -path "*.cache/neomru*" \
+  -exec rm -rf {} +
+
+
+

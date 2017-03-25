@@ -9,13 +9,12 @@
 /Templates/
 /Videos/
 /Music/
-/Android/
 
 # Private data, configs with keys and passwords
 /.ssh/
 /.2steps
 /.itmages.conf
-/client.ovpn
+/.client.ovpn
 /.wegorc
 /tasks/
 /.password-store/
@@ -24,7 +23,7 @@
 /.x11vncpass
 /.muttrc
 /.gitshots/
-.config/asciinema/config
+/.config/asciinema/config
 
 # Vim temporals/generated
 /.viminfo
@@ -54,12 +53,21 @@
 /.local/share/fonts/
 
 # Temporary dirs
-/.cache/
+# /.cache/
+/.cache/dmenu_hist
+/.cache/dmenu_run
+/.cache/thumbnails/
+/.cache/neomru/
+/.cache/neoyank/
 
 # Temporary files
 /.Xauthority
 
 # === Soft =========================
+
+# Android SDK
+/Android/
+/.android/
 
 # Firefox
 /.mozilla/
@@ -72,12 +80,11 @@
 /.config/.mono
 /.mono/
 
-# Pass & Keepass
-/.config/KeePass/
 
 # Qt
 /.config/QtProject.conf
 /.config/Trolltech.conf
+/.config/QtProject/
 
 # Chrome
 /.config/chromium/
