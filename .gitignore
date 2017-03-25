@@ -53,12 +53,8 @@
 /.local/share/fonts/
 
 # Temporary dirs
-# /.cache/
-/.cache/dmenu_hist
-/.cache/dmenu_run
-/.cache/thumbnails/
-/.cache/neomru/
-/.cache/neoyank/
+/.cache/
+
 
 # Temporary files
 /.Xauthority
