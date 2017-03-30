@@ -47,8 +47,6 @@ rm -rf ~/.config/google-googletalkplugin
 rm -rf ~/.config/octave
 rm -rf ~/.config/pavucontrol.ini
 rm -rf ~/.config/skypeforlinux
-rm -rf ~/.config/user-dirs.dirs
-rm -rf ~/.config/user-dirs.locale
 rm -rf ~/.config/keepassx
 rm -rf ~/.config/vlc/
 rm -rf ~/.config/Ghetto\ Skype
