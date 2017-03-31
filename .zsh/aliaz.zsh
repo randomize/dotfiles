@@ -119,6 +119,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 
 alias workmac='TERM="xterm-256color" ssh eugene@10.3.10.59'
+alias start-ssh-agent='eval "$(ssh-agent -s)"'
 
 
 alias share-mon-small='x11vnc -viewonly -rfbauth ~/.x11vncpass -ncache 16 -rfbport 12730 -clip 1280x1024+2560+0 -nosel -noprimary -noclipboard -cursor arrow -forever -many -shared'
