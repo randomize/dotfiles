@@ -105,11 +105,14 @@
 /.config/pulse/
 /.esd_auth
 
+# Rust
+/.rustup/
+/.cargo/
+
 # Other
 /.config/qBittorrent/
 /.config/ranger/bookmarks
 /.config/ranger/history
-/.cargo/
 /.config/htop/
 
 # Autojumping stuff

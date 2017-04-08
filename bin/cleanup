@@ -71,6 +71,8 @@ rm -rf ~/.local/share/recently-used.xbel
 rm -rf ~/.local/share/tracker
 rm -rf ~/.local/share/unity3d
 
+rm -rf ~/.local/share/mc
+rm -rf ~/.local/share/Trash/
 
 find ~/.cache/ \
   -not -path "*.cache/" \
