@@ -109,6 +109,9 @@
 /.rustup/
 /.cargo/
 
+# Go
+/.godir/
+
 # Other
 /.config/qBittorrent/
 /.config/ranger/bookmarks
