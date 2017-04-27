@@ -1,0 +1,3 @@
+
+
+bind main c <git checkout %(commit)
