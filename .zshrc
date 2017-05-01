@@ -1,5 +1,6 @@
 # Zsh rebooted config, zplug powered
 # Randy 2016
+# TODO: pkgfile hook
 
 # Support for evaluating a function on startup
 if [[ $1 == eval ]]
