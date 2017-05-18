@@ -90,6 +90,13 @@ function recordscreen-small()
 }
 
 
+function go-dvorak()
+{
+    setxkbmap -layout "dvp, us, ru" -option "grp:shifts_toggle"
+    setxkbmap -option ctrl:nocaps 
+    setxkbmap -option terminate:ctrl_alt_bksp
+    xset r rate 400 80
+}
 
 # Quck helper for scripting - selects column like: | aprint 2
 function aprint() { awk "{print \$${1:-1}}"; }
