@@ -95,10 +95,10 @@ ${goto 40}Disk I/O:${alignr 39}${diskio}
 \
 # Network
 \
-${if_existing /proc/net/route wlan0}
-${goto 40}${upspeedgraph wlan0 26,80 FFFFFF FFFFFF}${goto 150}${downspeedgraph wlan0 26,80 FFFFFF FFFFFF}
-${goto 40}${color5}Up: ${color2}${upspeed wlan0}${color5}${goto 150}Down: ${color2}${downspeed wlan0}
-${goto 40}${color5}Sent: ${color2}${totalup wlan0}${color5}${goto 150}Received: ${color2}${totaldown wlan0}
+${if_existing /proc/net/route wlp5s0}
+${goto 40}${upspeedgraph wlp5s0 26,80 FFFFFF FFFFFF}${goto 150}${downspeedgraph wlp5s026,80 FFFFFF FFFFFF}
+${goto 40}${color5}Up: ${color2}${upspeed wlp5s0}${color5}${goto 150}Down: ${color2}${downspeed wlp5s0}
+${goto 40}${color5}Sent: ${color2}${totalup wlp5s0}${color5}${goto 150}Received: ${color2}${totaldown wlp5s0}
 ${endif}
 ${if_existing /proc/net/route enp3s0}
 ${goto 40}${upspeedgraph enp3s0 26,80 FFFFFF FFFFFF}${goto 150}${downspeedgraph enp3s0 26,80 FFFFFF FFFFFF}
