@@ -96,6 +96,7 @@ zle -N zle-keymap-select
 # Autojump
 [[ -s /etc/profile.d/autojump.zsh ]] && . /etc/profile.d/autojump.zsh
 
+
 ## Todos
 alias t='python2 /mnt/data/t/t.py --task-dir ~/tasks --list tasks'
 
@@ -113,8 +114,8 @@ alias t='python2 /mnt/data/t/t.py --task-dir ~/tasks --list tasks'
 
 # History
 export HISTFILE=~/.zsh_history
-export HISTSIZE=50000
-export SAVEHIST=50000
+export HISTSIZE=100000
+export SAVEHIST=100000
 setopt hist_ignore_dups
 setopt hist_reduce_blanks
 setopt hist_ignore_space
@@ -122,9 +123,6 @@ setopt extended_history # Timestamp history
 setopt share_history
 setopt inc_append_history
 
-# Syntax hightlighting settings
-[[ -s ~/.zsh/highligh-settings.zsh ]] && . ~/.zsh/highligh-settings.zsh
-# }}}
 
 # COMPLETION SETTINGS: add custom completion scripts
 fpath=(~/.zsh/completion $fpath) 
@@ -163,9 +161,19 @@ fi
 [[ -s ~/.zsh/functs.zsh ]] && . ~/.zsh/functs.zsh
 # }}}
 
+# Fzf
+[[ -s /usr/share/fzf/key-bindings.zsh ]] && . /usr/share/fzf/key-bindings.zsh
+[[ -s /usr/share/fzf/key-completion.zsh ]] && . /usr/share/fzf/key-completion.zsh
+
+# Fasd
+[[ -s `which fasd` ]] && eval "$(fasd --init auto)"
 
 [ -s "/home/randy/.dnx/dnvm/dnvm.sh" ] && . "/home/randy/.dnx/dnvm/dnvm.sh" # Load dnvm
 
 # PATH {{{
 export PATH=$PATH:/home/randy/.cargo/bin
+# }}}
+
+# Syntax hightlighting settings
+[[ -s ~/.zsh/highligh-settings.zsh ]] && . ~/.zsh/highligh-settings.zsh
 # }}}

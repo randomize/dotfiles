@@ -110,9 +110,9 @@ alias sniff-flv='sudo ngrep -d any '.flv'  port 80'
 
 ## Editors aliases
 alias vim='NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim'
-alias e='vim'
-alias v='vim'
-alias vi='vim'
+# alias e='vim'
+# alias v='vim'
+# alias vi='vim'
 alias view='vim -R'
 
 alias ..='cd ..'
@@ -122,9 +122,12 @@ alias workmac='TERM="xterm-256color" ssh eugene@10.3.10.59'
 alias start-ssh-agent='eval "$(ssh-agent -s)"'
 
 
-alias share-mon-small='x11vnc -viewonly -rfbauth ~/.x11vncpass -ncache 16 -rfbport 12730 -clip 1280x1024+2560+0 -nosel -noprimary -noclipboard -cursor arrow -forever -many -shared'
+alias share-mon-small='x11vnc -viewonly -rfbauth ~/.vnc/passwd -ncache 16 -rfbport 12830 -clip 1080x960+1080+0 -nosel -noprimary -noclipboard -cursor arrow -forever -many -shared'
 alias view-demelev='vncviewer demelev.dyndns.org::12730 -passwd ~/.x11vncpass '
 
-
-
+# Fasd
+# NOTE: using functs instead
+# alias v='f -e nvim' # quick opening files with vim
+# alias m='f -e mplayer' # quick opening files with mplayer
+# alias o='a -e xdg-open' # quick opening files with xdg-open
 

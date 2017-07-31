@@ -27,3 +27,5 @@ export bully_dev="eugene"
 
 # Rust
 export RUST_SRC_PATH="/usr/src/rust/src"
+
+export PATH=$PATH:/home/randy/.gem/ruby/2.4.0/bin

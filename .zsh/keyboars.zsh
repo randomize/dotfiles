@@ -36,3 +36,25 @@ bindkey -v "^_" undo
 
 bindkey -M vicmd v edit-command-line
 
+bindkey '^X^A' fasd-complete    # C-x C-a to do fasd-complete (files and directories)
+bindkey '^X^F' fasd-complete-f  # C-x C-f to do fasd-complete-f (only files)
+bindkey '^X^D' fasd-complete-d  # C-x C-d to do fasd-complete-d (only directories)
+
+# Insert last word
+bindkey '\e.' insert-last-word
+
+# Mapping Alt+S to custom function that inserts sudo
+insert_sudo () { zle beginning-of-line; zle -U "sudo " }
+zle -N insert-sudo insert_sudo
+bindkey '\es' insert-sudo
+
+# Clear screen <a-c>
+bindkey -v '\ec' clear-screen
+
+# Toggle Ctrl+Z vim
+foreground-vi() {
+  fg
+}
+zle -N foreground-vi
+bindkey -a '^Z' foreground-vi
+bindkey -v '^Z' foreground-vi
