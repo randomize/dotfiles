@@ -17,7 +17,7 @@ s[2] = s[2].replace('\'','')
 call(s)
 
 # Popup terminal
-call(["/usr/bin/bash", "-c", "echo 'dropterminal()' | awesome-client "])
+# call(["/usr/bin/bash", "-c", "echo 'dropterminal()' | awesome-client "])
 
 #
 #def window():
