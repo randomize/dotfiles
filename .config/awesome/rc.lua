@@ -10,6 +10,17 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
+-- Menu --
+local xdg_menu = require("archmenu")
+-- More widgets --
+local vicious = require("vicious")
+-- Scratchdrop (to toggle terminals and other things)
+local drop = require("scratchdrop")
+-- Custom Widgets
+local custom_widgets = {
+    kbdd = require("widgets.kbdd"),
+}
+
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -40,12 +51,22 @@ end
 -- }}}
 
 -- {{{ Variable definitions
+-- Config location, many things will rely on this path
+local config_dir_path = awful.util.getdir("config")
+local home_dir_path = os.getenv("HOME")
+local mod4func_path = home_dir_path .. "/bin/mod4func.sh "
+local log_notificatin_path = home_dir_path .. "/scripts/log_notification"
+local notiy_sound_path = config_dir_path .. "/notify.wav"
+local zenburn_theme_path = config_dir_path .. "/zenburn/theme.lua"
+
+
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+-- beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.init(zenburn_theme_path)
 
 -- This is used later as the default terminal and editor to run.
-terminal = "xterm"
-editor = os.getenv("EDITOR") or "nano"
+terminal = "st"
+editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -74,9 +95,48 @@ awful.layout.layouts = {
     -- awful.layout.suit.corner.sw,
     -- awful.layout.suit.corner.se,
 }
+local layouts_f_keys = { "F9", "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F10", "F11", "F12" }
+-- }}}
+
+-- {{{ Notifications hook that logs messages
+naughty.config.notify_callback = function(args)
+    local tit = args.title
+    if tit == "Volume" or 
+       tit == "MPD player" or
+       (tit and (string.match(tit, "Playing #") or (string.match(tit, "Paused #")) ))
+       then return args end
+    awful.spawn( log_notificatin_path .. " '" .. (args.title or "") .. "' '" .. args.text .. "'")
+    awful.spawn("paplay " .. notiy_sound_path, false);
+    return args
+end
 -- }}}
 
 -- {{{ Helper functions
+local function clientfind (properties)
+   local clients = client.get()
+   local rv = nil
+   for i, c in pairs(clients) do
+      if match(properties, c) then
+	rv = c
+      end
+   end
+   return rv
+end
+-- Returns true if all pairs in table1 are present in table2
+local function match (table1, table2)
+   for k, v in pairs(table1) do
+      if table2[k] ~= v then
+         return false
+      end
+   end
+   return true
+end
+-- drops terminal
+local function drop_terminal()
+    local center_screen = awful.screen.getbycoord (1620, 960)
+    drop("st -n my_floating_terminal -e ~/bin/starttmux.sh", "center", "center", 0.99, 0.65, true, center_screen)
+end
+
 local function client_menu_toggle_fn()
     local instance = nil
 
@@ -88,6 +148,35 @@ local function client_menu_toggle_fn()
             instance = awful.menu.clients({ theme = { width = 250 } })
         end
     end
+end
+-- helper that wraps widgets
+local function only_on_primary(wid)
+    local wibox = require("wibox")
+    local awful = { widget = { only_on_screen = require("awful.widget.only_on_screen") } }
+
+    return { { widget = wid, },
+        screen = "primary",
+        widget = awful.widget.only_on_screen
+    }
+end
+-- helper to control volume with keyboard knob
+local vol_notification_id;
+function change_volume(op)
+
+   local fd = io.popen("amixer sset Master " .. op)
+   local out = fd:read("*all")
+   fd:close()
+
+   local vol = string.match(out, "(%d+)%%")
+   local status = string.match(out, "%[(o[^%]]*)%]")
+
+   if not string.find(status, "on", 1, true) then
+       vol = " Volume is : " .. vol .. "% (Muted)"
+       vol_notification_id = naughty.notify({ title = "Volume", text = vol , timeout = 10, replaces_id = vol_notification_id }).id
+   else
+       vol = " Volume is : " .. vol .. "%"
+       vol_notification_id = naughty.notify({ title = "Volume", text = vol , timeout = 10, replaces_id = vol_notification_id }).id
+   end
 end
 -- }}}
 
@@ -101,8 +190,16 @@ myawesomemenu = {
    { "quit", function() awesome.quit() end}
 }
 
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "open terminal", terminal }
+mymainmenu = awful.menu({ items = { { "Awesome", myawesomemenu, beautiful.awesome_icon },
+                                    { "Open terminal", terminal },
+                                    { "Applications", xdgmenu },
+                                    { "File manager", "nautilus" },
+                                    { "MyPaint", "mypaint" },
+                                    { "Firefox", "firefox" },
+                                    { "Unity", "unity-editor" },
+                                    { "Chromium", "chromium" },
+                                    { "Chromium Incognito", "chromium --incognito" },
+                                    { "qBittorrent", "qbittorrent" },
                                   }
                         })
 
@@ -113,12 +210,100 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
+-- {{{ Awesomd widget
+local awesompd = require('awesompd/awesompd')
+
+musicwidget = awesompd:create() -- Create awesompd widget
+musicwidget.font = "PragmataPro" -- Set widget font
+musicwidget.font_color = "#EEEEEE" --Set widget font color
+-- musicwidget.background = "#000000" --Set widget background color
+musicwidget.scrolling = true -- If true, the text in the widget will be scrolled
+musicwidget.output_size = 30 -- Set the size of widget in symbols
+musicwidget.update_interval = 1 -- Set the update interval in seconds
+
+-- Set the folder where icons are located
+musicwidget.path_to_icons = config_dir_path .. "/awesompd/icons"
+
+-- Set the path to the icon to be displayed on the widget itself
+musicwidget.widget_icon = config_dir_path .. "/awesompd/icons/radio_icon.png"
+
+-- Set the default music format for Jamendo streams. You can change
+-- this option on the fly in awesompd itself.
+-- possible formats: awesompd.FORMAT_MP3, awesompd.FORMAT_OGG
+musicwidget.jamendo_format = awesompd.FORMAT_MP3
+
+-- Specify the browser you use so awesompd can open links from
+-- Jamendo in it.
+musicwidget.browser = "firefox"
+
+-- If true, song notifications for Jamendo tracks and local tracks
+-- will also contain album cover image.
+musicwidget.show_album_cover = true
+
+-- Specify how big in pixels should an album cover be. Maximum value
+-- is 100.
+musicwidget.album_cover_size = 64
+
+-- This option is necessary if you want the album covers to be shown
+-- for your local tracks.
+musicwidget.mpd_config =  "~/.config/mpd/mpd.conf"
+
+-- Specify decorators on the left and the right side of the
+-- widget. Or just leave empty strings if you decorate the widget
+-- from outside.
+musicwidget.ldecorator = ""
+musicwidget.rdecorator = ""
+
+-- Set all the servers to work with (here can be any servers you use)
+musicwidget.servers = {
+   { server = "localhost",
+     port = 6600 }
+}
+
+-- Set the buttons of the widget. Keyboard keys are working in the
+-- entire Awesome environment. Also look at the line 352.
+musicwidget:register_buttons(
+   { { "", awesompd.MOUSE_LEFT, musicwidget:command_playpause() },
+     { "Control", awesompd.MOUSE_SCROLL_UP, musicwidget:command_prev_track() },
+     { "Control", awesompd.MOUSE_SCROLL_DOWN, musicwidget:command_next_track() },
+     { "", awesompd.MOUSE_SCROLL_UP, musicwidget:command_volume_up() },
+     { "", awesompd.MOUSE_SCROLL_DOWN, musicwidget:command_volume_down() },
+     { "", awesompd.MOUSE_RIGHT, musicwidget:command_show_menu() },
+--     { "", "XF86AudioLowerVolume", musicwidget:command_volume_down() },
+--     { "", "XF86AudioRaiseVolume", musicwidget:command_volume_up() },
+     { modkey, "Pause", musicwidget:command_playpause() } })
+
+musicwidget:run() -- After all configuration is done, run the widget
+
+-- }}}
+
+
+-- {{{ Wibar
+
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
 
--- {{{ Wibar
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
+
+-- Create a network widget
+netwidget = wibox.widget.textbox()
+vicious.register(netwidget, vicious.widgets.net, '<span color="#CC9393"> ${enp3s0 down_kb}</span> <span color="#7F9F7F">${enp3s0 up_kb}</span>', 3)
+netwidget = only_on_primary(netwidget)
+
+-- Create a mem widget
+memwidget = wibox.widget.textbox()
+vicious.register(memwidget, vicious.widgets.mem, "<span color='#CCCC11'> $1% </span>", 13)
+memwidget = only_on_primary(memwidget)
+-- vicious.register(memwidget, vicious.widgets.mem, "<span color='#CCCC11'> $1% ($2MB/$3MB)</span>", 13)
+
+-- CPU Graph
+cpuwidget = awful.widget.graph()
+cpuwidget:set_width(100)
+cpuwidget:set_background_color("#494B4F")
+cpuwidget:set_color({ type = "linear", from = { 0, 0 }, to = { 10,0 }, stops = { {0, "#FF5656"}, {0.5, "#88A175"}, {1, "#AECF96" }}})
+vicious.register(cpuwidget, vicious.widgets.cpu, "$1")
+cpuwidget = only_on_primary(cpuwidget)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -183,7 +368,8 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+
+    awful.tag({"α", "β", "γ", "δ", "ε", "ζ", "η", "θ", "ι", "κ", "λ" }, s, awful.layout.layouts[4])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -216,7 +402,12 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
+            cpuwidget,
+            netwidget,
+            memwidget,
+            musicwidget.widget,
+            -- mykeyboardlayout,
+            custom_widgets.kbdd(),
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
@@ -241,7 +432,7 @@ globalkeys = gears.table.join(
               {description = "view previous", group = "tag"}),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
               {description = "view next", group = "tag"}),
-    awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
+    awful.key({ modkey,           }, "a", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
 
     awful.key({ modkey,           }, "j",
@@ -256,7 +447,7 @@ globalkeys = gears.table.join(
         end,
         {description = "focus previous by index", group = "client"}
     ),
-    awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
+    awful.key({ modkey,           }, "d", function () mymainmenu:show() end,
               {description = "show main menu", group = "awesome"}),
 
     -- Layout manipulation
@@ -265,6 +456,8 @@ globalkeys = gears.table.join(
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end,
               {description = "swap with previous client by index", group = "client"}),
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end,
+              {description = "focus the next screen", group = "screen"}),
+    awful.key({ modkey, "Shift"   }, "o", function () awful.screen.focus_relative( 1) end,
               {description = "focus the next screen", group = "screen"}),
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
               {description = "focus the previous screen", group = "screen"}),
@@ -280,7 +473,9 @@ globalkeys = gears.table.join(
         {description = "go back", group = "client"}),
 
     -- Standard program
-    awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
+    awful.key({ modkey,           }, "Return", function () drop_terminal() end,
+              {description = "open a terminal", group = "launcher"}),
+    awful.key({ modkey, "Shift"   }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
@@ -316,7 +511,7 @@ globalkeys = gears.table.join(
               {description = "restore minimized", group = "client"}),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
+    awful.key({ modkey, "Shift" }, "r",     function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),
 
     awful.key({ modkey }, "x",
@@ -331,7 +526,128 @@ globalkeys = gears.table.join(
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+              {description = "show the menubar", group = "launcher"}),
+    -- Screenshots
+    awful.key({                   }, "Print",
+      function ()
+         awful.spawn("escrotum", false)
+         naughty.notify({ title="Screenshot", text="Capturing full screen" })
+      end,
+      {description = "take screenshot", group = "launcher"}),
+    awful.key({ "Shift"         }, "Print",
+      function ()
+         awful.spawn("escrotum -s", false)
+         naughty.notify({ title="Screenshot", text="Capturing an area" })
+      end,
+      {description = "take area screenshot", group = "launcher"}),
+    -- Misc soft
+    awful.key({ modkey,           }, "e",
+       function ()
+          drop("urxvt -depth 0 -name my_floating_ranger -e ranger ", "top", "center", 1, 0.5)
+       end,
+      {description = "launch ranger", group = "launcher"}),
+    awful.key({ modkey, "Shift"}, "e",
+       function ()
+          awful.spawn("nautilus", false)
+       end,
+      {description = "launch nautilus", group = "launcher"}),
+    awful.key({ modkey, "Shift"}, "n",
+       function ()
+          awful.spawn("~/bin/vnc-menu", false)
+       end
+    ),
+    awful.key({ modkey,           }, "r",
+      function ()
+         awful.spawn("dmenu_run -l 32 -fn \"PragmataPro-12:bold\" -i -p \"$\" -hist " .. home_dir_path .. "/.cache/dmenu_hist ")
+      end
+    ),
+    awful.key({ modkey,           }, "b",
+      function ()
+         awful.spawn("passmenu --type -l 32 -fn \"PragmataPro-12:bold\" -i -p \"*\" ")
+      end
+    ),
+
+    -- Media keys mappings
+    awful.key({                   }, "XF86AudioRaiseVolume", function () change_volume("1%+") end),
+    awful.key({                   }, "XF86AudioLowerVolume", function () change_volume("1%-") end),
+    awful.key({                   }, "XF86AudioMute", function () change_volume("toggle") end),
+    awful.key({                   }, "XF86HomePage", function () awful.spawn("firefox") end),
+    awful.key({                   }, "XF86Mail", function () awful.spawn("thunderbird") end),
+    awful.key({                   }, "XF86Messenger", function () awful.spawn("pidgin") end),
+    awful.key({                   }, "XF86Search", function () awful.spawn("chromium --incognito") end),
+    awful.key({                   }, "XF86TaskPane", function () awful.spawn("chromium --incognito") end),
+
+    awful.key({                   }, "XF86Eject", function ()
+       drop("urxvtc -name my_floating_htop -e htop -d 2", "center", "center", 0.7, 0.65, true)
+    end),
+
+    awful.key({ "Shift"           }, "XF86AudioPlay", function ()
+       drop("urxvtc -name my_floating_ncmpcpp -geometry 64x210+0+0 -e ncmpcpp", "center", "center", 0.9, 0.85)
+    end),
+
+    awful.key({                   }, "XF86Calculator", function ()
+         drop("urxvtc -name my_floating_calculator -geometry 100x20+0+0 -fg white -e python  -ic 'from math import *; from random import *'",
+              "center", "center", 0.2, 0.1
+         )
+    end),
+
+    awful.key({                   }, "XF86AudioPlay",
+      function ()
+         awful.spawn("mpc toggle", false)
+         naughty.notify({ title="MPD player", text="Play / Pause" })
+      end
+    ),
+    awful.key({                   }, "XF86AudioPrev",
+      function ()
+         awful.spawn("mpc prev", false)
+         naughty.notify({ title="MPD player", text="Previous track" })
+      end
+    ),
+    awful.key({                   }, "XF86AudioNext",
+      function ()
+         awful.spawn("mpc next", false)
+         naughty.notify({ title="MPD player", text="Next track" })
+      end
+    ),
+    awful.key({ "Shift"           }, "XF86AudioNext",
+      function ()
+         awful.spawn("mpc seek +0:0:5", false)
+         naughty.notify({ title="MPD player", text="Seek forward" })
+      end
+    ),
+    awful.key({ "Shift"           }, "XF86AudioPrev",
+      function ()
+         awful.spawn("mpc seek -0:0:5", false)
+         naughty.notify({ title="MPD player", text="Seek backward" })
+      end
+    ),
+    -- brightness (ddccontrol is broken)
+    -- awful.key({ "Shift"           }, "XF86AudioRaiseVolume",
+    --   function ()
+    --      awful.spawn_with_shell("echo -n 'u' | socat - UDP-DATAGRAM:127.0.0.1:9930", false)
+    --   end
+    -- ),
+    -- awful.key({ "Shift"           }, "XF86AudioLowerVolume",
+    --   function ()
+    --      awful.spawn_with_shell("echo -n 'd' | socat - UDP-DATAGRAM:127.0.0.1:9930", false)
+    --   end
+    -- ),
+    awful.key({ modkey            }, "XF86AudioRaiseVolume",
+      function () awful.layout.inc(layouts,  1) end
+    ),
+    awful.key({ modkey            }, "XF86AudioLowerVolume",
+      function () awful.layout.inc(layouts, -1) end
+    ),
+    awful.key({                   }, "XF86Sleep",
+      function ()
+         awful.spawn("sudo pm-suspend", false)
+      end
+    ),
+    awful.key({ "Shift"           }, "XF86Sleep",
+      function ()
+         awful.spawn("sudo poweroff", false)
+      end
+    )
 )
 
 clientkeys = gears.table.join(
@@ -341,7 +657,7 @@ clientkeys = gears.table.join(
             c:raise()
         end,
         {description = "toggle fullscreen", group = "client"}),
-    awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end,
+    awful.key({ modkey,           }, "w",      function (c) c:kill()                         end,
               {description = "close", group = "client"}),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ,
               {description = "toggle floating", group = "client"}),
@@ -381,7 +697,7 @@ clientkeys = gears.table.join(
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it work on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.
-for i = 1, 9 do
+for i = 1, 11 do
     globalkeys = gears.table.join(globalkeys,
         -- View tag only.
         awful.key({ modkey }, "#" .. i + 9,
@@ -428,10 +744,31 @@ for i = 1, 9 do
     )
 end
 
+-- -- Bind mod+ctrl+Fkey to layout select
+-- for i = 1, 12 do
+--     globalkeys = awful.util.table.join(globalkeys,
+--         -- Swithch layout
+--         awful.key({ modkey, "Control" }, layouts_f_keys[i], function () awful.layout.set(awfu.layout.layouts[i]) end)
+--    )
+-- end
+
+-- Bind mod+Fkey to custom actions
+for i = 1, 12 do
+    globalkeys = awful.util.table.join(globalkeys,
+        -- Call handler
+        awful.key({ modkey, }, "F" .. i, function ()
+            -- naughty.notify({ title="Custom action", text = "#" .. i })
+            awful.spawn(mod4func_path .. i , false)
+        end)
+   )
+end
+
 clientbuttons = gears.table.join(
     awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
     awful.button({ modkey }, 1, awful.mouse.client.move),
     awful.button({ modkey }, 3, awful.mouse.client.resize))
+
+musicwidget:append_global_keys()
 
 -- Set keys
 root.keys(globalkeys)
@@ -479,9 +816,45 @@ awful.rules.rules = {
         }
       }, properties = { floating = true }},
 
+
+    -- Floating centered UnityWindows
+    { rule_any = { class =  {"Unity"} , name = {"Hold On", "Hold on", "Starting Unity..." } },
+       properties = { 
+           screen = 1,
+           tag = "α",
+           floating = true,
+           -- maximized_vertical = true,
+           size_hints_honor = false,
+           -- maximized_horizontal = true,
+           -- geometry = {1105,15,175,770}
+           -- geometry = {0,20,1024,1280 }
+       },
+       callback = function (c) 
+           c:geometry( { x = 0, y = 25, width = 3240 , height = 1920 - 25 } )
+           -- awful.placement.centered(c,nil) 
+       end 
+    },
+
+    { rule_any = { class =  {"Neovim"} , name = {"Neovim"} },
+       properties = { 
+           screen = 1,
+           tag = "β",
+           floating = true,
+           -- maximized_vertical = true,
+           size_hints_honor = false,
+           -- maximized_horizontal = true,
+           -- geometry = {1105,15,175,770}
+           -- geometry = {0,20,1024,1280 }
+       },
+       callback = function (c) 
+           c:geometry( { x = 0, y = 25, width = 3240 , height = 1920 - 25 } )
+           -- awful.placement.centered(c,nil) 
+       end 
+    },
+
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = true }
+      }, properties = { titlebars_enabled = false }
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
