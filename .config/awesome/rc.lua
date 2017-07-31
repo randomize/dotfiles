@@ -134,7 +134,7 @@ end
 -- drops terminal
 local function drop_terminal()
     local center_screen = awful.screen.getbycoord (1620, 960)
-    drop("st -n my_floating_terminal -e ~/bin/starttmux.sh", "center", "center", 0.99, 0.65, true, center_screen)
+    drop("st -t Tmux -n my_floating_terminal -e ~/bin/starttmux.sh", "center", "center", 0.99, 0.65, true, center_screen)
 end
 
 local function client_menu_toggle_fn()
@@ -543,7 +543,7 @@ globalkeys = gears.table.join(
     -- Misc soft
     awful.key({ modkey,           }, "e",
        function ()
-          drop("urxvt -depth 0 -name my_floating_ranger -e ranger ", "top", "center", 1, 0.5)
+          drop("st -t Ranger -n my_floating_ranger -e ranger ", "top", "center", 1, 0.5)
        end,
       {description = "launch ranger", group = "launcher"}),
     awful.key({ modkey, "Shift"}, "e",
@@ -578,15 +578,15 @@ globalkeys = gears.table.join(
     awful.key({                   }, "XF86TaskPane", function () awful.spawn("chromium --incognito") end),
 
     awful.key({                   }, "XF86Eject", function ()
-       drop("urxvtc -name my_floating_htop -e htop -d 2", "center", "center", 0.7, 0.65, true)
+       drop("st -t Htop -n my_floating_htop -e htop -d 2", "center", "center", 0.7, 0.65, true)
     end),
 
     awful.key({ "Shift"           }, "XF86AudioPlay", function ()
-       drop("urxvtc -name my_floating_ncmpcpp -geometry 64x210+0+0 -e ncmpcpp", "center", "center", 0.9, 0.85)
+       drop("st -t MPD -n my_floating_ncmpcpp -g 64x210+0+0 -e ncmpcpp", "center", "center", 0.9, 0.85)
     end),
 
     awful.key({                   }, "XF86Calculator", function ()
-         drop("urxvtc -name my_floating_calculator -geometry 100x20+0+0 -fg white -e python  -ic 'from math import *; from random import *'",
+         drop("st -t Python -n my_floating_calculator -g 100x20+0+0 -fg white -e python  -ic 'from math import *; from random import *'",
               "center", "center", 0.2, 0.1
          )
     end),
