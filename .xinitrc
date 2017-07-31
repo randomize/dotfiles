@@ -11,11 +11,11 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
    unset rcd
 fi
 
-# exec gnome-session
-# return
+#exec awesome
+#return
 
 # Manually create
-mkdir .cache/rtorrent_session/
+#mkdir -p .cache/rtorrent_session/
 
 # Load settings from X
 xrdb -merge ~/.Xresources
@@ -58,10 +58,7 @@ xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu > ~/
 # Clipboard manager
 ( ( sleep 3 && (copyq &) ) & )
 
-# Clipboard manager
-( ( sleep 3 && (goldendict &) ) & )
-
-# Clipboard manager
+# Pulse audio
 ( ( sleep 3 && (pasystray &) ) & )
 
 # Composition
@@ -83,29 +80,30 @@ urxvtd -q -f -o
 xscreensaver -no-splash -display :0.0 &
 
 # Monitors setup
-xrandr --dpi 100
-xrandr --output VGA1 --off
-xrandr --output HDMI2 --primary
-xrandr --output DP1 --left-of HDMI2
+xrandr --dpi 90
+# xrandr --output VGA1 --off
+xrandr --output DP-0 --primary --rotate left
+xrandr --output DVI-I-1 --left-of DP-0 --rotate left
+xrandr --output DVI-D-0 --right-of DP-0 --rotate left
 
 # Map wacom
-xsetwacom --set "Wacom Intuos3 9x12 stylus" MapToOutput "HDMI2" 
-xsetwacom --set "Wacom Intuos3 9x12 eraser" MapToOutput "HDMI2" 
+#xsetwacom --set "Wacom Intuos3 9x12 stylus" MapToOutput "HDMI2" 
+#xsetwacom --set "Wacom Intuos3 9x12 eraser" MapToOutput "HDMI2" 
 
 # Disable screen turn off
 # xset s off
 # Lightons script
-/home/randy/bin/lightsOn.sh &
+#/home/randy/bin/lightsOn.sh &
 
 
 # Mpd
 ( ( sleep 4 && /usr/bin/mpd) & )
 
 # layout indicator
-( ( sleep 4 && /usr/bin/sbxkb ) & )
+#( ( sleep 4 && /usr/bin/sbxkb ) & )
 
 # DDC controlled brightness
-( ( sleep 4 && /home/randy/bin/ddc-bright ) & )
+#( ( sleep 4 && /home/randy/bin/ddc-bright ) & )
 
 # ALSA 2 JACK - MIDI daemon
 # ( ( sleep 4 && /usr/bin/a2jmidid -e) & )
