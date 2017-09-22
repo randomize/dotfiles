@@ -66,8 +66,11 @@ zbell_end() {
 
    if (( ! $has_ignored_cmd )) && (( ran_long )) && (( $zbell_ticks )); then
       zbell_cmd_duration=$(( $EPOCHSECONDS - $zbell_timestamp ))
-      notify-send --icon=gtk-info Finished "Job completed on $HOST: $zbell_lastcmd = $zbell_exit_status \n Started at : ${start_time}\n Compleated in : $zbell_cmd_duration seconds"
-		# print -n "\a"
+      if [[ `uname` == 'Darwin' ]] then 
+          terminal-notifier -sender SystemEvents -sound default -message "Job completed on $HOST: $zbell_lastcmd = $zbell_exit_status \n Started at : ${start_time}\n Compleated in : $zbell_cmd_duration seconds"
+      else
+          notify-send --icon=gtk-info Finished "Job completed on $HOST: $zbell_lastcmd = $zbell_exit_status \n Started at : ${start_time}\n Compleated in : $zbell_cmd_duration seconds"
+      fi
 	fi
 
    zbell_ticks=0
