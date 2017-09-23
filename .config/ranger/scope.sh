@@ -79,8 +79,36 @@ case "$extension" in
         try 7z -p l "$path" && { dump | trim; exit 0; } || exit 1;;
     # PDF documents:
     pdf)
-        try pdftotext -l 10 -nopgbrk -q "$path" - && \
-            { dump | trim | fmt -s -w $width; exit 0; } || exit 1;;
+        evince-thumbnailer -l -s 400 "$path" "$cached" && exit 6 ;;
+        # try pdftotext -l 10 -nopgbrk -q "$path" - && \
+            # { dump | trim | fmt -s -w $width; exit 0; } || exit 1;;
+    # DJVU document
+    djvu|djv)
+        try ddjvu -format=tiff -quality=80 -page=1 -size=320x320 "$path" "$cached" && sleep 1 && exit 6 || exit 1;;
+    # Blender scene
+    blend)
+        try /usr/bin/blender-thumbnailer.py "$path" "$cached" && exit 6 || exit 1;;
+
+    # Go games
+    sgf)
+       gogui-thumbnailer -size 400 "$path" "$cached" && exit 6 ;;
+
+    # PSD
+    psd)
+       convert  "$path" -resize '400x400' "$cached" && exit 6 ;;
+
+    # Chm
+    chm)
+       chm-thumbnailer "$path" "$cached" 400 && exit 6 ;;
+
+    # Epub
+    epub)
+       /home/randy/bin/epub-thumbnailer.py "$path" "$cached" 500 && exit 6 ;;
+
+    # documentsa
+    doc|docx)
+       catdoc "$path" && exit 4 || exit 1;;
+
     # BitTorrent Files
     torrent)
         try transmission-show "$path" && { dump | trim; exit 5; } || exit 1;;
@@ -117,5 +145,10 @@ case "$mimetype" in
         # Use sed to remove spaces so the output fits into the narrow window
         try mediainfo "$path" && { dump | trim | sed 's/  \+:/: /;';  exit 5; } || exit 1;;
 esac
+
+# Fallback dump otherwise
+echo `file -bz "$path"`
+echo "====================================================================="
+try hexdump -C -n 1024 "$path" && { dump | trim; exit 0; } || exit 1
 
 exit 1
