@@ -3,6 +3,8 @@
 
 # {{{ Aliases ==================================================
 alias update='sudo pacman -Suy'
+alias ls='ls --color=auto -F -h'
+alias rm='rm -I'
 
 alias pa='pacman'
 alias ya='yaourt'
@@ -35,6 +37,12 @@ alias mount-mac='sudo sshfs  randy@10.10.10.105:/ /mnt/macos'
 # }}}
 
 # {{{ Misc =====================================================
+# Dircolors
+[[ -s ~/.dircolors ]] && eval `dircolors -b $HOME/.dircolors`
 
 # Load dnvm
 [[ -s "/home/randy/.dnx/dnvm/dnvm.sh" ]] && . "/home/randy/.dnx/dnvm/dnvm.sh"
+
+# Fzf
+[[ -s /usr/share/fzf/key-bindings.zsh ]] && . /usr/share/fzf/key-bindings.zsh
+[[ -s /usr/share/fzf/key-completion.zsh ]] && . /usr/share/fzf/key-completion.zsh

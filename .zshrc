@@ -85,7 +85,7 @@ zle -N zle-keymap-select
 [[ -s ~/.zsh/osdetect.zsh ]] && . ~/.zsh/osdetect.zsh
 
 # Dircolors
-[[ -s ~/.dircolors ]] && eval `dircolors -b $HOME/.dircolors`
+[[ -s ~/.dircolors ]] && eval `gdircolors -b $HOME/.dircolors`
 
 # Zbell
 [[ -s ~/.zsh/zbell.sh ]] && . ~/.zsh/zbell.sh
@@ -161,9 +161,6 @@ fi
 [[ -s ~/.zsh/functs.zsh ]] && . ~/.zsh/functs.zsh
 # }}}
 
-# Fzf
-[[ -s /usr/share/fzf/key-bindings.zsh ]] && . /usr/share/fzf/key-bindings.zsh
-[[ -s /usr/share/fzf/key-completion.zsh ]] && . /usr/share/fzf/key-completion.zsh
 
 # pkgfile
 [[ -s  /usr/share/doc/pkgfile/command-not-found.zsh ]] && . /usr/share/doc/pkgfile/command-not-found.zsh

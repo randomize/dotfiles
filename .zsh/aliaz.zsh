@@ -50,7 +50,6 @@ alias -s torrent=~/bin/download_torrent.sh
 
 # Listing
 alias lsblk='lsblk --all --output NAME,MAJ:MIN,LABEL,PARTLABEL,SIZE,MODEL,TRAN,RM,MOUNTPOINT'
-alias ls='ls --color=auto -F -h'
 alias lsd='ls -ld *(-/DN)'
 alias lsa='ls -ld .*'
 alias la='ls++ -a'
@@ -71,7 +70,6 @@ alias ccp='rsync -av --stats --info=progress2'
 # safety features
 alias cp='cp -i'
 alias mv='mv -i'
-alias rm='rm -I'
 alias ln='ln -i'
 alias acp='acp -ig'
 alias amv='amv -ig'
