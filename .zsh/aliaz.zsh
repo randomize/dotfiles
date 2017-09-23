@@ -49,6 +49,7 @@ alias -s torrent=~/bin/download_torrent.sh
 # Aliases ==================================================================================
 
 # Listing
+alias lsblk='lsblk --all --output NAME,MAJ:MIN,LABEL,PARTLABEL,SIZE,MODEL,TRAN,RM,MOUNTPOINT'
 alias ls='ls --color=auto -F -h'
 alias lsd='ls -ld *(-/DN)'
 alias lsa='ls -ld .*'
@@ -95,6 +96,8 @@ alias egrep='egrep --colour'
 alias free='free -m'
 alias htop='htop -d 2'
 alias feh='feh -g 640x480+1290+40 -d -S filename'
+alias denoise='pactl load-module module-echo-cancel use_master_format=1 use_volume_sharing=false aec_method='"'"'webrtc'"'"' aec_args='"'"'"noise_suppression=1 voice_detection=1 beamforming=1 mic_geometry=0.04,0,0,-0.04,0,0"'"'"
+
 
 # Programming
 alias cmake-release='cmake -DCMAKE_BUILD_TYPE=Release'

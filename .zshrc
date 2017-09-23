@@ -41,7 +41,7 @@ zplug "rimraf/k"
 zplug "djui/alias-tips"
 zplug "Tarrasch/zsh-bd"
 
-export ZSH_PLUGINS_ALIAS_TIPS_TEXT='💡  '
+export ZSH_PLUGINS_ALIAS_TIPS_TEXT='  '
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -165,6 +165,9 @@ fi
 [[ -s /usr/share/fzf/key-bindings.zsh ]] && . /usr/share/fzf/key-bindings.zsh
 [[ -s /usr/share/fzf/key-completion.zsh ]] && . /usr/share/fzf/key-completion.zsh
 
+# pkgfile
+[[ -s  /usr/share/doc/pkgfile/command-not-found.zsh ]] && . /usr/share/doc/pkgfile/command-not-found.zsh
+
 # Fasd
 [[ -s `which fasd` ]] && eval "$(fasd --init auto)"
 
@@ -172,6 +175,7 @@ fi
 
 # PATH {{{
 export PATH=$PATH:/home/randy/.cargo/bin
+export PATH=$PATH:/home/randy/.gem/ruby/2.4.0/bin
 # }}}
 
 # Syntax hightlighting settings
