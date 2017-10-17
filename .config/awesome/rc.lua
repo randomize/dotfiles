@@ -134,7 +134,7 @@ end
 -- drops terminal
 local function drop_terminal()
     local center_screen = awful.screen.getbycoord (1620, 960)
-    drop("st -t Tmux -n my_floating_terminal -e ~/bin/starttmux.sh", "center", "center", 0.99, 0.65, true, center_screen)
+    drop("st -t Tmux -n my_floating_terminal -e ~/bin/starttmux.sh", "center", "center", 0.69, 0.75, true, center_screen)
 end
 
 local function client_menu_toggle_fn()
@@ -817,40 +817,6 @@ awful.rules.rules = {
       }, properties = { floating = true }},
 
 
-    -- Floating centered UnityWindows
-    { rule_any = { class =  {"Unity"} , name = {"Hold On", "Hold on", "Starting Unity..." } },
-       properties = { 
-           screen = 1,
-           tag = "α",
-           floating = true,
-           -- maximized_vertical = true,
-           size_hints_honor = false,
-           -- maximized_horizontal = true,
-           -- geometry = {1105,15,175,770}
-           -- geometry = {0,20,1024,1280 }
-       },
-       callback = function (c) 
-           c:geometry( { x = 0, y = 25, width = 3240 , height = 1920 - 25 } )
-           -- awful.placement.centered(c,nil) 
-       end 
-    },
-
-    { rule_any = { class =  {"Neovim"} , name = {"Neovim"} },
-       properties = { 
-           screen = 1,
-           tag = "β",
-           floating = true,
-           -- maximized_vertical = true,
-           size_hints_honor = false,
-           -- maximized_horizontal = true,
-           -- geometry = {1105,15,175,770}
-           -- geometry = {0,20,1024,1280 }
-       },
-       callback = function (c) 
-           c:geometry( { x = 0, y = 25, width = 3240 , height = 1920 - 25 } )
-           -- awful.placement.centered(c,nil) 
-       end 
-    },
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
