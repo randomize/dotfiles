@@ -84,9 +84,6 @@ zle -N zle-keymap-select
 # OS detect
 [[ -s ~/.zsh/osdetect.zsh ]] && . ~/.zsh/osdetect.zsh
 
-# Dircolors
-[[ -s ~/.dircolors ]] && eval `gdircolors -b $HOME/.dircolors`
-
 # Zbell
 [[ -s ~/.zsh/zbell.sh ]] && . ~/.zsh/zbell.sh
 
