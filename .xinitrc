@@ -24,7 +24,7 @@ xrdb -merge ~/.Xresources
 kbdd &
 
 # Set layouts and no capslock
-setxkbmap -layout "dvp, us, ru" -option "grp:shifts_toggle"
+setxkbmap -layout "dvp, ru" -option "grp:shifts_toggle"
 
 # Make Caps Lock a Control key
 setxkbmap -option ctrl:nocaps 
@@ -82,9 +82,10 @@ xscreensaver -no-splash -display :0.0 &
 # Monitors setup
 xrandr --dpi 90
 # xrandr --output VGA1 --off
-xrandr --output DP-0 --primary --rotate left
-xrandr --output DVI-I-1 --left-of DP-0 --rotate left
-xrandr --output DVI-D-0 --right-of DP-0 --rotate left
+# xrandr --output DP-2 --primary --rotate left
+xrandr --output DP-2 --primary 
+xrandr --output DP-0 --right-of DP-2 --rotate left
+xrandr --output DVI-D-0 --left-of DP-2 --rotate left
 
 # Map wacom
 #xsetwacom --set "Wacom Intuos3 9x12 stylus" MapToOutput "HDMI2" 
