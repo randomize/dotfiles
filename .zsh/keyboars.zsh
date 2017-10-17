@@ -51,6 +51,9 @@ bindkey '\es' insert-sudo
 # Clear screen <a-c>
 bindkey -v '\ec' clear-screen
 
+# do ls++ on <a-l>
+bindkey -s '\el' 'l\n'   
+
 # Toggle Ctrl+Z vim
 foreground-vi() {
   fg
