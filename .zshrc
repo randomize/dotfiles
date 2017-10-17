@@ -113,12 +113,17 @@ alias t='python2 /mnt/data/t/t.py --task-dir ~/tasks --list tasks'
 export HISTFILE=~/.zsh_history
 export HISTSIZE=100000
 export SAVEHIST=100000
-setopt hist_ignore_dups
-setopt hist_reduce_blanks
-setopt hist_ignore_space
-setopt extended_history # Timestamp history
-setopt share_history
-setopt inc_append_history
+setopt EXTENDED_HISTORY # Timestamp history
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt HIST_IGNORE_SPACE
+setopt SHARE_HISTORY
+setopt INC_APPEND_HISTORY
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_BEEP
 
 
 # COMPLETION SETTINGS: add custom completion scripts
