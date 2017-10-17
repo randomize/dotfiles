@@ -24,6 +24,7 @@
 /.muttrc
 /.gitshots/
 /.config/asciinema/config
+/.config/puush/puush.conf
 
 # Vim temporals/generated
 /.viminfo
