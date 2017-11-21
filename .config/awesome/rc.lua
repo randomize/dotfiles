@@ -17,9 +17,9 @@ local vicious = require("vicious")
 -- Scratchdrop (to toggle terminals and other things)
 local drop = require("scratchdrop")
 -- Custom Widgets
-local custom_widgets = {
-    kbdd = require("widgets.kbdd"),
-}
+-- local custom_widgets = {
+--     kbdd = require("widgets.kbdd"),
+-- }
 
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
@@ -281,7 +281,7 @@ musicwidget:run() -- After all configuration is done, run the widget
 -- {{{ Wibar
 
 -- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
+-- mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
@@ -407,7 +407,7 @@ awful.screen.connect_for_each_screen(function(s)
             memwidget,
             musicwidget.widget,
             -- mykeyboardlayout,
-            custom_widgets.kbdd(),
+            -- custom_widgets.kbdd(),
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
@@ -803,7 +803,7 @@ awful.rules.rules = {
           "MessageWin",  -- kalarm.
           "Sxiv",
           "Wpa_gui",
-          "pinentry",
+          -- "pinentry",
           "veromix",
           "xtightvncviewer"},
 
@@ -821,6 +821,13 @@ awful.rules.rules = {
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
       }, properties = { titlebars_enabled = false }
+    },
+
+    { rule = { instance = "pinentry" },
+        properties = { floating = true },
+        callback = function (c)
+            awful.placement.centered(c,nil)
+        end
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
