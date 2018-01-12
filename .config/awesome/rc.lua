@@ -543,7 +543,7 @@ globalkeys = gears.table.join(
     -- Misc soft
     awful.key({ modkey,           }, "e",
        function ()
-          drop("st -t Ranger -n my_floating_ranger -e ranger ", "top", "center", 1, 0.5)
+          drop("xterm -T Ranger -n my_floating_ranger -e ranger ", "top", "center", 1, 0.5)
        end,
       {description = "launch ranger", group = "launcher"}),
     awful.key({ modkey, "Shift"}, "e",
@@ -816,6 +816,8 @@ awful.rules.rules = {
         }
       }, properties = { floating = true }},
 
+     -- { rule = { class = "mpv" },
+     --  properties = { focusable = false } },
 
 
     -- Add titlebars to normal clients and dialogs
