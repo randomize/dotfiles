@@ -530,13 +530,13 @@ globalkeys = gears.table.join(
     -- Screenshots
     awful.key({                   }, "Print",
       function ()
-         awful.spawn("escrotum", false)
+         awful.spawn.with_shell("maim ~/shot_$(date +%s).png", false)
          naughty.notify({ title="Screenshot", text="Capturing full screen" })
       end,
       {description = "take screenshot", group = "launcher"}),
     awful.key({ "Shift"         }, "Print",
       function ()
-         awful.spawn("escrotum -s", false)
+         awful.spawn.with_shell("maim -u -s ~/shot_$(date +%s).png", false)
          naughty.notify({ title="Screenshot", text="Capturing an area" })
       end,
       {description = "take area screenshot", group = "launcher"}),
