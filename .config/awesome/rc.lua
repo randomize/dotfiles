@@ -781,6 +781,7 @@ awful.rules.rules = {
     { rule = { },
       properties = { border_width = beautiful.border_width,
                      border_color = beautiful.border_normal,
+                     callback = function(c) c.maximized, c.maximized_vertical, c.maximized_horizontal = false, false, false end,
                      focus = awful.client.focus.filter,
                      raise = true,
                      keys = clientkeys,

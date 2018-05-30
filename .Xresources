@@ -8,6 +8,10 @@ xft.dpi: 100
 
 ! Xterm -----------------------------------------------
 
+! to support libsixel:
+XTerm*decTerminalID: vt340
+XTerm*numColorRegisters: 256
+
 xterm*metaSendsEscape:    True
 xterm*saveLines:          1024
 xterm*background:         black
@@ -16,7 +20,8 @@ xterm*cursorColor:        green
 xterm*cursorBlink:        false
 xterm*cursorOnTime:	     550
 xterm*cursorOffTime:	     150
-xterm*faceName:           PragmataProMono:pixelsize=15
+xterm*faceName:           Iosevka Nerd Font Mono:style=Bold:pixelsize=14
+xterm*boldFont:           Iosevka Nerd Font Mono:style=Heavy:pixelsize=14
 xterm*Geometry:           200x60+100+60
 xterm*termName:           xterm-256color
 xterm*utf8: true

@@ -30,20 +30,21 @@ setxkbmap -layout "dvp, ru" -option "grp:shifts_toggle"
 setxkbmap -option ctrl:nocaps 
 
 # Shift+NumLock shortcut toggle mouse keys
-setxkbmap -option "keypad:pointerkeys"
+# setxkbmap -option "keypad:pointerkeys"
 
 # Right alt is compose
-setxkbmap -option "compose:ralt"
+# setxkbmap -option "compose:ralt"
 
 # Turn on c-a-backspace
 setxkbmap -option terminate:ctrl_alt_bksp
 
 # Special mappings (see .Xmodmap file)
-xmodmap .Xmodmap
-xcape -e '0x1234=Return;Control_L=Escape'
+# xmodmap .Xmodmap
+# xcape -e '0x1234=Return;Control_L=Escape'
+xcape -e 'Control_L=Escape'
 
-# Set repeat rate
-xset r rate 400 80
+# Set repeat rate to low value
+xset r rate 400 800
 
 # make terminus visible for xfontsel and clients
 xset +fp /.fonts
@@ -65,16 +66,16 @@ xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu > ~/
 compton -b
 
 # Set wacom buttons correctly
-xsetwacom --set "Wacom Intuos3 9x12 stylus" Button 2 "button +3"
-xsetwacom --set "Wacom Intuos3 9x12 stylus" Button 3 "button +2"
-xsetwacom --set "Wacom Intuos3 9x12 stylus" "StripLeftDown" "0"
-xsetwacom --set "Wacom Intuos3 9x12 stylus" "StripRightUp" "0"
-xsetwacom --set "Wacom Intuos3 9x12 stylus" "StripRightDown" "0"
-xsetwacom --set "Wacom Intuos3 9x12 stylus" "StripLeftUp" "0"
+xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" Button 2 "button +3"
+xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" Button 3 "button +2"
+xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" "StripLeftDown" "0"
+xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" "StripRightUp" "0"
+xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" "StripRightDown" "0"
+xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" "StripLeftUp" "0"
 
 
 # Start urxvt daemon (quiet, forked, only for this X session)
-urxvtd -q -f -o
+# urxvtd -q -f -o
 
 # Screensaver
 xscreensaver -no-splash -display :0.0 &
@@ -83,13 +84,13 @@ xscreensaver -no-splash -display :0.0 &
 xrandr --dpi 90
 # xrandr --output VGA1 --off
 # xrandr --output DP-2 --primary --rotate left
-xrandr --output DP-2 --primary 
-xrandr --output DP-0 --right-of DP-2 --rotate left
-xrandr --output DVI-D-0 --left-of DP-2 --rotate left
+xrandr --output DP-4 --primary 
+# xrandr --output DP-0 --right-of DP-4 --rotate left
+# xrandr --output DP-2 --left-of DP-4 --rotate left
 
 # Map wacom
-#xsetwacom --set "Wacom Intuos3 9x12 stylus" MapToOutput "HDMI2" 
-#xsetwacom --set "Wacom Intuos3 9x12 eraser" MapToOutput "HDMI2" 
+xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" MapToOutput "HEAD-0" 
+xsetwacom --set "Wacom Intuos3 9x12 Pen eraser" MapToOutput "HEAD-0" 
 
 # Disable screen turn off
 # xset s off
@@ -108,6 +109,18 @@ xrandr --output DVI-D-0 --left-of DP-2 --rotate left
 
 # ALSA 2 JACK - MIDI daemon
 # ( ( sleep 4 && /usr/bin/a2jmidid -e) & )
+
+# Start ssh agent if none
+ssh-add -l &>/dev/null
+if [ "$?" == 2 ]; then
+  test -r ~/.ssh-agent && eval "$(<~/.ssh-agent)" >/dev/null
+
+  ssh-add -l &>/dev/null
+  if [ "$?" == 2 ]; then
+    (umask 066; ssh-agent > ~/.ssh-agent)
+    eval "$(<~/.ssh-agent)" >/dev/null
+  fi
+fi
 
 # Awesome
 exec awesome
