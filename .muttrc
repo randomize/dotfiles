@@ -35,6 +35,8 @@ set mail_check = 120
 set mailcap_path = ~/.config/mutt/mailcap
 
 
+
+macro pager \cb <pipe-entry>'urlscan'<enter> 'Follow links with urlview'
 # Colors
 #
 
