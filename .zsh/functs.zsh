@@ -1,4 +1,5 @@
 # Helper functions
+function forallpgp() { git submodule foreach "[[ \"\$path\" != *\"module\" ]] || $* " }
 
 # Simple timers
 function stopwatch()
