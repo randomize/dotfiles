@@ -17,9 +17,9 @@ local vicious = require("vicious")
 -- Scratchdrop (to toggle terminals and other things)
 local drop = require("scratchdrop")
 -- Custom Widgets
-local custom_widgets = {
-    kbdd = require("widgets.kbdd"),
-}
+-- local custom_widgets = {
+--     kbdd = require("widgets.kbdd"),
+-- }
 
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
@@ -281,7 +281,7 @@ musicwidget:run() -- After all configuration is done, run the widget
 -- {{{ Wibar
 
 -- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
+-- mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
@@ -407,7 +407,7 @@ awful.screen.connect_for_each_screen(function(s)
             memwidget,
             musicwidget.widget,
             -- mykeyboardlayout,
-            custom_widgets.kbdd(),
+            -- custom_widgets.kbdd(),
             wibox.widget.systray(),
             mytextclock,
             s.mylayoutbox,
@@ -530,20 +530,20 @@ globalkeys = gears.table.join(
     -- Screenshots
     awful.key({                   }, "Print",
       function ()
-         awful.spawn("escrotum", false)
+         awful.spawn.with_shell("maim ~/shot_$(date +%s).png", false)
          naughty.notify({ title="Screenshot", text="Capturing full screen" })
       end,
       {description = "take screenshot", group = "launcher"}),
     awful.key({ "Shift"         }, "Print",
       function ()
-         awful.spawn("escrotum -s", false)
+         awful.spawn.with_shell("maim -u -s ~/shot_$(date +%s).png", false)
          naughty.notify({ title="Screenshot", text="Capturing an area" })
       end,
       {description = "take area screenshot", group = "launcher"}),
     -- Misc soft
     awful.key({ modkey,           }, "e",
        function ()
-          drop("st -t Ranger -n my_floating_ranger -e ranger ", "top", "center", 1, 0.5)
+          drop("xterm -T Ranger -n my_floating_ranger -e ranger ", "top", "center", 1, 0.5)
        end,
       {description = "launch ranger", group = "launcher"}),
     awful.key({ modkey, "Shift"}, "e",
@@ -781,6 +781,7 @@ awful.rules.rules = {
     { rule = { },
       properties = { border_width = beautiful.border_width,
                      border_color = beautiful.border_normal,
+                     callback = function(c) c.maximized, c.maximized_vertical, c.maximized_horizontal = false, false, false end,
                      focus = awful.client.focus.filter,
                      raise = true,
                      keys = clientkeys,
@@ -803,7 +804,7 @@ awful.rules.rules = {
           "MessageWin",  -- kalarm.
           "Sxiv",
           "Wpa_gui",
-          "pinentry",
+          -- "pinentry",
           "veromix",
           "xtightvncviewer"},
 
@@ -816,11 +817,20 @@ awful.rules.rules = {
         }
       }, properties = { floating = true }},
 
+     -- { rule = { class = "mpv" },
+     --  properties = { focusable = false } },
 
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
       }, properties = { titlebars_enabled = false }
+    },
+
+    { rule = { instance = "pinentry" },
+        properties = { floating = true },
+        callback = function (c)
+            awful.placement.centered(c,nil)
+        end
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.

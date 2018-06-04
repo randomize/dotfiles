@@ -12,7 +12,7 @@ theme.wallpaper = "/home/randy/Pictures/wall-2.jpg"
 -- }}}
 
 -- {{{ Styles
-theme.font      = "PragmataPro 11"
+theme.font      = "Iosevka Nerd Font Mono 10"
 
 -- {{{ Colors
 theme.fg_normal  = "#DCDCCC"

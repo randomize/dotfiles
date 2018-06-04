@@ -117,6 +117,7 @@ Contents of gnome group:
    xdg-user-dirs-gtk
    //yelp                  // Help browser
    pulseaudio              // Pshhhaudio
+   polkit-gnome            // many gui stuff expects this to work with privelige escalation - like gdisks
 
 
 First to install:
@@ -134,14 +135,15 @@ UEFI boot and stuff:
 
 Packaging:
 
-   //local/yaourt          // Aur "pacman"
-   //local/package-query   // yaourt dependency
+   local/yaourt          // Aur "pacman"
+   local/package-query   // yaourt dependency
 
    namcap         // Package checking
    abs            // Arch build system
    pacutils
 
    arch-install-scripts
+   archiso        // arch iso creation tools
 
 Bluetooth and network:
 
@@ -169,7 +171,7 @@ Bluetooth and network:
    //nload             // Network load monitor
    ntop              // Another net monitor
 
-   wireshark-gtk     // Network sniffer
+   wireshark-qt      // Network sniffer
    dstat             // Statistics tool
 
 
@@ -180,6 +182,8 @@ Video:
    libva-intel-driver
    mesa-demos          // Beloved glxgears is here
    intel-gpu-tools     // Debugging
+   nvidia              // Proprietary driver for NVIDIA
+   nvidia-settings     // gui settings tool for it
 
 Xorg stuff:
 
@@ -234,7 +238,7 @@ Diagnostics and HDD:
    unetbootin  // USB bootable creator
    lm_sensors
    aur/qdirstat    // Nice tree viewer for disk usage analysis
-  // aur/winusb-git // Tool to create win usb bootables
+   //aur/winusb-git // Tool to create win usb bootables
 
 Window managers and DE:
 
@@ -248,7 +252,7 @@ Window managers and DE:
    //libnotify           // notifications lib
 
    //parcellite      // clipboard manager good and lite (Has problems with nautilus Cut/Copy/Paste)
-  // aur/copyq           // Another clipboard manager
+   //aur/copyq           // Another clipboard manager
 
    xscreensaver    // Screen saver
 
@@ -257,12 +261,12 @@ Window managers and DE:
    skb             // simple keyboard layout indicator
    xcape           // Remap keys, use return as second ctrl and caps and ctrl and esc
    sbxkb           // layout daemon
-  // aur/kbdd-git    // simple kbd layout daemon, used by awesowe indicator
+   //aur/kbdd-git    // simple kbd layout daemon, used by awesowe indicator
 
    gksu              // GUI-sh sudo
    paprefs           // Pulse audio settings
    pavucontrol       // Pulse audio mixer
-  // aur/pasystray-git // Simple tray icon for pulse mixer
+   //aur/pasystray-git // Simple tray icon for pulse mixer
    //pavumeter         // Pulse meter
    ponymix           // CLI mixer
 
@@ -272,11 +276,11 @@ Window managers and DE:
    //i3status      // Status bar for it
    conky           // System monitor
    //dmenu2          // Fork of dmenu with some extra stuff, bind on Win+Shift+R
-  // aur/dmenu-xft-mouse-height-fuzzy-history // better fork of dmenu
+   //aur/dmenu-xft-mouse-height-fuzzy-history // better fork of dmenu
 
    //xmonad          // Haskell window manager
    openvpn         // VPN client
-   aur/pm-utils        // Hibernate, sleep, etc
+   //aur/pm-utils        // Hibernate, sleep, etc
 
 Recoll and helpers:
 
@@ -300,10 +304,11 @@ Themes:
 
 Terminal emulators:
 
-  // aur/rxvt-unicode-patched   // Default terminal, using urxvt{d,c} pair, patched for fonts
-   //local/st-git               // JIC fall-back, (+my patches)
-   xterm                      // Another JIC term ;)
+   local/st-git                 // Default terminal from suckless (+my patches)
+   xterm                        // Another JIC term ;)
    //cool-retro-term            // Eye-candy old school terminal emulator
+   aur/alacritty-git            // fast gpu accelerated terminal emulator ..
+   aur/alacritty-terminfo-git   // .. and it's terminfo
 
 Shells:
 
@@ -326,6 +331,7 @@ Console tools:
    rmlint         // Duplicate files searcher and remover
    rmlint-shredder  // Duplicate files searcher and remover - helper
    aur/lostfiles      // Show pacman untracked crap on hdd
+   ncdu             // curses gui du ;)
   // aur/pxz        // Parallel xz
 
    pv             // Pipe viewer, can be used for progress monitoring
@@ -351,6 +357,8 @@ Console tools:
    socat          // socket tool
 
 
+   trash-cli // little tool that trashes files instead of rm-ing them
+
    //aur/ansiweather-git // Nice console weather
   // aur/wego-git     // weather
 
@@ -366,7 +374,7 @@ Console tools:
    //aur/hr-git         // Horizontal lines maker
    //aur/cv-git         // Shows running coreutils basic commands and displays stats
   // aur/jrnl           // Nice journal with CLI
-   shellcheck         // Static analyzer for bash
+  // shellcheck         // Static analyzer for bash, note - has many haskell deps
   // aur/maybe-git      // Another secure checker for bash
 
    parallel          // helper to do parallel jubs in shell
@@ -485,25 +493,24 @@ iOS/OSX support:
    libimobiledevice
    //libgpod
    usbmuxd
-   aur/cctools   // Set of OSX dev tools
+   //aur/cctools   // Set of OSX dev tools
   // aur/ideviceinstaller-git  // ipa install
 
 IDE and editors:
 
    ed                 // THE editor
-   gvim               // The IDE (see setup (5))
-   python2-unidecode  // for YCM in Vim
 
-   emacs              // Another The IDE
-   aur/pycharm-community  // Python IDE
-   //eclipse            // Big and fat but good for Android
-   codeblocks         // For oFramework projects
-   aur/android-studio     // New Android IDE
-   //aur/atom-editor  // New nice JS interfaced edior
    neovim             // Neovim - new vim
    neovim-remote      // Python wrappor for remote features
    python-neovim      // Python support for nvim
    python2-neovim      // Python support for nvim
+   gonvim              // go wrapper for nvim
+   aur/neovim-qt       // qt wrapper for nvim
+   python2-unidecode  // for YCM in Vim
+
+   emacs              // Another The IDE ;)
+   pycharm-community-edition  // Python IDE
+   codeblocks         // For oFramework projects
 
    //sublime-text-dev                   // Shiny text editor
    monodevelop                        // Mono IDE
@@ -570,7 +577,8 @@ Game development:
 
    // Engines
    aur/unity-editor   // Finally on Linux
-   ogre           // 3D Engine
+   unreal-engine
+   ogre
 
    // Vulkan
    vulkan-extra-layers
@@ -604,7 +612,7 @@ C++ libs:
 
    //libc++         // LLVM clang STL
    boost
-   aur/capnproto  // serializator
+   capnproto  // serializator
    aur/chaiscript // scirptable lang for c++
    csfml          // small footprit lib sfml
 
@@ -614,13 +622,13 @@ C++ libs:
 
    //mpich          // MPI support
    intel-tbb      // "Parallel STL"
-   aur/armadillo      // C++ lineal alg
+   //aur/armadillo      // C++ lineal alg
 
    glade          // GUI builder for GTK 3, also there is glade
 
    cppunit        // C++ unit test lib
    cmocka         // C unit test lib
-   aur/openblas       // LA lib
+   openblas       // LA lib
    musl           // light stdlib
    aur/superlu    // MAT lib
 
@@ -645,9 +653,10 @@ Assemblers:
 Reverse and hack:
 
    //aur/darm-git          // disassembly library
-   radare2
+   radare2                 // The hex editor
+   radare2-cutter          // gui
    smali                   // Android DEX reverse engineering tool
-   //aur/android-apktool     // Android reverse engineering tool
+   aur/android-apktool     // Android reverse engineering tool
   // aur/dex2jar             // DEX to JAR converter
    //aur/jd-gui              // Java source reversing tool
 
@@ -663,6 +672,11 @@ Reverse and hack:
    aur/xorsearch           // xtool that searches for xored strings
 
    john // hash bruter
+
+Arduino:
+
+    arduino          // main ide
+    arduino-avr-core // avrdude and avr-gcc
 
 Build tools:
 
@@ -691,11 +705,11 @@ Source code tools:
 Version Control:
 
    git
+   git-lfs  // lfs for git
    hub      // Github cli tool
    tk       // For gitk
    tig      // Console git explorer
    gitg     // GUI-sh git explorer JIC
-  // aur/git-lfs-bin // Bin version of lfs
 
    mercurial     // Installed for Aur only. Should give it a shot.
    subversion
@@ -720,7 +734,7 @@ Database and Web:
    npm
    nodejs
    emscripten
-   aur/yarn // new npm
+   yarn // new npm
 
    pelican // Static blog generator
 
@@ -742,12 +756,16 @@ Emulation and virtualization:
 CD DVD:
    cdrtools // For fileroller to understand iso
 
-Python stuff:
+Machine learning:
 
-   python-pip
+   // Jupyter is a new web interface for sci python tasks
+   jupyter
+   ipython2-notebook      // for Python2 support
+   mathjax                // for jupyter
 
    ipython                // Interactive python
    ipython2               // Same for 2
+
 
    python-numpy           // Matlab inside python
    python-scipy           // Math stuff
@@ -756,6 +774,14 @@ Python stuff:
    aur/python-scikit-image // image tools
    python-pillow
    python-numexpr
+
+   cuda                    // nvidia gpgpu lib 
+   tensorflow-opt-cuda     // tensorflow on cuda
+   tensorboard             
+
+Python stuff:
+
+   python-pip
 
    //wxpython               // for ipython
    python-nose            // for ipython test suite
@@ -787,10 +813,6 @@ Python stuff:
    //aur/haskell-pandoc   // ipython notebook conversion // has many deps!
   // aur/python-librtmp     // build dependency for livestreamer
 
-   // Jupyter is a new web interface for sci python tasks
-   jupyter
-   ipython2-notebook      // for Python2 support
-   mathjax                // for jupyter
 
 
 Other Languages:
@@ -798,13 +820,10 @@ Other Languages:
    // Lisp
    racket
    clisp
-   chicken
+   //chicken
 
    // Rust
-   rust     // Rust
-   rust-src     // Rust completion helper needs source
-   cargo
-
+   rustup     // Rustup now handles everything
 
    // Java
    jdk8-openjdk             // JDK
@@ -859,13 +878,13 @@ Fonts:
 Browsers:
 
    firefox                 // See setup(7)
-   aur/firefox-theme-gnome  // theme
+   //aur/firefox-theme-gnome  // theme
    //firefox-adblock-plus    // No ads                         using as extension
    //firefox-noscript        // No scripts                     using as extension
    //pentadactyl-hg          // Vim-like behavior for firefox, using as extension
 
    chromium                // Used only when damn Flash is required
-   aur/pepper-flash   // With this player it is maintained (flash plugin is not)
+   //aur/pepper-flash   // With this player it is maintained (flash plugin is not)
 
    w3m                    // Text browser 
    //aur/vimprobable2-git // Minimalistic vimlike browser
@@ -876,7 +895,7 @@ Mail:
 
    //thunderbird
    //mutt
-   aur/neomutt // new mutt
+   neomutt // new mutt
 
 Downloaders:
 
@@ -905,9 +924,11 @@ Instant Messaging:
    //aur/utox-git  // for toxing (also installs tox-git
    toxic
    qtox
-  // aur/ghetto-skype-git // Bettor unoficial Skype
-   aur/google-talkplugin   // Firefox Hangouts integration
+   aur/skypeforlinux-preview-bin   // beta skype version
+   //aur/google-talkplugin   // Firefox Hangouts integration
    newsbeuter          // RSS cilent
+   telegram-desktop
+   weechat             // cli universal chat
 
 Audio and Sound:
 
@@ -923,7 +944,7 @@ Audio and Sound:
    jack2-dbus    // JACK2 (newer) with dbus support to play nice with pulseaudio
    qjackctl     // GUI for JACK server
    a2jmidid   // ALSA MIDI to JACK MIDI
-   aur/mididings   // MIDI something
+   //aur/mididings   // MIDI something
    pulseaudio-jack // JACK sinc for pulseaudio
 
    // MIDI
@@ -948,7 +969,7 @@ Audio and Sound:
    festival
    festival-english
    festival-us
-   festvox-ru
+   //festvox-ru
    espeak
    espeakup
    aur/pocketsphinx // Recogniser
@@ -971,6 +992,7 @@ Music and lifecoding:
    //zxtune-git     // Great crossplatform zx music player
 
    //musescore        // Score editor
+   vcvrack          // modular synth
 
 Media players:
 
@@ -990,9 +1012,10 @@ Media players:
 
 Stream grabbers:
 
-   aur/livestreamer     // Helper script to live streaming
-  // aur/youtube-dl-git // Donloader
+   //aur/livestreamer     // Helper script to live streaming
+   youtube-dl   // YT Downloader
    you-get          // Anotehr one downloader
+   aur/youtube-upload-git   // YT Uploader
 
 Multimedia tools:
 
@@ -1026,16 +1049,18 @@ Screen capture:
   // aur/escrotum-git       // Screenshot tool
    scrot
    simplescreenrecorder   // Best recorder ever, like it's OpenGL capture feature
+   obs-studio             // even more advanced screen recorder
 
   // aur/gromit-mpx-git     // Nice annotation tool for casting
-  // aur/screenkey-git     // Keys display
+   aur/screenkey          // Keys display
 
 
 Monitor tools:
 
    xorg-xrandr
-   aur/ddccontrol-git       // See also ddccontrol PKGBUILD
+   //aur/ddccontrol-git       // See also ddccontrol PKGBUILD
    //ddccontrol-db    // Database, no W2600HP yet. TODO: contribute
+   aur/ddcutil
 
 Sketching:
 
@@ -1149,19 +1174,20 @@ Games and fun:
    gtypist
 
    // Leap motion
-   aur/leap-motion-driver // driver
-   aur/leap-motion-sdk    // bindings
+   //aur/leap-motion-driver // driver
+   //aur/leap-motion-sdk    // bindings
 
 Android development:
 
-   //aur/android-sdk                  // SDK, installs to /opt/android-sdk
-   //aur/android-sdk-build-tools      // Build tools (ex. aapt)
-   //aur/android-sdk-platform-tools   // Platform tools (ex. adb)
+   aur/android-sdk                  // SDK, installs to /opt/android-sdk
+   aur/android-sdk-build-tools      // Build tools (ex. aapt)
+   aur/android-sdk-platform-tools   // Platform tools (ex. adb)
    //aur/android-platform-19          // Android 4.4
-  // aur/android-ndk                  // Native support SDK
+   aur/android-ndk                  // Native support SDK
 
-   android-udev      // Udev rules for most popular devices
-   android-tools     // fastboot, adb, etc..
+   aur/android-studio // IDE
+   android-udev       // Udev rules for most popular devices
+   //android-tools      // fastboot, adb, etc.. actually platform tools depracates it
 
    //lib32-libstdc++5  // Android SDK is 32 bit, so using this to workaround
    //lib32-libxv       // and this..

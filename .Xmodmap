@@ -4,10 +4,10 @@
 ! keycode 135 = Super_L NoSymbol Super_L
 
 !! Return is Ctrl :)
-keycode 36 = 0x1234
-add control = 0x1234
-keycode any = Return
+! keycode 36 = 0x1234
+! add control = 0x1234
+! keycode any = Return
 
 !! Right control is Super_R
-remove Control = Control_R
-keycode 105 = Super_R NoSymbol Super_R NoSymbol Super_R
+! remove Control = Control_R
+! keycode 105 = Super_R NoSymbol Super_R NoSymbol Super_R

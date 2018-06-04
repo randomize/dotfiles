@@ -117,7 +117,7 @@ codi()
 }
 
 
-fd() {
+fdd() {
   DIR=`find * -type d -print 2> /dev/null | fzf-tmux` \
     && cd "$DIR"
 }
@@ -259,3 +259,9 @@ fp() {
  [ "$key" = ctrl-o ] && pacman -Ql "$file" || pacman -Qi "$file"
  fi
 }
+
+objdump-color() {
+ objdump -d -M intel "$1" | c++filt | pygmentize -l objdump-nasm -f 16m -O style=monokai
+}
+
+function forallpgp() { git submodule foreach "[[ \"\$path\" != *\"module\" ]] || $* " }

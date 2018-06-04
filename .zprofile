@@ -1,16 +1,5 @@
 
-# Setting path array
-typeset -U path
-
-# General
-path=(~/bin ~/.gem/ruby/2.3.0/bin $path[@])
-
-# Go env setup
-export GOPATH=~/.godir
-path=( ~/.godir/bin $path[@])
-
-# Node js global
-path=( ~/.node_modules/bin $path[@])
-
+PATH="$HOME/.node_modules/bin:$PATH"
+export npm_config_prefix=~/.node_modules
 # Start X on login
-[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec ssh-agent startx
+# [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec ssh-agent startx

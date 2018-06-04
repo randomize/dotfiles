@@ -1,5 +1,5 @@
 # Setup defaukts
-export BROWSER=firefox
+export BROWSER=firefox-beta
 export EDITOR=nvim
 
 # Enable anti aliasing in java programs
@@ -16,7 +16,7 @@ export LESSCHARSET='utf-8'
 export PAGER="less"
 export GCC_COLORS="error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01"
 
-export TERMINAL="urxvtc"
+export TERMINAL="st"
 
 # Fonts in old aps
 export GDK_USE_XFT=1
@@ -28,4 +28,6 @@ export bully_dev="eugene"
 # Rust
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
-export PATH=$PATH:/home/randy/.gem/ruby/2.4.0/bin
+# Dotnet core
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true

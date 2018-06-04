@@ -3,11 +3,11 @@
 # TODO: pkgfile hook
 
 # Support for evaluating a function on startup
-if [[ $1 == eval ]]
-then
-   "$@"
-   set --
-fi
+# if [[ $1 == eval ]]
+# then
+#    "$@"
+#    set --
+# fi
 
 
 # {{{ Managed Plugins =========================================================
@@ -174,7 +174,7 @@ fi
 
 # PATH {{{
 export PATH=$PATH:/home/randy/.cargo/bin
-export PATH=$PATH:/home/randy/.gem/ruby/2.4.0/bin
+export PATH=$PATH:/home/randy/bin
 # }}}
 
 # Syntax hightlighting settings
