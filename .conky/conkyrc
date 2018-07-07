@@ -94,7 +94,7 @@ ${goto 40}${diskiograph 26,190 FFFFFF FFFFFF -l}
 ${goto 40}Disk I/O:${alignr 39}${diskio}
 \
 ${voffset 10}
-${goto 40}Audio: ${execi 10 cat /proc/asound/card2/pcm0p/sub0/hw_params | grep "^format\|rate" | xargs | awk '{print $2}{print $4}' | xargs }
+${goto 40}Audio: ${execi 10 cat /proc/asound/USB/pcm0p/sub0/hw_params | grep "^format\|rate" | xargs | awk '{print $2}{print $4}' | xargs }
 # Network
 \
 ${if_existing /proc/net/route wlp5s0}
