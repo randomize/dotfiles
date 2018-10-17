@@ -7,7 +7,7 @@ alias ls='ls --color=auto -F -h'
 alias rm='rm -I'
 
 alias pa='pacman'
-alias ya='yaourt'
+alias ya='yay'
 
 # Package management
 alias update='sudo pacman -Suy'
