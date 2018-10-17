@@ -7,7 +7,7 @@ jack_control ds alsa
 jack_control dps device hw:USB
 jack_control dps rate 48000
 jack_control dps nperiods 3
-jack_control dps period 32
+jack_control dps period 64
 
 jack_control eps verbose True
 jack_control start
