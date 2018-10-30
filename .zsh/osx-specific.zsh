@@ -12,6 +12,9 @@ export PATH="/usr/local/bin:$PATH"
 # Rustup
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# Python
+export PATH=$PATH:~/Library/Python/3.7/bin
+
 
 # {{{ Plugins =============================================
 # Dircolors
