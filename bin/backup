@@ -4,17 +4,25 @@
 STAMP="$(date +'%d-%m-%Y-%H-%M-%S')"
 
 
+mkdir /tmp/keys
+
+gpg --armor --export > /tmp/keys/pgp-public-keys.asc
+gpg --armor --export-secret-keys > /tmp/keys/pgp-private-keys.asc
+gpg --export-ownertrust > /tmp/keys/pgp-ownertrust.asc
+
 FILESLIST="
-       $HOME/.itmages.conf
+       /tmp/keys
        $HOME/.2steps
-       $HOME/.wegorc
        $HOME/.pocketrc"
 
 
-# echo "${FILESLIST}" > /tmp/list.txt
 # echo "${FILESLIST}"
+FILENAME="backup-${STAMP}.tar.xz.asc" 
 
-XZ_OPT=-9 tar cJf "backup-${STAMP}.tar.xz" -v $FILESLIST
-# echo "${FILESLIST}"
+XZ_OPT=-9 tar cJf - $FILESLIST | gpg --symmetric --cipher-algo AES256 --output $FILENAME
+# XZ_OPT=-9 tar cJf - $FILESLIST | openssl enc -aes-256-cbc -iter 65536 -salt -out $FILENAME
 
+rm -rf /tmp/keys
+
+killall gpg-agent
 
