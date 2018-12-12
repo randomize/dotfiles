@@ -110,10 +110,14 @@ alias t='python2 /mnt/data/t/t.py --task-dir ~/tasks --list tasks'
 # {{{ Settings ================================================================
 
 # History
+#export HISTORY_IGNORE="(cd.*|ls)"
+#export HISTORY_IGNORE='([bf]g *|cd ..|l[alsh]#( *)#|less *|vim# *)'
+export HISTORY_IGNORE="(ls *|cd *|git ci -m *)"
 export HISTFILE=~/.zsh_history
 export HISTSIZE=100000
 export SAVEHIST=100000
-setopt EXTENDED_HISTORY # Timestamp history
+# Timestamp history
+setopt EXTENDED_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
