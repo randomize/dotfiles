@@ -49,7 +49,7 @@ alias -s torrent=~/bin/download_torrent.sh
 # Aliases ==================================================================================
 
 # Listing
-alias lsblk='lsblk --all --output NAME,MAJ:MIN,LABEL,PARTLABEL,SIZE,MODEL,TRAN,RM,MOUNTPOINT'
+alias lsblk='lsblk --all --output NAME,MAJ:MIN,TYPE,LABEL,PTTYPE,PARTLABEL,RO,FSTYPE,SIZE,FSAVAIL,FSUSE%,MODEL,TRAN,RM,MOUNTPOINT,UUID'
 alias lsd='ls -ld *(-/DN)'
 alias lsa='ls -ld .*'
 alias la='ls++ -a'
@@ -77,6 +77,7 @@ alias amv='amv -ig'
 alias g='git'
 alias gap='git add --patch'
 
+alias up='TERM=xterm up'
 alias clock='watch -n 1 "date +%T | xargs figlet \"Time:\" -c -t"'
 alias todo='vim ~/Desktop/TODO.txt'
 alias openports='netstat --all --numeric --programs --inet --inet6'
