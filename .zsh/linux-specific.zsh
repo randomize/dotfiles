@@ -34,6 +34,12 @@ alias mount-ipad-root='ifuse --root /mnt/ipad && cd /mnt/ipad'
 alias umount-ipad='cd ~ && umount /mnt/ipad'
 alias mount-mac='sudo sshfs  randy@10.10.10.105:/ /mnt/macos'
 
+# Functs
+function repostats()
+{
+    find . -type f -name '*.*' -not -path "./.git/*" | sed 's|.*\.||' | sort | uniq -c | sort -n
+}
+
 # }}}
 
 # {{{ Misc =====================================================
