@@ -25,9 +25,6 @@ export QT_XFT=true
 # Vim config dev personal settings
 export bully_dev="eugene"
 
-# Rust
-export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
-
 # Dotnet core
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true

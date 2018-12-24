@@ -172,9 +172,10 @@ fi
 
 [ -s "/home/randy/.dnx/dnvm/dnvm.sh" ] && . "/home/randy/.dnx/dnvm/dnvm.sh" # Load dnvm
 
-# PATH {{{
-export PATH=$PATH:/home/randy/.cargo/bin
-export PATH=$PATH:/home/randy/bin
+# Shared PATH (NOTE: OS specific see in -specific.zsh files) {{{
+export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/.cargo/bin
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 # }}}
 
 # Syntax hightlighting settings
