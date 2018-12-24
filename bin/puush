@@ -16,7 +16,7 @@
 # License along with this script. If not, see <http://www.gnu.org/licenses/>.
 # 
 ##################
-$ICON=/home/randy/bin/puush.png
+ICON=/home/randy/bin/puush.png
 
 # Simple function to check if package is installed
 function checkDependency() 
@@ -82,7 +82,7 @@ function printHelp ()
 # LETS BEGIN
 
 # Check for required commands
-checkDependency "scrot"
+checkDependency "maim"
 checkDependency "curl"
 checkDependency "xclip"
 checkDependency "notify-send"
@@ -131,7 +131,7 @@ fileURL=""
 # Get file to puush and puush it
 case "$1" in
 	-d|--desktop|--d)
-			scrot "$fileName"	
+			maim "$fileName"	
 			if [ $? -eq 0 ]; then			
 				fileURL=`puushFile "$fileName" true`
 			else
@@ -139,7 +139,7 @@ case "$1" in
 			fi
 		;;
 	-w|--window|--w)
-			scrot -bu "$fileName"
+			maim -u -s "$fileName"
 			if [ $? -eq 0 ]; then			
 				fileURL=`puushFile "$fileName" true`
 			else
@@ -147,7 +147,7 @@ case "$1" in
 			fi
 		;;
 	-a|--area|--a)
-			scrot -s "$fileName"
+			maim -u -s "$fileName"
 			if [ $? -eq 0 ]; then
 				fileURL=`puushFile "$fileName" true`
 			else

@@ -4,6 +4,11 @@
 alias update='brew update && brew upgrade && brew cleanup'
 alias ls='gls --color=auto -F -h'
 
+function repostats()
+{
+    gfind . -type f -name '*.*' -not -path "./.git/*" | gsed 's|.*\.||' | gsort | guniq -c | sort -n
+}
+
 # {{{ Paths =============================================
 
 # Brew

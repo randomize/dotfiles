@@ -159,7 +159,9 @@ Bluetooth and network:
    bind-tools        // dig, nslookup and others
 
    bluez             // Bluetooth
-   bluez-utils       // Utils
+   bluez-tools       // Utils
+   bluez-utirs-compat// Utils
+
    ntp               // Network time sync
    pulseaudio-bluetooth  // For wireless hadsets support
 
@@ -252,7 +254,7 @@ Window managers and DE:
    //libnotify           // notifications lib
 
    //parcellite      // clipboard manager good and lite (Has problems with nautilus Cut/Copy/Paste)
-   //aur/copyq           // Another clipboard manager
+   aur/copyq           // Another clipboard manager
 
    xscreensaver    // Screen saver
 
@@ -388,6 +390,7 @@ Fuse filesystems:
    mtpfs    // MTP devices
    ifuse    // Apple devices
    //vdfuse   // Virtual Box images mounting
+   bindfs    // mapping dirs with different permissions
 
 Nautilus:
 
@@ -512,8 +515,11 @@ IDE and editors:
    pycharm-community-edition  // Python IDE
    codeblocks         // For oFramework projects
 
-   //sublime-text-dev                   // Shiny text editor
+   // dotnet
    monodevelop                        // Mono IDE
+   dotnet-sdk                         // sdk
+   visual-studio-code-bin             // VSCode
+
    intellij-idea-community-edition    // Idea
 
    cloc // Count lines of code
@@ -607,6 +613,7 @@ C++ compilers and tools:
 
    swig  // Generate wrappers for native code for Csharp, Java and others
    aur/qt-installer-framework   // installers tools
+   aur/cquery // language server
 
 C++ libs:
 
@@ -692,6 +699,7 @@ Source code tools:
 
    ack                      // Better than grep
    the_silver_searcher      // ag - better than ack :)
+   fzf                      // universal fuzzy finder
 
    colordiff                // Nice colored diffs
    highlight                // for syntax highlighting in scripts
@@ -884,7 +892,7 @@ Browsers:
    //pentadactyl-hg          // Vim-like behavior for firefox, using as extension
 
    chromium                // Used only when damn Flash is required
-   //aur/pepper-flash   // With this player it is maintained (flash plugin is not)
+   pepper-flash            // Flash plugin for it
 
    w3m                    // Text browser 
    //aur/vimprobable2-git // Minimalistic vimlike browser
@@ -1046,8 +1054,9 @@ Codecs:
 
 Screen capture:
 
-  // aur/escrotum-git       // Screenshot tool
-   scrot
+   //aur/escrotum-git       // Screenshot tool
+   //scrot
+   maim
    simplescreenrecorder   // Best recorder ever, like it's OpenGL capture feature
    obs-studio             // even more advanced screen recorder
 
@@ -1065,7 +1074,7 @@ Monitor tools:
 Sketching:
 
    //local/xournal-git   // use master + my patches (see PKGBUILD)
-   //mypaint
+   mypaint
 
 Graphics software:
 

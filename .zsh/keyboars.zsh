@@ -33,6 +33,10 @@ bindkey -v "^N" down-history
 bindkey -v "^P" up-history
 bindkey -v "^_" undo
 
+vi-append-x-selection () { RBUFFER=$(xsel -o -p </dev/null)$RBUFFER; }
+zle -N vi-append-x-selection
+bindkey -M vicmd p vi-append-x-selection
+
 
 bindkey -M vicmd v edit-command-line
 

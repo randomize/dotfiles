@@ -21,7 +21,7 @@ fi
 xrdb -merge ~/.Xresources
 
 # Layout manager
-kbdd &
+#kbdd & # Not using anymore, has glitch with layouts, not maintained
 
 # Set layouts and no capslock
 setxkbmap -layout "dvp, ru" -option "grp:shifts_toggle"
@@ -87,6 +87,7 @@ xrandr --dpi 90
 xrandr --output DP-4 --primary 
 # xrandr --output DP-0 --right-of DP-4 --rotate left
 # xrandr --output DP-2 --left-of DP-4 --rotate left
+xrandr --output DVI-D-0 --mode 1280x1024 --right-of DP-0
 
 # Map wacom
 xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" MapToOutput "HEAD-0" 
@@ -97,6 +98,8 @@ xsetwacom --set "Wacom Intuos3 9x12 Pen eraser" MapToOutput "HEAD-0"
 # Lightons script
 #/home/randy/bin/lightsOn.sh &
 
+# Jack
+#/home/randy/bin/my-jack-start2
 
 # Mpd
 ( ( sleep 4 && /usr/bin/mpd) & )
