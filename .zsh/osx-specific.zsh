@@ -20,8 +20,14 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Python
 export PATH=$PATH:~/Library/Python/3.7/bin
 
-# Ruby
-export PATH=$PATH:~/.gem/ruby/2.3.0/bin
+# Ruby (brew overrides system)
+#export PATH=/usr/local/opt/ruby/bin:$PATH
+#export PATH=$PATH:~/.gem/ruby/2.3.0/bin
+# Rbenv init
+eval "$(rbenv init -)"
+export PATH=$PATH:~/.gem/bin
+
+
 
 
 # {{{ Plugins =============================================
@@ -35,7 +41,7 @@ export PATH=$PATH:~/.gem/ruby/2.3.0/bin
 # Fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Perl
+# Perl (perlbrew overrides system)
 #eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
 # Perlbrew : https://perlbrew.pl/
 source ~/perl5/perlbrew/etc/bashrc
