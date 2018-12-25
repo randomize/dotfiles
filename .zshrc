@@ -112,7 +112,7 @@ alias t='python2 /mnt/data/t/t.py --task-dir ~/tasks --list tasks'
 # History
 #export HISTORY_IGNORE="(cd.*|ls)"
 #export HISTORY_IGNORE='([bf]g *|cd ..|l[alsh]#( *)#|less *|vim# *)'
-export HISTORY_IGNORE="(ls *|cd *|git ci -m *)"
+export HISTORY_IGNORE="(ls *|cd *|git *)"
 export HISTFILE=~/.zsh_history
 export HISTSIZE=100000
 export SAVEHIST=100000

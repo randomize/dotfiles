@@ -1,5 +1,4 @@
 
-
 # Default XDG folders
 /Desktop/
 /Documents/
@@ -10,17 +9,17 @@
 /Videos/
 /Music/
 
+# OpenVPN at Bully
+/.client.ovpn
+/.pass.ovpn
+
 # Private data, configs with keys and passwords
 /.ssh/
 /.2steps
-/.itmages.conf
-/.client.ovpn
-/.wegorc
 /tasks/
 /.password-store/
 /.gnupg/
 /.pocketrc
-/.x11vncpass
 /.gitshots/
 /.config/asciinema/config
 /.config/puush/puush.conf
@@ -33,7 +32,6 @@
 /.zcompdump
 /.zplug/
 /.zkbd/
-/.zcompdump-rbig-5.2
 /.zsh-update
 
 # Awesome temporals/generated
@@ -68,7 +66,6 @@
 
 # Firefox
 /.mozilla/
-/.pentadactyl/
 
 # Ipython
 /.ipython
@@ -76,7 +73,6 @@
 # Mono
 /.config/.mono
 /.mono/
-
 
 # Qt
 /.config/QtProject.conf
