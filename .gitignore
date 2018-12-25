@@ -8,6 +8,7 @@
 /Templates/
 /Videos/
 /Music/
+/Arduino/
 
 # OpenVPN at Bully
 /.client.ovpn
@@ -53,6 +54,7 @@
 # Temporary dirs
 /.cache/
 /.pki/
+/.fasd
 
 
 # Temporary files
@@ -73,6 +75,9 @@
 # Mono
 /.config/.mono
 /.mono/
+
+# Math
+/.Mathematica/
 
 # Qt
 /.config/QtProject.conf
@@ -97,9 +102,13 @@
 # Simple screen recorder
 /.ssr/
 
-# Pulse Audio
+# Goldendict
+/.goldendict/
+
+# Audio
 /.config/pulse/
 /.esd_auth
+/.audacity-data/
 
 # Rust
 /.rustup/
@@ -113,6 +122,10 @@
 /.config/ranger/bookmarks
 /.config/ranger/history
 /.config/htop/
+/.config/Slack/
+/.config/obs-studio/
+/.config/Sabaki/
+/.config/VirtualBox/
 
 # Autojumping stuff
 /.z

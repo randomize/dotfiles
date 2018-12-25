@@ -10,21 +10,36 @@ rm -rf ~/.lesshst
 rm -rf ~/.python_history
 rm -rf ~/.gdb_history
 rm -rf ~/.root_hist
+rm -rf ~/.cling_history
 rm -rf ~/.sdcv_history
 rm -rf ~/.recently-used
 rm -rf ~/.wget-hsts
 rm -rf ~/.thumbnails/
 rm -rf ~/.octave_hist
 rm -rf ~/.cgdb/readline_history.txt
+rm -rf ~/.config/csharp.history
+rm -rf ~/.config/radare2/history
+rm -rf ~/.lldb/
+rm -rf ~/.log/a2j/
+rm -rf ~/.log/jack/
+rm -rf ~/.jsampler/
+rm -rf ~/.kotlinc_history
+rm -rf ~/.mysql_history
+rm -rf ~/.nc_history
 
 echo "<<<<< Logs >>>>>"
-rm -rf ~/.local/share/xorg
-rm -rf ~/.local/share/copyq
+rm -rf ~/.cgdb/logs/
+rm -rf ~/.emscripten
 
 echo "<<<<< Cache files >>>>>"
 rm -rf ~/.xdg_menu_cache/
 rm -rf ~/.tgdb/
 rm -rf ~/.config/unity3d/
+rm -rf ~/.gksu.lock
+rm -rf ~/.nv/
+rm -rf ~/.m2/
+rm -rf ~/.ncrack/
+
 
 echo "<<<<< AUR temp stuff >>>>>"
 # Sometimes left by AUR packages being compiling
@@ -36,11 +51,15 @@ echo "<<<<< Unknown trash >>>>>"
 rm -rf ~/.java/
 rm -rf ~/.npm/
 rm -rf ~/.node-gyp/
+rm -rf ~/.vscode/
+rm -rf ~/.gem/
+
+echo "<<<<< Autostart pieces of shit >>>>>"
+rm -rf ~/.config/autostart/*
 
 echo "<<<<< Soft, whos configs I dont need to persist >>>>>"
 rm -rf ~/.config/NuGet
 rm -rf ~/.config/massren
-rm -rf ~/.local/share/mc
 rm -rf ~/.config/configstore
 rm -rf ~/.config/freerdp
 rm -rf ~/.config/google-googletalkplugin
@@ -53,7 +72,20 @@ rm -rf ~/.config/Ghetto\ Skype
 rm -rf ~/.config/rncbc.org/
 rm -rf ~/.config/xbuild
 rm -rf ~/.config/stetic
+rm -rf ~/.config/QCAD
+rm -rf ~/.config/QDirStat
+rm -rf ~/.config/libreoffice
+rm -rf ~/.config/blender
+rm -rf ~/.config/gconf
+rm -rf ~/.config/mypaint
+rm -rf ~/.config/uGet
+rm -rf ~/.config/Webcamoid
+rm -rf ~/.config/Dharkael
+rm -rf ~/.config/eog
+rm -rf ~/.config/falkTX
+rm -rf ~/.config/gtk-2.0/gtkfilechooser.ini
 
+rm -rf ~/.local/share/mc
 rm -rf ~/.local/share/fish
 rm -rf ~/.local/share/data/qBittorrent
 rm -rf ~/.local/share/data/ZXTune
@@ -64,8 +96,6 @@ rm -rf ~/.local/share/vlc
 rm -rf ~/.local/share/icons
 rm -rf ~/.local/share/keyrings
 
-rm -rf ~/.gnome/
-rm -rf ~/.pki/
 rm -rf ~/.local/share/gvfs-metadata
 rm -rf ~/.local/share/recently-used.xbel
 rm -rf ~/.local/share/tracker
@@ -74,6 +104,20 @@ rm -rf ~/.local/share/unity3d
 rm -rf ~/.local/share/mc
 rm -rf ~/.local/share/Trash/
 
+rm -rf ~/.local/share/virtualenvs/
+rm -rf ~/.local/share/TelegramDesktop/
+rm -rf ~/.local/share/rosegarden/
+rm -rf ~/.local/share/xorg
+rm -rf ~/.local/share/copyq
+rm -rf ~/.local/share/applications
+rm -rf ~/.local/share/mypaint
+rm -rf ~/.local/share/mime/
+
+
+rm -rf ~/.gnome/
+rm -rf ~/.pki/
+
+echo "<<<<< Cache except for some used stuff >>>>>"
 find ~/.cache/ \
   -not -path "*.cache/" \
   -not -path "*.cache/thumbnails*" \
