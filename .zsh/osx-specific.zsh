@@ -36,9 +36,9 @@ export PATH=$PATH:~/.gem/bin
 [[ -s ~/.dircolors ]] && eval `gdircolors -b $HOME/.dircolors`
 
 # Autojump (brew install autojump)
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+[ -f $(brew --prefix)/etc/profile.d/autojump.sh ] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
-# Fzf
+# FZF (run install first to generate taht file!)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Perl (perlbrew overrides system)
