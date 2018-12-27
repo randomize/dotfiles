@@ -414,6 +414,16 @@ awful.screen.connect_for_each_screen(function(s)
         },
     }
 end)
+
+-- NOTE: just debugging to see which screen is which ;)
+-- naughty.notify({ preset = naughty.config.presets.critical, title = "Geometry", text = "G:" .. screen[1].geometry.width })
+-- naughty.notify({ preset = naughty.config.presets.critical, title = "Geometry", text = "G:" .. screen[2].geometry.width })
+-- naughty.notify({ preset = naughty.config.presets.critical, title = "Geometry", text = "G:" .. screen[3].geometry.width })
+-- naughty.notify({ preset = naughty.config.presets.critical, title = "Geometry", text = "G:" .. screen[4].geometry.width })
+
+-- Ugly hack to make screens in order
+screen[3]:swap(screen[4])
+
 -- }}}
 
 -- {{{ Mouse bindings
@@ -558,7 +568,8 @@ globalkeys = gears.table.join(
     ),
     awful.key({ modkey,           }, "r",
       function ()
-         awful.spawn("dmenu_run -l 32 -fn \"PragmataPro-12:bold\" -i -p \"$\" -hist " .. home_dir_path .. "/.cache/dmenu_hist ")
+         --awful.spawn("dmenu_run -l 32 -fn \"PragmataPro-12:bold\" -i -p \"$\" -hist " .. home_dir_path .. "/.cache/dmenu_hist ")
+         awful.spawn("rofi -modi combi -show combi -combi-modi run,drun")
       end
     ),
     awful.key({ modkey,           }, "b",

@@ -1,5 +1,4 @@
 
-
 # Default XDG folders
 /Desktop/
 /Documents/
@@ -9,18 +8,19 @@
 /Templates/
 /Videos/
 /Music/
+/Arduino/
+
+# OpenVPN at Bully
+/.client.ovpn
+/.pass.ovpn
 
 # Private data, configs with keys and passwords
 /.ssh/
 /.2steps
-/.itmages.conf
-/.client.ovpn
-/.wegorc
 /tasks/
 /.password-store/
 /.gnupg/
 /.pocketrc
-/.x11vncpass
 /.gitshots/
 /.config/asciinema/config
 /.config/puush/puush.conf
@@ -33,7 +33,6 @@
 /.zcompdump
 /.zplug/
 /.zkbd/
-/.zcompdump-rbig-5.2
 /.zsh-update
 
 # Awesome temporals/generated
@@ -55,6 +54,7 @@
 # Temporary dirs
 /.cache/
 /.pki/
+/.fasd
 
 
 # Temporary files
@@ -68,7 +68,6 @@
 
 # Firefox
 /.mozilla/
-/.pentadactyl/
 
 # Ipython
 /.ipython
@@ -77,6 +76,8 @@
 /.config/.mono
 /.mono/
 
+# Math
+/.Mathematica/
 
 # Qt
 /.config/QtProject.conf
@@ -101,9 +102,13 @@
 # Simple screen recorder
 /.ssr/
 
-# Pulse Audio
+# Goldendict
+/.goldendict/
+
+# Audio
 /.config/pulse/
 /.esd_auth
+/.audacity-data/
 
 # Rust
 /.rustup/
@@ -117,6 +122,10 @@
 /.config/ranger/bookmarks
 /.config/ranger/history
 /.config/htop/
+/.config/Slack/
+/.config/obs-studio/
+/.config/Sabaki/
+/.config/VirtualBox/
 
 # Autojumping stuff
 /.z
