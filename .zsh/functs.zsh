@@ -265,3 +265,5 @@ objdump-color() {
 }
 
 function forallpgp() { git submodule foreach "[[ \"\$path\" != *\"module\" ]] || $* " }
+
+function unity-ver() { gfind . -name ProjectVersion.txt -exec cat {} + }
