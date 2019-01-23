@@ -163,8 +163,8 @@ noremap ,cl :action Inline<CR>
 "" Vim old habits
 nmap gcc :action CommentByLineComment<CR>
 noremap ,n :nohl<CR>
-noremap <space>q :q<CR>
-noremap <space>w :w<CR>
+" noremap <space>q :q<CR>
+" noremap <space>w :w<CR>
 nmap <space>r :action RenameElement<CR>
 vnoremap <space>m :action ExtractMethod<CR>
 
@@ -172,8 +172,17 @@ map [c :action GotoPreviousError<CR>:action ShowErrorDescription<CR>
 map ]c :action GotoNextError<CR>:action ShowErrorDescription<CR>
 
 
-nnoremap <space>g :action GotoDeclaration<CR>
-nnoremap ,up :action GotoDeclaration<CR>
+" nnoremap <space>g :action GotoDeclaration<CR>
+"nnoremap ,up :action GotoDeclaration<CR>
 
-
+map ,up :action GotoFile<CR>
+map ,fu :action FindUsages<CR>
+map <space>l <c-w>l
+map <space>h <c-w>h
+map <space>w :w<CR>
+map <space>q :q<CR>
+map <space>g :action GotoDeclaration<CR>
+map <space>f :action ReformatCode<CR>
+set visualbell
+set surround
 
