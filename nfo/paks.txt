@@ -135,8 +135,8 @@ UEFI boot and stuff:
 
 Packaging:
 
-   local/yaourt          // Aur "pacman"
-   local/package-query   // yaourt dependency
+   local/yay             // Aur "pacman"
+   pacman-contrib        // Pacmans scripts 
 
    namcap         // Package checking
    abs            // Arch build system
