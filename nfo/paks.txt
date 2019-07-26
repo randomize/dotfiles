@@ -1,5 +1,5 @@
-// vim: ft=randypacks
-// My packages file
+// vim: ft=randypacks tw=200
+// My packages index file
 // Comments are C++-like
 
 Contents of base group:
@@ -63,7 +63,7 @@ Contens of base-devel group:
    bison
    fakeroot
    flex
-   gcc-multilib
+   gcc
    groff
    libtool
    m4
@@ -139,7 +139,8 @@ Packaging:
    pacman-contrib        // Pacmans scripts 
 
    namcap         // Package checking
-   abs            // Arch build system
+   //abs            // Arch build system - not using, its easier to just download PKGBUILD/tarball
+   asp              // Git-way of getting system PKGBUILDs
    pacutils
 
    arch-install-scripts
@@ -147,7 +148,7 @@ Packaging:
 
 Bluetooth and network:
 
-   dnsmasq           // Local DNS cache (see setup(9))
+   //dnsmasq           // Local DNS cache (see setup(9)) - no need since Mikrotik
    //network-manager
    gnu-netcat        // Network piping application
    //ngrep             // Network packet grep 
@@ -160,7 +161,8 @@ Bluetooth and network:
 
    bluez             // Bluetooth
    bluez-tools       // Utils
-   bluez-utirs-compat// Utils
+   bluez-utils       // Utils
+   //bluez-utils-compat// Utils
 
    ntp               // Network time sync
    pulseaudio-bluetooth  // For wireless hadsets support
@@ -220,6 +222,9 @@ Wayland:
 
 Diagnostics and HDD:
 
+   archey3   // Simple script to print out nice Arch logo with some info
+   hwinfo    // extensive system information tool
+
    //aur/htop-vi   // Same as htop, but has vi keys!
    htop
    stress        // Stress testing system
@@ -254,7 +259,7 @@ Window managers and DE:
    //libnotify           // notifications lib
 
    //parcellite      // clipboard manager good and lite (Has problems with nautilus Cut/Copy/Paste)
-   aur/copyq           // Another clipboard manager
+   copyq           // Great clipboard manager
 
    xscreensaver    // Screen saver
 
@@ -279,6 +284,7 @@ Window managers and DE:
    conky           // System monitor
    //dmenu2          // Fork of dmenu with some extra stuff, bind on Win+Shift+R
    //aur/dmenu-xft-mouse-height-fuzzy-history // better fork of dmenu
+   rofi             // Grat dmenu replacement
 
    //xmonad          // Haskell window manager
    openvpn         // VPN client
@@ -309,8 +315,8 @@ Terminal emulators:
    local/st-git                 // Default terminal from suckless (+my patches)
    xterm                        // Another JIC term ;)
    //cool-retro-term            // Eye-candy old school terminal emulator
-   aur/alacritty-git            // fast gpu accelerated terminal emulator ..
-   aur/alacritty-terminfo-git   // .. and it's terminfo
+   alacritty                    // fast gpu accelerated terminal emulator ..
+   alacritty-terminfo           // .. and it's terminfo
 
 Shells:
 
@@ -335,6 +341,7 @@ Console tools:
    aur/lostfiles      // Show pacman untracked crap on hdd
    ncdu             // curses gui du ;)
   // aur/pxz        // Parallel xz
+   borg           // Borg is a backup program
 
    pv             // Pipe viewer, can be used for progress monitoring
    rlwrap         // Read line wrap (for maxima and others) also awesome-client
@@ -354,9 +361,13 @@ Console tools:
 
    beep           // For beeping nice. (Not working with stock Arch kernel)
   // aur/lsw        // Lists windows in X
-  // aur/ls++-git   // Nice colored ls on steroids
+   ls++           // Nice colored ls on steroids
+   exa            // Modern colored ls
    autojump       // For fast navigation with "j somewhere"
+   fasd           // alternative navigation tool
    socat          // socket tool
+   bat            // cat replacement for file display
+   fd             // find alternative
 
 
    trash-cli // little tool that trashes files instead of rm-ing them
@@ -366,7 +377,7 @@ Console tools:
 
    qrencode         // QR encoder, cool console one
    zbar             // barcode lib
-   aur/vttest           // Terminal emulator capabilities test
+   //aur/vttest           // Terminal emulator capabilities test
 
    //aur/vrms-arch    // Virtal RMS - tells you which packages are bad ;)
 
@@ -455,7 +466,7 @@ Viewers:
    //aur/view3dscene-svn // 3D model viewer
 
    xchm           // CHM viewer
-   aur/chmsee         // Modern CHM viewer
+   //aur/chmsee         // Modern CHM viewer
 
    fbreader       // Using it as EPUB reader
    //coolreader   // FBreader is better for me
@@ -471,13 +482,13 @@ Office:
    //libreoffice-fresh-ru  // Russian locale
    hunspell              // Spell checking
    hunspell-en           // English dictionary
-  // aur/hunspell-ru       // Russian dictionary
+   aur/hunspell-ru       // Russian dictionary
    hyphen                // Hyphenation
    hyphen-en             // English
-  // aur/hyphen-ru         // Russian
+   aur/hyphen-ru         // Russian
 
 
-   //goldendict            // Good dictionary
+   goldendict            // Good dictionary
    //local/sdcv-beta       // Console version of Stardict (my own PKGBUILD is used currently)
    sdcv
    words                 // Just a list of dictionaries
@@ -506,7 +517,7 @@ IDE and editors:
    neovim             // Neovim - new vim
    neovim-remote      // Python wrappor for remote features
    python-neovim      // Python support for nvim
-   python2-neovim      // Python support for nvim
+   //python2-neovim      // Python support for nvim
    gonvim              // go wrapper for nvim
    aur/neovim-qt       // qt wrapper for nvim
    python2-unidecode  // for YCM in Vim
@@ -516,7 +527,7 @@ IDE and editors:
    codeblocks         // For oFramework projects
 
    // dotnet
-   monodevelop                        // Mono IDE
+   //monodevelop                        // Mono IDE
    dotnet-sdk                         // sdk
    visual-studio-code-bin             // VSCode
 
@@ -583,7 +594,7 @@ Game development:
 
    // Engines
    aur/unity-editor   // Finally on Linux
-   unreal-engine
+   //unreal-engine
    ogre
 
    // Vulkan
@@ -597,19 +608,23 @@ Game development:
 
    // Tools
    aur/renderdoc // gpu debugger
+   clinfo        // OpenCL info
 
 C++ compilers and tools:
 
    clang                      // Cool and modern apple compiler
-   //aur/root                   // CERN ROOT project, has interactive cling C++
-   //aur/root-bin             // CERN ROOT bin version
-   //ccache                     // For faster g++ compiling (see ArchWiki)
+   root-cuda                  // CERN ROOT project, has interactive cling C++
+   //ccache                   // For faster g++ compiling (see ArchWiki)
+
+   aur/cling-git
+   aur/cling-jupyter-git
 
    cppcheck                 // Static C/C++ analyzer
    ctags                    // Source index generator (was used for Vim before YCM)
-   //clang-analyzer           // Powerful C++ static analyzer
-   clang-tools-extra        // Small refactoring tools
-   aur/cdecl                    // Nice tool for decrypting complex C/C++ declarations
+   //clang-analyzer         // Powerful C++ static analyzer
+   //clang-tools-extra      // Small refactoring tools
+   aur/cdecl                // Nice tool for decrypting complex C/C++ declarations
+   pvs-studio               // demo version of PVS studio analyzer
 
    swig  // Generate wrappers for native code for Csharp, Java and others
    aur/qt-installer-framework   // installers tools
@@ -618,6 +633,7 @@ C++ compilers and tools:
 C++ libs:
 
    //libc++         // LLVM clang STL
+   llvm
    boost
    capnproto  // serializator
    aur/chaiscript // scirptable lang for c++
@@ -636,6 +652,8 @@ C++ libs:
    cppunit        // C++ unit test lib
    cmocka         // C unit test lib
    openblas       // LA lib
+   //blas             // original blas
+   //aur/libopenblas  // for side by side with blas (community/openblas won't do that)
    musl           // light stdlib
    aur/superlu    // MAT lib
 
@@ -690,7 +708,7 @@ Build tools:
    //premake      // Lua based configuration and build tool
    //imake
    cmake
-   apache-ant   // Ant build system, for Android mainly
+   ant          // Ant build system, for Android mainly
    gradle       // For Android development
    //gradle-doc
    aur/waf      // waf
@@ -699,6 +717,7 @@ Source code tools:
 
    ack                      // Better than grep
    the_silver_searcher      // ag - better than ack :)
+   ripgrep                  // rg is faster than grep/ack/ag
    fzf                      // universal fuzzy finder
 
    colordiff                // Nice colored diffs
@@ -735,12 +754,15 @@ Database and Web:
    // DB
    mysql-workbench
    mariadb          // Mysql fork
-   mongodb
-   mongodb-tools
+
+   // Mongo DB
+   aur/mongodb-bin // binary version, mongodb takes too long to compile
+   //mongodb-tools
 
    // Backend
    npm
    nodejs
+   nodejs-nodemon // helper daemon to manage node instances
    emscripten
    yarn // new npm
 
@@ -758,7 +780,9 @@ Emulation and virtualization:
 
    qemu   // Good alternative, TODO: setup later with kickass KVM
    qemu-arch-extra
+
    docker
+   nvidia-docker // GPU accelerated docker (for ML)
    dosbox
 
 CD DVD:
@@ -771,8 +795,9 @@ Machine learning:
    ipython2-notebook      // for Python2 support
    mathjax                // for jupyter
 
-   ipython                // Interactive python
+   ipython                // Interactive python shell
    ipython2               // Same for 2
+   bpython                // another interactive python shell
 
 
    python-numpy           // Matlab inside python
@@ -848,6 +873,7 @@ Other Languages:
    //dlang
    mono
    //perl-lwp-protocol-https  // Used for some scripts
+   kotlin
 
 
 Fonts:
@@ -922,7 +948,7 @@ File Sharing:
 
 Instant Messaging:
 
-   pidgin             // for XMPP
+   //pidgin             // for XMPP
   // aur/pidgin-latex   // Add-on for LaTeX support
 
    //finch            // Console XMPP
@@ -940,6 +966,152 @@ Instant Messaging:
 
 Audio and Sound:
 
+   // pro-oudio group
+   fluidsynth
+   a2jmidid   // ALSA MIDI to JACK MIDI
+   adlplug  
+   aeolus   // Organ synth
+   aj-snapshot  
+   aliki  
+   amb-plugins  
+   ambdec  
+   ams  
+   ams-lv2  
+   amsynth 
+   ardour           // Sequencer and editor
+   artyfx  
+   aubio  
+   audacity  
+   avldrums.lv2  
+   beatslash-lv2  
+   blop  
+   blop.lv2  
+   bslizr 
+   cadence  
+   calf  
+   caps  
+   carla  
+   chuck            // Sound coding
+   cmt  
+   csound  
+   csoundqt  
+   deteriorate-lv2  
+   dgedit 
+   din  
+   dpf-plugins  
+   dragonfly-reverb  
+   drumgizmo  
+   drumkv1  
+   ebumeter  
+   ecasound  
+   eq10q 
+   eteroj.lv2  
+   fabla  
+   faust  
+   fil-plugins  
+   fluajho  
+   fomp.lv2  
+   freewheeling  
+   g2reverb 
+   geonkick  
+   giada  
+   gigedit          // Sample editor
+   gmsynth.lv2  
+   guitarix2  
+   helm  
+   hexter  
+   hydrogen 
+   infamousplugins  
+   ir.lv2  
+   jaaa  
+   jack_capture  
+   jacktrip  
+   jalv  
+   japa  
+   jconvolver 
+   jnoisemeter  
+   jsampler          // GUI for Linux sampler
+   linuxsampler      // Sampler engine
+   lmms  
+   lsp-plugins  
+   luppp  
+   lv2file  
+   marsyas 
+   mcp-plugins  
+   mda.lv2  
+   meterbridge  
+   midi_matrix.lv2  
+   mixxx  
+   moony.lv2  
+   njconnect 
+   noise-repellent  
+   non-mixer  
+   non-sequencer  
+   non-session-manager  
+   non-timeline  
+   opnplug 
+   osc2midi  
+   osmid  
+   padthv1  
+   patchmatrix  
+   patroneo  
+   pd           // Pure data
+   pd-lua  
+   polyphone  
+   pvoc 
+   qastools  
+   qjackctl     // GUI for JACK server
+   qmidiarp  
+   qmidictl  
+   qmidinet  
+   qmidiroute  
+   qsampler  // GUI for linuxsampler
+   qsynth 
+   qtractor  // Track editor
+   qxgedit  
+   realtime-privileges  
+   rev-plugins  
+   rosegarden  
+   samplv1  
+   sc3-plugins 
+   setbfree  
+   sherlock.lv2  
+   snd  
+   solfege  
+   sonic-pi  
+   sonic-visualiser  
+   sorcer 
+   spectmorph  
+   ssr  
+   supercollider  
+   sweep  
+   swh-plugins  
+   synthv1  
+   tap-plugins 
+   timidity++  
+   vamp-aubio-plugins  
+   vamp-plugin-sdk  
+   vco-plugins  
+   vm.lv2  
+   vmpk  // virtual MIDI keyboard
+   wah-plugins  
+   wolf-shaper  
+   wolf-spectrum  
+   x42-plugins  
+   yass  
+   yoshimi   // 8bit synth
+   zam-plugins 
+   zita-ajbridge  
+   zita-at1  
+   zita-bls1  
+   zita-dc1  
+   zita-dpl1  
+   zita-lrx  
+   zita-mu1 
+   zita-njbridge  
+   zita-rev1  
+   zynaddsubfx
+
    alsa-utils    // see setup(8)
    alsa-plugins
    musescore
@@ -948,30 +1120,12 @@ Audio and Sound:
    sox 
 
    // JACK
-
    jack2-dbus    // JACK2 (newer) with dbus support to play nice with pulseaudio
-   qjackctl     // GUI for JACK server
-   a2jmidid   // ALSA MIDI to JACK MIDI
    //aur/mididings   // MIDI something
    pulseaudio-jack // JACK sinc for pulseaudio
 
    // MIDI
-   vmpk
    aur/vkeybd // virt keyboard 
-
-   // fluidsynth
-   qsynth
-   fluidsynth
-
-   // Linux sampler
-
-   jsampler          // GUI for Linux sampler
-   linuxsampler     // Sampler engine
-   //aur/qsampler     // GUI for linuxsampler
-   gigedit          // Sample editor
-
-   // Synths
-   zynaddsubfx      // Synthesiser
 
    // Speech
    festival
@@ -980,27 +1134,22 @@ Audio and Sound:
    //festvox-ru
    espeak
    espeakup
-   aur/pocketsphinx // Recogniser
+   aur/pocketsphinx // Speech recogniser
 
 
 Music and lifecoding:
 
-   chuck            // Sound coding
    //miniaudicle      // Chuck GUI
 
-   //supercollider
    //pd-extended      // Pure data extended
-   processing       // coding environment
+   processing         // coding environment
 
-   audacity
-   ardour           // Sequencer and editor
-   //qtractor         // Another one editor
    milkytracker     // Tracker for XM
    aur/modplay      // One more player
    //zxtune-git     // Great crossplatform zx music player
 
-   //musescore        // Score editor
-   vcvrack          // modular synth
+   //vcvrack          // modular synth
+
 
 Media players:
 
@@ -1057,6 +1206,7 @@ Screen capture:
    //aur/escrotum-git       // Screenshot tool
    //scrot
    maim
+   flameshot              // Modern screenshot tool
    simplescreenrecorder   // Best recorder ever, like it's OpenGL capture feature
    obs-studio             // even more advanced screen recorder
 
@@ -1112,10 +1262,11 @@ Books and scanning:
 
 Security :
 
-   keepassx2      // Password manager
+   //keepassx2      // Password manager
    xdotool      // For keepass to auto type
-   gnupg
+   gnupg        // GNU Privacy Guard
    pass         // New password manager
+   pwgen        // Random password generator
 
 Math:
 
@@ -1131,7 +1282,7 @@ Math:
    gnuplot           // Popular plotter
    //plplot          // Another modern plotter
 
-   //aur/mathematica   // Not using anymore, python is better
+   aur/mathematica   // Wolfram Mathematica
 
    //aur/jflap       // Simple automata learning tool
    libqalculate
@@ -1166,8 +1317,8 @@ Games and fun:
 
    gnugo  // Go game engine
    aur/gogui  // GUI-sh go board
+   leela-zero-git // Go engine
 
-   archey3   // Simple script to print out nice Arch logo with some info
    joyutils // Pad control utilities
    cowsay   // Cows are good
    cmatrix       // Screensaver ;)
