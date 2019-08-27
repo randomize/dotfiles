@@ -65,7 +65,7 @@ local zenburn_theme_path = config_dir_path .. "/zenburn/theme.lua"
 beautiful.init(zenburn_theme_path)
 
 -- This is used later as the default terminal and editor to run.
-terminal = "st"
+terminal = "alacritty"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -134,7 +134,7 @@ end
 -- drops terminal
 local function drop_terminal()
     local center_screen = awful.screen.getbycoord (1620, 960)
-    drop("st -t Tmux -n my_floating_terminal -e ~/bin/starttmux.sh", "center", "center", 0.69, 0.75, true, center_screen)
+    drop("alacritty --class my_floating_terminal -e ~/bin/starttmux.sh", "center", "center", 0.69, 0.75, true, center_screen)
 end
 
 local function client_menu_toggle_fn()
@@ -422,7 +422,7 @@ end)
 -- naughty.notify({ preset = naughty.config.presets.critical, title = "Geometry", text = "G:" .. screen[4].geometry.width })
 
 -- Ugly hack to make screens in order
-screen[3]:swap(screen[4])
+--screen[3]:swap(screen[4])
 
 -- }}}
 
@@ -568,7 +568,6 @@ globalkeys = gears.table.join(
     ),
     awful.key({ modkey,           }, "r",
       function ()
-         --awful.spawn("dmenu_run -l 32 -fn \"PragmataPro-12:bold\" -i -p \"$\" -hist " .. home_dir_path .. "/.cache/dmenu_hist ")
          awful.spawn("rofi -modi combi -show combi -combi-modi run,drun")
       end
     ),
@@ -589,15 +588,15 @@ globalkeys = gears.table.join(
     awful.key({                   }, "XF86TaskPane", function () awful.spawn("chromium --incognito") end),
 
     awful.key({                   }, "XF86Eject", function ()
-       drop("st -t Htop -n my_floating_htop -e htop -d 2", "center", "center", 0.7, 0.65, true)
+       drop("alacritty --class my_floating_htop -e htop", "center", "center", 0.7, 0.65, true)
     end),
 
     awful.key({ "Shift"           }, "XF86AudioPlay", function ()
-       drop("st -t MPD -n my_floating_ncmpcpp -g 64x210+0+0 -e ncmpcpp", "center", "center", 0.9, 0.85)
+       drop("alacritty --class my_floating_ncmpcpp -e ncmpcpp", "center", "center", 0.9, 0.85)
     end),
 
     awful.key({                   }, "XF86Calculator", function ()
-         drop("st -t Python -n my_floating_calculator -g 100x20+0+0 -fg white -e python  -ic 'from math import *; from random import *'",
+         drop("alacritty --class my_floating_calculator -e python  -ic 'from math import *; from random import *'",
               "center", "center", 0.2, 0.1
          )
     end),
@@ -842,6 +841,10 @@ awful.rules.rules = {
         callback = function (c)
             awful.placement.centered(c,nil)
         end
+    },
+
+    { rule = { class = "chromium" },
+          properties = { maximized = false, floating = false } 
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
