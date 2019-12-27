@@ -267,3 +267,6 @@ objdump-color() {
 function forallpgp() { git submodule foreach "[[ \"\$path\" != *\"module\" ]] || $* " }
 
 function unity-ver() { gfind . -name ProjectVersion.txt -exec cat {} + }
+
+function docker-jupyter-lab() { docker run --gpus all -it --rm -p 8888:8888 -u $(id -u):$(id -g) -v $(realpath ~/notebooks):/home/jovyan/work jupyter/datascience-notebook start.sh jupyter lab }
+function docker-tensorflowb() { docker run --gpus all -it --rm -u $(id -u):$(id -g) -v $(realpath ~/notebooks):/tf/notebooks -p 8888:8888 tensorflow/tensorflow:latest-gpu-py3-jupyter }
