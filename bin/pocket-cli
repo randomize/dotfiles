@@ -172,7 +172,7 @@ class PocketHandler:
         }
         values = self.create_values(new_json)
         response = self.get_json(values, modify_url)
-        return (response['status'] is not 0)
+        return (response['status'] != 0)
 
     def archive(self, item_id):
         # json hack from hell
@@ -181,7 +181,7 @@ class PocketHandler:
         }
         values = self.create_values(new_json)
         response = self.get_json(values, modify_url)
-        return (response['status'] is not 0)
+        return (response['status'] != 0)
 
     def add_to_pocket(self, url):
         values = self.create_values({'url': url})
