@@ -39,11 +39,14 @@
    # la = all commits, all reachable refs
    hp = "!. ~/bin/githelpers && show_git_head"
    h = !git head
-   ra = !git r --all
    head = !git l -1
-   r = !git l -16
    la = !git l --all
    l = "!. ~/bin/githelpers && pretty_git_log"
+   r = !GIT_NO_PAGER=1 git l -30
+   ra = !git r --all
+   b = "!. ~/bin/githelpers && pretty_git_branch"
+   bs = "!. ~/bin/githelpers && pretty_git_branch_sorted"
+
 
    this = !git init && git add . && git commit -m \"initial commit\"
    alias = !git config --list | grep -E 'alias\\.' | sed -E 's/alias\\.([^=]*)=(.*)/\\1 => \\2/' | sort
