@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec firefox --new-instance --ProfileManager 
