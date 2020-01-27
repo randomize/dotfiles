@@ -83,6 +83,7 @@ rm -rf ~/.config/Webcamoid
 rm -rf ~/.config/Dharkael
 rm -rf ~/.config/eog
 rm -rf ~/.config/falkTX
+rm -rf ~/.config/skypeforlinux/
 rm -rf ~/.config/gtk-2.0/gtkfilechooser.ini
 
 rm -rf ~/.local/share/mc
@@ -116,6 +117,8 @@ rm -rf ~/.local/share/mime/
 
 rm -rf ~/.gnome/
 rm -rf ~/.pki/
+rm -rf ~/.yarn/
+rm -rf ~/.yarnrc
 
 echo "<<<<< Cache except for some used stuff >>>>>"
 find ~/.cache/ \

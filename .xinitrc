@@ -66,19 +66,19 @@ xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu > ~/
 compton -b
 
 # Set wacom buttons correctly
-xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" Button 2 "button +3"
-xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" Button 3 "button +2"
-xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" "StripLeftDown" "0"
-xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" "StripRightUp" "0"
-xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" "StripRightDown" "0"
-xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" "StripLeftUp" "0"
+# xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" Button 2 "button +3"
+# xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" Button 3 "button +2"
+# xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" "StripLeftDown" "0"
+# xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" "StripRightUp" "0"
+# xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" "StripRightDown" "0"
+# xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" "StripLeftUp" "0"
 
 
 # Start urxvt daemon (quiet, forked, only for this X session)
 # urxvtd -q -f -o
 
 # Screensaver
-xscreensaver -no-splash -display :0.0 &
+#((sleep 4 && xscreensaver -no-splash -display :0.0 &) & )
 
 # Monitors setup
 xrandr --dpi 90
@@ -87,7 +87,7 @@ xrandr --dpi 90
 xrandr --output DP-4 --primary 
 # xrandr --output DP-0 --right-of DP-4 --rotate left
 # xrandr --output DP-2 --left-of DP-4 --rotate left
-xrandr --output DVI-D-0 --mode 1280x1024 --right-of DP-0
+# xrandr --output DVI-D-0 --mode 1280x1024 --right-of DP-0
 
 # Map wacom
 xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" MapToOutput "HEAD-0" 
@@ -127,3 +127,4 @@ fi
 
 # Awesome
 exec awesome
+#exec i3

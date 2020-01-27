@@ -69,7 +69,7 @@ Contens of base-devel group:
    m4
    make
    patch
-   pkg-config
+   pkgconf
    sudo
 
 Contents of gnome group:
@@ -102,7 +102,7 @@ Contents of gnome group:
    gnome-system-log
    gnome-system-monitor
    //gnome-terminal
-   gnome-themes-standard   // Adwaita and friends
+   gnome-themes-extra   // Adwaita and friends
    //gnome-user-docs       // Offline user documentation
    gnome-user-share
    //grilo-plugins
@@ -430,7 +430,7 @@ Nautilus:
 Other file managers:
 
    mc
-  // aur/ranger   // Fast and pretty manager powered by Vim keys (see setup(18))
+   ranger   // Fast and pretty manager powered by Vim keys (see setup(18))
    //vifm             // ranger is preferable but this good too
 
 Archives:
@@ -481,7 +481,7 @@ Office:
    libreoffice-fresh     // Latest version
    //libreoffice-fresh-ru  // Russian locale
    hunspell              // Spell checking
-   hunspell-en           // English dictionary
+   hunspell-en_US        // English dictionary
    aur/hunspell-ru       // Russian dictionary
    hyphen                // Hyphenation
    hyphen-en             // English
@@ -515,11 +515,11 @@ IDE and editors:
    ed                 // THE editor
 
    neovim             // Neovim - new vim
+   neovim-qt          // qt GUI for nvim
    neovim-remote      // Python wrappor for remote features
    python-neovim      // Python support for nvim
    //python2-neovim      // Python support for nvim
-   gonvim              // go wrapper for nvim
-   aur/neovim-qt       // qt wrapper for nvim
+   //gonvim              // go wrapper for nvim
    python2-unidecode  // for YCM in Vim
 
    emacs              // Another The IDE ;)
@@ -572,6 +572,7 @@ IDE and editors:
    qt5-xmlpatterns
 
    qtcreator          // Qt IDE
+   rider              // JetBrains IDE
 
 Game development:
 
@@ -911,7 +912,7 @@ Fonts:
 
 Browsers:
 
-   firefox                 // See setup(7)
+   firefox-beta-bin                 // See setup(7)
    //aur/firefox-theme-gnome  // theme
    //firefox-adblock-plus    // No ads                         using as extension
    //firefox-noscript        // No scripts                     using as extension
@@ -959,8 +960,9 @@ Instant Messaging:
    toxic
    qtox
    aur/skypeforlinux-preview-bin   // beta skype version
+   aur/slack-desktop               // Linux version of slack
    //aur/google-talkplugin   // Firefox Hangouts integration
-   newsbeuter          // RSS cilent
+   newsboat          // RSS cilent
    telegram-desktop
    weechat             // cli universal chat
 
@@ -1317,7 +1319,8 @@ Games and fun:
 
    gnugo  // Go game engine
    aur/gogui  // GUI-sh go board
-   leela-zero-git // Go engine
+   aur/leela-zero-git // Go engine
+   aur/sabaki         // Go GUI for leela
 
    joyutils // Pad control utilities
    cowsay   // Cows are good
