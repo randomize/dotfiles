@@ -197,8 +197,7 @@ mymainmenu = awful.menu({ items = { { "Awesome", myawesomemenu, beautiful.awesom
                                     { "MyPaint", "mypaint" },
                                     { "Firefox", "firefox" },
                                     { "Unity", "unity-editor" },
-                                    { "Chromium", "chromium" },
-                                    { "Chromium Incognito", "chromium --incognito" },
+                                    { "Firefox Incognito", "firefox --new-instance -P trash" },
                                     { "qBittorrent", "qbittorrent" },
                                   }
                         })
