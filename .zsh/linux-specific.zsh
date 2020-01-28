@@ -52,3 +52,6 @@ function repostats()
 # Fzf
 [[ -s /usr/share/fzf/key-bindings.zsh ]] && . /usr/share/fzf/key-bindings.zsh
 [[ -s /usr/share/fzf/key-completion.zsh ]] && . /usr/share/fzf/key-completion.zsh
+
+## Todos
+alias t='python /mnt/data/t/t.py --task-dir ~/tasks --list tasks'

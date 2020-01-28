@@ -93,10 +93,6 @@ zle -N zle-keymap-select
 # Autojump
 [[ -s /etc/profile.d/autojump.zsh ]] && . /etc/profile.d/autojump.zsh
 
-
-## Todos
-alias t='python2 /mnt/data/t/t.py --task-dir ~/tasks --list tasks'
-
 # }}}
 
 # {{{ Aliases =================================================================
