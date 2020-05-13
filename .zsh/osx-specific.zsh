@@ -49,6 +49,9 @@ export PATH=$PATH:~/.gem/bin
 # Perlbrew : https://perlbrew.pl/
 source ~/perl5/perlbrew/etc/bashrc
 
+# Adb (needs Android sdk installed)
+export PATH="$PATH:$HOME/Library/Android/sdk/platform-tools"
+
 # }}}
 
 # {{{ Plugins =============================================
