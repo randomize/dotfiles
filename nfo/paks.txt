@@ -118,6 +118,7 @@ Contents of gnome group:
    //yelp                  // Help browser
    pulseaudio              // Pshhhaudio
    polkit-gnome            // many gui stuff expects this to work with privelige escalation - like gdisks
+   gthumb                  // image viewre
 
 
 First to install:
@@ -129,14 +130,15 @@ First to install:
 
 UEFI boot and stuff:
 
-   efibootmgr
-   // gummiboot - now systemb boot
-   intel-ucode
+   efibootmgr    // Can edit UEFI boot items in nvram
+   intel-ucode   // Intel firmware patches for CPU, runtime only, goes to /boot, need to initrd in bootloader
+   gnu-efi       // Toolchain for UEFI development
 
 Packaging:
 
    local/yay             // Aur "pacman"
    pacman-contrib        // Pacmans scripts 
+   reflector             // sorting mirrors
 
    namcap         // Package checking
    //abs            // Arch build system - not using, its easier to just download PKGBUILD/tarball
@@ -145,12 +147,14 @@ Packaging:
 
    arch-install-scripts
    archiso        // arch iso creation tools
+   debootstrap    // same for debian
 
 Bluetooth and network:
 
    //dnsmasq           // Local DNS cache (see setup(9)) - no need since Mikrotik
    //network-manager
    gnu-netcat        // Network piping application
+   openbsd-netcat
    //ngrep             // Network packet grep 
    mtr               // Combines the functionality of traceroute and ping into one tool
    ipcalc
@@ -169,6 +173,7 @@ Bluetooth and network:
 
    python-twisted    // For simple HTTP server sharing
    python2-twisted
+   webfs             // more static servers
 
    nethogs           // Network monitor
    nmap              // Network security scanner
@@ -186,7 +191,7 @@ Video:
    libva-intel-driver
    mesa-demos          // Beloved glxgears is here
    intel-gpu-tools     // Debugging
-   nvidia              // Proprietary driver for NVIDIA
+   nvidia-dkms              // Proprietary driver for NVIDIA
    nvidia-settings     // gui settings tool for it
 
 Xorg stuff:
@@ -201,6 +206,8 @@ Xorg stuff:
    xorg-xprop         // Helper utility for windows info
    xorg-xvinfo        // Helper for "lights on" script
    xorg-xwininfo      // Another window info tool
+   evtest             // Event tester
+   lsw                // list windows
 
    xclip           // For scripting with clipboard
    xsel            // X selection command line tool
@@ -234,13 +241,17 @@ Diagnostics and HDD:
    atop          // nice top replacement
    glances
    ethtool
+   ltrace        // Track calls in dynamic libs
+   strace        // App tracer
 
 
    parted     // Partitioning
+   gparted     // Partitioning, partition magic clone
    testdisk   // Diagnostics and undelete
    ext4magic  // Ext fs deleted files recovery
    hdparm
    hddtemp
+   smartmontools
 
    unetbootin  // USB bootable creator
    lm_sensors
@@ -257,6 +268,7 @@ Window managers and DE:
 
    compton     // composition manager
    //libnotify           // notifications lib
+   picom             // another X compositor
 
    //parcellite      // clipboard manager good and lite (Has problems with nautilus Cut/Copy/Paste)
    copyq           // Great clipboard manager
@@ -276,6 +288,7 @@ Window managers and DE:
    //aur/pasystray-git // Simple tray icon for pulse mixer
    //pavumeter         // Pulse meter
    ponymix           // CLI mixer
+   pamixer
 
    openbox         // Fallback window manager
 
@@ -284,7 +297,8 @@ Window managers and DE:
    conky           // System monitor
    //dmenu2          // Fork of dmenu with some extra stuff, bind on Win+Shift+R
    //aur/dmenu-xft-mouse-height-fuzzy-history // better fork of dmenu
-   rofi             // Grat dmenu replacement
+   rofi             // Great dmenu replacement
+   rofi-dmenu       // simlink
 
    //xmonad          // Haskell window manager
    openvpn         // VPN client
@@ -317,6 +331,9 @@ Terminal emulators:
    //cool-retro-term            // Eye-candy old school terminal emulator
    alacritty                    // fast gpu accelerated terminal emulator ..
    alacritty-terminfo           // .. and it's terminfo
+   kitty                        // more terminal
+   aur/libsixel-git             // image suppurt in terminals
+   minicom                      // com port communication tool
 
 Shells:
 
@@ -335,12 +352,13 @@ Console tools:
    powerline      // nice powerline theme for tmux
 
    unp            // Console universal unpacker
-   //par2cmdline    // Par2 utility (backups)
+   par2cmdline    // Par2 utility (backups)
    rmlint         // Duplicate files searcher and remover
    rmlint-shredder  // Duplicate files searcher and remover - helper
-   aur/lostfiles      // Show pacman untracked crap on hdd
+   lostfiles      // Show pacman untracked crap on hdd
+   fdupes            // modern duplicate finder
    ncdu             // curses gui du ;)
-  // aur/pxz        // Parallel xz
+   aur/pxz        // Parallel xz
    borg           // Borg is a backup program
 
    pv             // Pipe viewer, can be used for progress monitoring
@@ -355,6 +373,8 @@ Console tools:
    asciinema      // screen recorder for cli
    aur/c-lolcat       // rainbow color tool
    aur/massren        // rename files
+   lesspipe           // input filter for the pager less
+   up             // ultimate plumber
 
    //aur/vimpager-git   // Vim for paging and vimcat
    sharutils          // Shell archives support
@@ -387,12 +407,18 @@ Console tools:
    //aur/hr-git         // Horizontal lines maker
    //aur/cv-git         // Shows running coreutils basic commands and displays stats
   // aur/jrnl           // Nice journal with CLI
-  // shellcheck         // Static analyzer for bash, note - has many haskell deps
+   shellcheck         // Static analyzer for bash, note - has many haskell deps
+   shellcheck-static         // Static analyzer for bash no haskell deps
   // aur/maybe-git      // Another secure checker for bash
 
    parallel          // helper to do parallel jubs in shell
    inotify-tools     // inotify wrappers, used for watching file changes in my scripts
+   task              // task warrior
 
+Navigation and GPS:
+
+   gpxsee // GPX track viewer
+   aur/google-earth-pro // gogole maps with Java interface and history
 
 
 Fuse filesystems:
@@ -451,6 +477,7 @@ Archives:
    atool      // console one
    pigz       // Parallel GZIP
    lhasa      // lzh/lza tool
+   dar        // disk achive
 
 Viewers:
 
@@ -508,7 +535,8 @@ iOS/OSX support:
    //libgpod
    usbmuxd
    //aur/cctools   // Set of OSX dev tools
-  // aur/ideviceinstaller-git  // ipa install
+   aur/ideviceinstaller-git  // ipa install
+   aur/idevicerestore-git    // can restore devices, does better than iTunes sometimes
 
 IDE and editors:
 
@@ -521,6 +549,7 @@ IDE and editors:
    //python2-neovim      // Python support for nvim
    //gonvim              // go wrapper for nvim
    python2-unidecode  // for YCM in Vim
+   gvim               // for whatever reason plain vim too ;)
 
    emacs              // Another The IDE ;)
    pycharm-community-edition  // Python IDE
@@ -592,9 +621,10 @@ Game development:
    opengl-man-pages // OpenGL doc
    sfml           // multimedia lib
    soil
+   tbb            // threadng building blocks
 
    // Engines
-   aur/unity-editor   // Finally on Linux
+   aur/unityhub   // Finally on Linux
    //unreal-engine
    ogre
 
@@ -639,6 +669,7 @@ C++ libs:
    capnproto  // serializator
    aur/chaiscript // scirptable lang for c++
    csfml          // small footprit lib sfml
+   lld            // linker
 
    opencv         // Computer vision lib
    opencv-samples // and samples
@@ -683,7 +714,7 @@ Reverse and hack:
    radare2-cutter          // gui
    smali                   // Android DEX reverse engineering tool
    aur/android-apktool     // Android reverse engineering tool
-  // aur/dex2jar             // DEX to JAR converter
+   aur/dex2jar             // DEX to JAR converter
    //aur/jd-gui              // Java source reversing tool
 
 
@@ -693,16 +724,21 @@ Reverse and hack:
    mtd-utils               // MTD devs support
    sleuthkit
    python-capstone
+   elfkickers              // Elf utils, sstrip
 
    upx                     // Packer/Unpacker for binaries
    aur/xorsearch           // xtool that searches for xored strings
 
    john // hash bruter
+   mitmproxy               // https sniffer
+   ncrack                  // see man
 
-Arduino:
+Arduino and Electronics:
 
     arduino          // main ide
     arduino-avr-core // avrdude and avr-gcc
+    dfu-util        // dfu util to flash firmware
+    dfu-programmer    // atmel chip firmware
 
 Build tools:
 
@@ -713,6 +749,9 @@ Build tools:
    gradle       // For Android development
    //gradle-doc
    aur/waf      // waf
+   gyp          // yep, more build systems
+   ninja        // yep, more build systems
+   maven
 
 Source code tools:
 
@@ -755,6 +794,8 @@ Database and Web:
    // DB
    mysql-workbench
    mariadb          // Mysql fork
+   //sqliteman        // gui browser
+   sqlitebrowser        // gui browser
 
    // Mongo DB
    aur/mongodb-bin // binary version, mongodb takes too long to compile
@@ -771,10 +812,10 @@ Database and Web:
 
 Emulation and virtualization:
 
-   //virtualbox                 // Virtual (see setup(6))
-   //virtualbox-host-modules    // Kernel modules
+   virtualbox                 // Virtual (see setup(6))
+   virtualbox-host-modules    // Kernel modules
    //virtualbox-ext-vnc         // VNC support
-   //aur/virtualbox-ext-oracle  // Experimental features
+   aur/virtualbox-ext-oracle  // Experimental features
    linux-headers              // For custom modules compilation
 
    net-tools                  // Dependency for networking support
@@ -785,9 +826,12 @@ Emulation and virtualization:
    docker
    nvidia-docker // GPU accelerated docker (for ML)
    dosbox
+   busybox
+   libvirt // API for all kinds of vms
 
 CD DVD:
    cdrtools // For fileroller to understand iso
+   whipper  // cd ripper
 
 Machine learning:
 
@@ -876,6 +920,10 @@ Other Languages:
    //perl-lwp-protocol-https  // Used for some scripts
    kotlin
 
+   ghc // haskell
+   stack // haskell manager
+   closure // new Java ;)
+
 
 Fonts:
 
@@ -912,7 +960,7 @@ Fonts:
 
 Browsers:
 
-   firefox-beta-bin                 // See setup(7)
+   firefox                 // See setup(7)
    //aur/firefox-theme-gnome  // theme
    //firefox-adblock-plus    // No ads                         using as extension
    //firefox-noscript        // No scripts                     using as extension
@@ -937,7 +985,7 @@ Downloaders:
    curl     // New school
    wget     // Old school
    aria2    // Featured
-   //uget   // GUI-sh
+   uget     // GUI-sh
 
 File Sharing:
 
@@ -965,6 +1013,7 @@ Instant Messaging:
    newsboat          // RSS cilent
    telegram-desktop
    weechat             // cli universal chat
+   rainbowstream       // cli twitter
 
 Audio and Sound:
 
@@ -1120,6 +1169,7 @@ Audio and Sound:
 
    // Audio swissers knife
    sox 
+   shntool
 
    // JACK
    jack2-dbus    // JACK2 (newer) with dbus support to play nice with pulseaudio
@@ -1151,6 +1201,9 @@ Music and lifecoding:
    //zxtune-git     // Great crossplatform zx music player
 
    //vcvrack          // modular synth
+   cuetools          // Helps to slice flac's wit cue playlists
+   aur/deezer        // Streaming service
+
 
 
 Media players:
@@ -1159,6 +1212,7 @@ Media players:
    mpv              // Nice new player 
    vlc              // Good too player
    fswebcam         // CLI web cam helper
+   webcamoid        // gui cam helper
 
    mpd              // Music player daemon
    mpc              // Client for it
@@ -1181,8 +1235,9 @@ Multimedia tools:
    ffmpeg
    mkvtoolnix-cli
    mediainfo
-  // aur/mp3val       // MP3 file validator and fixer
+   aur/mp3val       // MP3 file validator and fixer
    //aur/v4l2loopback // Loopback video device /dev/video1
+   aur/v4l2loopback-dkms // Loopback video device /dev/video1 dkms version
    v4l2ucp            // Contol panel for v4l2
    id3              // tags edit
 
@@ -1222,11 +1277,13 @@ Monitor tools:
    //aur/ddccontrol-git       // See also ddccontrol PKGBUILD
    //ddccontrol-db    // Database, no W2600HP yet. TODO: contribute
    aur/ddcutil
+   i2c-tools
 
 Sketching:
 
    //local/xournal-git   // use master + my patches (see PKGBUILD)
    mypaint
+   pinta
 
 Graphics software:
 
@@ -1265,6 +1322,7 @@ Books and scanning:
 Security :
 
    //keepassx2      // Password manager
+   keepass      // Password manager
    xdotool      // For keepass to auto type
    gnupg        // GNU Privacy Guard
    pass         // New password manager
@@ -1314,6 +1372,7 @@ TeX:
    ghostscript    // Post Script interpreter
 
    scribus        // Not TeX but professional page layout software
+   mdp            // Markdown presentation in CLI
 
 Games and fun:
 
@@ -1321,6 +1380,7 @@ Games and fun:
    aur/gogui  // GUI-sh go board
    aur/leela-zero-git // Go engine
    aur/sabaki         // Go GUI for leela
+   aur/lizzie-git     // Go engine gui
 
    joyutils // Pad control utilities
    cowsay   // Cows are good
@@ -1335,6 +1395,7 @@ Games and fun:
    openmw   // Morrowing, my love! Now on GNU/Linux
    sl       // Qute train
    gtypist
+   pcem   // Old pc emulator
 
    // Leap motion
    //aur/leap-motion-driver // driver
