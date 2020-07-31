@@ -170,6 +170,7 @@ vnoremap <space>m :action ExtractMethod<CR>
 
 map [c :action GotoPreviousError<CR>:action ShowErrorDescription<CR>
 map ]c :action GotoNextError<CR>:action ShowErrorDescription<CR>
+map zR :action ExpandAllRegions<CR>
 
 
 " nnoremap <space>g :action GotoDeclaration<CR>
