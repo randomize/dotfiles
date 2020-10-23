@@ -1,5 +1,8 @@
-# Setup defaukts
-export BROWSER=firefox-beta
+# Setup defaults
+
+# Its ungoogled so its fine
+export BROWSER=chromium
+# Neovim
 export EDITOR=nvim
 
 # Enable anti aliasing in java programs
