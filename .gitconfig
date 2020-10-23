@@ -93,3 +93,5 @@
 [lfs]
    batch = true
    concurrenttransfers = 40
+[pull]
+	rebase = false
