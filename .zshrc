@@ -2,14 +2,6 @@
 # Randy 2016
 # TODO: pkgfile hook
 
-# Support for evaluating a function on startup
-# if [[ $1 == eval ]]
-# then
-#    "$@"
-#    set --
-# fi
-
-
 # {{{ Managed Plugins =========================================================
 # Check if zplug is installed and install it
 if [[ ! -d ~/.zplug ]]; then
@@ -81,26 +73,6 @@ zplug load
 
 # }}}
 
-function zle-keymap-select zle-line-init
-{
-  case $KEYMAP in
-    vicmd)
-      # PROMPT="${PROMPT[1,-2]}8"
-      P="${PROMPT/\[/<}"
-      PROMPT="${P/\]/>}"
-      ;;
-    viins|main)
-      # PROMPT="${PROMPT[1,-2]} "
-      P="${PROMPT/</[}"
-      PROMPT="${P/>/]}"
-      ;;
-  esac
-  zle reset-prompt
-  zle -R
-}
-
-zle -N zle-line-init
-zle -N zle-keymap-select
 
 # {{{ Unmanaged plugins & helpers =============================================
 # OS detect
@@ -128,7 +100,6 @@ zle -N zle-keymap-select
 # {{{ Settings ================================================================
 
 # History
-#export HISTORY_IGNORE="(cd.*|ls)"
 #export HISTORY_IGNORE='([bf]g *|cd ..|l[alsh]#( *)#|less *|vim# *)'
 export HISTORY_IGNORE="(ls *|cd *|git *)"
 export HISTFILE=~/.zsh_history
