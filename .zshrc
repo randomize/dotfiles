@@ -19,6 +19,27 @@ fi
 
 source ~/.zplug/init.zsh
 
+zplug  "plugins/archlinux",                 from:oh-my-zsh
+zplug  "plugins/colored-man-pages",         from:oh-my-zsh
+zplug  "plugins/colorize",                  from:oh-my-zsh
+# zplug  "plugins/compleat",                  from:oh-my-zsh
+zplug  "plugins/command-not-found",         from:oh-my-zsh
+# zplug  "plugins/common-aliases",            from:oh-my-zsh
+# zplug  "plugins/copydir",                   from:oh-my-zsh
+# zplug  "plugins/copyfile",                  from:oh-my-zsh
+zplug  "plugins/extract",                   from:oh-my-zsh
+# zplug  "plugins/history",                   from:oh-my-zsh
+# zplug  "plugins/history-substring-search",  from:oh-my-zsh
+# zplug  "plugins/man",                       from:oh-my-zsh
+# zplug  "plugins/sudo",                      from:oh-my-zsh
+# zplug  "plugins/themes",                    from:oh-my-zsh
+zplug  "plugins/urltools",                  from:oh-my-zsh
+# zplug  "plugins/vscode",                    from:oh-my-zsh
+# zplug  "plugins/web-search",                from:oh-my-zsh
+
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-completions"
+
 
 # Git helper
 zplug "plugins/git",   from:oh-my-zsh, if:"which git"
@@ -26,8 +47,9 @@ zplug "plugins/vim-mode", from:oh-my-zsh
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 # export DEFAULT_USER=randy
-# zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
+#zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
 # zplug "cusxio/delta-prompt", use:delta.zsh
+zplug "romkatv/powerlevel10k", as:theme, depth:1
 
 # PURE_PROMPT_SYMBOL='$'
 # zplug "mafredri/zsh-async", from:github
@@ -140,12 +162,12 @@ zstyle ':completion:*' menu select=4
 
 # theme tweaks
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status history time vi_mode)
-POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND='yellow'
-POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND='white'
-POWERLEVEL9K_VI_MODE_INSERT_BACKGROUND='014'
-POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND='white'
-POWERLEVEL9K_VI_INSERT_MODE_STRING='\UE858' # 
-POWERLEVEL9K_VI_COMMAND_MODE_STRING='\UE801' # 
+POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND='red'
+POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND='black'
+POWERLEVEL9K_VI_MODE_INSERT_BACKGROUND='012'
+POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND='black'
+POWERLEVEL9K_VI_INSERT_MODE_STRING='I'
+POWERLEVEL9K_VI_COMMAND_MODE_STRING='N'
 
 # {{{ OS specific stuff ============================================================
 
