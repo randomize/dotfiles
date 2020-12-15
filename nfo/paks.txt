@@ -388,6 +388,7 @@ Console tools:
    socat          // socket tool
    bat            // cat replacement for file display
    fd             // find alternative
+   diff-so-fancy  // diff alternative
 
 
    trash-cli // little tool that trashes files instead of rm-ing them
