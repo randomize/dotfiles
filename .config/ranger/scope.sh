@@ -51,7 +51,7 @@ handle_extension() {
     case "${FILE_EXTENSION_LOWER}" in
         ## Archive
         a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|\
-        rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)
+        rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip|unitypackage)
             atool --list -- "${FILE_PATH}" && exit 5
             bsdtar --list --file "${FILE_PATH}" && exit 5
             exit 1;;
@@ -62,6 +62,19 @@ handle_extension() {
         7z)
             ## Avoid password prompt by providing empty password
             7z l -p -- "${FILE_PATH}" && exit 5
+            exit 1;;
+
+        meta|unity|prefab|asset)
+            env COLORTERM=8bit bat -l yaml --color=always --style="plain" \
+                -- "${FILE_PATH}" && exit 5
+            exit 1;;
+        asmdef)
+            env COLORTERM=8bit bat -l json --color=always --style="plain" \
+                -- "${FILE_PATH}" && exit 5
+            exit 1;;
+        cginc|shader)
+            env COLORTERM=8bit bat -l glsl --color=always --style="plain" \
+                -- "${FILE_PATH}" && exit 5
             exit 1;;
 
         ## PDF
