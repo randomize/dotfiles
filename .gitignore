@@ -10,9 +10,6 @@
 /Music/
 /Arduino/
 
-# OpenVPN at Bully
-/.client.ovpn
-/.pass.ovpn
 
 # Private data, configs with keys and passwords
 /.ssh/
