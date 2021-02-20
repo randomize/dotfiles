@@ -63,15 +63,26 @@ xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu > ~/
 ( ( sleep 3 && (pasystray &) ) & )
 
 # Composition
-compton -b
+( ( sleep 3 && picom ) & )
+
+# Mappings
+#( ( sleep 3 && xbindkeys ) & )
+
+# Gromit
+( ( sleep 5 && /usr/bin/gromit-mpx ) & )
 
 # Set wacom buttons correctly
-# xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" Button 2 "button +3"
-# xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" Button 3 "button +2"
-# xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" "StripLeftDown" "0"
-# xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" "StripRightUp" "0"
-# xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" "StripRightDown" "0"
-# xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" "StripLeftUp" "0"
+xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" Button 2 "button +3"
+xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" Button 3 "button +2"
+xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" "StripLeftDown" "0"
+xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" "StripRightUp" "0"
+xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" "StripRightDown" "0"
+xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" "StripLeftUp" "0"
+# xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" PressureCurve x1 y1 x2 y2
+xsetwacom --set "Wacom Intuos3 9x12 Pad pad" Button 8 key "F9"
+xsetwacom --set "Wacom Intuos3 9x12 Pad pad" Button 1 key "shift"
+xsetwacom --set "Wacom Intuos3 9x12 Pad pad" Button 2 key "alt"
+xsetwacom --set "Wacom Intuos3 9x12 Pad pad" Button 3 key "ctrl"
 
 
 # Start urxvt daemon (quiet, forked, only for this X session)
@@ -84,7 +95,7 @@ compton -b
 xrandr --dpi 90
 # xrandr --output VGA1 --off
 # xrandr --output DP-2 --primary --rotate left
-xrandr --output DP-4 --primary 
+xrandr --output DP-4.8 --primary --dpi 100
 # xrandr --output DP-0 --right-of DP-4 --rotate left
 # xrandr --output DP-2 --left-of DP-4 --rotate left
 # xrandr --output DVI-D-0 --mode 1280x1024 --right-of DP-0
@@ -112,18 +123,6 @@ xsetwacom --set "Wacom Intuos3 9x12 Pen eraser" MapToOutput "HEAD-0"
 
 # ALSA 2 JACK - MIDI daemon
 # ( ( sleep 4 && /usr/bin/a2jmidid -e) & )
-
-# Start ssh agent if none
-ssh-add -l &>/dev/null
-if [ "$?" == 2 ]; then
-  test -r ~/.ssh-agent && eval "$(<~/.ssh-agent)" >/dev/null
-
-  ssh-add -l &>/dev/null
-  if [ "$?" == 2 ]; then
-    (umask 066; ssh-agent > ~/.ssh-agent)
-    eval "$(<~/.ssh-agent)" >/dev/null
-  fi
-fi
 
 # Awesome
 exec awesome
