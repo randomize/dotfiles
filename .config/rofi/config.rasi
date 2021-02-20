@@ -1,0 +1,4 @@
+configuration {
+	font: "Iosevka Nerd Font Mono Bold 12";
+	theme: "/usr/share/rofi/themes/Arc-Dark.rasi";
+}
