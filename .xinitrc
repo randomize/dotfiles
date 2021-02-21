@@ -54,7 +54,7 @@ xset +fp /usr/share/fonts/local
 xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu > ~/.config/awesome/archmenu.lua 
 
 # Conky
-( ( sleep 3 && conky ) & )
+( ( sleep 3 && exec conky ) & )
 
 # Clipboard manager
 ( ( sleep 3 && (copyq &) ) & )
@@ -63,7 +63,7 @@ xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu > ~/
 ( ( sleep 3 && (pasystray &) ) & )
 
 # Composition
-( ( sleep 3 && picom ) & )
+( ( sleep 3 && exec picom ) & )
 
 # Mappings
 #( ( sleep 3 && xbindkeys ) & )
