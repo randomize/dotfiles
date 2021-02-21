@@ -539,20 +539,20 @@ globalkeys = gears.table.join(
     -- Screenshots
     awful.key({                   }, "Print",
       function ()
-         awful.spawn.with_shell("maim ~/shot_$(date +%s).png", false)
+         awful.spawn.with_shell("maim ~/shot_$(date +%d-%b-%+4Y-%H-%M-%S).png", false)
          naughty.notify({ title="Screenshot", text="Capturing full screen" })
       end,
       {description = "take screenshot", group = "launcher"}),
     awful.key({ "Shift"         }, "Print",
       function ()
-         awful.spawn.with_shell("maim -u -s ~/shot_$(date +%s).png", false)
+         awful.spawn.with_shell("maim -u -s ~/shot_$(date +%d-%b-%+4Y-%H-%M-%S).png", false)
          naughty.notify({ title="Screenshot", text="Capturing an area" })
       end,
       {description = "take area screenshot", group = "launcher"}),
     -- Misc soft
     awful.key({ modkey,           }, "e",
        function ()
-          drop("xterm -T Ranger -n my_floating_ranger -e ranger ", "top", "center", 1, 0.5)
+          drop("kitty --title=Ranger --class=my_floating_ranger ranger ", "top", "center", 1, 0.5)
        end,
       {description = "launch ranger", group = "launcher"}),
     awful.key({ modkey, "Shift"}, "e",
@@ -573,6 +573,16 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "b",
       function ()
          awful.spawn("passmenu --type -l 32 -fn \"PragmataPro-12:bold\" -i -p \"*\" ")
+      end
+    ),
+    awful.key({ modkey, "Shift"   }, "b",
+      function ()
+         awful.spawn("stepmenu --type -l 32 -fn \"PragmataPro-12:bold\" -i -p \"*\" ")
+      end
+    ),
+    awful.key({ modkey, "Control"   }, "b",
+      function ()
+         awful.spawn("wordmenu --type -l 32 -fn \"PragmataPro-12:bold\" -i -p \"*\" ")
       end
     ),
 
@@ -813,7 +823,6 @@ awful.rules.rules = {
           "MessageWin",  -- kalarm.
           "Sxiv",
           "Wpa_gui",
-          -- "pinentry",
           "veromix",
           "xtightvncviewer"},
 
@@ -835,7 +844,10 @@ awful.rules.rules = {
       }, properties = { titlebars_enabled = false }
     },
 
-    { rule = { instance = "pinentry" },
+    { rule_any = { 
+        instance = { "pinentry" },
+        class = { "Zenity" },
+        },
         properties = { floating = true },
         callback = function (c)
             awful.placement.centered(c,nil)
@@ -844,6 +856,14 @@ awful.rules.rules = {
 
     { rule = { class = "chromium" },
           properties = { maximized = false, floating = false } 
+    },
+
+    -- Rider on main screen please
+    { rule = { class = "jetbrains-rider"},
+          properties = {
+          maximized = true,
+          screen = 1,
+          floating = true } 
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
