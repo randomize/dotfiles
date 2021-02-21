@@ -34,6 +34,10 @@ alias mount-ipad-root='ifuse --root /mnt/ipad && cd /mnt/ipad'
 alias umount-ipad='cd ~ && umount /mnt/ipad'
 alias mount-mac='sudo sshfs  randy@10.10.10.105:/ /mnt/macos'
 
+# Automation
+alias typeit='xdotool type --clearmodifiers --file -'
+alias pbcopy='xclip -i -selection clipboard'
+
 # Functs
 function repostats()
 {
