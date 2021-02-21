@@ -38,3 +38,9 @@ export GEM_HOME=$HOME/.gem
 
 # Go
 export PATH="$PATH:$HOME/go/bin"
+
+# Rider+Unity hack to avoid .NETFramework,Version=v4.7.1 not found issue...
+export FrameworkPathOverride=/etc/mono/4.5
+
+# Perl
+source ~/perl5/perlbrew/etc/bashrc
