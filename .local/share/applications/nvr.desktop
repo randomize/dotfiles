@@ -1,7 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Type=Application
-Terminal=false
-Exec=/usr/bin/nvr %f
-Name=Nvim Remote
-Icon=/usr/share/icons/Faenza/apps/64/gvim.png
