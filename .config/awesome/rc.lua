@@ -193,7 +193,7 @@ myawesomemenu = {
 mymainmenu = awful.menu({ items = { { "Awesome", myawesomemenu, beautiful.awesome_icon },
                                     { "Open terminal", terminal },
                                     { "Applications", xdgmenu },
-                                    { "File manager", "nautilus" },
+                                    -- { "File manager", "nautilus" },
                                     { "MyPaint", "mypaint" },
                                     { "Firefox", "firefox" },
                                     { "Unity", "unity-editor" },
@@ -552,20 +552,20 @@ globalkeys = gears.table.join(
     -- Misc soft
     awful.key({ modkey,           }, "e",
        function ()
-          drop("kitty --title=Ranger --class=my_floating_ranger ranger ", "top", "center", 1, 0.5)
+          drop("kitty --title=Ranger --class=my_floating_ranger ranger ", "center", "center", 0.75, 0.75)
        end,
       {description = "launch ranger", group = "launcher"}),
-    awful.key({ modkey, "Shift"}, "e",
-       function ()
-          awful.spawn("nautilus", false)
-       end,
-      {description = "launch nautilus", group = "launcher"}),
+    -- awful.key({ modkey, "Shift"}, "e",
+    --    function ()
+    --       awful.spawn("nautilus", false)
+    --    end,
+    --   {description = "launch nautilus", group = "launcher"}),
     awful.key({ modkey, "Shift"}, "n",
        function ()
           awful.spawn("~/bin/vnc-menu", false)
        end
     ),
-    awful.key({ modkey,           }, "r",
+    awful.key({ modkey,            }, "Up",
       function ()
          awful.spawn("rofi -modi combi -show combi -combi-modi run,drun")
       end
