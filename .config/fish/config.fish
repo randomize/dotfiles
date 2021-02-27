@@ -1,7 +1,7 @@
 set -gx EDITOR nvim
 
-direnv hook fish | source
-starship init fish | source
+set -gx fisher_path ~/.config/fish/fisher_plugins
+
 
 . "$HOME/.config/fish/aliases.fish"
 
@@ -25,3 +25,6 @@ end
 function urldecode
   perl -MURI::Escape -le "print uri_unescape('$argv')"
 end
+
+direnv hook fish | source
+starship init fish | source
