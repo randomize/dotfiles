@@ -11,7 +11,6 @@ rm -rf ~/.python_history
 rm -rf ~/.gdb_history
 rm -rf ~/.root_hist
 rm -rf ~/.cling_history
-rm -rf ~/.sdcv_history
 rm -rf ~/.recently-used
 rm -rf ~/.wget-hsts
 rm -rf ~/.thumbnails/
@@ -26,6 +25,10 @@ rm -rf ~/.jsampler/
 rm -rf ~/.kotlinc_history
 rm -rf ~/.mysql_history
 rm -rf ~/.nc_history
+rm -rf ~/.dbshell
+rm -rf ~/.pythonhist
+rm -rf ~/.node_repl_history
+rm -rf ~/.tig_history
 
 echo "<<<<< Logs >>>>>"
 rm -rf ~/.cgdb/logs/
@@ -53,6 +56,71 @@ rm -rf ~/.npm/
 rm -rf ~/.node-gyp/
 rm -rf ~/.vscode/
 rm -rf ~/.gem/
+
+rm -rf ~/.GoPanda2/
+rm -rf ~/.Wolfram/
+rm -rf ~/.aMule/
+rm -rf ~/.arduino15/
+rm -rf ~/.aspell.en.prepl
+rm -rf ~/.aspell.en.pws
+rm -rf ~/.bcast5/
+rm -rf ~/.clojure/
+rm -rf ~/.conda/
+rm -rf ~/.dbus/
+rm -rf ~/.dotnet/
+rm -rf ~/.electron-gyp/
+rm -rf ~/.electron/
+rm -rf ~/.fltk/
+rm -rf ~/.gervill/
+rm -rf ~/.ghc/
+rm -rf ~/.ghidra/
+rm -rf ~/.gnome2/
+rm -rf ~/.gradle/
+rm -rf ~/.image.so
+rm -rf ~/.jssc/
+rm -rf ~/.jupyter/
+rm -rf ~/.keras/
+rm -rf ~/.local/bin/
+rm -rf ~/.local/lib/
+rm -rf ~/.local/share/DaVinciResolve/
+rm -rf ~/.local/share/JetBrains/
+rm -rf ~/.local/share/apktool/
+rm -rf ~/.local/share/composer/
+rm -rf ~/.local/share/gsettings-data-convert
+rm -rf ~/.local/share/leela-zero/
+rm -rf ~/.local/share/lizzie/
+rm -rf ~/.local/share/nautilus/
+rm -rf ~/.local/share/pueue/
+rm -rf ~/.local/share/qalculate/
+rm -rf ~/.local/share/qrenderdoc/
+rm -rf ~/.local/share/radare2/
+rm -rf ~/.local/share/teamviewer15/
+rm -rf ~/.local/share/torbrowser/
+rm -rf ~/.local/share/vinagre/
+rm -rf ~/.local/share/sdcv_history
+rm -rf ~/.lyrics/
+rm -rf ~/.mitmproxy/
+rm -rf ~/.Mathematica/
+rm -rf ~/.mono/
+rm -rf ~/.mongorc.js
+rm -rf ~/.my.cnf
+rm -rf ~/.netrc
+rm -rf ~/.nuget/
+rm -rf ~/.oracle_jre_usage/
+rm -rf ~/.p4qt/
+rm -rf ~/.pcem/
+rm -rf ~/.plotly/
+rm -rf ~/.pm2/
+rm -rf ~/.purple/
+rm -rf ~/.rainbow_config.json
+rm -rf ~/.rainbow_oauth
+rm -rf ~/.repo_.gitconfig.json
+rm -rf ~/.repoconfig/
+rm -rf ~/.stack/
+rm -rf ~/.templateengine/
+rm -rf ~/.terminfo/
+rm -rf ~/.vsts/
+rm -rf ~/.Wolfram/
 
 echo "<<<<< Autostart pieces of shit >>>>>"
 rm -rf ~/.config/autostart/*
@@ -83,8 +151,48 @@ rm -rf ~/.config/Webcamoid
 rm -rf ~/.config/Dharkael
 rm -rf ~/.config/eog
 rm -rf ~/.config/falkTX
-rm -rf ~/.config/skypeforlinux/
+rm -rf ~/.config/skypeforlinux\ \(deleted\)/
+rm -rf ~/.config/Skype/
+rm -rf ~/.config/Slack/
+rm -rf ~/.config/teamviewer/
 rm -rf ~/.config/gtk-2.0/gtkfilechooser.ini
+
+rm -rf ~/.config/Google/
+rm -rf ~/.config/JetBrains/
+rm -rf ~/.config/KeePass/
+rm -rf ~/.config/Pinta/
+rm -rf ~/.config/Code/
+rm -rf ~/.config/UnityHub/
+rm -rf ~/.config/borg/
+rm -rf ~/.config/chipmachine/
+rm -rf ~/.config/coc/
+rm -rf ~/.config/composer/
+rm -rf ~/.config/deezer-desktop/
+rm -rf ~/.config/enchant/
+rm -rf ~/.config/fish/
+rm -rf ~/.config/gpx-viewer/
+rm -rf ~/.config/gpxsee/
+rm -rf ~/.config/gthumb/
+rm -rf ~/.config/jack/
+rm -rf ~/.config/mc/
+rm -rf ~/.config/menus/
+rm -rf ~/.config/mimeapps.list
+rm -rf ~/.config/mono.addins/
+rm -rf ~/.config/mystiq/
+rm -rf ~/.config/nautilus/
+rm -rf ~/.config/nvim-qt/
+rm -rf ~/.config/pavucontrol-qt/
+rm -rf ~/.config/pomotroid/
+rm -rf ~/.config/qalculate/
+rm -rf ~/.config/rosegardenmusic/
+rm -rf ~/.config/sqlitebrowser/
+rm -rf ~/.config/wireshark/
+rm -rf ~/.config/yarpen.cz/
+# .config/yay/
+# .config/systemd/
+# .config/torbrowser/
+# .config/pueue/
+
 
 rm -rf ~/.local/share/mc
 rm -rf ~/.local/share/fish
@@ -122,11 +230,11 @@ rm -rf ~/.yarnrc
 
 echo "<<<<< Cache except for some used stuff >>>>>"
 find ~/.cache/ \
-  -not -path "*.cache/" \
+  -maxdepth 1 -mindepth 1 \
   -not -path "*.cache/thumbnails*" \
   -not -path "*.cache/dmenu_*" \
   -not -path "*.cache/neomru*" \
-  -exec rm -rf {} +
+  -exec rm -rfv {} +
 
 
 

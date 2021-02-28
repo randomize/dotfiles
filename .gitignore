@@ -19,11 +19,14 @@
 /.gnupg/
 /.pocketrc
 /.gitshots/
-/.config/asciinema/config
+/.config/asciinema/install-id
 /.config/puush/puush.conf
 
 # Vim temporals/generated
 /.viminfo
+
+# Bash
+/.bash_history
 
 # Zsh temporals/generated
 /.zsh_history
@@ -55,9 +58,15 @@
 
 
 # Temporary files
+# Created by X, xauth (see man xauth)
 /.Xauthority
+# Created by .xinitrc, helps persist ssh-agent when X is restarted
+/.ssh-agent
 
 # === Soft =========================
+
+# Less history
+/.lesshst
 
 # Android SDK
 /Android/
@@ -113,6 +122,7 @@
 
 # Go
 /.godir/
+/go/
 
 # Other
 /.config/qBittorrent/
@@ -123,7 +133,67 @@
 /.config/obs-studio/
 /.config/Sabaki/
 /.config/VirtualBox/
+/.config/JetBrains/
+/.config/GIMP/
+/.config/deezer-desktop/
+/.config/skypeforlinux/
+/.config/draw.io/
+/.config/pomotroid/
+/.config/libreoffice/
+
+# JetBrains
+/.local/share/JetBrains/
 
 # Autojumping stuff
 /.z
 /.local/share/autojump/
+
+# Stardict CLI
+/.local/share/sdcv_history
+
+# Tel
+/.local/share/TelegramDesktop/
+
+# Python venv
+/.local/share/virtualenv/
+/.pyenv/
+
+# Parsec (Work, access Win node)
+/.parsec/
+
+# Git TIG utility history
+/.tig_history
+
+# Node
+/.node_modules/
+/.npm/
+
+# NVIDIA Cache
+/.nv/
+
+# Unity
+/.config/UnityHub/
+/.config/unity3d/
+/Unity/
+
+# VS Codium
+/.config/Code - OSS/
+/.config/VSCodium/
+/.vscode-oss/
+
+# Thunderbird (temp)
+/.thunderbird/
+/Mail
+
+# Xournal++
+/.xournalpp/
+
+# Weechat
+/.weechat/
+
+# Perlbrew
+/perl5/
+
+# Fish plugins (dynamic)
+/.config/fish/fisher_plugins/
+
