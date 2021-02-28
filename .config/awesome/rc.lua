@@ -415,13 +415,13 @@ awful.screen.connect_for_each_screen(function(s)
 end)
 
 -- NOTE: just debugging to see which screen is which ;)
--- naughty.notify({ preset = naughty.config.presets.critical, title = "Geometry", text = "G:" .. screen[1].geometry.width })
--- naughty.notify({ preset = naughty.config.presets.critical, title = "Geometry", text = "G:" .. screen[2].geometry.width })
--- naughty.notify({ preset = naughty.config.presets.critical, title = "Geometry", text = "G:" .. screen[3].geometry.width })
--- naughty.notify({ preset = naughty.config.presets.critical, title = "Geometry", text = "G:" .. screen[4].geometry.width })
-
--- Ugly hack to make screens in order
---screen[3]:swap(screen[4])
+-- for i = 1, 4 do
+--     naughty.notify({ preset = naughty.config.presets.critical, screen = i, title = "Geometry", text = i .. ") G:" .. screen[i].geometry.width .. "x" .. screen[i].geometry.height })
+-- end
+-- Ugly hack to make screens in order - TODO: can I arrange them in xrandr before it gets into awesomewm?
+screen[2]:swap(screen[3])
+screen[3]:swap(screen[4])
+awful.screen.focus(1)
 
 -- }}}
 
@@ -763,21 +763,11 @@ for i = 1, 11 do
     )
 end
 
--- -- Bind mod+ctrl+Fkey to layout select
--- for i = 1, 12 do
---     globalkeys = awful.util.table.join(globalkeys,
---         -- Swithch layout
---         awful.key({ modkey, "Control" }, layouts_f_keys[i], function () awful.layout.set(awfu.layout.layouts[i]) end)
---    )
--- end
-
--- Bind mod+Fkey to custom actions
-for i = 1, 12 do
+-- Bind mod+Fkey to screens
+for i = 1, 4 do
     globalkeys = awful.util.table.join(globalkeys,
-        -- Call handler
         awful.key({ modkey, }, "F" .. i, function ()
-            -- naughty.notify({ title="Custom action", text = "#" .. i })
-            awful.spawn(mod4func_path .. i , false)
+            awful.screen.focus(i)
         end)
    )
 end
