@@ -1,3 +1,16 @@
+# vim : ft=conf
 
+# Commiting shortcut
 bind main C <git checkout %(commit)
-bind main c <bash -c 'echo %(commit) | pbcopy'
+
+# Copy commit hash
+bind main c @sh -c "printf '%s' %(commit) | xclip"
+
+# Getting rid of that grep ;)
+bind generic <Ctrl-g> view-grep
+bind generic g move-first-line
+bind generic G move-last-line
+bind main G move-last-line
+bind main <Ctrl-G> :toggle commit-title-graph
+
+# 
