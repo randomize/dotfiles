@@ -93,7 +93,7 @@ function recordscreen-small()
 
 function go-dvorak()
 {
-    setxkbmap -layout "dvp, us, ru" -option "grp:shifts_toggle"
+    setxkbmap -layout "dvp, ru" -option "grp:shifts_toggle"
     setxkbmap -option ctrl:nocaps 
     setxkbmap -option terminate:ctrl_alt_bksp
     xset r rate 400 80
@@ -270,3 +270,17 @@ function unity-ver() { gfind . -name ProjectVersion.txt -exec cat {} + }
 
 function docker-jupyter-lab() { docker run --gpus all -it --rm -p 8888:8888 -u $(id -u):$(id -g) -v $(realpath ~/notebooks):/home/jovyan/work jupyter/datascience-notebook start.sh jupyter lab }
 function docker-tensorflowb() { docker run --gpus all -it --rm -u $(id -u):$(id -g) -v $(realpath ~/notebooks):/tf/notebooks -p 8888:8888 tensorflow/tensorflow:latest-gpu-py3-jupyter }
+
+function rga-fzf() {
+	RG_PREFIX="rga --files-with-matches"
+	local file
+	file="$(
+		FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
+			fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
+				--phony -q "$1" \
+				--bind "change:reload:$RG_PREFIX {q}" \
+				--preview-window="70%:wrap"
+	)" &&
+	echo "opening $file" &&
+	xdg-open "$file"
+}

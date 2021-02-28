@@ -13,6 +13,9 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 # Set path for gtk config
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0" 
 
+# QT themes
+export QT_STYLE_OVERRIDE=adwaita
+
 # export PAGER="most -s"
 export LESS="-i -s -R"
 export LESSCHARSET='utf-8'
@@ -44,3 +47,5 @@ export FrameworkPathOverride=/etc/mono/4.5
 
 # Perl
 source ~/perl5/perlbrew/etc/bashrc
+
+

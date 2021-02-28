@@ -34,20 +34,20 @@ zplug "zsh-users/zsh-completions"
 
 
 # Git helper
-zplug "plugins/git",   from:oh-my-zsh, if:"which git"
+#zplug "plugins/git",   from:oh-my-zsh, if:"which git"
 zplug "plugins/vim-mode", from:oh-my-zsh
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
+#zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 # export DEFAULT_USER=randy
 #zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
 # zplug "cusxio/delta-prompt", use:delta.zsh
-zplug "romkatv/powerlevel10k", as:theme, depth:1
+#zplug "romkatv/powerlevel10k", as:theme, depth:1
 
 # PURE_PROMPT_SYMBOL='$'
 # zplug "mafredri/zsh-async", from:github
 # zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 
-zplug 'nojhan/liquidprompt'
+#zplug 'nojhan/liquidprompt'
 
 # Z is new Autojump
 zplug "rupa/z", use:z.sh
@@ -105,8 +105,6 @@ export HISTORY_IGNORE="(ls *|cd *|git *)"
 export HISTFILE=~/.zsh_history
 export HISTSIZE=100000
 export SAVEHIST=100000
-# Timestamp history
-setopt EXTENDED_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
@@ -172,9 +170,13 @@ export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 # }}}
 
 # Syntax hightlighting settings
-[[ -s ~/.zsh/highligh-settings.zsh ]] && . ~/.zsh/highligh-settings.zsh
+#[[ -s ~/.zsh/highligh-settings.zsh ]] && . ~/.zsh/highligh-settings.zsh
 # }}}
 #
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+# Direnv
+eval "$(direnv hook zsh)"
+
