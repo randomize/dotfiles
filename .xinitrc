@@ -39,12 +39,12 @@ setxkbmap -option ctrl:nocaps
 setxkbmap -option terminate:ctrl_alt_bksp
 
 # Special mappings (see .Xmodmap file)
-# xmodmap .Xmodmap
+xmodmap ~/.Xmodmap
 # xcape -e '0x1234=Return;Control_L=Escape'
 xcape -e 'Control_L=Escape'
 
 # Set repeat rate to low value
-xset r rate 400 800
+xset r rate 400 80
 
 # make terminus visible for xfontsel and clients
 xset +fp /.fonts
@@ -54,7 +54,7 @@ xset +fp /usr/share/fonts/local
 xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu > ~/.config/awesome/archmenu.lua 
 
 # Conky
-( ( sleep 3 && exec conky ) & )
+( ( sleep 1 && exec conky ) & )
 
 # Clipboard manager
 ( ( sleep 3 && (copyq &) ) & )
@@ -63,13 +63,16 @@ xdg_menu --format awesome --root-menu /etc/xdg/menus/arch-applications.menu > ~/
 ( ( sleep 3 && (pasystray &) ) & )
 
 # Composition
-( ( sleep 3 && exec picom ) & )
+( ( sleep 1 && exec picom ) & )
 
 # Mappings
-#( ( sleep 3 && xbindkeys ) & )
+( ( sleep 1 && exec xbindkeys ) & )
 
 # Gromit
-( ( sleep 5 && /usr/bin/gromit-mpx ) & )
+( ( sleep 3 && exec /usr/bin/gromit-mpx ) & )
+
+# Gromit
+( ( sleep 3 && exec /usr/bin/albert ) & )
 
 # Set wacom buttons correctly
 xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" Button 2 "button +3"
@@ -79,7 +82,8 @@ xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" "StripRightUp" "0"
 xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" "StripRightDown" "0"
 xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" "StripLeftUp" "0"
 # xsetwacom --set "Wacom Intuos3 9x12 Pen stylus" PressureCurve x1 y1 x2 y2
-xsetwacom --set "Wacom Intuos3 9x12 Pad pad" Button 8 key "F9"
+# xsetwacom --set "Wacom Intuos3 9x12 Pad pad" Button 8 key "F9" // Note: for normal fn key its fine, but for F20 we bind to mouse button 11 first
+xsetwacom --set "Wacom Intuos3 9x12 Pad pad" Button 8 key "F20"
 xsetwacom --set "Wacom Intuos3 9x12 Pad pad" Button 1 key "shift"
 xsetwacom --set "Wacom Intuos3 9x12 Pad pad" Button 2 key "alt"
 xsetwacom --set "Wacom Intuos3 9x12 Pad pad" Button 3 key "ctrl"
@@ -113,7 +117,7 @@ xsetwacom --set "Wacom Intuos3 9x12 Pen eraser" MapToOutput "HEAD-0"
 #/home/randy/bin/my-jack-start2
 
 # Mpd
-( ( sleep 4 && /usr/bin/mpd) & )
+# ( ( sleep 4 && /usr/bin/mpd) & ) #  mpd is started by systemd now, with mpd.service in --user mode
 
 # layout indicator
 #( ( sleep 4 && /usr/bin/sbxkb ) & )
