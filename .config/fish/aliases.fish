@@ -8,3 +8,4 @@ alias sdcv='sdcv --color'
 alias sdc='sdcv -u "LingvoUniversal (En-Ru)" --color'
 
 alias ya='yay'
+alias update='sudo pacman -Suy'
