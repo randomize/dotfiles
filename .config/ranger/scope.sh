@@ -131,11 +131,15 @@ handle_extension() {
 
         # Go games
         sgf)
-            gogui-thumbnailer -size 400 "$path" "$cached" && exit 6 ;;
+            gogui-thumbnailer -size 400 "${FILE_PATH}" "${IMAGE_CACHE_PATH}" && exit 6 ;;
+
+        # Xournal
+        xopp)
+            /usr/bin/xournal-thumbnailer "${FILE_PATH}" "${IMAGE_CACHE_PATH}" && exit 6 ;;
 
         # Blender scene
         blend)
-            try /usr/bin/blender-thumbnailer.py "$path" "$cached" && exit 6 || exit 1;;
+            /usr/bin/blender-thumbnailer.py "${FILE_PATH}" "${IMAGE_CACHE_PATH}" && exit 6 ;;
     esac
 }
 
