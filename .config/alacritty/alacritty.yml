@@ -317,8 +317,8 @@ font:
 #   - (macOS) /bin/bash --login
 #   - (Linux) user login shell
 #   - (Windows) powershell
-#shell:
-#  program: /bin/bash
+shell:
+  program: /bin/fish
 #  args:
 #    - --login
 
