@@ -11,6 +11,8 @@ end
 
 . "$HOME/.config/fish/aliases.fish"
 
+set fzf_fd_opts --hidden --exclude=.git
+
 # My custom binding to ctrl+t to search including ignored files
 function __fzf_search_current_dir_everything
     set -lx fzf_fd_opts -H -I

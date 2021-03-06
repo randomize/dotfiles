@@ -27,7 +27,7 @@ xrdb -merge ~/.Xresources
 setxkbmap -layout "dvp, ru" -option "grp:shifts_toggle"
 
 # Make Caps Lock a Control key
-setxkbmap -option ctrl:nocaps 
+# setxkbmap -option ctrl:nocaps 
 
 # Shift+NumLock shortcut toggle mouse keys
 # setxkbmap -option "keypad:pointerkeys"
@@ -41,7 +41,7 @@ setxkbmap -option terminate:ctrl_alt_bksp
 # Special mappings (see .Xmodmap file)
 xmodmap ~/.Xmodmap
 # xcape -e '0x1234=Return;Control_L=Escape'
-xcape -e 'Control_L=Escape'
+# xcape -e 'Control_L=Escape'
 
 # Set repeat rate to low value
 xset r rate 400 80

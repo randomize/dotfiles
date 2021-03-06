@@ -539,13 +539,13 @@ globalkeys = gears.table.join(
     -- Screenshots
     awful.key({                   }, "Print",
       function ()
-         awful.spawn.with_shell("maim ~/shot_$(date +%d-%b-%+4Y-%H-%M-%S).png", false)
+         awful.spawn.with_shell("maim ~/shot_$(date +%+4Y-%b-%d-%H-%M-%S).png", false)
          naughty.notify({ title="Screenshot", text="Capturing full screen" })
       end,
       {description = "take screenshot", group = "launcher"}),
     awful.key({ "Shift"         }, "Print",
       function ()
-         awful.spawn.with_shell("maim -u -s ~/shot_$(date +%d-%b-%+4Y-%H-%M-%S).png", false)
+         awful.spawn.with_shell("maim -u -s ~/shot_$(date +%+4Y-%b-%d-%H-%M-%S).png", false)
          naughty.notify({ title="Screenshot", text="Capturing an area" })
       end,
       {description = "take area screenshot", group = "launcher"}),
