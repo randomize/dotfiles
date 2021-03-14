@@ -1,0 +1,119 @@
+" vim:ft=tridactyl
+" used https://gitlab.com/Seirdy/dotfiles/-/tree/master - Thanks to Rohan Kumar, I only did small tweaks here
+
+sanitise tridactyllocal tridactylsync
+
+" colorscheme breeze
+
+"
+" Binds
+"
+
+" Comment toggler
+bind ;c hint -c summary,[class*="expand"],[class="togg"]
+"bind ;c hint -c [class*="expand"],[class="togg"]
+bindurl lobste\.rs ;c hint -c .comment label.comment_folder
+
+
+" Make gu take you back to subreddit from comments
+bindurl reddit\.com gu urlparent 4
+bindurl news\.ycombinator\.com/item gu urlparent 2
+
+" ;f and ;F are used to hint only the urls I'm most likely to click (like
+" search results)
+
+bindurl next\.duckduckgo\.com ;f hint -Jc  a.result__a
+bindurl next\.duckduckgo\.com ;F hint -Jbc a.result__a
+
+bindurl www\.google\.com ;f hint -Jc .rc > .yuRUbf > a
+bindurl www\.google\.com ;F hint -Jbc .rc > .yuRUbf > a
+
+bindurl news\.ycombinator\.com/news ;f hint -Jc .age > a
+bindurl news\.ycombinator\.com/news ;F hint -Jbc .age > a
+bindurl news\.ycombinator\.com/item ;f hint -Jc .comment .commtext a
+bindurl news\.ycombinator\.com/item ;F hint -Jbc .comment .commtext a
+
+bindurl github\.com/search ;f hint -Jc .f4.text-normal a
+bindurl github\.com/search ;F hint -Jbc .f4.text-normal a
+
+bindurl github\.com/.*/.*/issues ;f hint -Jc a.h4
+bindurl github\.com/.*/.*/issues ;F hint -Jbc a.h4
+bindurl github\.com/.*/.*/commits ;f hint -Jc a.message
+bindurl github\.com/.*/.*/commits ;F hint -Jbc a.message
+
+bindurl git\.sr\.ht/.*/.*/tree ;f hint -Jc .name > a
+bindurl git\.sr\.ht/.*/.*/tree ;F hint -Jbc .name > a
+bindurl git\.sr\.ht/.*/.*/log ;f hint -Jc .event > div > a:nth-of-type(1)
+bindurl git\.sr\.ht/.*/.*/log ;f hint -Jbc .event > div > a:nth-of-type(1)
+
+bindurl searx\.semipvt\.com ;f hint -Jc .result_header > a
+bindurl searx\.semipvt\.com ;F hint -Jbc .result_header > a
+
+" Allow Ctrl-a to select all in the commandline
+"unbind --mode=ex <C-a>
+
+" Let Ctrl-c to copy in the commandline
+"unbind --mode=ex <C-c>
+
+" Misc settings
+
+" Make Tridactyl work on more sites at the expense of some security - 
+" TODO: research on how much security actually is traded off
+" UPDATE: not working anymore actually ;)
+"set csp clobber
+"fixamo_quiet
+"set allowautofocus false
+
+" Set terminal
+" set editorcmd floating-terminal $EDITOR
+" set editorcmd kitty --class floatingAppFocus -- vim -c "set noshowmode | set noruler | set laststatus=0 | set noshowcmd | set cmdheight=1 |  nnoremap <ESC><ESC> :q!<ENTER> | nnoremap <ENTER> :x<ENTER> | inoremap <ENTER> <ESC>:x!<ENTER>" %f
+set editorcmd kitty --class floatingAppFocus -- nvim %f
+" bind --mode=normal gi composite focusinput -l | editor
+" set editorcmd tmux new-window -n firefox 'nvim -f %f; tmux wait-for -S firefox-neww-done' \; wait-for firefox-neww-done
+
+
+"set externalclipboardcmd wl-copy
+set yankto both
+set smoothscroll false
+set hintchars hutenosaidyfpgxbkmjwcrlqvz
+
+bind j scrollline 4
+bind k scrollline -4
+bind J tabnext
+bind K tabprev
+
+" Custom binds
+
+" Open about window to update
+bind ,a exclaim_quiet xdotool key --delay 50 alt+h a
+" Open native search dialog
+bind ? exclaim_quiet xdotool key --delay 50 alt+e f
+" Open url in Reddit Terminal Viewer
+bind ,r hint -W exclaim_quiet terminal tuir --enable-media
+" open Hacker News url in haxor-news
+bind ,h hint -W exclaim_quiet terminal hn-url
+" Open in mpv
+bind ,m hint -W mpvsafe
+" Open image in feh
+bind ,i composite hint -pipe img src | exclaim_quiet feh
+" Save to pocket (requires pockyt to be installed)
+bind ,P composite get_current_url | exclaim pockyt put -i
+bind ,p composite hint -pipe a href | exclaim pockyt put -i
+
+bind ,s source
+
+" Tab and window management
+bind gd tabdetach
+bind gD composite tabduplicate | tabdetach
+bind D tabduplicate
+
+
+" Search URLS
+set searchurls.dl https://duckduckgo.com/lite/?q=%s
+
+"set searchurls.d https://next.duckduckgo.com/?kmjx.menu=renderer%3ANativeMML%26%3Bsemantics%3Atrue%26%3Bcontext%3ABrowser%26%3Bzoom%3ANone&kp=-2&kc=-1&k1=-1&kam=osm&kak=-1&kax=-1&kaq=-1&kao=-1&kap=-1&kau=-1&t=ffab&ia=web&q=%s
+"set searchengine d
+
+set searchurls.duck https://duckduckgo.com/html?q=
+set searchurls.nitter https://nitter.mailstation.de/search?f=users&q=
+set searchengine duck
