@@ -9,8 +9,11 @@ alias sdc='sdcv -u "LingvoUniversal (En-Ru)" --color'
 
 alias ya='yay'
 alias update='sudo pacman -Suy'
+alias pacinst='sudo pacman -S'
 
 alias ls='lsd'
 alias ll='lsd -l'
 alias la='lsd -la'
 alias lt='lsd --tree'
+
+alias tiga='tig --all'
