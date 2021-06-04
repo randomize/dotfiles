@@ -192,9 +192,9 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 local awesompd = require('awesompd/awesompd')
 
 musicwidget = awesompd:create() -- Create awesompd widget
-musicwidget.font = "PragmataPro" -- Set widget font
-musicwidget.font_color = "#EEEEEE" --Set widget font color
--- musicwidget.background = "#000000" --Set widget background color
+musicwidget.font = "PragmataPro"
+musicwidget.font_color = beautiful.fg_normal
+musicwidget.background = beautiful.bg_normal
 musicwidget.scrolling = true -- If true, the text in the widget will be scrolled
 musicwidget.output_size = 30 -- Set the size of widget in symbols
 musicwidget.update_interval = 1 -- Set the update interval in seconds
@@ -278,7 +278,7 @@ memwidget = only_on_primary(memwidget)
 -- CPU Graph
 cpuwidget = awful.widget.graph()
 cpuwidget:set_width(100)
-cpuwidget:set_background_color("#494B4F")
+cpuwidget:set_background_color(beautiful.bg_normal)
 cpuwidget:set_color({ type = "linear", from = { 0, 0 }, to = { 10,0 }, stops = { {0, "#FF5656"}, {0.5, "#88A175"}, {1, "#AECF96" }}})
 vicious.register(cpuwidget, vicious.widgets.cpu, "$1")
 cpuwidget = only_on_primary(cpuwidget)
@@ -347,7 +347,7 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Each screen has its own tag table.
 
-    awful.tag({"α", "β", "γ", "δ", "ε", "ζ", "η", "θ", "ι", "κ", "λ" }, s, awful.layout.layouts[4])
+    awful.tag({"α", "β", "γ", "δ", "ε", "ζ", "η", "θ", "ι", "κ", "λ", "hidden" }, s, awful.layout.layouts[4])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -360,7 +360,11 @@ awful.screen.connect_for_each_screen(function(s)
                            awful.button({ }, 4, function () awful.layout.inc( 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(-1) end)))
     -- Create a taglist widget
-    s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, taglist_buttons)
+    local function filter(t) 
+        return t.name ~= "hidden" 
+    end 
+    s.mytaglist = awful.widget.taglist(s, filter, taglist_buttons) 
+    --s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, taglist_buttons)
 
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
@@ -807,6 +811,16 @@ awful.rules.rules = {
      -- { rule = { class = "mpv" },
      --  properties = { focusable = false } },
 
+    { rule = { class = "Conky" }, properties = { 
+        floating = true, 
+        focusable = false,
+        skip_pager = true,
+        skip_taskbar = true,
+        focus = false,
+        tag = "hidden",
+        border_width = 0,
+        --dockable = true 
+    }},
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
@@ -835,9 +849,6 @@ awful.rules.rules = {
           floating = true } 
     },
 
-    -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { screen = 1, tag = "2" } },
 }
 -- }}}
 
