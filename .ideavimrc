@@ -186,4 +186,9 @@ map <space>g :action GotoDeclaration<CR>
 map <space>f :action ReformatCode<CR>
 set visualbell
 set surround
+set easymotion
+set commentary
+set NERDTree
+
+
 
