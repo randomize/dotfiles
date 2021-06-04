@@ -66,7 +66,7 @@ beautiful.init(zenburn_theme_path)
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
-editor = os.getenv("EDITOR") or "vim"
+editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -95,7 +95,6 @@ awful.layout.layouts = {
     -- awful.layout.suit.corner.sw,
     -- awful.layout.suit.corner.se,
 }
-local layouts_f_keys = { "F9", "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F10", "F11", "F12" }
 -- }}}
 
 -- {{{ Notifications hook that logs messages
@@ -112,25 +111,7 @@ end
 -- }}}
 
 -- {{{ Helper functions
-local function clientfind (properties)
-   local clients = client.get()
-   local rv = nil
-   for i, c in pairs(clients) do
-      if match(properties, c) then
-	rv = c
-      end
-   end
-   return rv
-end
--- Returns true if all pairs in table1 are present in table2
-local function match (table1, table2)
-   for k, v in pairs(table1) do
-      if table2[k] ~= v then
-         return false
-      end
-   end
-   return true
-end
+
 -- drops terminal
 local function drop_terminal()
     local center_screen = awful.screen.getbycoord (1620, 960)
@@ -193,10 +174,8 @@ myawesomemenu = {
 mymainmenu = awful.menu({ items = { { "Awesome", myawesomemenu, beautiful.awesome_icon },
                                     { "Open terminal", terminal },
                                     { "Applications", xdgmenu },
-                                    -- { "File manager", "nautilus" },
                                     { "MyPaint", "mypaint" },
                                     { "Firefox", "firefox" },
-                                    { "Unity", "unity-editor" },
                                     { "Firefox Incognito", "firefox --new-instance -P trash" },
                                     { "qBittorrent", "qbittorrent" },
                                   }
