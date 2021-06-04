@@ -368,7 +368,7 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Each screen has its own tag table.
 
-    awful.tag({"α", "β", "γ", "δ", "ε", "ζ", "η", "θ", "ι", "κ", "λ" }, s, awful.layout.layouts[4])
+    awful.tag({"α", "β", "γ", "δ", "ε", "ζ", "η", "θ", "ι", "κ", "λ", "hidden" }, s, awful.layout.layouts[4])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -381,7 +381,11 @@ awful.screen.connect_for_each_screen(function(s)
                            awful.button({ }, 4, function () awful.layout.inc( 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(-1) end)))
     -- Create a taglist widget
-    s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, taglist_buttons)
+    local function filter(t) 
+        return t.name ~= "hidden" 
+    end 
+    s.mytaglist = awful.widget.taglist(s, filter, taglist_buttons) 
+    --s.mytaglist = awful.widget.taglist(s, awful.widget.taglist.filter.all, taglist_buttons)
 
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, tasklist_buttons)
@@ -828,6 +832,16 @@ awful.rules.rules = {
      -- { rule = { class = "mpv" },
      --  properties = { focusable = false } },
 
+    { rule = { class = "Conky" }, properties = { 
+        floating = true, 
+        focusable = false,
+        skip_pager = true,
+        skip_taskbar = true,
+        focus = false,
+        tag = "hidden",
+        border_width = 0,
+        --dockable = true 
+    }},
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
@@ -856,9 +870,6 @@ awful.rules.rules = {
           floating = true } 
     },
 
-    -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { screen = 1, tag = "2" } },
 }
 -- }}}
 
