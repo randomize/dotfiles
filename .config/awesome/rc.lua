@@ -213,9 +213,9 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 local awesompd = require('awesompd/awesompd')
 
 musicwidget = awesompd:create() -- Create awesompd widget
-musicwidget.font = "PragmataPro" -- Set widget font
-musicwidget.font_color = "#EEEEEE" --Set widget font color
--- musicwidget.background = "#000000" --Set widget background color
+musicwidget.font = "PragmataPro"
+musicwidget.font_color = beautiful.fg_normal
+musicwidget.background = beautiful.bg_normal
 musicwidget.scrolling = true -- If true, the text in the widget will be scrolled
 musicwidget.output_size = 30 -- Set the size of widget in symbols
 musicwidget.update_interval = 1 -- Set the update interval in seconds
@@ -299,7 +299,7 @@ memwidget = only_on_primary(memwidget)
 -- CPU Graph
 cpuwidget = awful.widget.graph()
 cpuwidget:set_width(100)
-cpuwidget:set_background_color("#494B4F")
+cpuwidget:set_background_color(beautiful.bg_normal)
 cpuwidget:set_color({ type = "linear", from = { 0, 0 }, to = { 10,0 }, stops = { {0, "#FF5656"}, {0.5, "#88A175"}, {1, "#AECF96" }}})
 vicious.register(cpuwidget, vicious.widgets.cpu, "$1")
 cpuwidget = only_on_primary(cpuwidget)
