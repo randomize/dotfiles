@@ -111,3 +111,7 @@
     commit-decoration-style = bold yellow box ul
     file-style = bold yellow ul
     file-decoration-style = none
+
+[diff "hex"]
+    textconv = hexdump -n 1024 -v -C
+    binary = true
