@@ -1,6 +1,0 @@
-
-location:Chisinau,MD
-fetch_cmd:curl -s
-units:metric
-daylight:true
-forecast:5
