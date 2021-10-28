@@ -1,14 +1,18 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export PYENV_ROOT:/home/randy/\x2epyenv
 SETUVAR __fish_initialized:3100
 SETUVAR _fish_abbr_gl:git\x20pull
 SETUVAR _fish_abbr_gp:git\x20push
+SETUVAR _fish_abbr_grhh:git\x20reset\x20HEAD\x20\x2d\x2dhard
 SETUVAR _fish_abbr_gst:git\x20status
 SETUVAR _fisher_0rax_2F_fish_2D_bd_files:/home/randy/\x2econfig/fish/fisher_plugins/functions/bd\x2efish\x1e/home/randy/\x2econfig/fish/fisher_plugins/functions/uninstall\x2efish\x1e/home/randy/\x2econfig/fish/fisher_plugins/completions/bd\x2efish
 SETUVAR _fisher_PatrickF1_2F_fzf_2E_fish_files:/home/randy/\x2econfig/fish/fisher_plugins/functions/__fzf_extract_var_info\x2efish\x1e/home/randy/\x2econfig/fish/fisher_plugins/functions/__fzf_preview_file\x2efish\x1e/home/randy/\x2econfig/fish/fisher_plugins/functions/__fzf_report_file_type\x2efish\x1e/home/randy/\x2econfig/fish/fisher_plugins/functions/__fzf_search_current_dir\x2efish\x1e/home/randy/\x2econfig/fish/fisher_plugins/functions/__fzf_search_git_log\x2efish\x1e/home/randy/\x2econfig/fish/fisher_plugins/functions/__fzf_search_git_status\x2efish\x1e/home/randy/\x2econfig/fish/fisher_plugins/functions/__fzf_search_history\x2efish\x1e/home/randy/\x2econfig/fish/fisher_plugins/functions/__fzf_search_shell_variables\x2efish\x1e/home/randy/\x2econfig/fish/fisher_plugins/conf\x2ed/fzf\x2efish
 SETUVAR _fisher_franciscolourenco_2F_done_files:/home/randy/\x2econfig/fish/fisher_plugins/conf\x2ed/done\x2efish
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:/home/randy/\x2econfig/fish/fisher_plugins/functions/fisher\x2efish\x1e/home/randy/\x2econfig/fish/fisher_plugins/completions/fisher\x2efish
-SETUVAR _fisher_plugins:jorgebucaran/fisher\x1ePatrickF1/fzf\x2efish\x1efranciscolourenco/done\x1e0rax/fish\x2dbd
+SETUVAR _fisher_jorgebucaran_2F_nvm_2E_fish_files:/home/randy/\x2econfig/fish/fisher_plugins/functions/_nvm_index_update\x2efish\x1e/home/randy/\x2econfig/fish/fisher_plugins/functions/_nvm_list\x2efish\x1e/home/randy/\x2econfig/fish/fisher_plugins/functions/_nvm_version_activate\x2efish\x1e/home/randy/\x2econfig/fish/fisher_plugins/functions/_nvm_version_deactivate\x2efish\x1e/home/randy/\x2econfig/fish/fisher_plugins/functions/nvm\x2efish\x1e/home/randy/\x2econfig/fish/fisher_plugins/conf\x2ed/nvm\x2efish\x1e/home/randy/\x2econfig/fish/fisher_plugins/completions/nvm\x2efish
+SETUVAR _fisher_patrickf1_2F_colored__man__pages_2E_fish_files:/home/randy/\x2econfig/fish/fisher_plugins/functions/cless\x2efish\x1e/home/randy/\x2econfig/fish/fisher_plugins/functions/man\x2efish
+SETUVAR _fisher_plugins:jorgebucaran/fisher\x1ePatrickF1/fzf\x2efish\x1efranciscolourenco/done\x1e0rax/fish\x2dbd\x1epatrickf1/colored_man_pages\x2efish\x1ejorgebucaran/nvm\x2efish
 SETUVAR fish_color_autosuggestion:585858
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:a1b56c
@@ -38,3 +42,6 @@ SETUVAR fish_pager_color_completion:normal
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
+SETUVAR fish_user_paths:/home/randy/\x2epyenv/bin
+SETUVAR nvm_data:/home/randy/\x2elocal/share/nvm
+SETUVAR nvm_mirror:https\x3a//nodejs\x2eorg/dist

@@ -17,3 +17,5 @@ alias la='lsd -la'
 alias lt='lsd --tree'
 
 alias tiga='tig --all'
+alias lsblk='lsblk --all --output NAME,MAJ:MIN,TYPE,LABEL,PTTYPE,PARTLABEL,RO,FSTYPE,SIZE,FSAVAIL,FSUSE%,MODEL,TRAN,RM,MOUNTPOINT,UUID'
+
