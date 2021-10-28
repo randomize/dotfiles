@@ -76,7 +76,20 @@
 [mergetool]
    prompt = true
 [mergetool "vimdiff"]
-   cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+   cmd = nvim -d "$BASE" "$LOCAL" "$REMOTE" "$MERGED" -c '$wincmd w' -c 'wincmd J'
+
+# Unity yaml merging when conflicts in prefabs happen
+#[merge]
+#   tool = unityyamlmerge
+#
+#[mergetool "unityyamlmerge"]
+#   trustExitCode = false
+#   cmd = /home/randy/Unity/Hub/Editor/2020.3.7f1/Editor/Data/Tools/UnityYAMLMerge merge -p "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
+
+# Binary files diff with hexdump
+[diff "hex"]
+    textconv = hexdump -v -C
+    binary = true
 
 # Setting up LFS
 
