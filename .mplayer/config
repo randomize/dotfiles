@@ -1,2 +1,0 @@
-vo=gl,xv,wayland,fbdev2
-ao=pulse,alsa
