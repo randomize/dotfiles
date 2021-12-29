@@ -78,63 +78,66 @@ Contents of gnome group:
 
    baobab                     // Visual disk space usage
    //empathy
-   eog                        // GNOME viewer
+   //eog                        // GNOME viewer
    //epiphany                 // Some Browser I don't use
-   evince                     // Document viewer
+   //evince                     // Document viewer
    //gdm                      // Gnome display manager
-   gnome-backgrounds        // Wallpapers
+   //gnome-backgrounds        // Wallpapers
    //gnome-calculator
    //gnome-contacts
    //gnome-control-center
-   gnome-desktop              // Dependency for nautilus
-   gnome-dictionary
-   gnome-disk-utility         
-   gnome-font-viewer
-   gnome-icon-theme           // Standard theme icons
-   gnome-icon-theme-extras    // same ..
-   gnome-icon-theme-symbolic  // ..
-   gnome-keyring
+   //gnome-desktop              // Dependency for nautilus
+   //gnome-dictionary
+   //gnome-disk-utility         
+   //gnome-font-viewer
+   //gnome-icon-theme           // Standard theme icons
+   //gnome-icon-theme-extras    // same ..
+   //gnome-icon-theme-symbolic  // ..
+   //gnome-keyring
    //gnome-screenshot        // Screenshot tool
    //gnome-session
-   gnome-settings-daemon
+   //gnome-settings-daemon
    //gnome-shell
    //gnome-shell-extensions
-   gnome-system-log
-   gnome-system-monitor
+   //gnome-system-log
+   //gnome-system-monitor
    //gnome-terminal
-   gnome-themes-extra   // Adwaita and friends
+   //gnome-themes-extra   // Adwaita and friends
    //gnome-user-docs       // Offline user documentation
-   gnome-user-share
+   //gnome-user-share
    //grilo-plugins
-   gucharmap               // Character map
-   mousetweaks
+   //gucharmap               // Character map
+   //mousetweaks
    //mutter
-   nautilus                // File browser (see setup(3))
-   sushi                   // Quick preview on space
+   //nautilus                // File browser (see setup(3))
+   //sushi                   // Quick preview on space
    //totem                 // Gnome player
-   tracker                 // Some search tool TODO: test it
-   vino
+   tracker3                 // Can't remove it since it's in gtk+ now ;(
+   //vino
    xdg-user-dirs-gtk
    //yelp                  // Help browser
-   polkit-gnome            // many gui stuff expects this to work with privelige escalation - like gdisks
+   //polkit-gnome            // many gui stuff expects this to work with privelige escalation - like gdisks
    gthumb                  // image viewre
 
-   dconf-editor  // helper tool to edit dconf stuff
+   //dconf-editor  // helper tool to edit dconf stuff
 
    //pulseaudio              // Pshhhaudio, replaced with pipewire-pulse and whole pipewire
    pipewire
    pipewire-pulse
-   pipewire-alse
+   pipewire-alsa
    pipewire-jack
 
-   adwaita-qt
+   //adwaita-qt
+   //vinarge  // remote desktop viewer, not using vnc/rdp anymore
 
 First to install:
 
+   linux-firmware    // firmware files
    screen            // Terminal multiplexer
    bash-completion   // Better completion on bash
    pkgfile           // For command not found hook (see setup (1))
    openssh           // SSH server (see setup)
+
 
 UEFI boot and stuff:
 
@@ -161,7 +164,7 @@ Bluetooth and network:
 
    //dnsmasq           // Local DNS cache (see setup(9)) - no need since Mikrotik
    //network-manager
-   gnu-netcat        // Network piping application
+   //gnu-netcat        // Network piping application
    openbsd-netcat
    //ngrep             // Network packet grep 
    mtr               // Combines the functionality of traceroute and ping into one tool
@@ -185,8 +188,10 @@ Bluetooth and network:
    ntop              // Another net monitor
 
    wireshark-qt      // Network sniffer
+   tcpdump           // more cli approach
    dstat             // Statistics tool
    //owncloud-client   // good owncloud cli
+   davfs2            // Webdav mounting 
 
 Web Servers:
 
@@ -251,6 +256,7 @@ Diagnostics and HDD:
    //aur/htop-vi   // Same as htop, but has vi keys!
    htop         // process monitor
    nvtop        // gpu monitor
+   bpytop       // Very nice CLI system monitor, should alias htop to it ;)
 
    stress        // Stress testing system
    sysdig        // Modern tool for diagnostics
@@ -300,7 +306,7 @@ Window managers and DE:
    sbxkb           // layout daemon
    //aur/kbdd-git    // simple kbd layout daemon, used by awesowe indicator
 
-   gksu              // GUI-sh sudo
+   //gksu              // GUI-sh sudo
    paprefs           // Pulse audio settings
    pavucontrol       // Pulse audio mixer
    //aur/pasystray-git // Simple tray icon for pulse mixer
@@ -328,6 +334,12 @@ Window managers and DE:
    interception-dual-function-keys // Interception plugin for dual-function keys: Tap for one key, hold for another
    interception-caps2esc // Interception plugin that transforms the most useless key ever in the most useful one
 
+   // DnD 
+   aur/dragon-drag-and-drop-git // Drag and drop source/sync for automation and fun
+
+   // man
+   plocate // mlocate fork for 'locate' command
+
 Recoll and helpers:
 
    recoll // Search tool(indexer and searcher) // TODO: setup and integrate
@@ -350,13 +362,13 @@ Themes:
 
 Terminal emulators:
 
-   local/st-git                 // Default terminal from suckless (+my patches)
-   xterm                        // Another JIC term ;)
+   kitty                        // Main terminal
+   alacritty                    // Fallback - fast gpu accelerated terminal emulator ..
+   xterm                        // Another JIC term if previous ones failed ;)
+   //local/st-git                 // terminal from suckless (+my patches)
    //cool-retro-term            // Eye-candy old school terminal emulator
-   alacritty                    // fast gpu accelerated terminal emulator ..
    //alacritty-terminfo           // .. and it's terminfo
-   kitty                        // more terminal
-   aur/libsixel-git             // image suppurt in terminals
+   //aur/libsixel-git             // image suppurt in terminals
    minicom                      // com port communication tool
 
 Shells:
@@ -375,6 +387,7 @@ Console tools:
    tmux           // Terminal multiplexer
    //aur/wemux-git  // Add-on for tmux with remote paircoding support
    powerline      // nice powerline theme for tmux
+   starship       // Modern universal shell prompt
 
    unp            // Console universal unpacker
    par2cmdline    // Par2 utility (backups)
@@ -409,6 +422,7 @@ Console tools:
   // aur/lsw        // Lists windows in X
    ls++           // Nice colored ls on steroids
    exa            // Modern colored ls
+   lsd             // another variation of ls
    //autojump       // For fast navigation with "j somewhere"
    zoxide         // a better autojump, with z
    //fasd           // alternative navigation tool, was great but now is unmaintained (in 2021)
@@ -438,8 +452,8 @@ Console tools:
    //aur/hr-git         // Horizontal lines maker
    //aur/cv-git         // Shows running coreutils basic commands and displays stats
   // aur/jrnl           // Nice journal with CLI
-   shellcheck         // Static analyzer for bash, note - has many haskell deps
-   shellcheck-static         // Static analyzer for bash no haskell deps
+   //shellcheck         // Static analyzer for bash, note - has many haskell deps
+   aur/shellcheck-bin         // Static analyzer for bash no haskell deps
   // aur/maybe-git      // Another secure checker for bash
 
    parallel          // helper to do parallel jubs in shell
@@ -447,6 +461,8 @@ Console tools:
    task              // task warrior
    aur/direnv            // Automatic setup of virtual envs (and not only) when you enter a dir
    //aur/batch-git    // Interesting tool for batch processing in text editor, written in crystal
+
+   tldr // nice man replacement ;)
 
 Navigation and GPS:
 
@@ -467,7 +483,7 @@ Nautilus:
 
 
    //nautilus-actions           // For custom actions in context menus
-   nautilus-sendto            // Send to pidgin and other places
+   //nautilus-sendto            // Send to pidgin and other places
    //nautilus-compare           // Integrates meld into context menu
    //nautilus-open-terminal   // To open current directory in TERM // Not using, just action
 
@@ -475,12 +491,12 @@ Nautilus:
    raw-thumbnailer         // RAW files thumbnails
 
 
-   gvfs           // GNOME file system abstraction
-   gvfs-smb       // Samba support
-   gvfs-mtp       // Android devices MTP mode support
-   gvfs-afc       // Apple
-   gvfs-gphoto2
-   gvfs-nfs
+   //gvfs           // GNOME file system abstraction
+   //gvfs-smb       // Samba support
+   //gvfs-mtp       // Android devices MTP mode support
+   //gvfs-afc       // Apple
+   //gvfs-gphoto2
+   //gvfs-nfs
    //libgphoto2
 
    dosfstools           // For old FAT etc.
@@ -497,7 +513,7 @@ Other file managers:
 
 Archives:
 
-   file-roller // Archiver for GNOME
+   //file-roller // Archiver for GNOME
 
    p7zip       // 7z support
    zip         // ZIP support
@@ -545,8 +561,8 @@ Office:
    libreoffice-fresh     // Latest version
    //libreoffice-fresh-ru  // Russian locale
    hunspell              // Spell checking
-   hunspell-en_US        // English dictionary
-   aur/hunspell-ru       // Russian dictionary
+   hunspell-en_us        // English dictionary
+   hunspell-ru           // Russian dictionary, now in community
    hyphen                // Hyphenation
    hyphen-en             // English
    aur/hyphen-ru         // Russian
@@ -568,6 +584,7 @@ iOS/OSX support:
 
    libplist
    libimobiledevice
+   libusbmuxd  // NOTE: why both?
    usbmuxd
    //libgpod
    //aur/cctools   // Set of OSX dev tools
@@ -581,7 +598,7 @@ IDE and editors:
    neovim             // Neovim - new vim
    neovim-qt          // qt GUI for nvim
    neovim-remote      // Python wrappor for remote features
-   python-neovim      // Python support for nvim
+   python-pynvim      // Python support for nvim
    //python2-neovim      // Python support for nvim
    //gonvim              // go wrapper for nvim
    //python2-unidecode  // for YCM in Vim
@@ -595,6 +612,7 @@ IDE and editors:
    emacs              // Another The IDE ;)
    //pycharm-community-edition  // Python IDE
    //codeblocks         // For oFramework projects
+   ghostwriter          // Markdown distraction free mode
 
    // dotnet
    //monodevelop                        // Mono IDE
@@ -666,9 +684,9 @@ Game development:
    tbb            // threadng building blocks
 
    // Engines
-   aur/unityhub   // Finally on Linux, Unity hub official, for some reason it's using gconf (nobody is using it these days)
+   //aur/unityhub   // Finally on Linux, Unity hub official, for some reason it's using gconf (nobody is using it these days)
    //unreal-engine
-   ogre
+   //ogre
 
    // Vulkan in vulkan-devel group
    vulkan-extra-tools  
@@ -677,8 +695,8 @@ Game development:
    vulkan-tools  
    vulkan-extra-layers
    vulkan-intel
-   vulkan-man-pages
-   vulkan-trace
+   //vulkan-man-pages
+   //vulkan-trace
    vulkan-validation-layers
   // aur/vkcube-git  // Little sample
    spirv-tools  
@@ -709,7 +727,8 @@ C++ compilers and tools:
 
    //aur/cquery // language server, deprecated, use clangd
    cppcheck                 // Static C/C++ analyzer
-   aur/clion                    // Jet brains ide
+   //aur/clion                    // Jet brains ide
+   //aur/sourcetrail          // Interesting visual codebase browser
 
 C++ libs:
 
@@ -763,7 +782,7 @@ Reverse and hack:
    //aur/darm-git          // disassembly library
    radare2                 // The hex editor and RE tool
    //radare2-cutter          // gui, now forked in rezin
-   smali                   // Android DEX reverse engineering tool
+   //smali                   // Android DEX reverse engineering tool, requires java11 ;(
    aur/android-apktool     // Android reverse engineering tool
    aur/dex2jar             // DEX to JAR converter
    //aur/jd-gui              // Java source reversing tool
@@ -787,8 +806,8 @@ Reverse and hack:
 
 Arduino and Electronics:
 
-    arduino          // main ide
-    arduino-avr-core // avrdude and avr-gcc
+    //arduino          // main ide, needs jre8 for some reason...
+    //arduino-avr-core // avrdude and avr-gcc
     dfu-util        // dfu util to flash firmware
     dfu-programmer    // atmel chip firmware
 
@@ -797,10 +816,11 @@ Build tools:
    //premake      // Lua based configuration and build tool
    //imake
    cmake
+   cmake-format // auto source code formatter for cmake
    ant          // Ant build system, for Android mainly
    gradle       // For Android development
    //gradle-doc
-   aur/waf      // waf
+   waf          // waf - General-purpose build system modelled after Scons
    gyp          // yep, more build systems
    ninja        // yep, more build systems
    maven
@@ -810,7 +830,9 @@ Source code tools:
    ack                      // Better than grep
    the_silver_searcher      // ag - better than ack :)
    ripgrep                  // rg is faster than grep/ack/ag
+   ripgrep-all              // same, but in pdf/doc/archives... rga
    fzf                      // universal fuzzy finder
+   fzy                      // a better fuzzy finder - written in Rust? (
 
    colordiff                // Nice colored diffs
    highlight                // for syntax highlighting in scripts
@@ -836,7 +858,7 @@ Version Control:
 
 HEX editors:
 
-   //dhex
+   dhex   // has good binary diff mode, otherwise not use it a lot these days, radare2 replaced it for me
    ht
    hexedit
    ghex   // (see setup(4) for integration)
@@ -844,13 +866,14 @@ HEX editors:
 Database and Web:
 
    // DB
-   mysql-workbench
-   mariadb          // Mysql fork
+   //mysql-workbench
+   //mariadb          // Mysql fork, use docker image instead if needed
    //sqliteman        // gui browser
    sqlitebrowser        // gui browser
 
-   // Mongo DB
-   aur/mongodb-bin // binary version, mongodb takes too long to compile
+   // Mongo DB, now removed from repos - https://lists.archlinux.org/pipermail/arch-dev-public/2019-January/029430.html
+   // Not using anymore, may use in docker if needed for tests
+   //aur/mongodb-bin // binary version, mongodb takes too long to compile
    //mongodb-tools
 
    // Backend
@@ -878,7 +901,8 @@ Emulation and virtualization:
 
    docker
    docker-compose  // Multi-image containers
-   nvidia-docker   // GPU accelerated docker (for ML)
+   //aur/nvidia-docker   // GPU accelerated docker (for ML)
+   //aur/nvidia-container-toolkit
 
    busybox
    libvirt // API for all kinds of vms
@@ -967,9 +991,9 @@ Other Languages:
    rustup     // Rustup now handles everything
 
    // Java
-   jdk8-openjdk             // JDK
-   jre8-openjdk             // JRE
-   jre8-openjdk-headless
+   jdk-openjdk             // JDK
+   jre-openjdk             // JRE
+   jre-openjdk-headless
    scala
 
    // Go
@@ -983,14 +1007,20 @@ Other Languages:
    ruby
    //dlang
    mono
-   //perl-lwp-protocol-https  // Used for some scripts
-   perlbrew  // perl manager, in your home dir
-   kotlin
-
-   ghc // haskell
-   stack // haskell manager
    clojure // new Java ;) (lisp dialect for jvm)
    crystal // ruby-like compiled language
+   kotlin
+
+   // Perl
+   //perl-lwp-protocol-https  // Used for some scripts
+   perlbrew  // perl manager, in your home dir
+   cpanminus // package installer for CPAN
+
+   // Haskell
+   //ghc // Haskell - can use stack instead
+   //stack // Haskell manager, too many deps
+   aur/stack-static // Static version - is it updated?
+
 
 
 Fonts:
@@ -1025,6 +1055,7 @@ Fonts:
    ttf-hack
    ttf-liberation
    ttf-ubuntu-font-family
+   ttf-iosevka-nerd
 
 Browsers:
 
@@ -1049,13 +1080,14 @@ Mail:
    //mutt
    neomutt // new mutt
 
-Downloaders:
+Downloaders and REST:
 
    curl     // New school
    wget     // Old school
    aria2    // Featured
    uget     // GUI-sh
    httpie   // HTTP request sender, like curl, but fancier
+   //aur/insomnia-bin // Fancy, but bloatware (electron, yay)
 
 File Sharing:
 
@@ -1082,8 +1114,8 @@ Instant Messaging:
    //aur/google-talkplugin   // Firefox Hangouts integration
    newsboat          // RSS cilent
    telegram-desktop
-   weechat             // cli universal chat
-   rainbowstream       // cli twitter
+   weechat             // cli (rss, other plugins) chatting
+   //rainbowstream       // cli twitter, Twitter killed it with API changes... use nitter
 
 Audio and Sound:
 
@@ -1255,9 +1287,9 @@ Audio and Sound:
    festival-english
    festival-us
    //festvox-ru
-   espeak
-   espeakup
-   aur/pocketsphinx // Speech recogniser
+   //espeak
+   //espeakup
+   //aur/pocketsphinx // Speech recogniser
 
 
 Music and lifecoding:
@@ -1265,7 +1297,7 @@ Music and lifecoding:
    //miniaudicle      // Chuck GUI
 
    //pd-extended      // Pure data extended
-   processing         // coding environment
+   //processing         // coding environment
 
    //milkytracker     // Tracker for XM
    //aur/modplay      // One more player
@@ -1282,7 +1314,7 @@ Media players:
 
    mplayer          // Good old player
    mpv              // Nice new player 
-   vlc              // Good too player
+   //vlc              // Good too player
    fswebcam         // CLI web cam helper
    webcamoid        // gui cam helper
 
@@ -1299,6 +1331,7 @@ Stream grabbers:
 
    //aur/livestreamer     // Helper script to live streaming
    youtube-dl   // YT Downloader
+   yt-dlp       // Modern fork
    you-get          // Anotehr one downloader
    aur/youtube-upload-git   // YT Uploader
 
@@ -1357,6 +1390,7 @@ Sketching:
    xournalpp             // Drawing app, c++ port of xournal
    mypaint
    pinta
+   //aur/staruml         // UML diagrams drawing
 
 Graphics software:
 
@@ -1426,24 +1460,24 @@ Math:
 TeX and Documentation:
 
    // texlive-most group
-   texlive-bibtexextra
+   //texlive-bibtexextra
    texlive-core
-   texlive-fontsextra
-   texlive-formatsextra
-   texlive-games
-   texlive-genericextra
-   texlive-htmlxml
-   texlive-humanities
-   texlive-latexextra
-   texlive-music
-   texlive-pictures
-   texlive-plainextra
-   texlive-pstricks
-   texlive-publishers
-   texlive-science
+   //texlive-fontsextra
+   //texlive-formatsextra
+   //texlive-games
+   //texlive-genericextra
+   //texlive-htmlxml
+   //texlive-humanities
+   //texlive-latexextra
+   //texlive-music
+   //texlive-pictures
+   //texlive-plainextra
+   //texlive-pstricks
+   //texlive-publishers
+   //texlive-science
 
-   texmaker
-   lyx            // WYSIWYG editor
+   //texmaker
+   //lyx            // WYSIWYG editor
    //equalx         // LaTeX equation editor
    ghostscript    // Post Script interpreter
 
