@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 # vim: ft=sh
 
 STAMP="$(date +'%d-%m-%Y-%H-%M-%S')"

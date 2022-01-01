@@ -21,6 +21,7 @@
 /.gitshots/
 /.config/asciinema/install-id
 /.config/puush/puush.conf
+/.tmux/plugins/
 
 # Vim temporals/generated
 /.viminfo
@@ -157,6 +158,9 @@
 # Python venv
 /.local/share/virtualenv/
 /.pyenv/
+
+# Fish
+/.local/share/fish/
 
 # Parsec (Work, access Win node)
 /.parsec/

@@ -879,6 +879,7 @@ Database and Web:
    sqliteman        // gui browser
    sqlitebrowser        // gui browser
    sqlcipher           // sqlite encryption
+   //litecli // pip package
 
    // Mongo DB, now removed from repos - https://lists.archlinux.org/pipermail/arch-dev-public/2019-January/029430.html
    // Not using anymore, may use in docker if needed for tests
