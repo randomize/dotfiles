@@ -34,10 +34,10 @@ Contents of base group:
    man-pages
    mdadm
    nano
-   netctl  // for some reason not installed, what is resolvconf (openresolf/systemd-resolvconf)
+   //netctl  // for some reason not installed, what is resolvconf (openresolf/systemd-resolvconf)
    pacman
    pciutils
-   pcmciautils
+   //pcmciautils - not installed, doesn't exist
    perl
    procps-ng
    psmisc
@@ -112,12 +112,13 @@ Contents of gnome group:
    //nautilus                // File browser (see setup(3))
    //sushi                   // Quick preview on space
    //totem                 // Gnome player
-   tracker3                 // Can't remove it since it's in gtk+ now ;(
+   //tracker3                 // Can't remove it since it's in gtk+ now ;(
    //vino
-   xdg-user-dirs-gtk
+   //xdg-user-dirs-gtk
    //yelp                  // Help browser
    //polkit-gnome            // many gui stuff expects this to work with privelige escalation - like gdisks
    gthumb                  // image viewre
+   seahorse                // Keys and passowrds management
 
    //dconf-editor  // helper tool to edit dconf stuff
    //adwaita-qt
@@ -150,10 +151,13 @@ UEFI boot and stuff:
    efibootmgr    // Can edit UEFI boot items in nvram
    intel-ucode   // Intel firmware patches for CPU, runtime only, goes to /boot, need to initrd in bootloader
    gnu-efi       // Toolchain for UEFI development
+   upower        // not sure if still used, but have insalled
 
 Packaging:
 
    local/yay             // Aur "pacman"
+   aur/rua               // same, but focused more on security, for example - not asking sudo pass on start (and failing if package build took too much time haha) like yay does
+   lostfiles      // Show pacman untracked crap on hdd
    pacman-contrib        // Pacmans scripts 
    reflector             // sorting mirrors
 
@@ -198,6 +202,8 @@ Bluetooth and network:
    dstat             // Statistics tool
    //owncloud-client   // good owncloud cli
    davfs2            // Webdav mounting 
+   rclone            // cloud sync with different providers
+   //speedtest-cli     // speedtest.net cli client, but better use librespeed test
 
 Web Servers:
 
@@ -238,6 +244,10 @@ Xorg stuff:
    xorg-server-xephyr // For nesting sessions and test awesome wm configs
    xorg-xmodmap
    xorg-xdpyinfo
+   xbindkeys         // bind keys
+   //xfconf            // for xfce?
+   xorg-xhost       // for docker Unity app X gpu passthrough
+   xorg-xkill       // no ideo why
 
 Desktop Sharing:
 
@@ -264,9 +274,11 @@ Diagnostics and HDD:
    nvtop        // gpu monitor
    bpytop       // Very nice CLI system monitor, should alias htop to it ;)
    iotop        // io usage of processes
+   sysstat             // iostat, pidstat etc monitoring tools
+   //aur/usbtop       // for usb bandwidth estimation
 
    stress        // Stress testing system
-   sysdig        // Modern tool for diagnostics
+   //sysdig        // Modern tool for diagnostics
    i7z           // i7 Processor info tool
    lshw          // lists info about hardware
    atop          // nice top replacement
@@ -284,10 +296,12 @@ Diagnostics and HDD:
    hddtemp
    smartmontools
 
-   unetbootin  // USB bootable creator
    lm_sensors
    aur/qdirstat    // Nice tree viewer for disk usage analysis
    //aur/winusb-git // Tool to create win usb bootables
+   //unetbootin  // USB bootable creator
+   //wimlib      // windows image tools
+   //woeusb      // windows image tools
 
 Window managers and DE:
 
@@ -329,6 +343,7 @@ Window managers and DE:
    rofi             // Great dmenu replacement
    rofi-dmenu       // simlink
    aur/albert-minimal // feature rich gui launcher
+   aur/rlaunch       // alternative in Rust, like dmenu, but quite fast
 
    //xmonad          // Haskell window manager
    openvpn         // VPN client
@@ -396,22 +411,27 @@ Console tools:
    //aur/wemux-git  // Add-on for tmux with remote paircoding support
    powerline      // nice powerline theme for tmux
    starship       // Modern universal shell prompt
-
    unp            // Console universal unpacker
-   par2cmdline    // Par2 utility (backups)
-   rmlint         // Duplicate files searcher and remover
-   rmlint-shredder  // Duplicate files searcher and remover - helper
-   lostfiles      // Show pacman untracked crap on hdd
-   fdupes            // modern duplicate finder
    ncdu             // curses gui du ;)
+   tree           // Nice directory tree listing
+
+   // backups
+   par2cmdline    // Par2 utility (backups)
    borg           // Borg is a backup program
+   rsync
+
+   // dups finders TODO: compare
+   fdupes            // A duplicate finder
+   rmlint            // Duplicate files searcher and remover, faster than fdupes
+   rmlint-shredder   // Duplicate files searcher and remover - helper
+   aur/rdfind        // Yet another one
+
 
    pv             // Pipe viewer, can be used for progress monitoring
    rlwrap         // Read line wrap (for maxima and others) also awesome-client
    lsof           // Show open files tool
    moreutils      // Cool toolset (ex vipe for vim editing while passing though pipe)
    most           // Feature rich pager
-   tree           // Nice directory tree listing
    //aur/colortheme // Terminal colors table script
    dfc            // Nice df ;)
   // aur/colout-git        // console color utility
@@ -454,7 +474,7 @@ Console tools:
 
    zenity           // Display GUI messages from console tools - Used for some my scripts
 
-  // aur/sparklines-git // Very nice console spark lines
+   aur/sparklines-git // Very nice console spark lines, https://github.com/holman/spark
    //aur/hr-git         // Horizontal lines maker
    //aur/cv-git         // Shows running coreutils basic commands and displays stats
   // aur/jrnl           // Nice journal with CLI
@@ -583,12 +603,13 @@ Office:
    //goldendict            // Good dictionary
    sdcv                   // Console version of Stardict, nom in community
    words                 // Just a list of dictionaries
+   qstardict               // Gui version
 
-   tesseract             // Good old OCR
-   tesseract-data-deu    // OCR language packs
-   tesseract-data-eng
-   tesseract-data-ron
-   tesseract-data-rus
+   //tesseract             // Good old OCR
+   //tesseract-data-deu    // OCR language packs
+   //tesseract-data-eng
+   //tesseract-data-ron
+   //tesseract-data-rus
 
 iOS/OSX support:
 
@@ -636,40 +657,6 @@ IDE and editors:
    //aur/rider              // JetBrains IDE for C# and Unity
    cloc // Count lines of code
 
-   // qt5 group
-   qt5-3d
-   qt5-base
-   qt5-canvas3d
-   qt5-charts
-   qt5-connectivity
-   qt5-datavis3d
-   qt5-declarative
-   qt5-doc
-   qt5-examples
-   qt5-gamepad
-   qt5-graphicaleffects
-   qt5-imageformats
-   qt5-location
-   qt5-multimedia
-   qt5-networkauth
-   qt5-quickcontrols
-   qt5-script
-   qt5-scxml
-   qt5-sensors
-   qt5-serialbus
-   qt5-serialport
-   qt5-speech
-   qt5-svg
-   qt5-tools
-   qt5-translations
-   qt5-virtualkeyboard
-   qt5-wayland
-   qt5-webengine
-   qt5-webkit
-   qt5-websockets
-   qt5-webview
-   qt5-x11extras
-   qt5-xmlpatterns
 
    qtcreator          // Qt IDE
 
@@ -751,6 +738,7 @@ C++ libs:
    aur/chaiscript // scirptable lang for c++
    csfml          // small footprit lib sfml
    lld            // linker
+   spdlog         // logging, header only
 
    opencv         // Computer vision lib
    //opencv-samples // and samples
@@ -825,6 +813,9 @@ Arduino and Electronics:
     //arduino-avr-core // avrdude and avr-gcc
     dfu-util        // dfu util to flash firmware
     dfu-programmer    // atmel chip firmware
+    //aur/setserial     // help with ttyACM0 that Arduino creates
+    uucp
+    usb_modeswitch
 
 Build tools:
 
@@ -847,7 +838,8 @@ Source code tools:
    ripgrep                  // rg is faster than grep/ack/ag
    ripgrep-all              // same, but in pdf/doc/archives... rga
    fzf                      // universal fuzzy finder
-   fzy                      // a better fuzzy finder - written in Rust? (
+   fzy                      // a better fuzzy finder - written in Rust? (no)
+   skim                     // one more fuzzy finder in rust
 
    colordiff                // Nice colored diffs
    highlight                // for syntax highlighting in scripts
@@ -883,8 +875,10 @@ Database and Web:
    // DB
    //mysql-workbench
    //mariadb          // Mysql fork, use docker image instead if needed
-   //sqliteman        // gui browser
+   sqlite-analyzer
+   sqliteman        // gui browser
    sqlitebrowser        // gui browser
+   sqlcipher           // sqlite encryption
 
    // Mongo DB, now removed from repos - https://lists.archlinux.org/pipermail/arch-dev-public/2019-January/029430.html
    // Not using anymore, may use in docker if needed for tests
@@ -902,10 +896,25 @@ Database and Web:
 
    pelican // Static blog generator
 
+Npm, Rust, Ruby Packs:
+
+    // Not installed with packman, so commenting it out here, but still want to track them - TODO: extend syntax for packs
+
+    // NPM
+    // appcenter-cli - used to use appcenter
+    // chromecast-device-emulator - testing with chromecast
+    // * gh-search - good search tool for github, hate to use search in browser - cli is so much better
+    // jira-cli - was using to run jira automation stuff
+    // * tiddlywiki - great wiki engine I use for my wiki
+
+    // Ruby
+    // jekyll - for blog experiments
+
 Emulation and virtualization:
 
    virtualbox                 // Virtual (see setup(6))
-   virtualbox-host-modules    // Kernel modules
+   virtualbox-host-modules-arch    // Kernel modules
+   virtualbox-guest-iso
    //virtualbox-ext-vnc         // VNC support
    aur/virtualbox-ext-oracle  // Experimental features
    linux-headers              // For custom modules compilation
@@ -935,45 +944,58 @@ CD DVD:
    cdrtools // For fileroller to understand iso
    whipper  // cd ripper
 
-Machine learning:
+Machine learning and Python:
 
    // Jupyter is a new web interface for sci python tasks, but it's best to install in in docker
    //jupyter
    //ipython2-notebook      // for Python2 support
    mathjax                // for jupyter
+   python-qtconsole        // for jupyter or ipython, simple gui that looks like terminal but can show plots too
+   python-keyrings-alt     // alternative keyrings implementation
 
    ipython                // Interactive python shell
-   //ipython2               // Same for 2
    bpython                // another interactive python shell
 
-   pyenv  // python versions management with shims
-   pyenv-virtualenv // support for venv in a similar way
+   pyenv                   // python versions management with shims
+   pyenv-virtualenv        // +support for venv in a similar way
+   python-pipenv           // Pipfile, Pip & VirtualEnv tools
+   python-lsp-server       // New fork of python-language-server https://github.com/python-lsp/python-lsp-server
+   python-pylint           // linter
+
+   python-pandas          // Analytics tools
+   python-pandas-datareader
 
    python-numpy           // Matlab inside python
    python-scipy           // Math stuff
    python-matplotlib      // Powerful plotting library
    python-scikit-learn    // Machine learning algorithms
-   aur/python-scikit-image // image tools
+   python-sympy           // Symbolic manipulations
+   //aur/python-scikit-image // image tools
    python-pillow
    python-numexpr
 
+   python-bottleneck       // fast numpy array functions cpython
+   python-hexdump          // hex dump helpers
+   python-markdown
+   python-h5py
+
    cuda                    // nvidia gpgpu lib 
-   tensorflow-opt-cuda     // tensorflow on cuda
-   tensorboard             
+   //tensorflow-opt-cuda     // tensorflow on cuda
+   //tensorboard             
 
 Python stuff:
 
    python-pip
 
    //wxpython               // for ipython
-   python-nose            // for ipython test suite
+   //python-nose            // for ipython test suite
    //python-pyqt4           // for ipython qt console
    //python-pyqt5           // for matplotlib
    python-pygments        // Coloring syntax library (for ipython qt console) + Standlalone tool for using pygments: pygmentize
 
    //python-pyzmq           // for ipython notebook and ipython qt console
    //python-tornado         // for ipython notebook
-   python-jinja           // for ipython notebook
+   //python-jinja           // for ipython notebook
 
    python-gitlab         // gitlab API wrapper for python
    python-opengl
@@ -1020,8 +1042,14 @@ Other Languages:
    // R lang
    r
 
-   // Other
+   // Ruby
    ruby
+   ruby-irb
+   ruby-bundler
+   ruby-rdoc
+   ruby-docs
+
+   // Other
    //dlang
    mono
    clojure // new Java ;) (lisp dialect for jvm)
@@ -1078,10 +1106,11 @@ Browsers:
 
    firefox                 // See setup(7)
    //aur/firefox-theme-gnome  // theme
+   //aur/shadowfox-updater    // not supported
    //firefox-adblock-plus    // No ads                         using as extension
    //firefox-noscript        // No scripts                     using as extension
    //pentadactyl-hg          // Vim-like behavior for firefox, using as extension
-   firefox-tridactyl-native  // native plugin
+   aur/firefox-tridactyl-native  // native plugin
 
    chromium                // Used only when damn Flash is required
    //pepper-flash            // Flash plugin for it
@@ -1090,11 +1119,13 @@ Browsers:
    //aur/vimprobable2-git // Minimalistic vimlike browser
    //dwb                  // Another smal browser
    //qutebrowser            // dwb inspired activly developed vim-browser
+   torbrowser-launcher      // private browser
 
 Mail:
 
    //thunderbird
    //mutt
+   urlscan // selector for urls - TODO: does neomutt need it?
    neomutt // new mutt
 
 Downloaders and REST:
@@ -1104,6 +1135,7 @@ Downloaders and REST:
    aria2    // Featured
    uget     // GUI-sh
    httpie   // HTTP request sender, like curl, but fancier
+   xh       // yet onether one, guess what, written in Rust ;)
    //aur/insomnia-bin // Fancy, but bloatware (electron, yay)
 
 File Sharing:
@@ -1398,10 +1430,9 @@ Screen capture:
 Monitor tools:
 
    xorg-xrandr
-   //aur/ddccontrol-git       // See also ddccontrol PKGBUILD
-   //ddccontrol-db    // Database, no W2600HP yet. TODO: contribute
-   aur/ddcutil
+   ddcutil            // DDC command line interface
    i2c-tools
+   read-edid
 
 Sketching:
 
@@ -1425,6 +1456,7 @@ Graphics software:
    povray        // Old photorealistic renderer
   // aur/awesomebump-git // Free crazybump replacement
    fontforge
+   qcad
 
 Books and scanning:
 
@@ -1444,6 +1476,7 @@ Books and scanning:
    pdfcrack     // password pdf remover
    pdfgrep      // searching through pdf files (see also rga - rip grep all )
    pdftk        // command line pdfe tool
+   qpdf         // another cli editor
 
 Security:
 
@@ -1504,7 +1537,7 @@ TeX and Documentation:
    //equalx         // LaTeX equation editor
    ghostscript    // Post Script interpreter
 
-   scribus        // Not TeX but professional page layout software
+   //scribus        // Not TeX but professional page layout software
    mdp            // Markdown presentation in CLI
 
    asciidoc       // human readable format
@@ -1548,6 +1581,7 @@ Android development:
    aur/android-studio // IDE
    android-udev       // Udev rules for most popular devices
    //android-tools      // fastboot, adb, etc.. actually platform tools depracates it
+   repo               // Android tool for source pulling AOSP
 
    //lib32-libstdc++5  // Android SDK is 32 bit, so using this to workaround
    //lib32-libxv       // and this..
