@@ -34,7 +34,7 @@ Contents of base group:
    man-pages
    mdadm
    nano
-   netctl
+   netctl  // for some reason not installed, what is resolvconf (openresolf/systemd-resolvconf)
    pacman
    pciutils
    pcmciautils
@@ -120,15 +120,21 @@ Contents of gnome group:
    gthumb                  // image viewre
 
    //dconf-editor  // helper tool to edit dconf stuff
+   //adwaita-qt
+   //vinarge  // remote desktop viewer, not using vnc/rdp anymore
+
+Audio:
 
    //pulseaudio              // Pshhhaudio, replaced with pipewire-pulse and whole pipewire
    pipewire
    pipewire-pulse
    pipewire-alsa
    pipewire-jack
+   paprefs            // Pulse audio settings
+   pavucontrol        // Pulse audio mixer
+   pasystray          // Simple tray icon for pulse mixer
+   //pavumeter         // Pulse meter
 
-   //adwaita-qt
-   //vinarge  // remote desktop viewer, not using vnc/rdp anymore
 
 First to install:
 
@@ -185,7 +191,7 @@ Bluetooth and network:
    nethogs           // Network monitor
    nmap              // Network security scanner
    //nload             // Network load monitor
-   ntop              // Another net monitor
+   //aur/ntop              // Another net monitor
 
    wireshark-qt      // Network sniffer
    tcpdump           // more cli approach
@@ -257,6 +263,7 @@ Diagnostics and HDD:
    htop         // process monitor
    nvtop        // gpu monitor
    bpytop       // Very nice CLI system monitor, should alias htop to it ;)
+   iotop        // io usage of processes
 
    stress        // Stress testing system
    sysdig        // Modern tool for diagnostics
@@ -307,12 +314,10 @@ Window managers and DE:
    //aur/kbdd-git    // simple kbd layout daemon, used by awesowe indicator
 
    //gksu              // GUI-sh sudo
-   paprefs           // Pulse audio settings
-   pavucontrol       // Pulse audio mixer
-   //aur/pasystray-git // Simple tray icon for pulse mixer
-   //pavumeter         // Pulse meter
-   ponymix           // CLI mixer
-   pamixer
+
+   aur/ponymix           // CLI mixer
+   pamixer           // more CLI mixer
+   pulsemixer        // NCurses-based ui
 
    openbox         // Fallback window manager
 
@@ -339,6 +344,9 @@ Window managers and DE:
 
    // man
    plocate // mlocate fork for 'locate' command
+
+   // mime
+   perl-file-mimeinfo // tools: mimeinfo/mimefile/mimeopen
 
 Recoll and helpers:
 
@@ -396,7 +404,6 @@ Console tools:
    lostfiles      // Show pacman untracked crap on hdd
    fdupes            // modern duplicate finder
    ncdu             // curses gui du ;)
-   aur/pxz        // Parallel xz
    borg           // Borg is a backup program
 
    pv             // Pipe viewer, can be used for progress monitoring
@@ -414,6 +421,7 @@ Console tools:
    lesspipe           // input filter for the pager less
    up             // ultimate plumber
    aur/aur-talk-git // simple AUR comments fetcher
+   pueue            // command line scheduler
 
    //aur/vimpager-git   // Vim for paging and vimcat
    sharutils          // Shell archives support
@@ -423,9 +431,7 @@ Console tools:
    ls++           // Nice colored ls on steroids
    exa            // Modern colored ls
    lsd             // another variation of ls
-   //autojump       // For fast navigation with "j somewhere"
-   zoxide         // a better autojump, with z
-   //fasd           // alternative navigation tool, was great but now is unmaintained (in 2021)
+   zoxide         // a better autojump/fasd - with z
    socat          // socket tool
    bat            // cat replacement for file display
    fd             // find alternative
@@ -469,6 +475,7 @@ Navigation and GPS:
    gpxsee // GPX track viewer
    gpx-viewer // Another one
    aur/google-earth-pro // gogole maps with Java interface and history
+   gpsbabel  // GPS formats converter (gpx <==> fit - with Garmin)
 
 
 Fuse filesystems:
@@ -510,6 +517,7 @@ Other file managers:
    ranger   // Fast and pretty manager powered by Vim keys (see setup(18))
    //vifm             // ranger is preferable but this good too
    nnn                // modern vim like file manager
+   lf                 // ranger-like, but faster and in Go
 
 Archives:
 
@@ -528,8 +536,12 @@ Archives:
 
    atool      // console one
    pigz       // Parallel GZIP
+   aur/pxz-git        // Parallel xz
+   pbzip2    // same for bzip2
    lhasa      // lzh/lza tool
    dar        // disk achive
+   fuse-zip   // mounting (newer) also see fuse-archive
+   aur/archivemount // older, but used by nnn 
 
 Viewers:
 
@@ -621,7 +633,7 @@ IDE and editors:
    //code // VSCode, community version, but many plugins don't work here...
 
    //intellij-idea-community-edition    // Idea
-   aur/rider              // JetBrains IDE for C# and Unity
+   //aur/rider              // JetBrains IDE for C# and Unity
    cloc // Count lines of code
 
    // qt5 group
@@ -633,7 +645,6 @@ IDE and editors:
    qt5-datavis3d
    qt5-declarative
    qt5-doc
-   aur/qt5-enginio // enginio
    qt5-examples
    qt5-gamepad
    qt5-graphicaleffects
@@ -687,6 +698,7 @@ Game development:
    //aur/unityhub   // Finally on Linux, Unity hub official, for some reason it's using gconf (nobody is using it these days)
    //unreal-engine
    //ogre
+   mono-msbuild     // To work with Unity in Omnisharp
 
    // Vulkan in vulkan-devel group
    vulkan-extra-tools  
@@ -758,6 +770,8 @@ C++ libs:
    //aur/libopenblas  // for side by side with blas (community/openblas won't do that)
    musl           // light stdlib
    superlu    // MAT lib
+   gperf      // perfec string hashing generator
+   png++      // libpng wrapper
 
 Debuggers:
 
@@ -787,6 +801,7 @@ Reverse and hack:
    aur/dex2jar             // DEX to JAR converter
    //aur/jd-gui              // Java source reversing tool
    ghidra                  // New IDA-like framework for RE
+   pax-utils                // scanelf and friends
 
 
    // Binwalk and its deps
@@ -859,7 +874,7 @@ Version Control:
 HEX editors:
 
    dhex   // has good binary diff mode, otherwise not use it a lot these days, radare2 replaced it for me
-   ht
+   //ht
    hexedit
    ghex   // (see setup(4) for integration)
 
@@ -881,6 +896,7 @@ Database and Web:
    nodejs
    //nodejs-nodemon // helper daemon to manage node instances
    aur/nvm  // managing node js versions in like a virtual envs
+   aur/pm2  // process manager for node
    emscripten
    yarn // new npm
 
@@ -930,6 +946,8 @@ Machine learning:
    //ipython2               // Same for 2
    bpython                // another interactive python shell
 
+   pyenv  // python versions management with shims
+   pyenv-virtualenv // support for venv in a similar way
 
    python-numpy           // Matlab inside python
    python-scipy           // Math stuff
@@ -951,8 +969,7 @@ Python stuff:
    python-nose            // for ipython test suite
    //python-pyqt4           // for ipython qt console
    //python-pyqt5           // for matplotlib
-   python-pygments        // Coloring syntax library (for ipython qt console)
-   pygmentize             // Standlalone tool for using pygments
+   python-pygments        // Coloring syntax library (for ipython qt console) + Standlalone tool for using pygments: pygmentize
 
    //python-pyzmq           // for ipython notebook and ipython qt console
    //python-tornado         // for ipython notebook
@@ -1117,7 +1134,7 @@ Instant Messaging:
    weechat             // cli (rss, other plugins) chatting
    //rainbowstream       // cli twitter, Twitter killed it with API changes... use nitter
 
-Audio and Sound:
+Pro Audio:
 
    // pro-oudio group
    fluidsynth
@@ -1345,6 +1362,7 @@ Multimedia tools:
    v4l2loopback-utils // Loopback video device helpers
    //v4l2ucp            // Contol panel for v4l2
    aur/id3              // tags edit, last updated 2015
+   //aur/mystic           // GUI for ffmpeg
 
 
 Codecs:
@@ -1371,6 +1389,7 @@ Screen capture:
    flameshot              // Modern screenshot tool
    simplescreenrecorder   // Best recorder ever, like it's OpenGL capture feature
    obs-studio             // even more advanced screen recorder
+   peek                   // simple recorder, gnome-like gui, not too many features
 
    aur/gromit-mpx-git     // Nice annotation tool for casting
    screenkey          // Keys display, now in community
@@ -1395,6 +1414,7 @@ Sketching:
 Graphics software:
 
    imagemagick   // Best editor/viewer ever (see setup(16))
+   gifski        // Gif kromsator
    gimp          // Raster
    inkscape      // Vector
   // aur/inkscape-open-symbols-git // Free clipart lib
@@ -1421,9 +1441,9 @@ Books and scanning:
 
    //aur/pdftk-bin    // PDF console editor tool
    pdfmod           // PDF GUI-sh editor
-  // aur/pdfcrack     // Protection remover
-
-
+   pdfcrack     // password pdf remover
+   pdfgrep      // searching through pdf files (see also rga - rip grep all )
+   pdftk        // command line pdfe tool
 
 Security:
 
@@ -1432,6 +1452,9 @@ Security:
    keepassxc      // Another fork
    xdotool      // For keepass to auto type
    gnupg        // GNU Privacy Guard
+   pinentry     // universal (curses/gui) pin entering helper
+   //aur/pinentry-dmenu  // dmenu based fork, 
+   pinentry-rofi  // rofi fork, fun fact it's in Scheme ;) 
 
    pass         // New password manager
    pwgen        // Random password generator
@@ -1486,6 +1509,7 @@ TeX and Documentation:
 
    asciidoc       // human readable format
    asciidoctor
+   aur/pandoc-bin // haskell based convertor for document formants
 
 Games and fun:
 
@@ -1537,6 +1561,7 @@ Android development:
    //swt             // Another dependency for android-sdk
    //heimdall        // Samsung devices flashing tool, not using Samsung anywhere anymore
   // aur/pidcat      // Nice colored logcat with PID
+  lnav               // Universal log viewer
 
 Intel intel-parallel-studio-2013 meta from AUR:
 
