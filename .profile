@@ -18,9 +18,19 @@ export bully_dev="eugene"
 export PATH=$PATH:$HOME/.node_modules/bin
 export npm_config_prefix=~/.node_modules
 
+# Ruby stuff
+export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
+export PATH="$PATH:$GEM_HOME/bin"
+
 # NNN
 export NNN_BMS='d:~/Documents;D:~/Downloads/'
 export NNN_SSHFS="sshfs -o follow_symlinks"        # make sshfs follow symlinks on the remote
 export NNN_COLORS="2136"                           # use a different color for each context
 export NNN_TRASH=1                                 # trash (needs trash-cli) instead of delete
 # export 
+
+# for ranger shell
+export TERMCMD=kitty
+
+# QT apps, need aur/adwaita-qt package
+export QT_STYLE_OVERRIDE=adwaita
