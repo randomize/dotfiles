@@ -114,8 +114,8 @@ end
 
 -- drops terminal
 local function drop_terminal()
-    local center_screen = awful.screen.getbycoord (1620, 960)
-    drop("alacritty --class my_floating_terminal -e ~/bin/starttmux.sh", "center", "center", 0.69, 0.75, true, center_screen)
+    local center_screen = awful.screen.getbycoord (1024, 720)
+    drop("alacritty --class my_floating_terminal -e ~/bin/starttmux.sh", "center", "center", 0.8, 0.8, true, center_screen)
 end
 
 local function client_menu_toggle_fn()
@@ -397,15 +397,6 @@ awful.screen.connect_for_each_screen(function(s)
     }
 end)
 
--- NOTE: just debugging to see which screen is which ;)
--- for i = 1, 4 do
---     naughty.notify({ preset = naughty.config.presets.critical, screen = i, title = "Geometry", text = i .. ") G:" .. screen[i].geometry.width .. "x" .. screen[i].geometry.height })
--- end
--- Ugly hack to make screens in order - TODO: can I arrange them in xrandr before it gets into awesomewm?
-screen[2]:swap(screen[3])
-screen[3]:swap(screen[4])
-awful.screen.focus(1)
-
 -- }}}
 
 -- {{{ Mouse bindings
@@ -555,17 +546,17 @@ globalkeys = gears.table.join(
     ),
     awful.key({ modkey,           }, "b",
       function ()
-         awful.spawn("passmenu --type -l 32 -fn \"PragmataPro-12:bold\" -i -p \"*\" ")
+         awful.spawn("rofipassmenu")
       end
     ),
     awful.key({ modkey, "Shift"   }, "b",
       function ()
-         awful.spawn("stepmenu --type -l 32 -fn \"PragmataPro-12:bold\" -i -p \"*\" ")
+         awful.spawn("stepmenu")
       end
     ),
     awful.key({ modkey, "Control"   }, "b",
       function ()
-         awful.spawn("wordmenu --type -l 32 -fn \"PragmataPro-12:bold\" -i -p \"*\" ")
+         awful.spawn("wordmenu")
       end
     ),
 
