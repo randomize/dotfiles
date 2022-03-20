@@ -123,7 +123,6 @@ end
 local function drop_terminal()
     local center_screen = awful.screen.getbycoord (2620, 960)
     drop(terminal .. " --class my_floating_terminal ~/bin/starttmux.sh", "center", "center", 0.75, 0.8, true, center_screen)
-    --drop("alacritty --class my_floating_terminal -e ~/bin/starttmux.sh", "center", "center", 0.69, 0.75, true, center_screen)
 end
 
 local function client_menu_toggle_fn()
@@ -606,7 +605,7 @@ globalkeys = gears.table.join(
     ),
     awful.key({ modkey,           }, "b",
       function ()
-         awful.spawn("passmenu --type -l 32 -fn \"PragmataPro-12:bold\" -i -p \"*\" ")
+         awful.spawn("rofipassmenu")
       end
     ),
     awful.key({ modkey, "Shift"   }, "b",

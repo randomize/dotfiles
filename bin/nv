@@ -1,0 +1,5 @@
+#!/bin/bash
+# vim: ft=sh
+NVIM_LISTEN_ADDRESS=/tmp/nvimsocket-qt nvim --headless &
+sleep 1
+nvim-qt --server /tmp/nvimsocket-qt

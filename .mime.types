@@ -1,2 +1,3 @@
 # Fixing ranger djvu preview (by default djvu files are considered image/vnd.djvu and w3i fails to display them)
 text/djvu djv djvu
+type=text/plain exts=md,mkd,mkdn,mdwn,mdown,markdown, desc="Markdown document"

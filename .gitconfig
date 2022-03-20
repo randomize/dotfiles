@@ -77,7 +77,18 @@
 [mergetool]
    prompt = true
 [mergetool "vimdiff"]
-   cmd = nvim -d "$BASE" "$LOCAL" "$REMOTE" "$MERGED" -c '$wincmd w' -c 'wincmd J'
+   cmd = "nvim -d \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\" -c '$wincmd w' -c 'wincmd J'"
+
+[diff]
+        tool = nvimdiff
+[difftool]
+        prompt = false
+[difftool "nvimdiff"]
+        cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+[difftool "hexdiff"]
+        cmd = "radiff2 \"$LOCAL\" \"$REMOTE\""
+[difftool "dhex"]
+        cmd = "dhex \"$LOCAL\" \"$REMOTE\""
 
 # Unity yaml merging when conflicts in prefabs happen
 #[merge]
@@ -88,9 +99,9 @@
 #   cmd = /home/randy/Unity/Hub/Editor/2020.3.7f1/Editor/Data/Tools/UnityYAMLMerge merge -p "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
 
 # Binary files diff with hexdump
-[diff "hex"]
-    textconv = hexdump -v -C
-    binary = true
+# [diff "hex"]
+#     textconv = hexdump -n 1024 -v -C
+#     binary = true
 
 # Setting up LFS
 
@@ -126,6 +137,3 @@
     file-style = bold yellow ul
     file-decoration-style = none
 
-[diff "hex"]
-    textconv = hexdump -n 1024 -v -C
-    binary = true
