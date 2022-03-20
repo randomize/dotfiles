@@ -1,0 +1,139 @@
+#!/bin/bash
+# vim: ft=sh
+
+# Remove caches
+rm -rf ~/.cache/yarn/ 
+rm -rf ~/.cache/yay/
+rm -rf ~/.cache/rua/
+rm -rf ~/.cache/JetBrains/
+rm -rf ~/.local/share/fish/generated_completions/
+rm -rf ~/.local/share/nvim/swap/
+rm -rf ~/.local/share/nvim/view/
+rm -rf ~/.local/share/xorg/*.log
+rm -rf ~/.local/share/qBittorrent/
+rm -rf ~/.rustup/
+rm -rf ~/.config/blender/
+rm -rf ~/.config/obs-studio/logs/
+rm -rf ~/.config/obs-studio/profiler_data/
+
+
+# Vscode
+rm -rf ~/.config/Code/logs/
+#rm -rf "~/.config/Code/Code Cache/"
+rm -rf ~/.config/Code/CachedData/
+rm -rf ~/.config/Code/GPUCache/
+rm -rf ~/.config/Code/Cache/
+
+# rm -rf ~/.vscode/
+
+# telegram
+rm -rf ~/.local/share/TelegramDesktop/tdata/user_data/cache/
+rm -rf ~/.local/share/TelegramDesktop/tdata/user_data/media_cache/
+
+# Unity and Rider cache
+rm -rf ~/.config/unity3d/cache
+rm -rf ~/.cache/JetBrains/Rider*/
+rm -rf ~/.cache/Stevedore/
+rm -rf ~/.local/share/JetBrains/Rider2021.1/  # Old riders, WTF they keep them?
+rm -rf ~/.local/share/JetBrains/Rider2021.2/
+rm -rf ~/.config/JetBrains/Rider2021.1/
+rm -rf ~/.config/JetBrains/Rider2021.2/
+rm -rf ~/.plastic4/
+
+# Azure and nuget
+rm -rf ~/.nuget/
+rm -rf ~/.azure/
+rm -rf ~/.local/share/NuGet/v3-cache/
+
+# Gradle cache probably, not sure when it appears
+rm -rf ~/.gradle/
+
+# After using ghidra rnd other RE tools
+rm -rf ~/.ghidra/
+rm -rf ~/.hashcat/
+rm -rf ~/.local/share/rizin/
+
+
+# Android build cache
+rm -rf ~/.android/build-cache.lock
+rm -rf ~/.android/build-cache/
+rm -rf ~/.android/cache/
+rm -rf ~/.cache/Google/AndroidStudio*/
+rm -rf ~/.local/share/Google/AndroidStudio*/
+
+
+# Mysql workbench stuff
+rm -rf ~/.mysql/workbench/
+
+# global node modules (usually tiddlywiki and ghsearch installed)
+#rm -rf ~/.node_modules/lib/
+#rm -rf ~/.node_modules/bin/
+
+# Mozilla, for some reason not in ~/.config.... - profiles and stuff
+# Hm.. exposes extensions list and some history details in caches
+# rm -rf ~/.mozilla/
+# rm -rf ~/.mozilla/firefox/*/storage/default/
+# rm -rf ~/.mozilla/firefox/Crash Reports/
+# rm -rf ~/.mozilla/firefox/*/datareporting/
+rm -rf ~/.cache/mozilla/firefox/
+rm -rf ~/.cache/qutebrowser/
+rm -rf ~/.local/share/qutebrowser/
+
+# Go stuff
+rm -rf ~/go/pkg/mod/cache/
+rm -rf ~/go/pkg/mod/
+rm -rf ~/.cache/go-build/
+
+# Nim stuff
+rm -rf ~/.cache/nim/
+rm -rf ~/.nimble/
+
+# Ipython and python
+rm -rf ~/.ipython/
+rm -rf ~/.cache/pip/
+
+# Rust
+rm -rf ~/.cargo/registry/
+rm -rf ~/.cargo/git/
+
+# Gnome stuff
+rm -rf ~/.cache/epiphany/
+rm -rf ~/.cache/evolution/
+rm -rf ~/.cache/thumbnails/
+rm -rf ~/.cache/g-ir-scanner/
+rm -rf ~/.cache/tracker3/
+rm -rf ~/.cache/tracker/
+rm -rf ~/.cache/gnome-control-center/WebKitCache/
+rm -rf ~/.local/share/evolution/
+rm -rf ~/.local/share/epiphany/
+rm -rf ~/.gnome/apps/
+rm -rf ~/.local/share/gnome-shell/extensions/
+rm -rf ~/.cache/champlain/
+rm -rf ~/.cache/gnome-recipes/
+rm -rf ~/.config/pulse/
+
+
+# Thunderbird
+rm -rf ~/.cache/thunderbird/
+rm -rf ~/.thunderbird/
+
+# Fontcnfig
+rm -rf ~/.cache/fontconfig/
+
+# Shaders and 3D
+rm -rf ~/.cache/mesa_shader_cache/
+rm -rf ~/.cache/nvidia/GLCache/
+rm -rf ~/.cache/qtshadercache-x86_64-little_endian-lp64/
+rm -rf ~/.nv/ComputeCache/
+
+
+# Typescript - wtf so many files here?
+rm -rf ~/.cache/typescript/
+
+# Node stuff - far native extensions compilation? and nvm (can be re-installed)
+rm -rf ~/.cache/node-gyp/
+rm -rf ~/.local/share/nvm/
+rm -rf ~/.npm/
+
+
+

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+shopt -s nullglob globstar
+
+stepname=$(cat ~/.2steps | awk '{print $1}' | dmenu "$@" | xargs 2step)
+
+[[ -n $stepname ]] || exit
+
+echo -n $stepname | xdotool type --clearmodifiers --file -

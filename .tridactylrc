@@ -114,6 +114,96 @@ set searchurls.dl https://duckduckgo.com/lite/?q=%s
 "set searchurls.d https://next.duckduckgo.com/?kmjx.menu=renderer%3ANativeMML%26%3Bsemantics%3Atrue%26%3Bcontext%3ABrowser%26%3Bzoom%3ANone&kp=-2&kc=-1&k1=-1&kam=osm&kak=-1&kax=-1&kaq=-1&kao=-1&kap=-1&kau=-1&t=ffab&ia=web&q=%s
 "set searchengine d
 
-set searchurls.duck https://duckduckgo.com/html?q=
-set searchurls.nitter https://nitter.mailstation.de/search?f=users&q=
+
+set searchurls.google ""
+set searchurls.googlelucky ""
+set searchurls.scholar ""
+set searchurls.googleuk ""
+set searchurls.bing ""
+set searchurls.duckduckgo ""
+set searchurls.yahoo ""
+set searchurls.twitter ""
+set searchurls.wikipedia ""
+set searchurls.youtube ""
+set searchurls.amazon ""
+set searchurls.amazonuk ""
+set searchurls.startpage ""
+set searchurls.github ""
+set searchurls.searx ""
+set searchurls.cnrtl ""
+set searchurls.osm ""
+set searchurls.mdn ""
+set searchurls.gentoo_wiki ""
+set searchurls.qwant ""
+set searchurls.am https://www.amazon.co.uk/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=%s
+set searchurls.b https://www.bing.com/search?q=%s
+set searchurls.d https://duckduckgo.com/?q=%s
+set searchurls.duck https://duckduckgo.com/html?q=%s
+set searchurls.g https://www.google.co.uk/search?q=%s
+
+set searchurls.w https://en.wikipedia.org/wiki/Special:Search?search=%s
+set searchurls.wi https://www.wikipedia.org/w/index.php?title=Special:Search&search=%s
+
+set searchurls.ww https://werewolv.es/Game/Index/%s
+set searchurls.abt https://bugs.archlinux.org/index.php?show_task=%s
+set searchurls.ab https://bugs.archlinux.org/index.php?project=3&type%5B%5D=&sev%5B%5D=&pri%5B%5D=&due%5B%5D=&reported%5B%5D=&cat%5B%5D=&status%5B%5D=open&percent%5B%5D=&opened=&dev=&closed=&duedatefrom=&duedateto=&changedfrom=&changedto=&openedfrom=&openedto=&closedfrom=&closedto=&do=index&string=%s
+set searchurls.tw https://twitter.com/search?q=%s
+set searchurls.af https://bbs.archlinux.org/search.php?action=search&author=&search_in=0&sort_by=0&sort_dir=DESC&show_as=topics&keywords=%s
+set searchurls.ap https://www.archlinux.org/packages/?sort=&maintainer=&flagged=&q=%s
+set searchurls.aw https://wiki.archlinux.org/index.php?title=Special%3ASearch&profile=default&fulltext=1&search=%s
+set searchurls.au https://aur.archlinux.org/packages/?O=0&SeB=nd&outdated=&SB=n&SO=a&PP=50&K=%s
+set searchurls.c https://chambers.co.uk/search/?query=test&title=21st&sourceid=Mozilla-search&title=21st&query=%s
+set searchurls.yt https://www.youtube.com/results?search_query=%s
+set searchurls.gi https://www.google.co.uk/search?tbm=isch&q=%s
+set searchurls.f https://addons.mozilla.org/en-GB/firefox/search/?q=%s
+set searchurls.gp https://play.google.com/store/search?q=%s
+set searchurls.tr https://trakt.tv/search?query=%s
+set searchurls.ka https://kitsu.io/anime?text=%s
+set searchurls.km https://kitsu.io/manga?text=%s
+set searchurls.bgg https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=%s
+set searchurls.eb https://www.ebay.co.uk/sch/i.html?_sacat=0&_nkw=%s
+set searchurls.gm https://www.google.co.uk/maps?q=%s
+set searchurls.s https://www.startpage.com/do/search?language=english&cat=web&query=%s
+set searchurls.l https://www.google.co.uk/search?q=%s&btnI
+set searchurls.jw https://www.justwatch.com/uk/search?q=%s
+set searchurls.bgg https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=%s
+set searchurls.n https://www.npmjs.com/search?q=%s
+set searchurls.nitter https://nitter.domain.glass/search?f=users&q=
+set searchurls.tenor https://tenor.com/search/%s-gifs
+set searchurls.wb https://web.archive.org/web/*/%s
+
+set searchurls.gt https://translate.google.com/translate?sl=auto&tl=en&u=%s
+set searchurls.translate https://translate.google.com/?source=osdd#auto|auto|%s
+
+set searchurls.tmdb https://www.themoviedb.org/search?query=%s
+set searchurls.tvdb https://www.thetvdb.com/search?query=%s
+set searchurls.u https://www.urbandictionary.com/define.php?term=%s
+
+set searchurls.julia https://www.google.com/search?q=site:http://docs.julialang.org/en/v1%20
+set searchurls.recent https://www.google.com/search?hl=en&tbo=1&tbs=qdr:y&q=%s
+set searchurls.img https://www.google.com/images?q=%s
+set searchurls.y https://www.youtube.com/results?search_query=%s
+set searchurls.amz https://www.amazon.ca/exec/obidos/external-search/?field-keywords=%s&mode=blended
+set searchurls.r https://www.reddit.com/search/?q=%s
+set searchurls.m https://www.google.com/maps?q=%s
+set searchurls.g https://github.com/search?q=%s
+set searchurls.wa https://www.wolframalpha.com/input/?i=%s
+
+
 set searchengine duck
+
+" Quickmarks
+quickmark i https://www.inoreader.com/all_articles
+quickmark u https://www.tumblr.com/dashboard
+quickmark y https://www.youtube.com/feed/subscriptions
+quickmark c https://play.pocketcasts.com/web/podcasts
+quickmark m https://mastodon.technology/web/timelines/home
+quickmark b https://www.ebay.co.uk/mbf/Summary?MyEbay
+quickmark p https://app.getpocket.com/
+quickmark k https://kitsu.io/
+quickmark d https://dev.azure.com/
+quickmark g https://github.com/
+quickmark e https://protonmail.com/
+quickmark a https://amazon.co.de/
+quickmark z https://dev.azure.com/trackman/Golf
+quickmark t https://github.com/tridactyl/tridactyl

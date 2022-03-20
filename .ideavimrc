@@ -172,6 +172,8 @@ map [c :action GotoPreviousError<CR>:action ShowErrorDescription<CR>
 map ]c :action GotoNextError<CR>:action ShowErrorDescription<CR>
 map zR :action ExpandAllRegions<CR>
 
+map \gm :action Git.Menu<CR>
+map \gs :action ActivateCommitToolWindow<CR>
 
 " nnoremap <space>g :action GotoDeclaration<CR>
 "nnoremap ,up :action GotoDeclaration<CR>

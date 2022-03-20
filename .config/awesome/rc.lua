@@ -1,3 +1,7 @@
+-- If LuaRocks is installed, make sure that packages installed through it are
+-- found (e.g. lgi). If LuaRocks is not installed, do nothing.
+pcall(require, "luarocks.loader")
+
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
@@ -14,12 +18,14 @@ local hotkeys_popup = require("awful.hotkeys_popup").widget
 local xdg_menu = require("archmenu")
 -- More widgets --
 local vicious = require("vicious")
+vicious.contrib = require("vicious.contrib")
 -- Scratchdrop (to toggle terminals and other things)
 local drop = require("scratchdrop")
 -- Custom Widgets
 -- local custom_widgets = {
 --     kbdd = require("widgets.kbdd"),
 -- }
+local dovetail = require("awesome-dovetail")
 
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
@@ -65,7 +71,7 @@ local zenburn_theme_path = config_dir_path .. "/zenburn/theme.lua"
 beautiful.init(zenburn_theme_path)
 
 -- This is used later as the default terminal and editor to run.
-terminal = "alacritty"
+terminal = "kitty"
 editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -80,6 +86,7 @@ modkey = "Mod4"
 awful.layout.layouts = {
     awful.layout.suit.floating,
     awful.layout.suit.tile,
+    dovetail.layout.right,
     awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
@@ -100,7 +107,7 @@ awful.layout.layouts = {
 -- {{{ Notifications hook that logs messages
 naughty.config.notify_callback = function(args)
     local tit = args.title
-    if tit == "Volume" or 
+    if tit == "Volume" or tit == "Brightness" or
        tit == "MPD player" or
        (tit and (string.match(tit, "Playing #") or (string.match(tit, "Paused #")) ))
        then return args end
@@ -114,8 +121,9 @@ end
 
 -- drops terminal
 local function drop_terminal()
-    local center_screen = awful.screen.getbycoord (1620, 960)
-    drop("alacritty --class my_floating_terminal -e ~/bin/starttmux.sh", "center", "center", 0.69, 0.75, true, center_screen)
+    local center_screen = awful.screen.getbycoord (2620, 960)
+    drop(terminal .. " --class my_floating_terminal ~/bin/starttmux.sh", "center", "center", 0.75, 0.8, true, center_screen)
+    --drop("alacritty --class my_floating_terminal -e ~/bin/starttmux.sh", "center", "center", 0.69, 0.75, true, center_screen)
 end
 
 local function client_menu_toggle_fn()
@@ -159,6 +167,19 @@ function change_volume(op)
        vol_notification_id = naughty.notify({ title = "Volume", text = vol , timeout = 10, replaces_id = vol_notification_id }).id
    end
 end
+-- helper to control brightness
+local bright_notification_id;
+function change_brightness(op)
+
+   local fd = io.popen("xbacklight " .. op .. " && xbacklight -get")
+   local out = fd:read("*all")
+   fd:close()
+
+   local vol = string.match(out, "(%d+)")
+
+   vol = " Bright is : " .. vol .. "%"
+   bright_notification_id = naughty.notify({ title = "Brightness", text = vol , timeout = 10, replaces_id = bright_notification_id }).id
+end
 -- }}}
 
 -- {{{ Menu
@@ -168,7 +189,7 @@ myawesomemenu = {
    { "manual", terminal .. " -e man awesome" },
    { "edit config", editor_cmd .. " " .. awesome.conffile },
    { "restart", awesome.restart },
-   { "quit", function() awesome.quit() end}
+   { "quit", function() awesome.quit() end },
 }
 
 mymainmenu = awful.menu({ items = { { "Awesome", myawesomemenu, beautiful.awesome_icon },
@@ -256,6 +277,24 @@ musicwidget:run() -- After all configuration is done, run the widget
 -- }}}
 
 
+-- {{{ Battery
+
+
+-- Create wibox with batwidget
+batwidget = wibox.widget.textbox()
+
+-- Register battery widget
+vicious.register(batwidget, vicious.widgets.bat, " $2$1 : $3 ", 67, "BAT0")
+batwidget = only_on_primary(batwidget)
+
+-- 
+-- 
+-- 
+-- 
+        
+-- }}}
+
+
 -- {{{ Wibar
 
 -- Keyboard map indicator and switcher
@@ -266,7 +305,7 @@ mytextclock = wibox.widget.textclock()
 
 -- Create a network widget
 netwidget = wibox.widget.textbox()
-vicious.register(netwidget, vicious.widgets.net, '<span color="#CC9393"> ${enp3s0 down_kb}</span> <span color="#7F9F7F">${enp3s0 up_kb}</span>', 3)
+vicious.register(netwidget, vicious.widgets.net, '<span color="#CC9393"> ${wlan0 down_kb}</span> <span color="#7F9F7F">${wlan0 up_kb}</span>', 3)
 netwidget = only_on_primary(netwidget)
 
 -- Create a mem widget
@@ -274,6 +313,11 @@ memwidget = wibox.widget.textbox()
 vicious.register(memwidget, vicious.widgets.mem, "<span color='#CCCC11'> $1% </span>", 13)
 memwidget = only_on_primary(memwidget)
 -- vicious.register(memwidget, vicious.widgets.mem, "<span color='#CCCC11'> $1% ($2MB/$3MB)</span>", 13)
+
+-- Nvidia power widget
+-- gpuwidget = wibox.widget.textbox()
+-- vicious.register(gpuwidget, vicious.contrib.wpa, 'Wifi: ${ssid}/${ip} ${qual}', 3, 'wlan0')
+-- gpuwidget = only_on_primary(gpuwidget)
 
 -- CPU Graph
 cpuwidget = awful.widget.graph()
@@ -384,10 +428,12 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+            batwidget,
+            -- gpuwidget,
             cpuwidget,
-            netwidget,
             memwidget,
             musicwidget.widget,
+            netwidget,
             -- mykeyboardlayout,
             -- custom_widgets.kbdd(),
             wibox.widget.systray(),
@@ -402,9 +448,9 @@ end)
 --     naughty.notify({ preset = naughty.config.presets.critical, screen = i, title = "Geometry", text = i .. ") G:" .. screen[i].geometry.width .. "x" .. screen[i].geometry.height })
 -- end
 -- Ugly hack to make screens in order - TODO: can I arrange them in xrandr before it gets into awesomewm?
-screen[2]:swap(screen[3])
-screen[3]:swap(screen[4])
-awful.screen.focus(1)
+--screen[2]:swap(screen[3])
+--screen[3]:swap(screen[4])
+--awful.screen.focus(1)
 
 -- }}}
 
@@ -533,6 +579,11 @@ globalkeys = gears.table.join(
       end,
       {description = "take area screenshot", group = "launcher"}),
     -- Misc soft
+    awful.key({ modkey, "Shift" }, "c",
+       function ()
+          awful.spawn("i3lock --color 251f3b", false)
+       end
+    ),
     awful.key({ modkey,           }, "e",
        function ()
           drop("kitty --title=Ranger --class=my_floating_ranger ranger ", "center", "center", 0.75, 0.75)
@@ -548,9 +599,9 @@ globalkeys = gears.table.join(
           awful.spawn("~/bin/vnc-menu", false)
        end
     ),
-    awful.key({ modkey,            }, "Up",
+    awful.key({ modkey,            }, "r",
       function ()
-         awful.spawn("rofi -modi combi -show combi -combi-modi run,drun")
+         awful.spawn("rofi -modi run,drun -show drun -sort -sorting-method fzf  ")
       end
     ),
     awful.key({ modkey,           }, "b",
@@ -560,12 +611,12 @@ globalkeys = gears.table.join(
     ),
     awful.key({ modkey, "Shift"   }, "b",
       function ()
-         awful.spawn("stepmenu --type -l 32 -fn \"PragmataPro-12:bold\" -i -p \"*\" ")
+         awful.spawn("stepmenu")
       end
     ),
     awful.key({ modkey, "Control"   }, "b",
       function ()
-         awful.spawn("wordmenu --type -l 32 -fn \"PragmataPro-12:bold\" -i -p \"*\" ")
+         awful.spawn("wordmenu")
       end
     ),
 
@@ -578,6 +629,8 @@ globalkeys = gears.table.join(
     awful.key({                   }, "XF86Messenger", function () awful.spawn("pidgin") end),
     awful.key({                   }, "XF86Search", function () awful.spawn("chromium --incognito") end),
     awful.key({                   }, "XF86TaskPane", function () awful.spawn("chromium --incognito") end),
+    awful.key({                   }, "XF86MonBrightnessUp", function () change_brightness("-inc 2") end),
+    awful.key({                   }, "XF86MonBrightnessDown", function () change_brightness("-dec 2") end),
 
     awful.key({                   }, "XF86Eject", function ()
        drop("alacritty --class my_floating_htop -e htop", "center", "center", 0.7, 0.65, true)
@@ -859,8 +912,8 @@ client.connect_signal("manage", function (c)
     -- i.e. put it at the end of others instead of setting it master.
     -- if not awesome.startup then awful.client.setslave(c) end
 
-    if awesome.startup and
-      not c.size_hints.user_position
+    if awesome.startup
+      and not c.size_hints.user_position
       and not c.size_hints.program_position then
         -- Prevent clients from being unreachable after screen count changes.
         awful.placement.no_offscreen(c)
@@ -872,13 +925,11 @@ client.connect_signal("request::titlebars", function(c)
     -- buttons for the titlebar
     local buttons = gears.table.join(
         awful.button({ }, 1, function()
-            client.focus = c
-            c:raise()
+            c:emit_signal("request::activate", "titlebar", {raise = true})
             awful.mouse.client.move(c)
         end),
         awful.button({ }, 3, function()
-            client.focus = c
-            c:raise()
+            c:emit_signal("request::activate", "titlebar", {raise = true})
             awful.mouse.client.resize(c)
         end)
     )
@@ -920,3 +971,15 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+
+do
+  local cmds =
+  {
+    "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+  }
+
+  for _,i in pairs(cmds) do
+    awful.util.spawn(i)
+  end
+end

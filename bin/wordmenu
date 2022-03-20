@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+shopt -s nullglob globstar
+
+stepname=$(cat ~/.words | dmenu "$@" | awk '{print $1}' )
+
+[[ -n $stepname ]] || exit
+
+echo -n $stepname | xdotool type --clearmodifiers --file -

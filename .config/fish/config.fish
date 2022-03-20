@@ -11,22 +11,23 @@ end
 
 
 source "$fish_path/aliases.fish"
-source "$fish_path/functions/helpers.fish"
+#source "$fish_path/functions/helpers.fish"
 
 set fzf_fd_opts --hidden --exclude=.git
 
 # My custom binding to ctrl+t to search including ignored files
-function __fzf_search_current_dir_everything
-    set -lx fzf_fd_opts -H -I
-    __fzf_search_current_dir
-end
-function __fzf_search_current_dir_dirs
-    set -lx fzf_fd_opts -H -I --type=d
-    __fzf_search_current_dir
-end
-
-bind --mode insert \ct __fzf_search_current_dir_everything
-bind --mode insert \ec __fzf_search_current_dir_dirs
+# Fzf.fish broke the way how they do bindings....
+#function __fzf_search_current_dir_everything
+#    set -lx fzf_fd_opts -H -I
+#    __fzf_search_current_dir
+#end
+#function __fzf_search_current_dir_dirs
+#    set -lx fzf_fd_opts -H -I --type=d
+#    __fzf_search_current_dir
+#end
+#
+#bind --mode insert \ct __fzf_search_current_dir_everything
+#bind --mode insert \ec __fzf_search_current_dir_dirs
 
 function urlencode
   perl -MURI::Escape -le "print uri_escape('$argv')"

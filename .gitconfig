@@ -1,6 +1,7 @@
 [user]
    name = Eugene Mihailenco
-   email = emihailenco@protonmail.com
+   email = emi@trackman.com
+   #email = emihailenco@protonmail.com
 [alias]
    co = checkout
    ci = commit
@@ -101,7 +102,7 @@
    required = true
    process = git-lfs filter-process
 [credential]
-   helper = cache --timeout=3600
+	helper = libsecret
 
 [lfs]
    batch = true
