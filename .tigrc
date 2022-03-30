@@ -22,6 +22,16 @@ bind main G move-last-line
 bind generic <Ctrl-g> view-grep
 bind main <Ctrl-G> :toggle commit-title-graph
 
+# Recover l and h to normal vim behaviour
+bind generic l scroll-right
+bind main l enter
+bind generic <Ctrl-L> view-log
+
+bind generic h scroll-left
+bind generic <Ctrl-H> view-help
+
+bind generic <Ctrl-R> screen-redraw
+
 # Nicer Ascii-art
 set line-graphics = utf-8
 
