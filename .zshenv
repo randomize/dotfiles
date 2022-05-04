@@ -1,12 +1,9 @@
 # Setup defaults
 
-# Its ungoogled so its fine
-export BROWSER=chromium
-# Neovim
+export BROWSER=firefox
 export EDITOR=nvim
 
 # Enable anti aliasing in java programs
-# export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 export _JAVA_AWT_WM_NONREPARENTING=1
 
@@ -22,7 +19,7 @@ export LESSCHARSET='utf-8'
 export PAGER="less"
 export GCC_COLORS="error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01"
 
-export TERMINAL="st"
+export TERMINAL="kitty"
 
 # Fonts in old aps
 export GDK_USE_XFT=1
@@ -46,6 +43,6 @@ export PATH="$PATH:$HOME/go/bin"
 export FrameworkPathOverride=/etc/mono/4.5
 
 # Perl
-source ~/perl5/perlbrew/etc/bashrc
+[[ -s ~/perl5/perlbrew/etc/bashrc ]] && source ~/perl5/perlbrew/etc/bashrc
 
 
