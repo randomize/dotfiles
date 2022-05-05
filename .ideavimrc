@@ -1,3 +1,8 @@
+"Thanks to 
+"  https://gist.github.com/dewaka/ef947e52767bf453eaf77c852051eb7e
+"
+
+let mapleader = "\"
 
 set nu
 set rnu
@@ -9,9 +14,19 @@ set ignorecase
 set showcmd
 set showmode
 set smartcase
-"
+
+" Plugins
+set visualbell
+set surround
+set easymotion
+set commentary
+set NERDTree
+
+
 nnoremap ,ev :e ~/.ideavimrc<CR>
-nnoremap ,sv :source ~/.ideavimrc<CR>
+"nnoremap ,sv :source ~/.ideavimrc<CR>
+nnoremap ,sv :action IdeaVim.ReloadVimRc.reload<CR>
+nnoremap ,ee :action ToggleDistractionFreeMode<CR>
 "
 map ,y "+y
 map ,p "*p
@@ -161,36 +176,87 @@ noremap ,ci :action ImplementMethods<CR>
 noremap ,cl :action Inline<CR>
 
 "" Vim old habits
-nmap gcc :action CommentByLineComment<CR>
 noremap ,n :nohl<CR>
+nmap ,cc :action CommentByLineComment<cr>
+nmap gcc :action CommentByLineComment<cr>
+vmap ,cc :action CommentByLineComment<cr>
 " noremap <space>q :q<CR>
 " noremap <space>w :w<CR>
 nmap <space>r :action RenameElement<CR>
 vnoremap <space>m :action ExtractMethod<CR>
+noremap <space>b :action ToggleLineBreakpoint<CR>
 
 map [c :action GotoPreviousError<CR>:action ShowErrorDescription<CR>
 map ]c :action GotoNextError<CR>:action ShowErrorDescription<CR>
 map zR :action ExpandAllRegions<CR>
+map zC :action CollapseRegionRecursively<CR>
+"map zM :action CollapseAll<CR>
 
-map \gm :action Git.Menu<CR>
-map \gs :action ActivateCommitToolWindow<CR>
+" Useful Git actions
+nmap <leader>gb :action Git.Branches<cr>
+nmap <leader>gp :action Git.Pull<cr>
+nmap <leader>gu :action Git.Push<cr>
+nmap <leader>gr :action Git.Rebase<cr>
+nmap <leader>gm :action Git.Merge<cr>
+nmap <leader>gm :action Git.Menu<CR>
+nmap <leader>gs :action ActivateCommitToolWindow<CR>
+
+" Navigation
+nmap <leader>uh :action Back<cr>
+nmap <leader>ul :action Forward<cr>
+nmap <leader>uL :action RecentLocations<cr>
+nmap <leader>uu :action FindUsages<cr>
+nmap <leader>uC :action CallHierarchy<cr>
+nmap <leader>uf :action GotoFile<cr>
+nmap <leader>uc :action GotoClass<cr>
+nmap <leader>us :action GotoSymbol<cr>
+nmap <leader>um :action ToggleBookmark<cr>
+nmap <leader>u; :action FileStructurePopup<cr>
+nmap <leader>uM :action ActivateStructureToolWindow<cr>
+nmap <leader>ud :action ShowErrorDescription<cr>
+nmap <leader>ui :action GotoImplementation<cr>
+nmap <leader>uU :action GotoSuperMethod<cr>
+nmap <leader>uI :action SelectIn<cr>
+nmap <leader>ue :action RecentFiles<cr>
+nmap <leader>ua :action RecentChangedFiles<cr>
+nmap <leader>ut :action GotoTest<cr>
+nmap <leader>up :action JumpToLastWindow<cr>
+nmap <leader>ub :action ShowBookmarks<cr>
 
 " nnoremap <space>g :action GotoDeclaration<CR>
 "nnoremap ,up :action GotoDeclaration<CR>
 
 map ,up :action GotoFile<CR>
 map ,fu :action FindUsages<CR>
+nmap ,yy :action CopySourceRootPath<cr>
+nmap ,ya :action CopyAbsolutePath<cr>
+nmap ,l :action RecentLocations<cr>
+nmap ,S :action ShowProjectStructureSettings<cr>
 map <space>l <c-w>l
 map <space>h <c-w>h
 map <space>w :w<CR>
-map <space>q :q<CR>
+"map <space>q :q<CR>
+nmap <space>q :action CloseContent<cr>
+nmap <space>Q :action ReopenClosedTab<cr>
+
 map <space>g :action GotoDeclaration<CR>
 map <space>f :action ReformatCode<CR>
-set visualbell
-set surround
-set easymotion
-set commentary
-set NERDTree
+nnoremap <Leader>=  :action ReformatCode<CR>
 
+nmap z0 :action CollapseAllRegions<CR>
+nmap z1 :action ExpandAllToLevel1<CR>
+nmap z2 :action ExpandAllToLevel2<CR>
+nmap z3 :action ExpandAllToLevel3<CR>
+nmap z4 :action ExpandAllToLevel4<CR>
 
+" Use Q for formatting the current paragraph (or visual selection)
+vmap Q gq
+nmap Q gqap
+
+" These create newlines like o and O but stay in normal mode
+nmap zj o<Esc>k
+nmap zk O<Esc>j
+
+" External stuff
+nmap <leader>v :action Tool_External Tools_nvim<cr>
 
