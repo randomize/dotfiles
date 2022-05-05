@@ -1,6 +1,3 @@
-# Zsh rebooted config, zplug powered
-# Randy 2016
-# TODO: pkgfile hook
 
 # {{{ Managed Plugins =========================================================
 # Check if zplug is installed and install it
@@ -11,46 +8,15 @@ fi
 
 source ~/.zplug/init.zsh
 
-zplug  "plugins/archlinux",                 from:oh-my-zsh
-zplug  "plugins/colored-man-pages",         from:oh-my-zsh
-zplug  "plugins/colorize",                  from:oh-my-zsh
-# zplug  "plugins/compleat",                  from:oh-my-zsh
-zplug  "plugins/command-not-found",         from:oh-my-zsh
-# zplug  "plugins/common-aliases",            from:oh-my-zsh
-# zplug  "plugins/copydir",                   from:oh-my-zsh
-# zplug  "plugins/copyfile",                  from:oh-my-zsh
-zplug  "plugins/extract",                   from:oh-my-zsh
-# zplug  "plugins/history",                   from:oh-my-zsh
-# zplug  "plugins/history-substring-search",  from:oh-my-zsh
-# zplug  "plugins/man",                       from:oh-my-zsh
-# zplug  "plugins/sudo",                      from:oh-my-zsh
-# zplug  "plugins/themes",                    from:oh-my-zsh
-zplug  "plugins/urltools",                  from:oh-my-zsh
-# zplug  "plugins/vscode",                    from:oh-my-zsh
-# zplug  "plugins/web-search",                from:oh-my-zsh
+zplug "plugins/archlinux",                 from:oh-my-zsh
+zplug "plugins/colored-man-pages",         from:oh-my-zsh
+zplug "plugins/colorize",                  from:oh-my-zsh
+zplug "plugins/command-not-found",         from:oh-my-zsh
+zplug "plugins/extract",                   from:oh-my-zsh
+zplug "plugins/urltools",                  from:oh-my-zsh
 
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
-
-
-# Git helper
-#zplug "plugins/git",   from:oh-my-zsh, if:"which git"
-zplug "plugins/vim-mode", from:oh-my-zsh
-#zplug "zsh-users/zsh-syntax-highlighting", defer:2
-
-# export DEFAULT_USER=randy
-#zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
-# zplug "cusxio/delta-prompt", use:delta.zsh
-#zplug "romkatv/powerlevel10k", as:theme, depth:1
-
-# PURE_PROMPT_SYMBOL='$'
-# zplug "mafredri/zsh-async", from:github
-# zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
-
-#zplug 'nojhan/liquidprompt'
-
-# Z is new Autojump
-zplug "rupa/z", use:z.sh
 zplug "rimraf/k"
 zplug "djui/alias-tips"
 zplug "Tarrasch/zsh-bd"
@@ -83,9 +49,6 @@ zplug load
 
 # edit files
 [[ -s ~/.zsh/edit.zsh ]] && . ~/.zsh/edit.zsh
-
-# Autojump
-[[ -s /etc/profile.d/autojump.zsh ]] && . /etc/profile.d/autojump.zsh
 
 # }}}
 
@@ -129,15 +92,6 @@ zle -N edit-command-line
 # show completion menu when number of options is at least 2
 zstyle ':completion:*' menu select=4
 
-# theme tweaks
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status history time vi_mode)
-POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND='red'
-POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND='black'
-POWERLEVEL9K_VI_MODE_INSERT_BACKGROUND='012'
-POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND='black'
-POWERLEVEL9K_VI_INSERT_MODE_STRING='I'
-POWERLEVEL9K_VI_COMMAND_MODE_STRING='N'
-
 # {{{ OS specific stuff ============================================================
 
 if [[ "$OSX" == "1" ]]
@@ -155,28 +109,15 @@ fi
 # }}}
 
 
-# pkgfile
-[[ -s  /usr/share/doc/pkgfile/command-not-found.zsh ]] && . /usr/share/doc/pkgfile/command-not-found.zsh
-
-# Fasd
-[[ -s `which fasd` ]] && eval "$(fasd --init auto)"
-
-[ -s "/home/randy/.dnx/dnvm/dnvm.sh" ] && . "/home/randy/.dnx/dnvm/dnvm.sh" # Load dnvm
-
 # Shared PATH (NOTE: OS specific see in -specific.zsh files) {{{
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/.cargo/bin
+export PATH="$HOME/.pyenv/bin:$PATH"
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 # }}}
 
-# Syntax hightlighting settings
-#[[ -s ~/.zsh/highligh-settings.zsh ]] && . ~/.zsh/highligh-settings.zsh
-# }}}
-#
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-# Direnv
-eval "$(direnv hook zsh)"
-
+# Pyenv, Direnv, Zoxide, Starship
+[[ -s `which pyenv` ]] && eval "$(pyenv init -)" && eval "$(pyenv virtualenv-init -)"
+[[ -s `which direnv` ]] && eval "$(direnv hook zsh)"
+[[ -s `which zoxide` ]] && eval "$(zoxide init zsh)"
+[[ -s `which starship` ]] && eval "$(starship init zsh)"
