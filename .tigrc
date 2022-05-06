@@ -1,9 +1,7 @@
 # vim : ft=conf
 
-# Commiting shortcut
+# Custom stuff
 bind main C <git checkout %(commit)
-
-# Copy commit hash
 bind main c @sh -c "printf '%s' %(commit) | xclip"
 
 # Getting rid of that grep ;)
@@ -34,30 +32,6 @@ bind generic <Ctrl-R> screen-redraw
 
 # Nicer Ascii-art
 set line-graphics = utf-8
-
-# Grayish color theme
-# color status 14 default
-# color cursor default 236
-# color title-focus white 236
-# color title-blur 240 236
-# color date 238 default
-# color author 246 default
-# color main-remote 14 default
-# color main-head 14 default
-# color main-ref 14 default
-# color main-tracked 14 default
-# color graph-commit 14 default bold
-# color palette-0 238 default
-# color palette-1 238 default
-# color palette-2 238 default
-# color palette-3 238 default
-# color palette-4 238 default
-# color palette-5 238 default
-# color palette-6 238 default
-# color diff-header 238 default
-# color diff-chunk 238 default
-# color commit 238 default
-# color committer red red
 
 # Monokai theme
 # credits to @edentsai
