@@ -20,6 +20,7 @@ zplug "zsh-users/zsh-completions"
 zplug "rimraf/k"
 zplug "djui/alias-tips"
 zplug "Tarrasch/zsh-bd"
+zplug "jeffreytse/zsh-vi-mode"
 
 export ZSH_PLUGINS_ALIAS_TIPS_TEXT='  '
 

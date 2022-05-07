@@ -1,4 +1,89 @@
+from prompt_toolkit.keys import Keys
+from prompt_toolkit.filters import Condition, EmacsInsertMode, ViInsertMode
+
+$PATH.add(p"~/.dotnet/tools", front=True, replace=True)
+
+$EDITOR='nvim'
 
 # Zoxide integration
 execx($(zoxide init xonsh), 'exec', __xonsh__.ctx, filename='zoxide')
 
+# Starship
+execx($(starship init xonsh))
+
+# Carapace
+COMPLETIONS_CONFIRM=True
+exec($(carapace killall))
+# exec($(carapace _carapace))
+
+
+#pip install fzf-widets
+xontrib load fzf-widgets
+
+xontrib load vox
+
+#pip install xontrib-langenv
+# xontrib load pyenv # has issues with loading...
+
+$fzf_history_binding = "c-r"
+$fzf_ssh_binding = "c-s"
+$fzf_file_binding = "c-t"
+$fzf_dir_binding = "c-g"
+
+$fzf_find_command = "fd"
+$fzf_find_dirs_command = "fd -t d"
+#$fzf_tmux_cmd = "fzf-tmux"
+
+
+aliases.update({
+    "vim": "nvim",
+    "ya": "yay",
+    "gst": "git status",
+    "update":"sudo pacman -Suy",
+    "gl":"git pull",
+    "fzf_tmux_cmd":"fzf-tmux",
+})
+
+# The SQLite history backend saves command immediately 
+# unlike JSON backend that save the commands at the end of the session.
+$XONSH_HISTORY_BACKEND = 'sqlite'
+
+# What commands are saved to the history list. By default all commands are saved. 
+# * The option ‘ignoredups’ will not save the command if it matches the previous command.
+# * The option `erasedups` will remove all previous commands that matches and updates the command frequency. 
+#   The minus of `erasedups` is that the history of every session becomes unrepeatable 
+#   because it will have a lack of the command you repeat in another session.
+# Docs: https://xonsh.github.io/envvars.html#histcontrol
+$HISTCONTROL='ignoredups'
+
+# Avoid typing cd just directory path. 
+# Docs: https://xonsh.github.io/envvars.html#auto-cd
+$AUTO_CD = True
+
+# vim
+#$VI_MODE = True
+
+@events.on_ptk_create
+def custom_keybindings(bindings, **kw):
+
+    # @bindings.add(Keys.ControlW)
+    # def say_hi(event):
+    #     event.current_buffer.insert_text('hi')
+
+    @bindings.add('escape', 'v')
+    def edit_buffer(event):
+        event.current_buffer.open_in_editor(event.cli)
+
+    # @handle(Keys.ControlX, Keys.ControlE, filter=~has_selection)
+    # def open_editor(event):
+    #     """Open current buffer in editor"""
+    #     event.current_buffer.open_in_editor(event.cli)
+
+def _adblaunch():
+    adb shell pm list packages | cut -f 2 -d ":" | fzf | xargs -IX adb shell monkey -p X -c android.intent.category.LAUNCHER 1
+
+def _adbkill():
+    adb shell pm list packages | cut -f 2 -d ":" | fzf | xargs -IX adb shell am force-stop X
+
+aliases['adblaunch'] = _adblaunch
+aliases['adbkill'] = _adbkill
