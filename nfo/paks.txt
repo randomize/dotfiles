@@ -392,6 +392,7 @@ Terminal emulators:
    //cool-retro-term            // Eye-candy old school terminal emulator
    //alacritty-terminfo           // .. and it's terminfo
    //aur/libsixel-git             // image suppurt in terminals
+   ueberzug                      // another image in terms - used for ytfzf
    minicom                      // com port communication tool
 
 Shells:
@@ -1382,7 +1383,8 @@ Stream grabbers:
    //aur/livestreamer     // Helper script to live streaming
    youtube-dl   // YT Downloader
    yt-dlp       // Modern fork
-   you-get          // Anotehr one downloader
+   you-get      // Another one downloader
+   aur/ytfzf    // fzf wrapper
    aur/youtube-upload-git   // YT Uploader
 
 Multimedia tools:

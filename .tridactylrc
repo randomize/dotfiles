@@ -190,7 +190,7 @@ set searchurls.g https://github.com/search?q=%s
 set searchurls.wa https://www.wolframalpha.com/input/?i=%s
 
 
-set searchengine duck
+set searchengine s
 
 " Quickmarks
 quickmark i https://www.inoreader.com/all_articles
