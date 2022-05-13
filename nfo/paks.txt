@@ -397,13 +397,14 @@ Terminal emulators:
 
 Shells:
 
-   //zsh                      // Main shell, but switched to fish now
+   zsh                        // Main shell
    //zsh-syntax-highlighting  // Even better with syntax highlighting
    //zsh-completions          // More completions
    //zshdb                    // Script debugger
 
    fish  // Alternative shell, using it now
    xonsh // Even more exotic shell in python
+   nushell // modern data-flow shell
 
 Console tools:
 
@@ -435,9 +436,7 @@ Console tools:
    most           // Feature rich pager
    //aur/colortheme // Terminal colors table script
    dfc            // Nice df ;)
-  // aur/colout-git        // console color utility
    asciinema      // screen recorder for cli
-   //aur/c-lolcat       // rainbow color tool
    aur/massren        // rename files
    lesspipe           // input filter for the pager less
    up             // ultimate plumber
@@ -478,10 +477,10 @@ Console tools:
    aur/sparklines-git // Very nice console spark lines, https://github.com/holman/spark
    //aur/hr-git         // Horizontal lines maker
    //aur/cv-git         // Shows running coreutils basic commands and displays stats
-  // aur/jrnl           // Nice journal with CLI
+   //aur/jrnl           // Nice journal with CLI
    //shellcheck         // Static analyzer for bash, note - has many haskell deps
    aur/shellcheck-bin         // Static analyzer for bash no haskell deps
-  // aur/maybe-git      // Another secure checker for bash
+   //aur/maybe-git      // Another secure checker for bash
 
    parallel          // helper to do parallel jubs in shell
    inotify-tools     // inotify wrappers, used for watching file changes in my scripts
@@ -490,6 +489,17 @@ Console tools:
    //aur/batch-git    // Interesting tool for batch processing in text editor, written in crystal
 
    tldr // nice man replacement ;)
+
+CLI Coloring:
+
+   //aur/colout-git       // console color utility
+   //aur/c-lolcat         // rainbow color tool
+   aur/python-colorlog    // colorlog
+   //aur/python2-colorlog // p2 version
+   colordiff              // Nice colored diffs
+   highlight              // for syntax highlighting in scripts
+   grc                    // generic highlighter for common tools, fish/zsh integration too
+   
 
 Navigation and GPS:
 
@@ -842,9 +852,6 @@ Source code tools:
    fzy                      // a better fuzzy finder - written in Rust? (no)
    skim                     // one more fuzzy finder in rust
 
-   colordiff                // Nice colored diffs
-   highlight                // for syntax highlighting in scripts
-
    //meld                   // Nice GUI-sh diff tool
    //python2-dbus           // For meld
    uncrustify               // Styler
@@ -1013,8 +1020,6 @@ Python stuff:
    python-lxml
    //python2-lxml
 
-   aur/python-colorlog  // colorlog
-   //aur/python2-colorlog // p2 version
 
    //aur/haskell-pandoc   // ipython notebook conversion // has many deps!
   // aur/python-librtmp     // build dependency for livestreamer
