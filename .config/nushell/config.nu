@@ -390,3 +390,5 @@ source ~/.cache/starship/init.nu
 source ~/.cache/zoxide/init.nu
 
 
+
+source /home/randy/.config/broot/launcher/nushell/br
