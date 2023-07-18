@@ -2,56 +2,58 @@
 // My packages index file
 // Comments are C++-like
 
+Kernels:
+   linux
+   //linux-lts
+
 Contents of base group:
 
+   base // meta package, rest is deps
+   filesystem
+   gcc-libs
+   glibc
    bash
-   base
-   bzip2
    coreutils
+   file
+   findutils
+   gawk
+   grep
+   procps-ng
+   sed
+   tar
+   gettext
+   pciutils
+   psmisc
+   shadow
+   util-linux
+   bzip2
+   gzip
+   xz
+   licenses
+   pacman
+   archlinux-keyring
+   systemd
+   systemd-sysvcompat
+   iputils
+   iproute2
+
+   // Other stuff
    cryptsetup
    device-mapper
    dhcpcd
    diffutils
    e2fsprogs
-   file
-   filesystem
-   findutils
-   gawk
-   //gcc-libs // Multilib used
-   gettext
-   glibc
-   grep
-   gzip
    inetutils
-   iproute2
-   iputils
-   jfsutils
    less
-   licenses
-   linux
-   logrotate
    lvm2
    man-db
    man-pages
    mdadm
-   nano
-   //netctl  // for some reason not installed, what is resolvconf (openresolf/systemd-resolvconf)
-   pacman
-   pciutils
-   //pcmciautils - not installed, doesn't exist
    perl
-   procps-ng
-   psmisc
    reiserfsprogs
-   s-nail
-   sed
-   shadow
    sysfsutils
-   systemd-sysvcompat
-   tar
    texinfo
    usbutils
-   util-linux
    vi
    which
    xfsprogs
@@ -77,47 +79,37 @@ Contents of gnome group:
 
    baobab                     // Visual disk space usage
    eog                        // GNOME viewer
-   //epiphany                 // Some Browser I don't use
    evince                     // Document viewer
-   //gdm                      // Gnome display manager
    gnome-backgrounds        // Wallpapers
-   //gnome-calculator
-   //gnome-contacts
-   //gnome-control-center
+   gnome-control-center
    gnome-desktop              // Dependency for nautilus
-   //gnome-dictionary
-   //gnome-disk-utility         
-   //gnome-font-viewer
-   //gnome-icon-theme           // Standard theme icons
-   //gnome-icon-theme-extras    // same ..
-   //gnome-icon-theme-symbolic  // ..
-   //gnome-keyring
-   //gnome-screenshot        // Screenshot tool
-   //gnome-session
-   //gnome-settings-daemon
-   //gnome-shell
-   //gnome-shell-extensions
-   //gnome-system-log
-   //gnome-system-monitor
-   //gnome-terminal
-   //gnome-themes-extra   // Adwaita and friends
-   //gnome-user-docs       // Offline user documentation
-   //gnome-user-share
-   //grilo-plugins
-   //gucharmap               // Character map
-   //mousetweaks
-   //mutter
+   gnome-disk-utility         
+   gnome-font-viewer
+   gnome-keyring
+   gnome-screenshot        // Screenshot tool
+   gnome-session
+   gnome-settings-daemon
+   gnome-shell
+   gnome-shell-extensions
+   gnome-system-monitor
+   gnome-terminal
+   gnome-themes-extra   // Adwaita and friends
+   gnome-user-docs       // Offline user documentation
+   gnome-user-share
+   grilo-plugins
+   gucharmap               // Character map
+   mutter
    nautilus                // File browser (see setup(3))
    sushi                   // Quick preview on space
-   //totem                 // Gnome player
+   totem                 // Gnome player
    //tracker3                 // Can't remove it since it's in gtk+ now ;(
-   //vino
-   //xdg-user-dirs-gtk
-   //yelp                  // Help browser
-   //polkit-gnome            // many gui stuff expects this to work with privelige escalation - like gdisks
+   //tracker3-miners                 // Can't remove it since it's in gtk+ now ;(
+   xdg-user-dirs-gtk
+   yelp                  // Help browser
+   polkit-gnome            // many gui stuff expects this to work with privelige escalation - like gdisks
    gthumb                  // image viewre
    seahorse                // Keys and passowrds management
-   vinarge  // remote desktop viewer
+   vinagre  // remote desktop viewer
    cheese    // gnome webcam app
    dconf-editor  // helper tool to edit dconf stuff
 
@@ -134,7 +126,7 @@ Audio:
    pipewire-alsa
    pipewire-jack
    //wireplumber -- as dep
-   paprefs            // Pulse audio settings
+   //paprefs            // Pulse audio settings
    pavucontrol        // Pulse audio mixer
    pasystray          // Simple tray icon for pulse mixer
    //pavumeter         // Pulse meter
@@ -148,7 +140,6 @@ First to install:
    pkgfile           // For command not found hook (see setup (1))
    openssh           // SSH server (see setup)
 
-
 UEFI boot and stuff:
 
    efibootmgr    // +efivar - Can edit UEFI boot items in nvram
@@ -158,7 +149,7 @@ UEFI boot and stuff:
 
 Packaging:
 
-   local/yay             // Aur "pacman"
+   aur/yay             // Aur "pacman"
    aur/rua               // same, but focused more on security, for example - not asking sudo pass on start (and failing if package build took too much time haha) like yay does
    lostfiles      // Show pacman untracked crap on hdd
    pacman-contrib        // Pacmans scripts 
@@ -178,8 +169,8 @@ Bluetooth and network:
 
    //dnsmasq           // Local DNS cache (see setup(9)) - no need since Mikrotik
    //network-manager
-   //gnu-netcat        // Network piping application
-   openbsd-netcat
+   gnu-netcat        // Network piping application
+   //openbsd-netcat
    //ngrep             // Network packet grep 
    mtr               // Combines the functionality of traceroute and ping into one tool
    ipcalc
@@ -234,15 +225,14 @@ Xorg stuff:
    xorg-server        // X
    //xorg-server-xvfb   // Virtual framebuffer reblaced with xf86-video-dummy
    xorg-xinit         // startx
-
-   xf86-input-wacom   // Wacom table support
+   //xf86-input-wacom   // Wacom table support
 
    xorg-xev           // Print events
    xorg-xprop         // Helper utility for windows info
    xorg-xvinfo        // Helper for "lights on" script
    xorg-xwininfo      // Another window info tool
    evtest             // Event tester
-   lsw                // list windows
+   lsw                // list windows, not sure why it doesn't work anymore
 
    xclip           // For scripting with clipboard
    xsel            // X selection command line tool
@@ -251,7 +241,7 @@ Xorg stuff:
    xorg-server-xephyr // For nesting sessions and test awesome wm configs
    xorg-xmodmap
    xorg-xdpyinfo
-   xbindkeys         // bind keys
+   //xbindkeys         // bind keys
    //xfconf            // for xfce?
    xorg-xhost       // for docker Unity app X gpu passthrough
    xorg-xkill       // no ideo why
@@ -259,7 +249,8 @@ Xorg stuff:
 Desktop Sharing:
 
    x11vnc          // VNC desktop sharing
-   tigervnc
+   //tigervnc
+   realvnc-vnc-viewer // instead
    freerdp
    wmctrl      // Universal WM console controller
    //aur/teamviewer // BAD and tries to install server when I just need a client
@@ -333,15 +324,15 @@ Window managers and DE:
    //unclutter       // Hides mouse cursor when it is not used(has problems in i3)
 
    skb             // simple keyboard layout indicator
-   xcape           // Remap keys, use return as second ctrl and caps and ctrl and esc
-   sbxkb           // layout daemon
+   //xcape           // Remap keys, use return as second ctrl and caps and ctrl and esc
+   //sbxkb           // layout daemon
    //aur/kbdd-git    // simple kbd layout daemon, used by awesowe indicator
 
    //gksu              // GUI-sh sudo
 
-   aur/ponymix           // CLI mixer
-   pamixer           // more CLI mixer
-   pulsemixer        // NCurses-based ui
+   //aur/ponymix           // CLI mixer
+   //pamixer           // more CLI mixer
+   //pulsemixer        // NCurses-based ui
 
    openbox         // Fallback window manager
 
@@ -358,7 +349,7 @@ Window managers and DE:
    aur/rlaunch       // alternative in Rust, like dmenu, but quite fast
 
    //xmonad          // Haskell window manager
-   openvpn         // VPN client
+   //openvpn         // VPN client
    //aur/pm-utils        // Hibernate, sleep, etc
 
    // Re-mapping of keys
@@ -490,7 +481,7 @@ Console tools:
 
    zenity           // Display GUI messages from console tools - Used for some my scripts
 
-   aur/sparklines-git // Very nice console spark lines, https://github.com/holman/spark
+   //aur/sparklines-git // Very nice console spark lines, https://github.com/holman/spark
    //aur/hr-git         // Horizontal lines maker
    //aur/cv-git         // Shows running coreutils basic commands and displays stats
    //aur/jrnl           // Nice journal with CLI
@@ -662,7 +653,6 @@ iOS/OSX support:
 IDE and editors:
 
    ed                 // THE editor
-
    neovim             // Neovim - new vim
    neovim-qt          // qt GUI for nvim
    //aur/neovim-remote      // Python wrappor for remote features
@@ -826,11 +816,10 @@ Reverse and hack:
    ghidra                  // New IDA-like framework for RE
    pax-utils                // scanelf and friends
 
-
    // Binwalk and its deps
    binwalk                 // Firmware RE Tool
    squashfs-tools          // optional for binwalk
-   mtd-utils               // MTD devs support
+   mtd-utils               // MTD devs support - why I need it?
    sleuthkit
    python-capstone
    elfkickers              // Elf utils, sstrip
@@ -870,7 +859,7 @@ Build tools:
 Source code tools:
 
    //ack                      // Better than grep
-   the_silver_searcher      // ag - better than ack :)
+   //the_silver_searcher      // ag - better than ack :)
    ripgrep                  // rg is faster than grep/ack/ag
    ripgrep-all              // same, but in pdf/doc/archives... rga
    fzf                      // universal fuzzy finder
@@ -887,7 +876,7 @@ Version Control:
 
    git
    git-lfs  // lfs for git
-   hub      // Github cli tool
+   //hub      // Github cli tool
    tk       // For gitk
    tig      // Console git explorer
    gitg     // GUI-sh git explorer JIC
@@ -909,10 +898,11 @@ Database and Web:
    // DB
    //mysql-workbench
    //mariadb          // Mysql fork, use docker image instead if needed
+   
    sqlite-analyzer
-   sqliteman        // gui browser
+   //aur/sqliteman        // gui browser
    sqlitebrowser        // gui browser
-   sqlcipher           // sqlite encryption
+   //sqlcipher           // sqlite encryption - dep of sqlitebrowser
    //litecli // pip package
 
    // Mongo DB, now removed from repos - https://lists.archlinux.org/pipermail/arch-dev-public/2019-January/029430.html
@@ -924,8 +914,8 @@ Database and Web:
    npm
    nodejs
    //nodejs-nodemon // helper daemon to manage node instances
-   aur/nvm  // managing node js versions in like a virtual envs
-   aur/pm2  // process manager for node
+   //aur/nvm  // managing node js versions in like a virtual envs - replaced with fish nvm fork
+   pm2  // process manager for node
    emscripten
    yarn // new npm
 
@@ -934,7 +924,6 @@ Database and Web:
 Npm, Rust, Ruby Packs:
 
     // Not installed with packman, so commenting it out here, but still want to track them - TODO: extend syntax for packs
-
     // NPM
     // appcenter-cli - used to use appcenter
     // chromecast-device-emulator - testing with chromecast
@@ -956,8 +945,9 @@ Emulation and virtualization:
 
    net-tools                  // Dependency for networking support
 
-   qemu   // Good alternative, TODO: setup later with kickass KVM
-   qemu-arch-extra
+   //qemu   // Good alternative, TODO: setup later with kickass KVM
+   qemu-desktop
+   //qemu-arch-extra
 
    docker
    docker-compose  // Multi-image containers
@@ -973,13 +963,13 @@ Emulation and virtualization:
    // other platforms
    dosbox
    sl       // Qute train
-   pcem   // Old pc emulator
+   aur/pcem   // Old pc emulator
    //fceux      // NES emulator
    //aur/fakenes  // Another NES emulator
 
 CD DVD:
    cdrtools // For fileroller to understand iso
-   whipper  // cd ripper
+   //whipper  // cd ripper
 
 Machine learning and Python:
 
@@ -1006,16 +996,16 @@ Machine learning and Python:
    python-numpy           // Matlab inside python
    python-scipy           // Math stuff
    python-matplotlib      // Powerful plotting library
-   python-scikit-learn    // Machine learning algorithms
-   python-sympy           // Symbolic manipulations
+   //python-scikit-learn    // Machine learning algorithms
+   //python-sympy           // Symbolic manipulations
    //aur/python-scikit-image // image tools
    python-pillow
-   python-numexpr
+   //python-numexpr
 
-   python-bottleneck       // fast numpy array functions cpython
-   python-hexdump          // hex dump helpers
-   python-markdown
-   python-h5py
+   //python-bottleneck       // fast numpy array functions cpython
+   //python-hexdump          // hex dump helpers
+   //python-markdown
+   //python-h5py
 
    cuda                    // nvidia gpgpu lib 
    //tensorflow-opt-cuda     // tensorflow on cuda
@@ -1036,8 +1026,8 @@ Python stuff:
    //python-tornado         // for ipython notebook
    //python-jinja           // for ipython notebook
 
-   python-gitlab         // gitlab API wrapper for python
-   python-opengl
+   //python-gitlab         // gitlab API wrapper for python
+   //python-opengl
    python-pyusb
    //python2-pyusb
 
@@ -1064,7 +1054,7 @@ Other Languages:
    //chicken
 
    // Rust
-   rustup     // Rustup now handles everything
+   rustup    // Rustup now handles everything
 
    // Java
    jdk-openjdk             // JDK
@@ -1101,16 +1091,15 @@ Other Languages:
    cpanminus // package installer for CPAN
 
    // Haskell
-   //ghc // Haskell - can use stack instead
-   //stack // Haskell manager, too many deps
-   aur/stack-static // Static version - is it updated?
-
-
+   ghc // Haskell - can use stack instead
+   stack // Haskell manager, too many deps, but ok
+   //aur/stack-static // Static version - is it updated?
 
 Fonts:
 
    //aur/terminus-cyrillic        // Used in virtual terminals
    terminus-font
+   ttf-terminus-nerd
 
    adobe-source-code-pro-fonts  // Nice mono type font
    ttf-bitstream-vera           // For mathematica
@@ -1139,7 +1128,7 @@ Browsers:
    //firefox-adblock-plus    // No ads                         using as extension
    //firefox-noscript        // No scripts                     using as extension
    //pentadactyl-hg          // Vim-like behavior for firefox, using as extension
-   aur/firefox-tridactyl-native  // native plugin
+   aur/firefox-tridactyl-native-bin  // native plugin, binary version
 
    //chromium                // Used only when damn Flash is required
    aur/ungoogled-chromium-bin // same but without google shit
@@ -1417,7 +1406,7 @@ Stream grabbers:
    yt-dlp       // Modern fork
    you-get      // Another one downloader
    ytfzf    // fzf wrapper
-   aur/youtube-upload-git   // YT Uploader
+   //aur/youtube-upload-git   // YT Uploader
 
 Multimedia tools:
 
@@ -1431,7 +1420,6 @@ Multimedia tools:
    //aur/id3              // tags edit, last updated 2015
    //aur/mystic           // GUI for ffmpeg
 
-
 Codecs:
 
    lame     // MP3
@@ -1444,7 +1432,6 @@ Codecs:
    gst-plugins-good
    gst-plugins-ugly
    gst-libav
-
 
    opus-tools
 
@@ -1508,7 +1495,7 @@ Books and scanning:
    //aur/gscan2pdf     // Interesting thing but currently on aur with lots of deps.
 
    //aur/pdftk-bin    // PDF console editor tool
-   pdfmod           // PDF GUI-sh editor
+   //pdfmod           // PDF GUI-sh editor - gone...
    pdfcrack     // password pdf remover
    pdfgrep      // searching through pdf files (see also rga - rip grep all )
    pdftk        // command line pdfe tool
@@ -1539,7 +1526,7 @@ Math:
    //sagemath          // Big python mathematics system, brings maxima-ecl as dependency
     
    maxima            // Old and powerful algebra system
-   wxmaxima          // GUI version
+   //aur/wxmaxima          // GUI version, looks less used...
    //aur/r-mkl       // R (faster edition with Intel MKL)
    //golly             // Powerfull Game Of Life solver, fast(very), tons of tweaks in rules and many presets
 
@@ -1555,7 +1542,7 @@ TeX and Documentation:
 
    // texlive-most group
    //texlive-bibtexextra
-   texlive-core
+   texlive-basic
    //texlive-fontsextra
    //texlive-formatsextra
    //texlive-games
@@ -1590,7 +1577,7 @@ Games and fun:
    //aur/gogui  // GUI-sh go board
    //aur/leela-zero-git // Go engine -- seem to be dead
    aur/sabaki         // Go GUI for go
-   aur/lizzie-git     // Go leela gui - seem dead also
+   //aur/lizzie-git     // Go leela gui - seem dead also
 
    joyutils // Pad control utilities
    cowsay   // Cows are good
