@@ -25,7 +25,7 @@ Contents of base group:
    pciutils
    psmisc
    shadow
-   util-linux
+   util-linux   // hoxdump, cal, blkid, fdisk, hwclock, su and many others
    bzip2
    gzip
    xz
@@ -77,41 +77,125 @@ Contens of base-devel group:
 
 Contents of gnome group:
 
-   baobab                     // Visual disk space usage
-   eog                        // GNOME viewer
-   evince                     // Document viewer
-   gnome-backgrounds        // Wallpapers
-   gnome-control-center
    gnome-desktop              // Dependency for nautilus
-   gnome-disk-utility         
-   gnome-font-viewer
-   gnome-keyring
    gnome-screenshot        // Screenshot tool
-   gnome-session
-   gnome-settings-daemon
-   gnome-shell
-   gnome-shell-extensions
-   gnome-system-monitor
-   gnome-terminal
    gnome-themes-extra   // Adwaita and friends
-   gnome-user-docs       // Offline user documentation
-   gnome-user-share
-   grilo-plugins
    gucharmap               // Character map
    mutter
-   nautilus                // File browser (see setup(3))
-   sushi                   // Quick preview on space
-   totem                 // Gnome player
-   //tracker3                 // Can't remove it since it's in gtk+ now ;(
-   //tracker3-miners                 // Can't remove it since it's in gtk+ now ;(
    xdg-user-dirs-gtk
-   yelp                  // Help browser
    polkit-gnome            // many gui stuff expects this to work with privelige escalation - like gdisks
    gthumb                  // image viewre
-   seahorse                // Keys and passowrds management
    vinagre  // remote desktop viewer
-   cheese    // gnome webcam app
-   dconf-editor  // helper tool to edit dconf stuff
+   gnome-nettool
+   gnome-network-displays
+
+   nautilus       //  Default file manager for GNOME
+   eog            // Eye of Gnome: An image viewing and cataloging program
+   evince         // Document viewer (PDF, PostScript, XPS, djvu, dvi, tiff, cbr, cbz, cb7, cbt)
+   cheese         // Take photos and videos with your webcam, with fun graphical effects
+   rygel          // UPnP AV MediaServer and MediaRenderer
+   simple-scan    // Simple scanning utility
+   epiphany       // A GNOME web browser based on the WebKit rendering engine
+   xdg-user-dirs-gtk       // Creates user dirs and asks to relocalize them
+   xdg-desktop-portal-gnome       // A backend implementation for xdg-desktop-portal for the GNOME desktop environment
+   sushi             // A quick previewer for Nautilus
+   orca              // Screen reader for individuals who are blind or visually impaired
+   totem             // Movie player for the GNOME desktop based on GStreamer
+   tracker3-miners   // Collection of data extractors for Tracker/Nepomuk
+   malcontent        // Parental control support for applications
+   grilo-plugins     // A collection of plugins for the Grilo framework
+   yelp              // Get help with GNOME
+   baobab                 // A graphical directory tree analyzer
+   gdm                    // Display manager and login screen
+   gnome-shell-extensions // Extensions for GNOME shell, including classic mode
+   gnome-system-monitor   // View current processes and monitor system state
+   gnome-disk-utility     // Disk Management Utility for GNOME
+   gnome-control-center   // GNOME's main interface to configure various aspects of the desktop
+   gnome-font-viewer      // A font viewer utility for GNOME
+   gnome-connections      // Remote desktop client for the GNOME desktop environment
+   gnome-text-editor      // A simple text editor for the GNOME desktop
+   gnome-backgrounds      // Background images and data for GNOME
+   gnome-characters       // A character map application
+   gnome-user-share       // Easy to use user-level file sharing for GNOME
+   gnome-remote-desktop   // GNOME Remote Desktop server
+   gnome-settings-daemon  // GNOME Settings Daemon
+   gnome-user-docs        // User documentation for GNOME
+   gnome-color-manager    // GNOME Color Profile Tools
+   gnome-calendar         // Simple and beautiful calendar application designed to perfectly fit the GNOME desktop
+   gnome-contacts         // Contacts Manager for GNOME
+   gnome-weather          // Access current weather conditions and forecasts
+   gnome-console          // A simple user-friendly terminal emulator for the GNOME desktop
+   gnome-session          // The GNOME Session Handler
+   gnome-calculator       // GNOME Scientific calculator
+   gnome-keyring          // Stores passwords and encryption keys
+   gnome-photos           // Access, organize, and share your photos on GNOME
+   gnome-clocks           // Clocks applications for GNOME
+   gnome-shell            // Next generation desktop shell
+   gnome-music            // Music player and management application
+   gnome-software         // GNOME Software Tools
+   gnome-logs             // A log viewer for the systemd journal
+   gnome-maps             // A simple GNOME 3 maps application
+   gnome-tour             // Guided tour and greeter for GNOME
+   gnome-menus            // GNOME menu specifications
+
+   gvfs                   // Virtual filesystem implementation for GIO
+   gvfs-nfs               // Virtual filesystem implementation for GIO (NFS backend)
+   gvfs-mtp               // Virtual filesystem implementation for GIO (MTP backend; Android, media player)
+   gvfs-goa               // Virtual filesystem implementation for GIO (Gnome Online Accounts backend; cloud storage)
+   gvfs-afc               // Virtual filesystem implementation for GIO (AFC backend; Apple mobile devices)
+   gvfs-smb               // Virtual filesystem implementation for GIO (SMB/CIFS backend; Windows client)
+   gvfs-gphoto2      // Virtual filesystem implementation for GIO (gphoto2 backend; PTP camera, MTP media player)
+   gvfs-google       // Virtual filesystem implementation for GIO (Google Drive backend)
+
+Gnome Extra:
+
+   file-roller    // Create and modify archives
+   iagno          // Dominate the board in a classic version of Reversi
+   tali           // Beat the odds in a poker-style dice game
+   lightsoff      // Turn off all the lights
+   quadrapassel   // Fit falling blocks together (Tetris-like game for GNOME)
+   d-spy          // D-Bus debugger for GNOME
+   five-or-more   // Remove colored balls from the board by forming lines
+   four-in-a-row  // Make lines of the same color to win
+   hitori        // GTK+ application to generate and let you play games of Hitori
+   sysprof       // Kernel based performance profiler
+   polari        // An IRC Client for GNOME
+   seahorse      // GNOME application for managing PGP keys.
+   swell-foop    // Clear the screen by removing groups of colored and shaped tiles
+   devhelp       // API documentation browser for GNOME
+   ghex          // A simple binary editor for the Gnome desktop
+   evolution     // Manage your email, contacts and schedule
+   geary         // A lightweight email client for the GNOME desktop
+   accerciser    // Interactive Python accessibility explorer for the GNOME desktop
+   
+   gitg       // GNOME GUI client to view git repositories
+   glade       // User Interface Builder for GTK+ applications
+   gedit       // GNOME Text Editor
+   
+   dconf-editor           // GSettings editor for GNOME
+   gnome-sound-recorder   // A utility to make simple audio recording from your GNOME desktop
+   gnome-multi-writer     // Write an ISO file to multiple USB devices at once
+   gnome-devel-docs       // Developer documentation for GNOME
+   gnome-dictionary       // Look up words in dictionary sources
+   gnome-terminal      // The GNOME Terminal Emulator
+   gnome-mahjongg      // Disassemble a pile of tiles by removing matching pairs
+   endeavour           // Personal task manager (Formerly GNOME Todo)
+   gnome-recipes       // Recipe management application for GNOME
+   gnome-klotski       // Slide blocks to solve the puzzle
+   gnome-builder       // An IDE for writing GNOME-based software
+   gnome-nibbles       // Guide a worm around a maze
+   gnome-sudoku        // Test your logic skills in this number grid puzzle
+   gnome-taquin        // Move tiles so that they reach their places
+   gnome-tweaks        // Graphical interface for advanced GNOME settings (Tweak Tool)
+   gnome-robots        // Avoid the robots and make them crash into each other
+   gnome-boxes         // Simple GNOME application to access virtual systems
+   gnome-chess         // Play the classic two-player boardgame of chess
+   gnome-games         // Simple game launcher for GNOME
+   gnome-2048          // Obtain the tile
+   gnome-mines         // Clear hidden mines from a minefield
+   gnome-tetravex      // Complete the puzzle by matching numbered tiles
+   gnome-notes         // Write out notes, every detail matters
+
 
 Themes for grome:
 
@@ -130,6 +214,7 @@ Audio:
    pavucontrol        // Pulse audio mixer
    pasystray          // Simple tray icon for pulse mixer
    //pavumeter         // Pulse meter
+   helvum             // patchwire
 
 
 First to install:
@@ -169,6 +254,7 @@ Bluetooth and network:
 
    //dnsmasq           // Local DNS cache (see setup(9)) - no need since Mikrotik
    //network-manager
+   iwd
    gnu-netcat        // Network piping application
    //openbsd-netcat
    //ngrep             // Network packet grep 
@@ -188,6 +274,7 @@ Bluetooth and network:
 
 
    nethogs           // Network monitor
+   iftop             // alternative
    nmap              // Network security scanner
    //nload             // Network load monitor
    //aur/ntop              // Another net monitor
@@ -202,6 +289,8 @@ Bluetooth and network:
    rclone            // cloud sync with different providers
    //speedtest-cli     // speedtest.net cli client, but better use librespeed test
    cutter             // connection cutter (tcp-cutter)
+   gping               // ping with graph
+   hostapd             // authenticator
 
 Web Servers:
 
@@ -351,6 +440,7 @@ Window managers and DE:
    //xmonad          // Haskell window manager
    //openvpn         // VPN client
    //aur/pm-utils        // Hibernate, sleep, etc
+   aur/nordvpn-bin  // nord
 
    // Re-mapping of keys
    interception-tools // A minimal composable infrastructure on top of libudev and libevdev
@@ -366,6 +456,9 @@ Window managers and DE:
 
    // mime
    perl-file-mimeinfo // tools: mimeinfo/mimefile/mimeopen
+
+   // gestures
+   aur/libinput-gestures // little gesture handler (screeshot pinch)
 
 Recoll and helpers:
 
@@ -433,6 +526,7 @@ Console tools:
    rmlint-shredder   // Duplicate files searcher and remover - helper
    //aur/rdfind        // Yet another one
 
+   mcfly  // another atke no shell history
 
    pv             // Pipe viewer, can be used for progress monitoring
    rlwrap         // Read line wrap (for maxima and others) also awesome-client
@@ -461,11 +555,12 @@ Console tools:
    bat            // cat replacement for file display
    bat-extras     // cat replacement for file display - helper scripts
    fd             // find alternative
+   hexyl          // modern hexdump
 
    //diff-so-fancy  // diff alternative
    git-delta        // even better diff for git
    difftastic       // syntax based
-
+   aur/dunk         // alternative
 
    trash-cli // little tool that trashes files instead of rm-ing them
 
@@ -491,6 +586,7 @@ Console tools:
 
    parallel          // helper to do parallel jubs in shell
    inotify-tools     // inotify wrappers, used for watching file changes in my scripts
+   entr              // run commands when files change
    task              // task warrior
    aur/dijo-git        // habit  trackr
    direnv            // Automatic setup of virtual envs (and not only) when you enter a dir
@@ -498,6 +594,21 @@ Console tools:
 
    //tldr // nice man replacement ;)
    tealdeer // same but in rust and fast
+   navi
+
+   // Query tools
+   jq // Json query
+   aur/faq // same but language agnostic
+   fx // Nice json browser
+   aur/ijq // interactive jq
+   fq  // same but binary
+   go-yq // yaml query
+   aur/jqp // interactive
+   aur/jaq // fork
+
+   // sql
+   fselect // sql like queries to search files
+   hyperfine // benchmark
 
 CLI Coloring:
 
@@ -529,7 +640,6 @@ Fuse filesystems:
 
 Nautilus:
 
-
    //nautilus-actions           // For custom actions in context menus
    //nautilus-sendto            // Send to pidgin and other places
    //nautilus-compare           // Integrates meld into context menu
@@ -537,15 +647,6 @@ Nautilus:
 
    ffmpegthumbnailer       // Thumbnails for video files
    //aur/raw-thumbnailer         // RAW files thumbnails
-
-
-   gvfs           // GNOME file system abstraction
-   gvfs-smb       // Samba support
-   gvfs-mtp       // Android devices MTP mode support
-   gvfs-afc       // Apple
-   gvfs-gphoto2
-   gvfs-nfs
-   //libgphoto2
 
    dosfstools           // For old FAT etc.
    gptfdisk             // fdisk for GPT
@@ -560,13 +661,13 @@ Other file managers:
    ranger   // Fast and pretty manager powered by Vim keys (see setup(18))
    //vifm             // ranger is preferable but this good too
    nnn                // modern vim like file manager
+   fff                // yet another one fast file manager with vim keys
    lf                 // ranger-like, but faster and in Go
    broot              // new take on file management in cli
    aur/clifm          // another file manager in cli - unusual approach TODO: learn
 
 Archives:
 
-   //file-roller // Archiver for GNOME
 
    p7zip       // 7z support
    zip         // ZIP support
@@ -598,6 +699,7 @@ Viewers:
    //aur/llpp-git   // PDF fast and powerful (currently using zathura)
    djview         // DJVU faster then evince
    feh            // image viewer
+   viu            // terminal
 
    //aur/view3dscene-svn // 3D model viewer
 
@@ -605,6 +707,7 @@ Viewers:
    //aur/chmsee         // Modern CHM viewer
 
    fbreader       // Using it as EPUB reader
+   aur/epy-ereader-git // cli reader
    //coolreader   // FBreader is better for me
    foliate        // Modern GTK+ reader
 
@@ -661,6 +764,7 @@ IDE and editors:
    //gonvim              // go wrapper for nvim
    //python2-unidecode  // for YCM in Vim
    //gvim               // for whatever reason plain vim too ;)
+   neovide              // gui
 
    kakoune // another modal editor
    kak-lsp // and lsp for it
@@ -671,19 +775,23 @@ IDE and editors:
    //pycharm-community-edition  // Python IDE
    //codeblocks         // For oFramework projects
    ghostwriter          // Markdown distraction free mode
+   mdcat 
 
    // dotnet
-   //monodevelop                        // Mono IDE
    dotnet-sdk                         // sdk
+   dotnet-host
+   dotnet-runtime
    aur/visual-studio-code-bin             // VSCode, note that it's binary spyware version from M$
    //code // VSCode, community version, but many plugins don't work here...
 
    //intellij-idea-community-edition    // Idea
    //aur/rider              // JetBrains IDE for C# and Unity
    cloc // Count lines of code
+   aur/omnisharp-roslyn  // C# lsp
 
 
    qtcreator          // Qt IDE
+   aur/comby-bin          // Structural replacement tools
 
 Game development:
 
@@ -707,7 +815,7 @@ Game development:
    //tbb            // threadng building blocks - intel renamed everything....
 
    // Engines
-   //aur/unityhub   // Finally on Linux, Unity hub official, for some reason it's using gconf (nobody is using it these days)
+   aur/unityhub   // Unity
    //unreal-engine
    //ogre
    mono-msbuild     // To work with Unity in Omnisharp
@@ -728,6 +836,7 @@ Game development:
    // Tools
    aur/renderdoc // gpu debugger
    clinfo        // OpenCL info
+   aur/dxvk-bin  // DirectX layer
 
 C/C++ compilers and tools:
 
@@ -758,6 +867,7 @@ C++ libs:
 
    libc++         // LLVM clang STL
    llvm
+   lldb
    boost
    capnproto  // serializator
    aur/chaiscript // scirptable lang for c++
@@ -773,8 +883,6 @@ C++ libs:
    //mpich          // MPI support
    //aur/intel-tbb      // "Parallel STL", deprecated, simple tbb in community is fine
    //aur/armadillo      // C++ lineal alg
-
-   glade          // GUI builder for GTK 3, also there is glade
 
    cppunit        // C++ unit test lib
    cmocka         // C unit test lib
@@ -866,7 +974,7 @@ Source code tools:
    fzy                      // a better fuzzy finder - written in Rust? (no)
    skim                     // one more fuzzy finder in rust
 
-   //meld                   // Nice GUI-sh diff tool
+   meld                   // Nice GUI-sh diff tool
    //python2-dbus           // For meld
    uncrustify               // Styler
    dos2unix                 // CRLF killer
@@ -879,7 +987,9 @@ Version Control:
    //hub      // Github cli tool
    tk       // For gitk
    tig      // Console git explorer
-   gitg     // GUI-sh git explorer JIC
+   lazygit  // nice gui for fast git operation
+   gita     // using multiple repositories
+   gitui    // written in rust, tui, don't like default keymap (not vim)
 
    mercurial     // Installed for Aur only. Should give it a shot.
    subversion
@@ -891,19 +1001,19 @@ HEX editors:
    dhex   // has good binary diff mode, otherwise not use it a lot these days, radare2 replaced it for me
    //ht
    hexedit
-   ghex   // (see setup(4) for integration)
 
 Database and Web:
 
    // DB
    //mysql-workbench
    //mariadb          // Mysql fork, use docker image instead if needed
+   aur/litecli  // sqlite tool
+   aur/mycli-git // mysql
    
    sqlite-analyzer
    //aur/sqliteman        // gui browser
    sqlitebrowser        // gui browser
    //sqlcipher           // sqlite encryption - dep of sqlitebrowser
-   //litecli // pip package
 
    // Mongo DB, now removed from repos - https://lists.archlinux.org/pipermail/arch-dev-public/2019-January/029430.html
    // Not using anymore, may use in docker if needed for tests
@@ -933,6 +1043,8 @@ Npm, Rust, Ruby Packs:
 
     // Ruby
     // jekyll - for blog experiments
+    lua-language-server // lua lsp
+    luarocks
 
 Emulation and virtualization:
 
@@ -1063,6 +1175,8 @@ Other Languages:
    //jdk8-openjdk
    //jdk11-openjdk
    //scala
+   aur/jdtls // language server for java
+   aur/jmeter
 
    // Go
    go
@@ -1169,10 +1283,10 @@ File Sharing:
 
 Instant Messaging:
 
-   //pidgin             // for XMPP
+   pidgin             // for XMPP
   // aur/pidgin-latex   // Add-on for LaTeX support
 
-   //finch            // Console XMPP
+   finch            // Console XMPP
    profanity          // True console XMPP
 
    irssi     // IRC client
@@ -1386,7 +1500,7 @@ Media players:
 
    mplayer          // Good old player
    mpv              // Nice new player 
-   //vlc              // Good too player
+   vlc              // Good too player
    aur/fswebcam         // CLI web cam helper
    aur/webcamoid        // gui cam helper
 
@@ -1456,6 +1570,9 @@ Monitor tools:
    i2c-tools
    read-edid
    arandr             // gui for xrandr
+   acpilight           // brightness control, modern xorg-xbacklight
+   acpica             // no idea why I installed this
+   light // tool for brightness
 
 Sketching:
 
@@ -1576,6 +1693,7 @@ Games and fun:
    aur/pachi // not bat engine
    //aur/gogui  // GUI-sh go board
    //aur/leela-zero-git // Go engine -- seem to be dead
+   aur/katrain // kataga
    aur/sabaki         // Go GUI for go
    //aur/lizzie-git     // Go leela gui - seem dead also
 
@@ -1625,5 +1743,6 @@ Random stuff:
 
 asar // Electron app packaging
 acpi_call // /proc/acpi/call
+electron  // Electron base package
 
 
