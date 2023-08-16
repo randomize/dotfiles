@@ -195,6 +195,8 @@ Gnome Extra:
    gnome-mines         // Clear hidden mines from a minefield
    gnome-tetravex      // Complete the puzzle by matching numbered tiles
    gnome-notes         // Write out notes, every detail matters
+   gnome-usage
+   gnome-video-effects
 
 
 Themes for grome:
@@ -235,15 +237,16 @@ UEFI boot and stuff:
 Packaging:
 
    aur/yay             // Aur "pacman"
-   aur/rua               // same, but focused more on security, for example - not asking sudo pass on start (and failing if package build took too much time haha) like yay does
-   lostfiles      // Show pacman untracked crap on hdd
-   pacman-contrib        // Pacmans scripts 
-   reflector             // sorting mirrors
+   aur/rua             // same, but focused more on security, for example - not asking sudo pass on start (and failing if package build took too much time haha) like yay does
+   aur/paru            // one more
+   lostfiles           // Show pacman untracked crap on hdd
+   pacman-contrib      // Pacmans scripts 
+   reflector           // sorting mirrors
 
    namcap         // Package checking
-   //abs            // Arch build system - not using, its easier to just download PKGBUILD/tarball
-   asp              // Git-way of getting system PKGBUILDs
-   pacutils
+   //abs          // Arch build system - not using, its easier to just download PKGBUILD/tarball
+   asp            // Git-way of getting system PKGBUILDs
+   pacutils       // pacman extended stuff
 
    arch-install-scripts
    archiso        // arch iso creation tools
@@ -252,8 +255,10 @@ Packaging:
 
 Bluetooth and network:
 
+   networkmanager
+   network-manager-applet
+
    //dnsmasq           // Local DNS cache (see setup(9)) - no need since Mikrotik
-   //network-manager
    iwd
    gnu-netcat        // Network piping application
    //openbsd-netcat
@@ -302,11 +307,12 @@ Web Servers:
 
 Video:
 
+   nvidia              // proprietary driver
+   nvidia-prime        // hybrid mode
    xf86-video-intel    // Also installs intel-dri and libgl
    libva-intel-driver
    mesa-demos          // Beloved glxgears is here
    intel-gpu-tools     // Debugging
-   //nvidia-dkms              // Proprietary driver for NVIDIA
    nvidia-settings     // gui settings tool for it
 
 Xorg stuff:
@@ -351,7 +357,7 @@ Wayland:
    wayland
    sway  // Tiling WM for wayland
 
-Diagnostics and HDD:
+Diagnostics and Info:
 
    archey3   // Simple script to print out nice Arch logo with some info
    aur/archey4   // Same but more info
@@ -376,7 +382,9 @@ Diagnostics and HDD:
    ethtool
    ltrace        // Track calls in dynamic libs
    strace        // App tracer
+   lm_sensors
 
+HDD Tools:
 
    parted     // Partitioning
    gparted     // Partitioning, partition magic clone
@@ -386,12 +394,12 @@ Diagnostics and HDD:
    hddtemp
    smartmontools
 
-   lm_sensors
    aur/qdirstat    // Nice tree viewer for disk usage analysis
    //aur/winusb-git // Tool to create win usb bootables
    //unetbootin  // USB bootable creator
    //wimlib      // windows image tools
    //woeusb      // windows image tools
+   nvme-cli      // Nvme Express
 
 Window managers and DE:
 
@@ -538,6 +546,7 @@ Console tools:
    asciinema      // screen recorder for cli
    //aur/massren        // rename files
    lesspipe           // input filter for the pager less
+   aur/page-git     // neovim pager
    up             // ultimate plumber
    aur/aur-talk-git // simple AUR comments fetcher
    pueue            // command line scheduler
@@ -788,6 +797,7 @@ IDE and editors:
    //aur/rider              // JetBrains IDE for C# and Unity
    cloc // Count lines of code
    aur/omnisharp-roslyn  // C# lsp
+   aur/netcoredbg        // debugger
 
 
    qtcreator          // Qt IDE
@@ -990,6 +1000,7 @@ Version Control:
    lazygit  // nice gui for fast git operation
    gita     // using multiple repositories
    gitui    // written in rust, tui, don't like default keymap (not vim)
+   onefetch // some stats of the repo
 
    mercurial     // Installed for Aur only. Should give it a shot.
    subversion
@@ -1064,7 +1075,7 @@ Emulation and virtualization:
    docker
    docker-compose  // Multi-image containers
    //aur/nvidia-docker   // GPU accelerated docker (for ML)
-   //aur/nvidia-container-toolkit
+   aur/nvidia-container-toolkit
    distrobox // use any distro from terminal
    ctop      // container top
 
@@ -1078,6 +1089,7 @@ Emulation and virtualization:
    aur/pcem   // Old pc emulator
    //fceux      // NES emulator
    //aur/fakenes  // Another NES emulator
+   mdk // Knuth's computer emulator
 
 CD DVD:
    cdrtools // For fileroller to understand iso
@@ -1172,8 +1184,8 @@ Other Languages:
    jdk-openjdk             // JDK
    jre-openjdk             // JRE
    jre-openjdk-headless
-   //jdk8-openjdk
-   //jdk11-openjdk
+   jdk8-openjdk
+   jdk11-openjdk
    //scala
    aur/jdtls // language server for java
    aur/jmeter
@@ -1243,6 +1255,7 @@ Browsers:
    //firefox-noscript        // No scripts                     using as extension
    //pentadactyl-hg          // Vim-like behavior for firefox, using as extension
    aur/firefox-tridactyl-native-bin  // native plugin, binary version
+   aur/firefox-profile-switcher-connector // native part for profile switcher plugin
 
    //chromium                // Used only when damn Flash is required
    aur/ungoogled-chromium-bin // same but without google shit
@@ -1546,6 +1559,7 @@ Codecs:
    gst-plugins-good
    gst-plugins-ugly
    gst-libav
+   gst-rtsp-server
 
    opus-tools
 
